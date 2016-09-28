@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+}
+
+body{
+    font-family: 'Questrial', sans-serif;
+    background-color: #767676;
+}
+nav{
+    background-color: #3c3c3c;
+}
+
+.sub-head{
+    background-color: #1e1e1e;
+    list-style-type: none;
+    list-style-position: inside;
+    text-align: center;
+    padding: 10px;
+    
+}
+.sub-head li, a{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.sub-head ul{
+    margin-bottom: 0;
+}
+
+.sub-head a:link{
+    color: yellow;
+}
+.sub-head a:visited{
+    color: green;
+}
+.sub-head a:hover{
+    color: red;
+}
+.sub-head a:active{
+    color: blue;
+}
