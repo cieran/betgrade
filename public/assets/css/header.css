@@ -10,13 +10,21 @@ nav{
     background-color: #3c3c3c;
 }
 
+.main-head{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 .sub-head{
     background-color: #1e1e1e;
     list-style-type: none;
     list-style-position: inside;
     text-align: center;
     padding: 10px;
-    
+    -webkit-box-shadow: 0 7px 10px #888888;
+    -moz-box-shadow: 0 7px 10px #888888;
+    box-shadow: 0 7px 10px #888888;
 }
 .sub-head li, a{
     display: inline;
@@ -31,14 +39,23 @@ nav{
 }
 
 .sub-head a:link{
-    color: yellow;
+    color: white;
 }
 .sub-head a:visited{
-    color: green;
+    color: white;
+    text-decoration: none;
 }
 .sub-head a:hover{
-    color: red;
+    -moz-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+    text-decoration: none;
+    color: orange;
 }
 .sub-head a:active{
-    color: blue;
+    color: orange;
+    text-decoration: none;
 }
+
+
