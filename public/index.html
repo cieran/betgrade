@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="betgrade">
 <head>
     <title>Betgrade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/header.css">
 
 </head>
-<body ng-app="betgrade">
+<body>
     <nav>
         <div class="main-head">
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
@@ -30,7 +30,7 @@
                 </form>
         </div>
         <div ng-controller="MyCtrl">
-          {{'name'}}
+          {{name}}
         </div>
         <div class="sub-head">
         <ul class="nav-list">

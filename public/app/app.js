@@ -2,7 +2,7 @@ var app = angular.module('betgrade', ['ui.bootstrap']);
 
 app.controller('MyCtrl', function($scope) {
     $scope.name = 'Cieran';
-};
+});
 
 app.controller('ModalCtrl', function ($scope, $uibModal) {
 	  $scope.animationsEnabled = true;
