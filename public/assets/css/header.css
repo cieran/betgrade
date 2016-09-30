@@ -122,3 +122,12 @@ footer{
     color: grey;
     text-align: center;
 }
+
+
+::-moz-selection { /* Code for Firefox */
+    background: #fdb62b;
+}
+
+::selection {
+    background: #fdb62b;
+}
