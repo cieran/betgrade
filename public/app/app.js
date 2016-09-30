@@ -1,24 +1,19 @@
 var app = angular.module('betgrade', ['ui.bootstrap']);
 
+function MyCtrl($scope, ControllerChecker) {
+    $scope.exists = function(name){ return ControllerChecker.exists(name); }
+};
 
-app.controller('ModalCtrl', function ($scope, $uibModal, $log) {
-
+app.controller('ModalCtrl', function ($scope, $uibModal) {
 	  $scope.animationsEnabled = true;
-
+    
 	  $scope.open = function (size) {
-
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
-	      templateUrl: 'form.html',
+	      templateUrl: 'betslip.html',
 	      controller: 'ModalInstanceCtrl',
 	      size: size,
 	   });
-
-	    modalInstance.result.then(function (selectedItem) {
-	      $scope.selected = selectedItem;
-	    }, function () {
-	      $log.info('Modal dismissed at: ' + new Date());
-	    });
 	  };
 
 	  $scope.toggleAnimation = function () {
