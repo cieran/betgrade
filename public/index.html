@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/header.css">
 
 </head>
-<body ng-controller="ModalCtrl">
+<body>
     <nav>
         <div class="main-head">
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
@@ -30,10 +30,10 @@
                 </form>
         </div>
         <div ng-controller="MyCtrl">
-  MyCtrl exists? {{ exists('MyCtrl') }} <br>
-  OtherCtrl exists? {{ exists('ModalCtrl') }} <br>
-  BadCtrl exists? {{ exists('BadCtrl') }}
-</div>
+          MyCtrl exists? {{ exists('MyCtrl') }} <br>
+          OtherCtrl exists? {{ exists('ModalCtrl') }} <br>
+          BadCtrl exists? {{ exists('BadCtrl') }}
+        </div>
         <div class="sub-head">
         <ul class="nav-list">
             <li><a href="/CS17">COMPUTER SCIENCE 16-17</a></li>
@@ -49,7 +49,7 @@
             <div class="col-xs-3 col-md-3">Odds to Pass</div>
             <div class="col-xs-3 col-md-3">Odds to Fail</div>
         </div>
-        <div class="bet-column-market">
+        <div class="bet-column-market" ng-controller="ModalCtrl">
             <div class="col-xs-6 col-md-6">Cieran Neeson</div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
