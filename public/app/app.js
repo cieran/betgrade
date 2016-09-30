@@ -1,7 +1,7 @@
 var app = angular.module('betgrade', ['ui.bootstrap']);
 
-function MyCtrl($scope, ControllerChecker) {
-    $scope.exists = function(name){ return ControllerChecker.exists(name); }
+app.controller('MyCtrl', function($scope) {
+    $scope.name = 'Cieran';
 };
 
 app.controller('ModalCtrl', function ($scope, $uibModal) {
