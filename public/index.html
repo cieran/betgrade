@@ -9,10 +9,12 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+    
+    <script src="/app/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
 
 </head>
-<body>
+<body ng-controller="ModalCtrl">
     <nav>
         <div class="main-head">
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
@@ -43,8 +45,8 @@
         </div>
         <div class="bet-column-market">
             <div class="col-xs-6 col-md-6">Cieran Neeson</div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
             
             <div class="col-xs-6 col-md-6">Claire Fitzpatrick</div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
