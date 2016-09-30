@@ -1,16 +1,20 @@
-*{
+html {
     margin: 0;
+    height: 100%;
 }
 
 body{
     font-family: 'Quicksand', sans-serif;
     background-color: #3c3c3c;
+    height: 100%;
 }
+
 nav{
     background-color: #3c3c3c;
 }
+
 .main-head img{
-    width: 148px;
+    width: 150px;
 }
 
 .main-head{
@@ -20,8 +24,8 @@ nav{
     padding-bottom: 5px;
     overflow: hidden;
 }
+
 .sub-head{
-    overflow: hidden;
     background-color: #1e1e1e;
     list-style-type: none;
     list-style-position: inside;
@@ -68,7 +72,8 @@ nav{
 }
 
 .main-body{
-    width: 60%;
+    width: 50%;
+    height: 80%;
     margin: 0 auto;
     background-color: #1e1e1e;
     border-bottom-left-radius: 10px;
@@ -76,11 +81,30 @@ nav{
     padding: 5px;
 }
 
+.bet-column-head .col-md-3{
+    text-align: center;
+}
+.bet-column-head .col-md-6, .bet-column-head .col-md-3{
+    color: slategrey;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+.bet-column-market .col-md-6{
+    font-size: 16px;
+    color: white;
+}
+.bet-column-market .col-md-6, .bet-column-market .col-md-3{
+    height: 50px;
+    line-height: 50px;
+}
+.bet-column-market .btn{
+    display: inline-block;
+}
 .main-body h1{
     margin: 0;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 10;
+    text-align: left;
+    font-size: 20px;
     color: ghostwhite;
 }
 
@@ -91,4 +115,10 @@ img{
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
+}
+
+footer{
+    padding-top: 5px;
+    color: grey;
+    text-align: center;
 }
