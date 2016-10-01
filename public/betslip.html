@@ -1,23 +1,22 @@
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
-    <link href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' rel='stylesheet prefetch'>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet prefetch'>
-    <link href="css/form.css" rel="stylesheet">
+    <link href="assets/css/form.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <div class="logo-container">
-            <img class="simplify-logo" src="img/simplify-background.png"/>
-        </div>
         <div class="col-xs-12 col-md-12">
             <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table">
+                <div>
                     <div class="row display-tr">
-                        <h3 class="panel-title display-td">Payment Details</h3>
-                        <div class="display-td"><img class="accepted-cards img-responsive pull-right" src="img/accepted-cards.png"></div>
+                        <img class="betslip-logo" src="assets/img/betgrade_big.png"/>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -28,12 +27,12 @@
                                 <div class="form-group">
                                     <label>CARD NUMBER</label>
                                     <div class="input-group">
-                                        <input autocomplete="off"
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span><input autocomplete="off"
                                                autofocus="" class="form-control"
                                                id="cc-number" maxlength="16" name=
                                                "cardNumber" placeholder=
                                                "Valid Card Number" required=""
-                                               type="tel"> <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                               type="tel"> 
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +114,7 @@
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
-                                    <label>CV CODE</label>
+                                    <label>CVC CODE</label>
                                     <input autocomplete="off" class= "form-control" id="cc-cvc" maxlength="3" name="cardCVC" placeholder="CVC" required="" type="tel">
                                 </div>
                             </div>
@@ -124,7 +123,7 @@
                             <div class="col-xs-12">
                                 <button class=
                                                 "btn btn-warning btn-lg btn-block" id=
-                                                "process-payment-btn" type="submit">Pay €10</button>
+                                                "process-payment-btn" type="submit">Place Bet</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
@@ -139,5 +138,4 @@
     </div>
 </div>
 </body>
-<script src="js/payment.js" async></script>
-
+</html>
