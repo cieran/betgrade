@@ -16,26 +16,29 @@
     <link rel="stylesheet prefetch" type="text/css" href="assets/css/form.css">
 
 </head>
-<body>
+<body ng-controller="Main as main">
     <nav>
         <div class="main-head">
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
          <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                        <input type="text" ng-model="main.username" class="form-control" name="username" placeholder="Username" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <input type="password" "main.password" class="form-control" name="password" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn btn-default">Sign In</button>
+                    <button type="submit" ng-click="main.login()" class="btn btn-default">Login</button>
+			       	<button type="submit" ng-click="main.register()" class="btn btn-default">Register</button>
+			 		<button type="submit" ng-click="main.logout()" ng-show="main.isAuthed()" class="btn btn-default">Logout</button>
                 </form>
         </div>
 
         <div class="sub-head">
         <ul class="nav-list">
+			<li><a href="#">{{main.message}}</a></li>
             <li><a href="/CS17">COMPUTER SCIENCE 16-17</a></li>
-            <li><a href="/CS17">COMPUTER SCIENCE 17-18</a></li>
-            <li><a href="/CS18">COMPUTER SCIENCE 18-19</a></li>
+            <li><a href="/CS17">COMPUTATIONAL THINKING 16-17</a></li>
+            <li><a href="/CS18">CSSE FINAL YEAR 16-17</a></li>
         </ul>
         </div>
     </nav>
