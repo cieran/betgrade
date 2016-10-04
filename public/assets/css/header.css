@@ -26,7 +26,10 @@ nav{
     padding-bottom: 5px;
     overflow: hidden;
 }
-
+.welcome-user{
+    color: white;
+    vertical-align: middle;
+}
 .sub-head{
     background-color: #1e1e1e;
     list-style-type: none;
