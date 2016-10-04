@@ -130,14 +130,14 @@ angular.module('betgrade', ['ui.bootstrap'])
             templateUrl: 'betslip.html',
             controller: 'ModalInstanceCtrl',
             size: size,
-            });
-	       };
+            })
+	       }
 
-	  $scope.toggleAnimation = function () {
+	   $scope.toggleAnimation = function () {
 	    $scope.animationsEnabled = !$scope.animationsEnabled;
-	  };
+	  }
       }
-    }
+    };
 })
 .directive('listDirective', function(){
     return{
@@ -168,7 +168,7 @@ angular.module('betgrade', ['ui.bootstrap'])
                 }
             }
         }
-    }
+    };
 })
 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
