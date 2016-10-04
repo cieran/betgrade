@@ -39,17 +39,17 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-bitcoin"></i></span><input autocomplete="off"
                                                autofocus="" class="form-control"
-                                               id="stake" maxlength="16" name=
+                                               id="stake" min="10" max="2000" name=
                                                "stake" placeholder=
                                                "mBTC" required=""
-                                               type="number"> 
+                                               type="number" ng-model="stake"> 
                                     </div>
                                 </div>
                             </div>
                         </div>
                             <div class="row">
                             <div class="col-xs-4 pull-right">
-                                <p>Returns: 190.90 mBTC</p>
+                                <p>Returns: {{1.9091*stake | number:1}}  mBTC</p>
                             </div>
                             </div>
 

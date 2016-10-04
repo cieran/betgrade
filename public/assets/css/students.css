@@ -1,0 +1,27 @@
+.content{
+    padding: 10px;
+}
+.student-image{
+    width: 180px;
+    border-radius: 10px;
+}
+.market-name{
+    color: white;
+    font-weight: 300;
+}
+
+#student-name{
+    color: antiquewhite;
+    font-weight: 200;
+}
+#student-bio{
+    color: antiquewhite;
+    font-weight: 300;
+}
+.market{
+    padding: 5px;
+}
+.market .col-xs-3{
+    padding-left: 0;
+}
+

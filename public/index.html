@@ -22,10 +22,9 @@
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
          <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <h3 class="welcome-user" ng-show="main.isAuthed()">Hey, {{main.username}}!</h3>
-                        <h3 class="welcome-user" ng-show="main.isAuthed()">mBTC: {{main.bitcoin}}</h3>
-                        <input type="text" ng-model="main.username" ng-hide="main.isAuthed()" class="form-control" name="username" placeholder="Username" required>
-                        <input type="password" ng-model="main.password" ng-hide="main.isAuthed()" class="form-control" name="password" placeholder="Password" required>
+                        <h3 class="welcome-user" ng-show="main.isAuthed()">Hey, {{main.username}}! mBTC: {{user.bitcoin}}</h3>
+                        <input type="text" ng-model="main.username" ng-hide="main.isAuthed()" class="form-control" name="username" minlength="6" placeholder="Username" required>
+                        <input type="password" ng-model="main.password" ng-hide="main.isAuthed()" class="form-control" minlength="6" name="password" placeholder="Password" required>
                     </div>
                     <button type="submit" ng-click="main.login()" ng-hide="main.isAuthed()" class="btn btn-default">Login</button>
 			       	<button type="submit" ng-click="main.register()" ng-hide="main.isAuthed()" class="btn btn-default">Register</button>
@@ -49,7 +48,7 @@
             <div class="col-xs-3 col-md-3">Odds to Fail</div>
         </div>
         <div class="bet-column-market" ng-controller="ModalCtrl">
-            <div class="col-xs-6 col-md-6">Cieran Neeson</div>
+            <div class="col-xs-6 col-md-6"><a class="names" href="cieran.html">Cieran Neeson</a></div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
             

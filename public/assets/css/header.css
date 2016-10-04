@@ -50,7 +50,6 @@ nav{
     font-weight: 300;
     padding: 10px;
 }
-
 .sub-head ul{
     margin-bottom: 0;
 }
@@ -99,6 +98,14 @@ nav{
     font-size: 16px;
     color: white;
 }
+.names{
+    font-size: 16px;
+    color: white;
+    padding: 0;
+    font-weight: 500;
+    text-decoration: none;
+}
+
 .bet-column-market .col-md-6, .bet-column-market .col-md-3{
     height: 50px;
     line-height: 50px;

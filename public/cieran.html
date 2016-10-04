@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html ng-app="betgrade">
+<head>
+    <title>Betgrade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    
+    <!-- STYLE IMPORTS -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/assets/js/ui-bootstrap-tpls.js"></script>
+    <script src="/app/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/students.css">
+    <link rel="stylesheet prefetch" type="text/css" href="assets/css/form.css">
+
+</head>
+<body ng-controller="Main as main">
+    <nav>
+        <div class="main-head">
+        <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
+         <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <h3 class="welcome-user" ng-show="main.isAuthed()">Hey, {{main.username}}! mBTC: {{user.bitcoin}}</h3>
+                        <input type="text" ng-model="main.username" ng-hide="main.isAuthed()" class="form-control" name="username" minlength="6" placeholder="Username" required>
+                        <input type="password" ng-model="main.password" ng-hide="main.isAuthed()" class="form-control" minlength="6" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" ng-click="main.login()" ng-hide="main.isAuthed()" class="btn btn-default">Login</button>
+			       	<button type="submit" ng-click="main.register()" ng-hide="main.isAuthed()" class="btn btn-default">Register</button>
+			 		<button type="submit" ng-click="main.logout()" ng-show="main.isAuthed()" class="btn btn-default">Logout</button>
+                </form>
+        </div>
+
+        <div class="sub-head">
+        <ul class="nav-list">
+            <li><a href="/CS17">COMPUTER SCIENCE 16-17</a></li>
+            <li><a href="/CS17">COMPUTATIONAL THINKING 16-17</a></li>
+            <li><a href="/CS18">CSSE FINAL YEAR 16-17</a></li>
+        </ul>
+        </div>
+    </nav>
+    
+    <section class="main-body" ng-controller="ModalCtrl" style="width: 80%;">
+        <div class="content">
+            <div class="col-md-3 col-xs-3 col-lg-3">
+            <img class="student-image" src="assets/img/cieran.jpg">
+            <h3 id="student-name">Cieran Neeson</h3>
+            <p id="student-bio">4th Year Computer Science &amp; Software Engineering</p>
+            </div>
+            <div class="col-md-9 col-xs-9 col-lg-9">
+                <div class="market">
+                <div class="row">
+                    <h4 class="market-name">PASS OR FAIL</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3"></div>
+                <div class="col-xs-3 col-md-3 col-lg-3"></div>
+                </div> 
+            </div>
+            
+            <div class="market">
+                <div class="row">
+                    <h4 class="market-name">NUMBER OF REPEAT EXAMS</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">11/10</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">2/1</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">5/1</button>    
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">12/1</button>
+                </div>
+                    
+                </div> 
+            </div>
+            
+            <div class="market">
+                <div class="row">
+                    <h4 class="market-name">GRADE CLASSIFICATION</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">10/1</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">6/1</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">3/1</button>    
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">3/1</button>
+                </div>
+                    
+                </div> 
+            </div>
+            
+            <div class="market">
+                <div class="row">
+                    <h4 class="market-name">PASS BY COMPENSATION</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                </div>
+                    
+                </div> 
+            </div>
+                
+            <div class="market">
+                <div class="row">
+                    <h4 class="market-name">TOP OF THE CLASS</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">25/1</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">1/10</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                </div>
+                    
+                </div> 
+            </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Cieran Neeson, 2016</p>
+    </footer>
+</body>
+</html>
+
