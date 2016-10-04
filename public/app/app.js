@@ -110,6 +110,7 @@ function MainCtrl(user, auth) {
   self.isAuthed = function() {
     return auth.isAuthed ? auth.isAuthed() : false
   }
+  
 }
 
 angular.module('betgrade', ['ui.bootstrap'])
