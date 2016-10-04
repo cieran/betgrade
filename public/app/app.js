@@ -136,7 +136,7 @@ angular.module('betgrade', ['ui.bootstrap'])
 	    $scope.animationsEnabled = !$scope.animationsEnabled;
 	  };
 
-}
+})
 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
     $scope.cancel = function () {
