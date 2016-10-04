@@ -177,5 +177,8 @@ angular.module('betgrade', ['ui.bootstrap'])
     };
 
 })
+.config(function($logProvider){
+    $logProvider.debugEnabled(true);
+})
 .controller('Main', MainCtrl)
 })();
