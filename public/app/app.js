@@ -116,6 +116,9 @@ angular.module('betgrade', ['ui.bootstrap'])
 .factory('authInterceptor', authInterceptor)
 .service('user', userService)
 .service('auth', authService)
+.config(function($logProvider){
+    $logProvider.debugEnabled(true);
+})
 .constant('API', 'http://test-routes.herokuapp.com')
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
@@ -176,9 +179,6 @@ angular.module('betgrade', ['ui.bootstrap'])
     $uibModalInstance.dismiss('cancel');
     };
 
-})
-.config(function($logProvider){
-    $logProvider.debugEnabled(true);
 })
 .controller('Main', MainCtrl)
 })();
