@@ -120,22 +120,55 @@ angular.module('betgrade', ['ui.bootstrap'])
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('authInterceptor');
 })
-.controller('ModalCtrl', function ($scope, $uibModal) {
-	  $scope.animationsEnabled = true;
-    
-	  $scope.open = function (size) {
-	    var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
-	      templateUrl: 'betslip.html',
-	      controller: 'ModalInstanceCtrl',
-	      size: size,
-	   });
-	  };
+.directive('modalDirective', function(){
+    return{
+        controller: function($scope, $uibModal){
+            $scope.animationsEnabled = true;
+            $scope.open = function (size) {
+            var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'betslip.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            });
+	       };
 
 	  $scope.toggleAnimation = function () {
 	    $scope.animationsEnabled = !$scope.animationsEnabled;
 	  };
-
+      }
+    }
+})
+.directive('listDirective', function(){
+    return{
+        controller: function($scope){
+            $scope.csseShow = true;
+            $scope.csShow = false;
+            $scope.ctShow = false;
+            
+            $scope.csse = function(){
+                if($scope.csShow || $scope.ctShow){
+                    $scope.csShow = false;
+                    $scope.ctShow = false;
+                    $scope.csseShow = true;
+                }
+            }
+            $scope.cs = function(){
+                if($scope.csseShow || $scope.ctShow){
+                    $scope.csShow = true;
+                    $scope.ctShow = false;
+                    $scope.csseShow = false;
+                }
+            }
+            $scope.ct = function(){
+                if($scope.csseShow || $scope.csShow){
+                    $scope.csShow = false;
+                    $scope.csseShow = false;
+                    $scope.ctShow = true;
+                }
+            }
+        }
+    }
 })
 .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 

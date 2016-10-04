@@ -35,20 +35,20 @@
 
         <div class="sub-head">
         <ul class="nav-list">
-            <li><a href="/CS17">COMPUTER SCIENCE 16-17</a></li>
-            <li><a href="/CS17">COMPUTATIONAL THINKING 16-17</a></li>
-            <li><a href="/CS18">CSSE FINAL YEAR 16-17</a></li>
+            <li><a ng-click="cs()">COMPUTER SCIENCE 16-17</a></li>
+            <li><a ng-click="ct()">COMPUTATIONAL THINKING 16-17</a></li>
+            <li><a ng-click="csse()">CSSE FINAL YEAR 16-17</a></li>
         </ul>
         </div>
     </nav>
     
-    <section class="main-body">
+    <section class="main-body" modalDirective listDirective>
         <div class="bet-column-head">
             <div class="col-xs-6 col-md-6">Student Name</div>
             <div class="col-xs-3 col-md-3">Odds to Pass</div>
             <div class="col-xs-3 col-md-3">Odds to Fail</div>
         </div>
-        <div class="bet-column-market" ng-controller="ModalCtrl">
+        <div class="bet-column-market" ng-show="csseShow">
             <div class="col-xs-6 col-md-6">Cieran Neeson</div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
@@ -84,7 +84,83 @@
             <div class="col-xs-6 col-md-6">Joey Hughes</div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">100/1</button></div>
             <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">1/500</button></div>
-        </div>    
+        </div>
+        
+        <div class="bet-column-market" ng-show="csShow">
+            <div class="col-xs-6 col-md-6">Cieran Nelson</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Claire Fitzpatrick</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Manus Gallagher</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Dylan Drein</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Adam D'Arcy</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Rebecca McGowan</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Emma Crawley</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Mark Stewart</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>            
+            
+            <div class="col-xs-6 col-md-6">Joey Hughes</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">100/1</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">1/500</button></div>
+        </div>
+        
+        <div class="bet-column-market" ng-show="ctShow">
+            <div class="col-xs-6 col-md-6">Cieran Cteeson</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Claire Fitzpatrick</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Manus Gallagher</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Dylan Drein</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Adam D'Arcy</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Rebecca McGowan</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Emma Crawley</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            
+            <div class="col-xs-6 col-md-6">Mark Stewart</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">10/11</button></div>            
+            
+            <div class="col-xs-6 col-md-6">Joey Hughes</div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">100/1</button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info">1/500</button></div>
+        </div>
     </section>
     <footer>
         <p>&copy; Cieran Neeson, 2016</p>
