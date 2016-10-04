@@ -20,12 +20,12 @@
     <nav>
         <div class="main-head">
         <img id="logo-header" src="assets/img/betgrade_big.png" alt="logo"/>
-        <a href="#" ng-show="main.isAuthed()">Welcome, {{main.username}}</a>
+        <a href="#" ng-show="main.isAuthed()">Welcome, {{main.username}}!</a>
          <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" ng-model="main.username" class="form-control" name="username" placeholder="Username" required>
+                        <input type="text" ng-model="main.username" ng-hide="main.isAuthed()" class="form-control" name="username" placeholder="Username" required>
 
-                        <input type="password" ng-model="main.password" class="form-control" name="password" placeholder="Password" required>
+                        <input type="password" ng-model="main.password" ng-hide="main.isAuthed()" class="form-control" name="password" placeholder="Password" required>
                     </div>
                     <button type="submit" ng-click="main.login()" ng-hide="main.isAuthed()" class="btn btn-default">Login</button>
 			       	<button type="submit" ng-click="main.register()" ng-hide="main.isAuthed()" class="btn btn-default">Register</button>
