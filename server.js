@@ -13,7 +13,7 @@ var User = require('./public/app/models/user');
 var port = process.env.PORT || 3000;
 var app = express();
 
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
