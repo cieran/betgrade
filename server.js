@@ -5,7 +5,7 @@
  */
 var express = require('express');
 var passport = require('passport');
-var bodyParser = require('bodyParser');
+var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var config = require('./config/database');
