@@ -14,13 +14,14 @@ var port = process.env.PORT || 3000;
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 app.use(passport.initialize());
 
-app.get('/', function(req, res){
+app.get('/public', function(req, res){
     res.send('hello, API at http://localhost:' + port + '/api');
 });
 app.listen(port);
