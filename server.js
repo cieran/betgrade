@@ -8,8 +8,8 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
-var config = require('./config/database.js');
-var User = require('./app/models/user');
+var config = require('./public/config/database.js');
+var User = require('./public/app/models/user');
 var port = process.env.PORT || 3000;
 var app = express();
 
