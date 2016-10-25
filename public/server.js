@@ -21,9 +21,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(passport.initialize());
 
-app.get('/index.html', function(req, res){
-    console.log('going home..');
-});
 mongoose.connect(config.database);
 
 require('./config/passport')(passport);
