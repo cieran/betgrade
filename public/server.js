@@ -42,8 +42,9 @@ apiRoutes.post('/signup', function(req, res){
        newUser.save(function(err){
           if(err){
               res.json({success: false, msg: 'Ayyy lmao you got an error, homie.'});
-          }
+          }else{
               res.json({success: true, msg: 'YOU OFFICIALLY BEEN PIMPED.'});
+          }
        });
    }
 });
