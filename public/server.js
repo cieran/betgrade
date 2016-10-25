@@ -78,14 +78,14 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}), fu
   if (token) {
     var decoded = jwt.decode(token, config.secret);
     User.findOne({
-      name: decoded.name
+      username: decoded.username
     }, function(err, user) {
         if (err) throw err;
  
         if (!user) {
           return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
         } else {
-          res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+          res.json({success: true, msg: 'Welcome in the member area ' + user.username + '!'});
         }
     });
   } else {
