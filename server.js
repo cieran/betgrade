@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 });
 mongoose.connect(config.database);
 
-require('./config/passport')(passport);
+require('./public/config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
