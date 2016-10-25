@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var config = require('./public/config/database.js');
-var User = require('./public/app/models/user');
+var User = require('./public/app/models/user.js');
 var jwt = require('jwt-simple');
 var port = process.env.PORT || 3000;
 var app = express();
@@ -23,28 +23,27 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 
 app.get('/', function(req, res){
-    res.send('hello, API at http://localhost:' + port + '/api');
+    res.send('hello, API at http://betgrade.co:' + port + '/api');
 });
-mongoose.connect(config.database);
+mongoose.connect(public.config.database);
 
 require('./public/config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
    if(!req.body.name || !req.body.password){
-       res.json({success: false, msg: 'Please pass the username and password.'})
+       res.json({success: false, msg: 'Please pass the username and password.'});
    } else{
        var newUser = new User({
            name: req.body.name,
            password: req.body.password,
-           funds: 1000
+           funds: 1000.0
        });
        newUser.save(function(err){
           if(err){
               res.json({success: false, msg: 'Username already exists.'});
-          } else{
-              res.json({success: true, msg: 'New user created!'});
           }
+              res.json({success: true, msg: 'New user created!'});
        });
    }
 });
