@@ -22,7 +22,7 @@ app.use(morgan('dev'));
 app.use(passport.initialize());
 
 app.get('/', function(req, res){
-    res.redirect('/index.html');
+    res.redirect('./index.html');
 });
 mongoose.connect(config.database);
 
