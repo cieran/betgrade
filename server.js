@@ -22,12 +22,12 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(passport.initialize());
 
-app.get('/public', function(req, res){
+app.get('/', function(req, res){
     res.send('hello, API at http://localhost:' + port + '/api');
 });
 mongoose.connect(config.database);
 
-require('./public/config/passport')(passport);
+require('./config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
