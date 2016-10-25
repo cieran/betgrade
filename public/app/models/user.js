@@ -14,7 +14,7 @@ var UserSchema = new Schema({
         required: true
     },
     funds: {
-        type: Double
+        type: double
     }
 });
 
