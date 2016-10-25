@@ -14,9 +14,9 @@ var jwt = require('jwt-simple');
 var port = process.env.PORT || 3000;
 var app = express();
 
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
@@ -65,7 +65,6 @@ apiRoutes.post('/authenticate', function(req, res) {
           var token = jwt.encode(user, config.secret);
           // return the information including token as JSON
           res.json({success: true, token: 'JWT ' + token});
-          res.redirect('index.html');
         } else {
           res.send({success: false, msg: 'Authentication failed. Wrong password.'});
         }
