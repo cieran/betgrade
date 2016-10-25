@@ -31,11 +31,11 @@ require('./config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
-   if(!req.body.name || !req.body.password){
+   if(!req.body.username || !req.body.password){
        res.json({success: false, msg: 'Please pass the username and password.'});
    } else{
        var newUser = new User({
-           name: req.body.name,
+           username: req.body.username,
            password: req.body.password,
            funds: 1000.0
        });
