@@ -32,7 +32,7 @@ require('./config/passport')(passport);
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
    if(!req.body.username || !req.body.password){
-       res.json({success: false, msg: 'Please pass the username and password.'});
+       res.json({success: false, msg: 'GIMME A GOD DAMN USERNAME AND PASSWORD.'});
    } else{
        var newUser = new User({
            username: req.body.username,
@@ -41,10 +41,9 @@ apiRoutes.post('/signup', function(req, res){
        });
        newUser.save(function(err){
           if(err){
-              res.json({success: false, msg: 'Username already exists.'});
-          } else{
-              res.json({success: true, msg: 'New user created!'});
+              res.json({success: false, msg: 'Ayyy lmao you got an error, homie.'});
           }
+              res.json({success: true, msg: 'YOU OFFICIALLY BEEN PIMPED.'});
        });
    }
 });

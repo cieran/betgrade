@@ -15,7 +15,6 @@ var UserSchema = new Schema({
     },
     funds: {
         type: Number
-        
     }
 });
 
