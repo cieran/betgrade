@@ -93,7 +93,7 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}), fu
   }
 });
  
-getToken = function (headers) {
+var getToken = function (headers) {
   if (headers && headers.authorization) {
     var parted = headers.authorization.split(' ');
     if (parted.length === 2) {
