@@ -8,8 +8,8 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
-var config = require('./public/config/database.js');
-var User = require('./public/app/models/user.js');
+var config = require('./config/database.js');
+var User = require('./app/models/user.js');
 var jwt = require('jwt-simple');
 var port = process.env.PORT || 3000;
 var app = express();
@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 });
 mongoose.connect(config.database);
 
-require('./public/config/passport')(passport);
+require('./config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
