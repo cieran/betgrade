@@ -1,4 +1,4 @@
 module.exports = {
     'secret': 'lionelrichie',
-    'database': 'mongodb://localhost/betgrade'
+    'database': 'mongodb://betgrade.co/betgrade'
 };

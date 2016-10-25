@@ -14,7 +14,7 @@ var UserSchema = new Schema({
         required: true
     },
     funds: {
-        type: Number
+        type: Double
     }
 });
 
@@ -49,4 +49,4 @@ UserSchema.methods.comparePassword = function(pass, cb){
     });
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
