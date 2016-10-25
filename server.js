@@ -25,7 +25,7 @@ app.use(passport.initialize());
 app.get('/', function(req, res){
     res.send('hello, API at http://betgrade.co:' + port + '/api');
 });
-mongoose.connect(public.config.database);
+mongoose.connect(config.database);
 
 require('./public/config/passport')(passport);
 
