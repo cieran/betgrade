@@ -40,7 +40,7 @@ apiRoutes.post('/signup', function(req, res){
           if(err){
               res.redirect('../../index.html');
           }else{
-              res.json({success: true, msg: 'YOU OFFICIALLY BEEN PIMPED.'});
+              res.redirect('../../index.html');
           }
        });
    }
