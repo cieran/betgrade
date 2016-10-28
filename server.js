@@ -38,7 +38,7 @@ apiRoutes.post('/signup', function(req, res){
        });
        newUser.save(function(err){
           if(err){
-              res.json({success: false, msg: err});
+              res.redirect('index.html');
           }else{
               res.json({success: true, msg: 'YOU OFFICIALLY BEEN PIMPED.'});
           }
