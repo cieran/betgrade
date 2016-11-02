@@ -5,26 +5,26 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
-var config = require('./public/config/database.js');
-var User = require('./public/app/models/user.js');
+var config = require('./config/database.js');
+var User = require('./app/models/user.js');
 var jwt = require('jwt-simple');
 var hbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 var app = express();
 
-
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(passport.initialize());
 
 mongoose.connect(config.database);
 
-require('./public/config/passport')(passport);
+require('./config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
