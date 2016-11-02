@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 var config = require('./public/config/database.js');
 var User = require('./public/app/models/user.js');
 var jwt = require('jwt-simple');
+var hbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -70,6 +71,7 @@ apiRoutes.post('/authenticate', function(req, res) {
   });
 });
 
+
 apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
@@ -89,7 +91,7 @@ apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}), fu
     return res.status(403).send({success: false, msg: 'No token provided.'});
   }
 });
- 
+
 var getToken = function (headers) {
   if (headers && headers.authorization) {
     var parted = headers.authorization.split(' ');
