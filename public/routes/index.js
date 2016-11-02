@@ -49,7 +49,7 @@ var Market = mongoose.model('Market', BetSchema);
 router.get('/', function(req, res, next){
     Market.find()
         .then(function(doc){
-        res.render('index', {items: doc});
+        res.render('index.hbs', {items: doc});
     });
 });
 
