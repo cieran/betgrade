@@ -9,6 +9,7 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+var cookieParser = require('cookie-parser');
 var config = require('./public/config/database.js');
 var User = require('./public/app/models/user.js');
 var jwt = require('jwt-simple');
