@@ -18,7 +18,7 @@ var BetSchema = new Schema({
 var Bet = mongoose.model('Bet', BetSchema);
 
 router.get('/', function(req, res, next){
-   res.render('index');
+   res.render('index.hbs');
 });
 
 router.get('/get-bets', function(req, res, next){
