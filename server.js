@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var express = require('express');
+var path = require('path');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
