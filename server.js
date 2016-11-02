@@ -27,13 +27,6 @@ app.use(passport.initialize());
 
 mongoose.connect(config.database);
 
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-
 require('./public/config/passport')(passport);
 
 var apiRoutes = express.Router();
