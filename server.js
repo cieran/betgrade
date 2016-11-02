@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
@@ -28,6 +26,13 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 mongoose.connect(config.database);
+
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
 
 require('./public/config/passport')(passport);
 
@@ -110,6 +115,6 @@ var getToken = function (headers) {
 };
 
 app.use('/public/api', apiRoutes);
-
+module.exports = app;
 app.listen(port);
 console.log('Listening at port ' + port);
