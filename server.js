@@ -15,8 +15,8 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/public/views/layouts/'}));
-app.set('views', path.join(__dirname, '/public/views'));
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(morgan('dev'));
 app.use(cookieParser());
