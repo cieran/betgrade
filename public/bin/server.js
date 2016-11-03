@@ -1,3 +1,5 @@
+/**
+
 var express = require('express');
 var path = require('path');
 var passport = require('passport');
@@ -9,21 +11,18 @@ var config = require('./config/database.js');
 var User = require('./app/models/user.js');
 var jwt = require('jwt-simple');
 var hbs = require('express-handlebars');
-var port = process.env.PORT || 3000;
+
 var app = express();
 
-app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
 
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
-app.use(morgan('dev'));
-app.use(cookieParser());
+**/
+
+var port = process.env.PORT || 3000;
+app.listen(port);
+console.log('Node Server Running @ Port: ' + port);
+
+/**
 app.use(passport.initialize());
-
-mongoose.connect(config.database);
-
 require('./config/passport')(passport);
 
 var apiRoutes = express.Router();
@@ -104,7 +103,7 @@ var getToken = function (headers) {
   }
 };
 
+
 app.use('/public/api', apiRoutes);
-module.exports = app;
-app.listen(port);
-console.log('Listening at port ' + port);
+**/
+

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+mongoose.connect('betgrade.co:27017/betgrade');
 var Schema = mongoose.Schema;
 
 /*
@@ -44,12 +45,12 @@ var MarketSchema = new Schema({
     settled: Boolean
 }, {collection: 'markets'});
 
-var Market = mongoose.model('Market', BetSchema);
+var Market = mongoose.model('Market', MarketSchema);
 
 router.get('/', function(req, res, next){
     Market.find()
         .then(function(doc){
-        res.render('index.hbs', {items: doc});
+            res.render('index', {items: doc});
     });
 });
 
