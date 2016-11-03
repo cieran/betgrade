@@ -113,6 +113,27 @@ nav{
 .bet-column-market .btn{
     display: inline-block;
 }
+
+.bet-column-market a:link{
+    color: white;
+}
+.bet-column-market a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+.bet-column-market a:hover{
+    -moz-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+    text-decoration: none;
+    color: orange;
+}
+.bet-column-market a:active{
+    color: orange;
+    text-decoration: none;
+}
 .main-body h1{
     margin: 0;
     text-align: left;
