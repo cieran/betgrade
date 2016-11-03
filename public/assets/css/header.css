@@ -143,3 +143,9 @@ footer{
 ::selection {
     background: #fdb62b;
 }
+
+.error{
+    color: white;
+    text-align: center;
+    font-size: 48px;
+}
