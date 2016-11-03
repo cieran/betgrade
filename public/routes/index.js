@@ -55,5 +55,12 @@ router.get('/', function(req, res, next){
     });
 });
 
+router.get('/get-market', function(req, res, next){
+    Market.find()
+        .then(function(doc){
+            res.render(this.filename, {items.doc});
+    })
+})
+
 
 module.exports = router;
