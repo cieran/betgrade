@@ -48,3 +48,43 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+
+
+var MongoLive = require('mongo-live');
+var live = new MongoLive({
+  host: 'betgrade.co',
+  port: 27017,
+  database: 'betgrade'
+});
+
+var posts = live
+.query('markets')
+.select('marketname filename A B')
+.exec(function (error, stream) {
+
+  stream.on('data', function (data) {
+
+    if (error) {
+      // handle error
+      return;
+    }
+
+    if ('insert' === data.operation) {
+      console.log('inserted', data);
+    }
+
+    if ('update' === data.operation) {
+      console.log('updated', data);
+    }
+
+    if ('remove' === data.operation) {
+      console.log('removed', data);
+    }
+
+    console.log('======== result ======>', data);
+
+  });
+
+});
