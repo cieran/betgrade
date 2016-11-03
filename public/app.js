@@ -24,7 +24,7 @@ app.use('/', routes);
 
 // Boring error handling down here
 app.use(function(req, res, next) {
-  var err = new Error("Wow, that doesn't exist right now..");
+  var err = new Error("where do you think you're going?");
   err.status = 404;
   next(err);
 });

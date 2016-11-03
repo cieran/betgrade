@@ -145,6 +145,7 @@ footer{
 }
 
 .error{
+    margin-top: 20%;
     color: white;
     text-align: center;
     text-transform: uppercase;
