@@ -41,6 +41,7 @@ var MarketSchema = new Schema({
     C: Number,
     D: Number,
     E: Number,
+    filename: String,
     total: Number,
     settled: Boolean
 }, {collection: 'markets'});
