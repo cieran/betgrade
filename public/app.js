@@ -53,7 +53,7 @@ module.exports = app;
 
 
 var MongoLive = require('mongo-live');
-CoffeeScript.register();
+var coffee = require('coffee-script');
 var live = new MongoLive({
   host: 'betgrade.co',
   port: 27017,
