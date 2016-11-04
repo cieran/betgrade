@@ -17,22 +17,7 @@ var BetSchema = new Schema({
 }, {collection: 'bets'});
 
 var Bet = mongoose.model('Bet', BetSchema);
-/**
-router.get('/', function(req, res, next){
-   res.render('index.hbs');
-});
 
-router.get('/get-bets', function(req, res, next){
-    Bet.find()
-        .then(function(doc){
-        res.render('index', {items: doc});
-    });
-});
-**/
-
-/*
-    Markets
-*/
 var MarketSchema = new Schema({
     marketname: String,
     markettype: String,

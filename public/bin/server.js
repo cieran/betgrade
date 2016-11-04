@@ -23,20 +23,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-app.get('/signup', function(req, res){
-    res.render('signup');
-});
-app.post('/signup', function (req, res) {
-  User.register(new User({ 
-      username: req.body.username }), req.body.password,
-    function (err, newUser) {
-      passport.authenticate('local')(req, res, function() {
-        res.send('signed up!!!');
-      });
-    }
-  );
-});
-
 var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
