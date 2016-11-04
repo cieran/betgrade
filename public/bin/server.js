@@ -15,9 +15,10 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(passport.initialize());
+require('../models/user.js')(passport);
+
 app.use(passport.session());
 
-require('../models/user.js')(passport);
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
