@@ -17,7 +17,7 @@ var UserSchema = new Schema({
     funds: {
         type: Number
     }
-});
+}, {collection: 'users'});
 UserSchema.plugin(passportLocalMongoose);
 
 var User = mongoose.model('User', UserSchema);
