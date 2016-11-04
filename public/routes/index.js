@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
+var app = express();
 /*
     Betting
 */
@@ -68,10 +69,10 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-app.get('/signup', function(req, res){
+router.get('/signup', function(req, res){
     res.render('signup');
 });
-app.post('/signup', function (req, res) {
+router.post('/signup', function (req, res) {
   User.register(new User({ 
       username: req.body.username }), req.body.password,
     function (err, newUser) {
