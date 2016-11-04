@@ -15,16 +15,14 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(passport.initialize());
-require('../models/user.js')(passport);
-
 app.use(passport.session());
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-var Post = require('../models/user');
-var User = require('../models/post');
+var Post = require('../models/post');
+var User = require('../models/user');
 
 app.get('/signup', function(req, res){
     res.render('signup');
