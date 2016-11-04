@@ -8,8 +8,8 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app = require('../app');
 
-app.use(express.cookieParser());
-app.use(express.session({
+app.use(cookieParser());
+app.use(session({
     secret: 'lionelrichie',
     resave: false,
     saveUninitialized: false
