@@ -22,7 +22,7 @@ console.log('Node Server Running @ Port: ' + port);
 
 
 app.use(passport.initialize());
-require('./config/passport')(passport);
+require('../config/passport')(passport);
 
 var apiRoutes = express.Router();
 apiRoutes.post('/signup', function(req, res){
