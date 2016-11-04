@@ -8,13 +8,14 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app = require('../app');
 
-app.use(cookieParser());
-app.use(session({
+app.use(express.cookieParser());
+app.use(express.session({
     secret: 'lionelrichie',
     resave: false,
     saveUninitialized: false
 }));
 app.use(passport.initialize());
+require('../config/passport')(passport);
 app.use(passport.session());
 
 
