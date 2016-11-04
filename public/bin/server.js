@@ -15,7 +15,6 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(passport.initialize());
-require('../config/passport')(passport);
 app.use(passport.session());
 
 
