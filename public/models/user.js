@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new Schema({
@@ -17,6 +18,7 @@ var UserSchema = new Schema({
         type: Number
     }
 });
+UserSchema.plugin(passportLocalMongoose);
 
 UserSchema.pre('save', function(next){
     var user = this;
