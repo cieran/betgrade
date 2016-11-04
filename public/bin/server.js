@@ -25,7 +25,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/signup', function(req, res){
     res.render('signup');
-})
+});
 app.post('/signup', function (req, res) {
   User.register(new User({ 
       username: req.body.username }), req.body.password,
@@ -35,7 +35,7 @@ app.post('/signup', function (req, res) {
       });
     }
   );
-})
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port);

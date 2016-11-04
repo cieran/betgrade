@@ -60,7 +60,7 @@ router.get('/get-market', function(req, res, next){
         .then(function(doc){
             res.render(this.filename);
     })
-})
+});
 
 
 module.exports = router;
