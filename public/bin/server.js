@@ -7,7 +7,7 @@ var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
 
 var app = require('../app');
-var Post = require('../models/post');
+//var Post = require('../models/post');
 var User = require('../models/user');
 app.use(cookieParser());
 app.use(session({
