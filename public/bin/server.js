@@ -1,4 +1,4 @@
-/**
+
 
 var express = require('express');
 var path = require('path');
@@ -7,21 +7,20 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
-var config = require('./config/database.js');
-var User = require('./app/models/user.js');
+var config = require('../config/database.js');
+var User = require('../app/models/user.js');
 var jwt = require('jwt-simple');
 var hbs = require('express-handlebars');
 
 var app = express();
 
 
-**/
 var app = require('../app');
 var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
 
-/**
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
@@ -104,6 +103,5 @@ var getToken = function (headers) {
 };
 
 
-app.use('/public/api', apiRoutes);
-**/
+app.use('/api', apiRoutes);
 
