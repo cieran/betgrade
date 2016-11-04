@@ -74,7 +74,10 @@ router.get('/signup', function(req, res){
 });
 router.post('/signup', function (req, res) {
   User.register(new User({ 
-      username: req.body.username }), req.body.password,
+      username: req.body.username,
+      password: req.body.password,
+      funds: 1000
+  }), 
     function (err, newUser) {
       if(err){
           console.log(err);
