@@ -4,7 +4,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
-var routes = require('./routes/index');
+var routes = require('./routes/index')(passport);
 
 var app = express();
 
