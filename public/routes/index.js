@@ -59,7 +59,21 @@ router.get('/get-market', function(req, res, next){
     Market.find()
         .then(function(doc){
             res.render(this.filename);
-    })
+    });
+});
+
+router.get('/signup', function(req, res){
+    res.render('signup');
+});
+router.post('/signup', function (req, res) {
+  User.register(new User({ 
+      username: req.body.username }), req.body.password,
+    function (err, newUser) {
+      passport.authenticate('local')(req, res, function() {
+        res.send('signed up!!!');
+      });
+    }
+  );
 });
 
 
