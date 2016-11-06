@@ -3,12 +3,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('betgrade.co:27017/betgrade');
 var Schema = mongoose.Schema;
-var User = require('../models/user');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var LocalStrategy = require('passport-local').Strategy;
+var User = require('../models/user');
 var app = express();
 /*
     Betting
