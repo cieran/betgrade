@@ -25,7 +25,7 @@ module.exports = function(app, passport){
         });
     });
     app.get('/profile', function(req, res){
-        res.render('profile', {user: req.user});
+        res.render('profile', {funds: req.funds});
     });
     app.get('/get-market', function(req, res, next){
         Market.find()
