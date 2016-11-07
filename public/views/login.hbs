@@ -15,10 +15,10 @@
 
 <form method="POST" action="/login">
   <div class="form-group">
-    <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+    <input type="text" name="username" class="form-control" minlength="6" placeholder="Username" autofocus required>
   </div>
   <div class="form-group">
-    <input type="password" name="password" class="form-control" placeholder="Password">
+    <input type="password" name="password" class="form-control" minlength="6" placeholder="Password" required>
   </div>
   <div class="form-group">
     <input type="submit" class="btn btn-block btn-primary" value="Log In">
