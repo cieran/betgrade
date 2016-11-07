@@ -186,6 +186,7 @@ footer{
 }
 
 .form-wrapper{
+    padding-top: 10px;
     width: 40%;
     min-width: 120px;
     max-width: 300px;
