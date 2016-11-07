@@ -54,3 +54,16 @@ router.post('/signup', function (req, res) {
     }
   );
 });
+
+app.get('/login', function (req, res) {
+  res.render('login');
+});
+
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  res.send('logged in!!!');
+});
+
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
