@@ -14,21 +14,21 @@ module.exports = function(passport){
     });
     
     passport.use('local-signup', new LocalStrategy({
-        usernameField: 'username',
-        passwordField: 'password',
-        passReqToCallback: true
+        usernameField : 'username',
+        passwordField : 'password',
+        passReqToCallback : true
     },
     function(req, username, password, done){
         process.nextTick(function(){
-            User.findOne({'local.username':username}, function(err, user){
+            User.findOne({'username':username}, function(err, user){
                 if(err)
                     return done(err);
                 if(user){
                     return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 } else {
                     var newUser = new User();
-                    newUser.local.username = username;
-                    newUser.local.password = newUser.generateHash(password);
+                    newUser.username = username;
+                    newUser.password = newUser.generateHash(password);
                     
                     newUser.save(function(err){
                         if(err)
