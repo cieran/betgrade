@@ -10,8 +10,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 var session = require('express-session');
-var db = require('../config/database.js');
-require('../config/passport')(passport);
+var db = require('./config/database.js');
+require('./config/passport')(passport);
 mongoose.connect(db.database);
 
 // Creating View Engine which will render Handlebar files
