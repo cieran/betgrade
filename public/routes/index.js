@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var BetSchema = new Schema({
     market: String,
