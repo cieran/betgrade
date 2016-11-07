@@ -1,10 +1,3 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
 var BetSchema = new Schema({
     market: String,
     bet: String,
@@ -33,51 +26,40 @@ var Market = mongoose.model('Market', MarketSchema);
 
 module.exports = function(app, passport){
     
-router.get('/', function(req, res, next){
-    Market.find()
-        .then(function(doc){
-            res.render('index', {items: doc});
+    app.get('/', function(req, res, next){
+        Market.find()
+            .then(function(doc){
+                res.render('index', {items: doc});
+        });
     });
-});
 
-router.get('/get-market', function(req, res, next){
-    Market.find()
-        .then(function(doc){
-            res.render(this.filename);
+    app.get('/get-market', function(req, res, next){
+        Market.find()
+            .then(function(doc){
+                res.render(this.filename);
+        });
     });
-});
-router.get('/signup', function(req, res){
-    res.render('signup');
-});
+    app.get('/signup', function(req, res){
+        res.render('signup', { message: req.flash('signupMessage') });
+    });
 
-router.post('/signup', function (req, res) {
-  User.register(new User({ 
-      username: req.body.username,
-      password: req.body.password,
-      funds: 1000
-  }), 
-    function (err, newUser) {
-      if(err){
-          console.log(err);
-      }
-      passport.authenticate('local')(req, res, function() {
-        res.send('signed up!!!');
-      });
-    }
-  );
-});
+    app.post('/signup', passport.authenticate('local-signup',{
+        successRedirect : '/',
+        failureRedirect : '/signup',
+        failureFlash: true
+    }));
 
-router.get('/login', function (req, res) {
-  res.render('login');
-});
+    app.get('/login', function (req, res) {
+      res.render('login', {message: req.flash('loginMessage') });
+    });
 
-router.post('/login', passport.authenticate('local'), function (req, res) {
-  res.send('logged in!!!');
-});
+    app.post('/login', passport.authenticate('local'), function (req, res) {
+      res.send('logged in!!!');
+    });
 
-router.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
-});
+    app.get('/logout', function (req, res) {
+      req.logout();
+      res.redirect('/');
+    });
 
 };
