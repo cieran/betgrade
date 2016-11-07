@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passport = require('passport');
 
 var BetSchema = new Schema({
     market: String,
@@ -30,6 +31,7 @@ var MarketSchema = new Schema({
 var Market = mongoose.model('Market', MarketSchema);
 
 module.exports = function(app, passport){
+    
 router.get('/', function(req, res, next){
     Market.find()
         .then(function(doc){
