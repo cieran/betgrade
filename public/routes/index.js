@@ -3,13 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('betgrade.co:27017/betgrade');
 var Schema = mongoose.Schema;
-var passport = require('passport');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user');
-var app = express();
+
 /*
     Betting
 */
@@ -52,43 +46,6 @@ router.get('/get-market', function(req, res, next){
             res.render(this.filename);
     });
 });
-
-
-app.use(cookieParser());
-app.use(session({
-    secret: 'lionelrichie',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-
-
-router.get('/signup', function(req, res){
-    res.render('signup');
-});
-router.post('/signup', function (req, res) {
-  User.register(new User({ 
-      username: req.body.username,
-      password: req.body.password,
-      funds: 1000
-  }), 
-    function (err, newUser) {
-      if(err){
-          console.log(err);
-      }
-      passport.authenticate('local')(req, res, function() {
-        res.send('signed up!!!');
-      });
-    }
-  );
-});
-
-
 
 
 module.exports = router;
