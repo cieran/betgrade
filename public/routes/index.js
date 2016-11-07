@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('betgrade.co:27017/betgrade');
 var Schema = mongoose.Schema;
 
 /*
