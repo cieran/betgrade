@@ -3,7 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('betgrade.co:27017/betgrade');
 var Schema = mongoose.Schema;
-var User = require('../models/user');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -26,6 +25,9 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+var User = require('../models/user');
+
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
