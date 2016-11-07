@@ -186,6 +186,8 @@ footer{
 }
 
 .form-wrapper{
+    position: relative;
+    top: 20%;
     background-color: #1e1e1e;
     border-radius: 15px;
     padding: 15px;
