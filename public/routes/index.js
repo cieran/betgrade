@@ -27,9 +27,11 @@ module.exports = function(app, passport){
       res.render('login', {message: req.flash('loginMessage') });
     });
 
-    app.post('/login', passport.authenticate('local'), function (req, res) {
-      res.send('logged in!!!');
-    });
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/',
+        failureRedirect : '/login',
+        failureFlash : true
+    }));
 
     app.get('/logout', function (req, res) {
       req.logout();
