@@ -184,3 +184,26 @@ footer{
     font-weight: 300;
     text-align: center;
 }
+
+.form-wrapper{
+    width: 40%;
+    min-width: 120px;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-wrapper h2{
+    text-transform: uppercase;
+    color: darkorange;
+    font-weight: 300;
+    font-size: 32px;
+}
+
+.form-wrapper p{
+    color: white;
+}
+
+.form-wrapper a{
+    color: darkorange;
+}
