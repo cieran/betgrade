@@ -3,9 +3,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-/*
-    Betting
-*/
 var BetSchema = new Schema({
     market: String,
     bet: String,
@@ -32,6 +29,7 @@ var MarketSchema = new Schema({
 
 var Market = mongoose.model('Market', MarketSchema);
 
+module.exports = function(app, passport){
 router.get('/', function(req, res, next){
     Market.find()
         .then(function(doc){
@@ -45,6 +43,38 @@ router.get('/get-market', function(req, res, next){
             res.render(this.filename);
     });
 });
+router.get('/signup', function(req, res){
+    res.render('signup');
+});
 
+router.post('/signup', function (req, res) {
+  User.register(new User({ 
+      username: req.body.username,
+      password: req.body.password,
+      funds: 1000
+  }), 
+    function (err, newUser) {
+      if(err){
+          console.log(err);
+      }
+      passport.authenticate('local')(req, res, function() {
+        res.send('signed up!!!');
+      });
+    }
+  );
+});
 
-module.exports = router;
+router.get('/login', function (req, res) {
+  res.render('login');
+});
+
+router.post('/login', passport.authenticate('local'), function (req, res) {
+  res.send('logged in!!!');
+});
+
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+};

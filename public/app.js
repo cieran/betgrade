@@ -1,12 +1,15 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
-var router = require('./routes/index');
-
-var app = express();
+require('../routes/index.js')(app, passport);
+var passport = require('passport');
+var session = require('express-session');
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../models/user');
 
 // Creating View Engine which will render Handlebar files
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -16,10 +19,22 @@ app.set('view engine', 'hbs');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.use('/', router);
+app.use(cookieParser());
+app.use(session({
+    secret: 'lionelrichie',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 // Boring error handling down here
