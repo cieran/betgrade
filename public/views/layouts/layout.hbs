@@ -17,10 +17,10 @@
 </head>
 <body>
      {{#if message.length}}   
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger fade in" role="alert">
 
                <button type="button" class="close" data-dismiss="alert">×</button>
-               <strong>{{message}}</strong>
+               <p>Uh oh! This just happened: <strong>{{message}}</strong></p>
         </div>
     {{/if}}
     
