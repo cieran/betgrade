@@ -15,6 +15,19 @@
     <script src="/js/angular.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/header.css">
     <link rel="stylesheet prefetch" type="text/css" href="/css/form.css">
+    <script>
+            $(document).ready(function () {
+
+                autoRemoveAlert($('.alert'));
+
+                function autoRemoveAlert(alertElement)
+                {
+                    alertElement.fadeTo(2000, 800).slideUp(800, function () {
+                        alertElement.slideUp(800);
+                    });
+                }
+            });
+    </script>
 </head>
 <body>
      {{#if message.length}}   
