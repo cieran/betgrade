@@ -23,9 +23,8 @@ module.exports = function(passport){
             User.findOne({'local.username':username}, function(err, user){
                 if(err)
                     return done(err);
-                
                 if(user){
-                    return done(null, false, req.flash('signupMessage', 'Email address already registered.'));
+                    return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 } else {
                     var newUser = new User();
                     newUser.local.username = username;

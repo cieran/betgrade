@@ -1,3 +1,5 @@
+require('../models/bet.js');
+
 module.exports = function(app, passport){
     
     app.get('/', function(req, res, next){

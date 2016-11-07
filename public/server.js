@@ -21,8 +21,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
 app.use(cookieParser());
 
 app.use(session({
