@@ -13,7 +13,7 @@ $(document).ready(function () {
 window.onload = function(){ 
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementById("close");
     btn.onclick = function() {
         modal.style.display = "block";
     }
@@ -23,6 +23,11 @@ window.onload = function(){
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    }
+    window.onkeydown = function(e){
+        if(e.keyCode == 27){
+            moda.style.display = "none";
         }
     }
 };
