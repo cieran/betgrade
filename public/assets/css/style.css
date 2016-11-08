@@ -217,7 +217,7 @@ footer{
 .user-routes {
     border: none;
     color: transparent;
-    padding: 12px 24px;
+    padding: 8px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -237,4 +237,8 @@ footer{
 .user-routes:hover {
     background-color: darkorange;
     color: white;
+}
+
+.user-routes:focus {
+    outline: 0;
 }
