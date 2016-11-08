@@ -8,10 +8,24 @@ $(document).ready(function () {
             alertElement.slideUp(800);
         });
     }
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-	$('.close').click(function(){
-		$('#myModal').modal('hide');
-	}); 
 });
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        $(modal).modal();
+    }
+    span.onclick = function() {
+        $(modal).modal('hide');
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            $(modal).modal('hide');
+        }
+    }
+    .onkeydown = function(e){
+        if(e.keyCode == 27){
+            $(modal).modal('hide');
+        }
+    }
+};
