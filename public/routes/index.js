@@ -21,7 +21,7 @@ module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find().limit(10)
             .then(function(doc){
-                res.render('index', {items: doc});
+                res.render('index', {title: 'Betgrade | Home', items: doc});
         });
     });
     app.get('/profile', function(req, res){
