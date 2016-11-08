@@ -9,7 +9,7 @@ $(document).ready(function () {
         });
     }
 });
-
+/**
 window.onload = function(){
     var modal = document.getElementById('myModal');
     var btn = document.getElementsByClassName("myBtn");
@@ -31,3 +31,5 @@ window.onload = function(){
         }
     }
 };
+
+**/
