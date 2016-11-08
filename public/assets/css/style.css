@@ -214,7 +214,7 @@ footer{
     color: darkorange;
 }
 
-.button {
+.user-routes {
     border: none;
     color: transparent;
     padding: 16px 32px;
@@ -228,13 +228,13 @@ footer{
     cursor: pointer;
 }
 
-.button3 {
+.user-routes {
     background-color: transparent;
     color: black;
     border: 2px solid #f44336;
 }
 
-.button3:hover {
+.user-routes:hover {
     background-color: #f44336;
     color: white;
 }
