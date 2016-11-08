@@ -234,7 +234,7 @@ footer{
 .user-routes {
     background-color: transparent;
     color: white;
-    border: 2px solid darkorange;
+    border: 1px solid darkorange;
 }
 
 .user-routes:hover {
