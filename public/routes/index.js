@@ -19,7 +19,7 @@ var Market = mongoose.model('Market', MarketSchema);
 module.exports = function(app, passport){
     
     app.get('/', function(req, res, next){
-        Market.find({A: 0.90901}).limit(8)
+        Market.find().limit(10)
             .then(function(doc){
                 res.render('index', {items: doc});
         });
