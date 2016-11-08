@@ -9,23 +9,22 @@ $(document).ready(function () {
         });
     }
 });
-    var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
-        $(modal).modal();
+        $("#myModal").modal();
     }
     span.onclick = function() {
-        $(modal).modal('hide');
+        $("#myModal").modal('hide');
     }
     window.onclick = function(event) {
         if (event.target == modal) {
-            $(modal).modal('hide');
+            $("#myModal").modal('hide');
         }
     }
     .onkeydown = function(e){
         if(e.keyCode == 27){
-            $(modal).modal('hide');
+            $("#myModal").modal('hide');
         }
     }
 };
