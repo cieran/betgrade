@@ -9,7 +9,9 @@
     margin: 0 auto;
     margin-top: 10%;
 }
-
+.modal-content{
+    padding: 5px;
+}
 body {
     background-color: #3c3c3c;
 }
