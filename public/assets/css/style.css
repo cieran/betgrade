@@ -77,7 +77,6 @@ nav{
 
 .main-body{
     width: 50%;
-    height: 80%;
     margin: 0 auto;
     background-color: #1e1e1e;
     border-bottom-left-radius: 10px;
@@ -105,7 +104,9 @@ nav{
     font-weight: 500;
     text-decoration: none;
 }
-
+.bet-column-market{
+    display: inline-block;
+}
 .bet-column-market .col-md-6, .bet-column-market .col-md-3{
     height: 50px;
     line-height: 50px;
