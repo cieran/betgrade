@@ -242,3 +242,8 @@ footer{
 .user-routes:focus {
     outline: 0;
 }
+
+.login, .signin{
+    display: block;
+    width: 100%;
+}
