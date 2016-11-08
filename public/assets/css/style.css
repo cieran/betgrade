@@ -231,7 +231,7 @@ footer{
     cursor: pointer;
 }
 
-.user-routes login, .user-routes signup{
+.user-routes{
     background-color: transparent;
     color: white;
     border: 1px solid darkorange;
