@@ -20,7 +20,7 @@ window.onload = function(){
             modal.style.display = "none";
         }
     }
-    .onkeydown = function(e){
+    window.onkeydown = function(e){
         if(e.keyCode == 27){
             modal.style.display = "none";
         }
