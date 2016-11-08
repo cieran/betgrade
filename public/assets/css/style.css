@@ -231,7 +231,7 @@ footer{
     cursor: pointer;
 }
 
-.user-routes {
+.user-routes login, .user-routes signup{
     background-color: transparent;
     color: white;
     border: 1px solid darkorange;
@@ -246,7 +246,10 @@ footer{
     outline: 0;
 }
 
-.login, .signin{
+.login, .signup{
     display: block;
     width: 100%;
+}
+.bet-button{
+    text-align: center;
 }
