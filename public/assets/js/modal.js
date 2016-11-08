@@ -9,7 +9,7 @@ $(document).ready(function () {
         });
     }
 });
-window.onload = function(){
+
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close");
     span.onclick = function(event) {
@@ -27,4 +27,3 @@ window.onload = function(){
             modal.style.display = "none";
         }
     }
-};
