@@ -13,7 +13,7 @@ window.onload = function(){
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close");
     span.onclick = function(event) {
-        if(event.target) == modal){
+        if(event.target == modal){
             modal.style.display = "none";
         }
     }
