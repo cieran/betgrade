@@ -6,7 +6,7 @@ angular.module('betgrade', ['ui.bootstrap'])
 	  $scope.open = function (size) {
 	    var modalInstance = $uibModal.open({
 	      animation: $scope.animationsEnabled,
-	      templateUrl: '/betslip.html',
+	      templateUrl: '/betslip',
 	      controller: 'ModalInstanceCtrl',
 	      size: size,
 	   });
