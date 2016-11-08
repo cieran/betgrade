@@ -22,8 +22,29 @@
         <div class="bet-column-market" ng-controller="ModalCtrl">
             {{# each items}}
             <div class="col-xs-6 col-md-6"><a class="names" href="/get-market"> {{this.marketname}} </a></div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()"> {{this.A}} </button></div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" ng-click="open()"> {{this.B}} </button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.A}} </button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.B}} </button></div>
             {{/each}}
         </div>    
     </section>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
