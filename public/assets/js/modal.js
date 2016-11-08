@@ -13,7 +13,7 @@ $(document).ready(function () {
 window.onload = function(){ 
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
-    var span = document.getElementById("close")[0];
+    var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
         modal.style.display = "block";
     }
@@ -27,7 +27,7 @@ window.onload = function(){
     }
     window.onkeydown = function(e){
         if(e.keyCode == 27){
-            moda.style.display = "none";
+            modal.style.display = "none";
         }
     }
 };
