@@ -9,7 +9,7 @@ $(document).ready(function () {
         });
     }
     $("#myBtn").click(function(){
-        $("#myModal").modal('show');
+        $("#myModal").modal();
     });
 	$('.close').click(function(){
 		$('#myModal').modal('hide');
