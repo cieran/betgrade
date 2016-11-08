@@ -11,22 +11,23 @@ $(document).ready(function () {
 });
 
 window.onload = function(){
+    var modal = document.getElementById('myModal');
     var btn = document.getElementsByClassName("myBtn");
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
-        $("#myModal").modal();
+        modal.style.display = "block";
     }
     span.onclick = function() {
-        $("#myModal").modal('hide');
+        modal.style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target == modal) {
-            $("#myModal").modal('hide');
+            modal.style.display = "none";
         }
     }
     .onkeydown = function(e){
         if(e.keyCode == 27){
-            $("#myModal").modal('hide');
+            modal.style.display = "none";
         }
     }
 };
