@@ -13,7 +13,7 @@ $(document).ready(function () {
 window.onload = function(){ 
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
-    var span = document.getElementById("close");
+    var span = document.getElementById("close")[0];
     btn.onclick = function() {
         modal.style.display = "block";
     }

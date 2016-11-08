@@ -24,8 +24,8 @@
         <div class="bet-column-market">
             {{# each items}}
             <div class="col-xs-6 col-md-6"><a class="names" href="/get-market"> {{this.marketname}} </a></div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.A}} </button></div>
-            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.B}} </button></div>
+            <div class="col-xs-3 col-md-3"><button id="myBtn" class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.A}} </button></div>
+            <div class="col-xs-3 col-md-3"><button id="myBtn" class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.B}} </button></div>
             {{/each}}
         </div>  
 		
