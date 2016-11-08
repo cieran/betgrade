@@ -9,6 +9,8 @@ $(document).ready(function () {
         });
     }
 });
+
+window.onload = function(){
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
