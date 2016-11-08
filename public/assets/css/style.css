@@ -68,7 +68,7 @@ nav{
     -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
     text-decoration: none;
-    color: orange;
+    color: darkorange;
 }
 .sub-head a:active{
     color: orange;
@@ -131,7 +131,7 @@ nav{
     color: orange;
 }
 .bet-column-market a:active{
-    color: orange;
+    color: darkorange;
     text-decoration: none;
 }
 .main-body h1{
@@ -231,10 +231,10 @@ footer{
 .user-routes {
     background-color: transparent;
     color: black;
-    border: 2px solid #f44336;
+    border: 2px solid darkorange;
 }
 
 .user-routes:hover {
-    background-color: #f44336;
+    background-color: darkorange;
     color: white;
 }
