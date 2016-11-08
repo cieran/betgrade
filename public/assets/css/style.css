@@ -213,3 +213,9 @@ footer{
 .form-wrapper a{
     color: darkorange;
 }
+
+.user-button {
+    background-color: transparent;
+    color: #4CAF50;
+    border: 2px solid #4CAF50; /* Green */
+}
