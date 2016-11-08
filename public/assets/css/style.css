@@ -251,5 +251,13 @@ footer{
     width: 100%;
 }
 .bet-button{
+    
     text-align: center;
+}
+.place-bet{
+    color: #1e1e1e;
+}
+.place-bet:hover {
+    color: transparent;
+    background-color: darkorange;
 }
