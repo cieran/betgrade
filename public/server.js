@@ -34,9 +34,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes/index.js')(app, passport);
-app.use('/', app);
-app.use('/markets', app);
+var routes = require('./routes/index.js')(app, passport);
+app.use('/', routes);
+app.use('/markets', routes);
 
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);

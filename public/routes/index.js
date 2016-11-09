@@ -17,8 +17,6 @@ var MarketSchema = new Schema({
 var Market = mongoose.model('Market', MarketSchema);
 
 module.exports = function(app, passport){
-    app.use('/');
-    app.use('/markets');
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'Pass or Fail'}).limit(10)
             .then(function(doc){
