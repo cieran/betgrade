@@ -1,5 +1,4 @@
 var express = require('express');
-var router = express.Router();
 var app = express();
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
@@ -14,6 +13,11 @@ var session = require('express-session');
 var db = require('./config/database.js');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
+
+var routes = require('./routes/index.js')(app, passport);
+var markets = require('./routes/markets.js')(app);
+app.use('/', routes);
+app.use('/markets', markets);
 
 // Creating View Engine which will render Handlebar files
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -35,9 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-var routes = require('./routes/index.js')(app, passport);
-app.use('/', routes);
-app.use('/markets', routes);
+
 
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
