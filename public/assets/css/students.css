@@ -13,6 +13,12 @@
 .info{
     width: 40%;
 }
+.markets{
+    width: 60%;
+}
+.first{
+    margin-top: 0;
+}
 #student-name{
     color: antiquewhite;
     font-weight: 200;
