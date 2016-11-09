@@ -27,11 +27,8 @@ module.exports = function(app, passport){
     app.get('/profile', function(req, res){
         res.render('profile', {user: req.user});
     });
-    app.get('/get-market', function(req, res, next){
-        Market.find()
-            .then(function(doc){
-                res.render(this.filename);
-        });
+    app.get('/get-market/:filename', function(req, res, next){
+            res.render(filename);
     });
     app.get('/signup', function(req, res){
         res.render('signup', { message: req.flash('signupMessage') });
