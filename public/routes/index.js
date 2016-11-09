@@ -19,7 +19,7 @@ var Market = mongoose.model('Market', MarketSchema);
 module.exports = function(app, passport){
     
     app.get('/', function(req, res, next){
-        Market.find().limit(10)
+        Market.find({"marketname" : "Pass or Fail"}).limit(10)
             .then(function(doc){
                 res.render('index', {title: 'Betgrade | Home', items: doc});
         });
@@ -29,7 +29,7 @@ module.exports = function(app, passport){
     });
     app.get('/get-market/:filename', function(req, res, next){
         var filename = req.params.filename;
-        Market.findOne({"filename" : filename})
+        Market.find({"filename" : filename})
             .then(function(doc){
                 res.render(filename, {title: "Markets", markets: doc});
         });
