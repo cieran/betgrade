@@ -13,7 +13,6 @@ var session = require('express-session');
 var db = require('./config/database.js');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
-var routes = require('./routes/index.js')(app, passport);
 
 // Creating View Engine which will render Handlebar files
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -35,6 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+require('./routes/index.js')(app, passport);
 
 
 app.listen(port);
@@ -64,3 +64,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+
