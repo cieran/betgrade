@@ -10,7 +10,9 @@
     color: white;
     font-weight: 300;
 }
-
+.info{
+    width: 40%;
+}
 #student-name{
     color: antiquewhite;
     font-weight: 200;
