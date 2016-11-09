@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = function(app, passport){
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
         Market.find({"filename" : filename})
@@ -11,4 +10,4 @@ module.exports = function(app, passport){
     });
     
     
-};
+module.exports = router;
