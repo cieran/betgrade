@@ -29,7 +29,7 @@ module.exports = function(app, passport){
     });
     app.get('/get-market/:filename', function(req, res, next){
         var filename = req.params.filename;
-        Market.find({"filename" : filename})
+        Market.findOne({"filename" : filename})
             .then(function(doc){
                 res.render(filename, {title: "Markets", markets: doc});
         });
