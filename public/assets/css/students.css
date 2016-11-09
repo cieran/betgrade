@@ -1,5 +1,6 @@
 .content{
     padding: 10px;
+    display: inline-block;
 }
 .student-image{
     width: 180px;
