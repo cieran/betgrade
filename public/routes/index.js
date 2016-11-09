@@ -2,9 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var MarketSchema = new Schema({
+    marketname: String,    
     student: String,
-    marketname: String,
-    markettype: String,
     A: Number,
     B: Number,
     C: Number,
