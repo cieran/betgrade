@@ -36,7 +36,6 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
-
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
 
