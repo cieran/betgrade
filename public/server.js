@@ -1,4 +1,5 @@
 var express = require('express');
+var router = express.Router();
 var app = express();
 var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
