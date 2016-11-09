@@ -14,7 +14,6 @@ var db = require('./config/database.js');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 var routes = require('./routes/index.js')(app, passport);
-app.use('/', routes);
 
 // Creating View Engine which will render Handlebar files
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
