@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var app = express.Router();
 var MarketSchema = new Schema({
     marketname: String,    
     student: String,

@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var app = express.Router();
 
 module.exports = function(app){
 app.get('/markets/:filename', function(req, res, next){
