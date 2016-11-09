@@ -12,3 +12,5 @@ app.get('/markets/:filename', function(req, res, next){
  });
     
 };
+
+module.exports = router;
