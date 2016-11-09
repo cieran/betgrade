@@ -29,6 +29,7 @@
         <img id="logo-header" src="/img/betgrade_big.png" alt="logo"/>
     {{#if user.username.length}}
         <p class="pull-right">{{user.username}}, {{user.funds}}</p>  
+        <a href="/">Home</a>
     {{else}}
         <button class="user-routes pull-right" onClick="location.href='/login'">LOGIN</button>
         <button class="user-routes pull-right" onClick="location.href='/signup'">REGISTER</button>
