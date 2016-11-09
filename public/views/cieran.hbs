@@ -6,101 +6,27 @@
             <p id="student-bio">4th Year Computer Science &amp; Software Engineering</p>
             </div>
             <div class="col-md-9 col-xs-9 col-lg-9 markets">
-            <div class="market first">
+            
+            {{# each items}}
+                <div class="market">
                 <div class="row">
-                    <h4 class="market-name first">PASS OR FAIL</h4>    
+                    <h4 class="market-name first">{{this.marketname}}</h4>    
                 </div>
                 <div class="row">
                 <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                    <button class="btn btn-block btn-info" ng-click="open()">{{this.A}}</button>
                 </div>
                 <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
+                    <button class="btn btn-block btn-info" ng-click="open()">{{this.B}}</button>
                 </div>
                 <div class="col-xs-3 col-md-3 col-lg-3"></div>
                 <div class="col-xs-3 col-md-3 col-lg-3"></div>
                 </div> 
             </div>
+            {{/each}}    
+
             
-            <div class="market">
-                <div class="row">
-                    <h4 class="market-name">NUMBER OF REPEAT EXAMS</h4>    
-                </div>
-                <div class="row">
-                <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">11/10</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">2/1</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">5/1</button>    
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">12/1</button>
-                </div>
-                    
-                </div> 
-            </div>
             
-            <div class="market">
-                <div class="row">
-                    <h4 class="market-name">GRADE CLASSIFICATION</h4>    
-                </div>
-                <div class="row">
-                <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">10/1</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">6/1</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">3/1</button>    
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">3/1</button>
-                </div>
-                    
-                </div> 
-            </div>
-            
-            <div class="market">
-                <div class="row">
-                    <h4 class="market-name">PASS BY COMPENSATION</h4>    
-                </div>
-                <div class="row">
-                <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">10/11</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                </div>
-                    
-                </div> 
-            </div>
-                
-            <div class="market">
-                <div class="row">
-                    <h4 class="market-name">TOP OF THE CLASS</h4>    
-                </div>
-                <div class="row">
-                <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">25/1</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">1/10</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                </div>
-                    
-                </div> 
-            </div>
             </div>
         </div>
     </section>
