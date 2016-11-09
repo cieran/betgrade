@@ -27,7 +27,7 @@ module.exports = function(app, passport){
     app.get('/profile', function(req, res){
         res.render('profile', {user: req.user});
     });
-    app.get('/:filename', function(req, res, next){
+    app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
         Market.find({"filename" : filename})
             .then(function(doc){
