@@ -15,7 +15,7 @@ require('./config/passport')(passport);
 mongoose.connect(db.database);
 
 var routes = require('./routes/index.js')(app, passport);
-var markets = require('./routes/markets.js')(app);
+var markets = require('./routes/markets.js');
 app.use('/', routes);
 app.use('/markets', markets);
 

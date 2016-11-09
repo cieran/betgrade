@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var app = express.Router();
 var MarketSchema = new Schema({
     marketname: String,    
     student: String,
@@ -25,13 +25,6 @@ module.exports = function(app, passport){
     });
     app.get('/profile', function(req, res){
         res.render('profile', {user: req.user});
-    });
-    app.get('/markets/:filename', function(req, res, next){
-        var filename = req.params.filename;
-        Market.find({"filename" : filename})
-            .then(function(doc){
-                res.render(filename, {title: 'Markets', markets: doc, user: req.user});
-        });
     });
     app.get('/signup', function(req, res){
         res.render('signup', { message: req.flash('signupMessage') });
