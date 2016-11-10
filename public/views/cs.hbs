@@ -1,0 +1,76 @@
+
+    <section class="main-body">
+        <div class="bet-column-head">
+            <div class="col-xs-6 col-md-6">Student Name</div>
+            <div class="col-xs-3 col-md-3">Odds to Pass</div>
+            <div class="col-xs-3 col-md-3">Odds to Fail</div>
+        </div>
+        <div class="bet-column-market">
+            {{# each items}}
+            <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.A}} </button></div>
+            <div class="col-xs-3 col-md-3"><button class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"> {{this.B}} </button></div>
+            {{/each}}
+        </div>  
+		
+</section>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-content">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+                <span class="close pull-right">×</span>
+
+            <!-- BETSLIP FORM STARTS HERE -->
+            <div class="panel panel-default betslip-box">
+                <div>
+                    <div class="row display-tr">
+                        <img class="betslip-logo" src="/img/betgrade_big.png"/>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="/bet"
+                          method="post">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <label>BET SINGLE</label>
+                                <h4>{{this.marketname}} - outcome (odds)</h4>
+                            </div>
+                            <div class="col-xs-4 pull-right">
+                                <div class="form-group">
+                                    <label>STAKE</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-bitcoin"></i></span><input autocomplete="off"
+                                               autofocus="" class="form-control"
+                                               id="stake" min="10" max="2000" name=
+                                               "stake" placeholder=
+                                               "mBTC" required=""
+                                               type="number" ng-model="stake"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                            <div class="col-xs-4 pull-right">
+                                <p>Returns:  mBTC</p>
+                            </div>
+                            </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 bet-button">
+                                <input type="submit" class="user-routes place-bet" value="Place Bet">
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var MarketSchema = new Schema({
     marketname: String,    
     student: String,
+    course: String,
     A: Number,
     B: Number,
     C: Number,
@@ -28,6 +29,24 @@ module.exports = function(app, passport){
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
         Market.find({"filename" : filename})
+            .then(function(doc){
+                res.render(filename, {title: 'Markets', markets: doc, user: req.user});
+        });
+    });    
+    app.get('/markets/csse', function(req, res, next){
+        Market.find({"course" : csse})
+            .then(function(doc){
+                res.render(filename, {title: 'Markets', markets: doc, user: req.user});
+        });
+    });    
+    app.get('/markets/cs', function(req, res, next){
+        Market.find({"course" : cs})
+            .then(function(doc){
+                res.render(filename, {title: 'Markets', markets: doc, user: req.user});
+        });
+    });    
+    app.get('/markets/ct', function(req, res, next){
+        Market.find({"course" : ct})
             .then(function(doc){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
