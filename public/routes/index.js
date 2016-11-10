@@ -34,19 +34,19 @@ module.exports = function(app, passport){
         });
     });    
     app.get('/markets/csse', function(req, res, next){
-        Market.find({"course" : csse})
+        Market.find({"course" : 'csse'})
             .then(function(doc){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/markets/cs', function(req, res, next){
-        Market.find({"course" : cs})
+        Market.find({"course" : 'cs'})
             .then(function(doc){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/markets/ct', function(req, res, next){
-        Market.find({"course" : ct})
+        Market.find({"course" : 'ct'})
             .then(function(doc){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
