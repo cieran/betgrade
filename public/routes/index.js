@@ -36,19 +36,19 @@ module.exports = function(app, passport){
     app.get('/markets/csse', function(req, res, next){
         Market.find({"course" : 'csse'})
             .then(function(doc){
-                res.render(filename, {title: 'CSSE | Markets', markets: doc, user: req.user});
+                res.render('csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/markets/cs', function(req, res, next){
         Market.find({"course" : 'cs'})
             .then(function(doc){
-                res.render(filename, {title: 'CS | Markets', markets: doc, user: req.user});
+                res.render('cs', {title: 'CS | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/markets/ct', function(req, res, next){
         Market.find({"course" : 'ct'})
             .then(function(doc){
-                res.render(filename, {title: 'CT | Markets', markets: doc, user: req.user});
+                res.render('ct', {title: 'CT | Markets', markets: doc, user: req.user});
         });
     });
     app.get('/signup', function(req, res){
