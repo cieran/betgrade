@@ -18,7 +18,7 @@ var Market = mongoose.model('Market', MarketSchema);
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
-        Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+        Market.find({"marketname" : 'Top of the Class?'}).limit(10)
             .then(function(doc){
                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user});
         });
