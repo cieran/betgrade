@@ -33,19 +33,19 @@ module.exports = function(app, passport){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
     });    
-    app.get('/markets/csse', function(req, res, next){
+    app.get('/catagories/csse', function(req, res, next){
         Market.find({"course" : 'csse'})
             .then(function(doc){
                 res.render('csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
         });
     });    
-    app.get('/markets/cs', function(req, res, next){
+    app.get('/catagories/cs', function(req, res, next){
         Market.find({"course" : 'cs'})
             .then(function(doc){
                 res.render('cs', {title: 'CS | Markets', markets: doc, user: req.user});
         });
     });    
-    app.get('/markets/ct', function(req, res, next){
+    app.get('/catagories/ct', function(req, res, next){
         Market.find({"course" : 'ct'})
             .then(function(doc){
                 res.render('ct', {title: 'CT | Markets', markets: doc, user: req.user});
