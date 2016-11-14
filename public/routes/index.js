@@ -1,20 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var MarketSchema = new Schema({
-    marketname: String,    
-    student: String,
-    course: String,
-    A: Number,
-    B: Number,
-    C: Number,
-    D: Number,
-    E: Number,
-    filename: String,
-    total: Number,
-    settled: Boolean
-}, {collection: 'markets'});
-
-var Market = mongoose.model('Market', MarketSchema);
+var Market = require('../models/market.js');
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
