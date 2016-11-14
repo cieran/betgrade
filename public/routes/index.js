@@ -6,8 +6,8 @@ var Student = require('../models/student.js');
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'Pass or Fail'}).limit(10)
-            var student_name = Market.find(student);
-            Student.find({student: student_id.student});
+            var student_name = this.student;
+            Student.find({student: student_name});
             .then(function(doc){
                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user});
         });
