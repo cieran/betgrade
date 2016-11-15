@@ -11,4 +11,5 @@ var MarketSchema = new Schema({
     filename: String
 }, {collection: 'markets'});
 
-var Market = mongoose.model('Market', MarketSchema);
+module.exports = mongoose.model('Market', MarketSchema);
+
