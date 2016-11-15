@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Market = require('../models/market.js');
+var marketSchema = require('../models/market.js');
+var Market = new marketSchema;
 var Student = require('../models/student.js');
 
 module.exports = function(app, passport){
