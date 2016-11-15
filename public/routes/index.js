@@ -6,8 +6,6 @@ var Student = require('../models/student.js');
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'Pass or Fail'}).limit(10)
-            var student_name = this.student;
-            Student.find({student: student_name});
             .then(function(doc){
                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user});
         });
@@ -17,7 +15,7 @@ module.exports = function(app, passport){
     });
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
-        Student.find({"filename" : filename})
+        Market.find({"filename" : filename})
             .then(function(doc){
                 res.render(filename, {title: 'Markets', markets: doc, user: req.user});
         });
