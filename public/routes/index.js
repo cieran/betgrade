@@ -75,10 +75,9 @@ module.exports = function(app, passport){
         res.render('optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
     });
     app.post('/optout', function(req, res){
-            if(req.code == 661462){
-            Market.remove({ student: req.student });
-            console.log("removed student");
-        }
+            var form = req.body;
+            console.log(form);
+        
     });
 
 };
