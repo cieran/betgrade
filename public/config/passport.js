@@ -1,6 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
+var StudentNumber = require('../models/snumber');
 
 module.exports = function(passport){
     passport.serializeUser(function(user, done){
@@ -14,13 +15,20 @@ module.exports = function(passport){
     });
     
     passport.use('local-signup', new LocalStrategy({
+        snumberField : 'snumber',
         usernameField : 'username',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, username, password, done){
+    function(req, snumber, username, password, done){
         process.nextTick(function(){
-            User.findOne({'username':username}, function(err, user){
+        StudentNumber.findOne({'snumber' : snumber, 'used' : true}, function(err, taken){
+            if(err)
+                return done(err);
+            if(taken){
+                return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
+            }else{
+               User.findOne({'username':username}, function(err, user){
                 if(err)
                     return done(err);
                 if(user){
@@ -33,10 +41,14 @@ module.exports = function(passport){
                     newUser.save(function(err){
                         if(err)
                             throw err;
+                        StudentNumber.updateOne({'snumber' : snumber}, {$set : {'used' : true}});
                         return done(null, newUser);
                     });
                 }
-            });
+                }); 
+            }
+        });
+            
         });
     }));
     
