@@ -91,7 +91,7 @@ module.exports = function(app, passport){
                 });
             } else {
                     console.log("error, wrong student or removal code");
-                    req.flash('error_removal', 'Invalid Removal Code!');
+                    req.flash('error_removal', 'Unknown Student or Removal Code!');
                     res.render('optout', {'title' : 'Student Opt-Out | Betgrade', user: req.user, message: req.flash('error_removal')});
             }
         });
