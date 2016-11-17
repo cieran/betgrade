@@ -77,16 +77,16 @@ module.exports = function(app, passport){
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
         var removal_code = req.body.code;
-        Market.find({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(user, done){
+        Market.find({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(user){
             if(user){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(err){
                         console.log("user removed");
-                        return done(req.flash('removal', 'Student has been removed from Betgrade!'));
+                        req.flash('removal', 'Student has been removed from Betgrade!');
                         res.redirect('/');
                 });
             }else{
                     console.log("error, wrong student or removal code");
-                    return done(req.flash('error_removal', 'Invalid Removal Code!'));
+                    req.flash('error_removal', 'Invalid Removal Code!');
                     res.redirect('/optout');
             }
         });
