@@ -76,19 +76,20 @@ module.exports = function(app, passport){
     });
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
-        var code = req.body.code;
-        var secret_code = 661462;
-        if(code == secret_code){
-            Market.remove({"student" : student_name}, function(err){
+        var removal_code = req.body.code;
+        Market.find({"student" : student_name, "code" : removal_code}, function(err, user){
+            if(user){
+            Market.remove("student" : student_name){
                 if(err){
                     console.log(err);
-                    return done(null, false, req.flash('signupMessage', 'Username already registered.'));
+                    res.redirect('/optout');
                 }else{
+                    console.log("user removed");
                     res.redirect('/');
-                }
-            });
-            console.log("removed student");
-        }
+                } 
+            }
+            }
+        });
     });
 
 };
