@@ -129,7 +129,7 @@ nav{
     -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
     text-decoration: none;
-    color: orange;
+    color: darkorange;
 }
 .bet-column-market a:active{
     color: darkorange;
