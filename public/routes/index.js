@@ -79,7 +79,7 @@ module.exports = function(app, passport){
         var removal_code = req.body.code;
         Market.find({"student" : student_name, "code" : removal_code}, function(err, user){
             if(user){
-            Market.remove({"student" : student_name, "code" : removal_code}, function(err){
+            Market.remove({"student" : student_name, "code" : removal_code}, function(){
                 if(err){
                     console.log(err);
                     res.redirect('/optout');
