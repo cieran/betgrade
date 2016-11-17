@@ -80,14 +80,11 @@ module.exports = function(app, passport){
         Market.find({"student" : student_name, "code" : removal_code}, function(err, user){
             if(user){
             Market.remove({"student" : student_name, "code" : removal_code}, function(){
-                if(err){
-                    console.log(err);
-                    res.redirect('/optout');
-                }else{
                     console.log("user removed");
                     res.redirect('/');
-                } 
             });
+            }else{
+                    console.log("error, wrong student or removal code");   
             }
         });
     });
