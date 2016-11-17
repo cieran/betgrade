@@ -41,7 +41,7 @@ module.exports = function(passport){
                     newUser.save(function(err){
                         if(err)
                             throw err;
-                        StudentNumber.updateOne({'snumber' : snumber}, {$set : {'used' : true}});
+                        StudentNumber.findOneAndUpdate({'snumber' : snumber}, {$set : {'used' : true}});
                         return done(null, newUser);
                     });
                 }
