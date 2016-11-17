@@ -84,8 +84,10 @@ module.exports = function(app, passport){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
-                        res.render('/', {'title' : 'Home | Betgrade', message: req.flash('removal')});
-
+                        Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+                            .then(function(doc){
+                                res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('removal')});
+                        });
                 });
             } else {
                     console.log("error, wrong student or removal code");
