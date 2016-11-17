@@ -22,7 +22,7 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
-        StudentNumber.findOne({'snumber' : snumber, 'used' : true}, function(error, taken){
+        StudentNumber.findOne({'snumber' : req.body.snumber, 'used' : true}, function(error, taken){
             if(error)
                 return done(error);
             if(taken){
