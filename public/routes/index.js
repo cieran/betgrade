@@ -7,7 +7,8 @@ var MarketSchema = new Schema({
     lay: Number,
     bio: String,
     course: String,
-    filename: String
+    filename: String,
+    code: Number
 }, {collection: 'markets'});
 
 var Market = mongoose.model('Market', MarketSchema);
