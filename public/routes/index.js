@@ -77,11 +77,12 @@ module.exports = function(app, passport){
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
         var code = req.body.code;
-        
-        if(code == 661462){
+        var secret_code = 661462;
+        if(code == secret_code){
             Market.remove({"student" : student_name}, function(err){
                 if(err){
                     console.log(err);
+                    return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 }else{
                     res.redirect('/');
                 }
