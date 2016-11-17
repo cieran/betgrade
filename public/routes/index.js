@@ -83,7 +83,7 @@ module.exports = function(app, passport){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
-                        res.render('/', {'title' : 'Home | Betgrade', message: req.flash('removal')});
+                        res.render('index', {'title' : 'Home | Betgrade', message: req.flash('removal')});
 
                 });
             }else{
