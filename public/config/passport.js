@@ -15,14 +15,13 @@ module.exports = function(passport){
     });
     
     passport.use('local-signup', new LocalStrategy({
-        snumberField : 'snumber',
         usernameField : 'username',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, snumber, username, password, done){
+    function(req, username, password, done){
         process.nextTick(function(){
-        StudentNumber.findOne({'snumber' : snumber, 'used' : true}, function(error, taken){
+        StudentNumber.findOne({'snumber' : req.body.snumber, 'used' : true}, function(error, taken){
             if(error)
                 return done(error);
             if(taken){
