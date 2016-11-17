@@ -81,14 +81,14 @@ module.exports = function(app, passport){
             if(user){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(err){
                         console.log("user removed");
-                        res.redirect('/');
                         req.flash('removal', 'Student has been removed from Betgrade!');
+                        res.render('/', {'title' : 'Home | Betgrade', message: req.flash('removal')});
 
                 });
             }else{
                     console.log("error, wrong student or removal code");
-                    res.redirect('/optout');
                     req.flash('error_removal', 'Invalid Removal Code!');
+                    res.render('/optout', {'title' : 'Student Opt-Out | Betgrade', message: req.flash('error_removal')});
             }
         });
     });
