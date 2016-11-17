@@ -22,7 +22,7 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
-        StudentNumber.findOne({'snumber' : req.body.snumber, 'used' : true}, function(error, taken){
+        StudentNumber.findOne({'number' : req.body.snumber, 'used' : true}, function(error, taken){
             if(error)
                 return done(error);
             if(taken){
@@ -41,7 +41,7 @@ module.exports = function(passport){
                     newUser.save(function(err){
                         if(err)
                             throw err;
-                        StudentNumber.findOneAndUpdate({'snumber' : snumber}, {$set : {'used' : true}});
+                        StudentNumber.findOneAndUpdate({'number' : snumber}, {$set : {'used' : true}});
                         return done(null, newUser);
                     });
                 }
