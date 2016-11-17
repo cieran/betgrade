@@ -79,7 +79,7 @@ module.exports = function(app, passport){
         var removal_code = req.body.code;
         Market.find({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(user){
             if(user){
-                Market.remove({"student" : student_name, "code" : removal_code}, function(err){
+                Market.remove({"student" : student_name, "code" : removal_code}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
                         res.render('/', {'title' : 'Home | Betgrade', message: req.flash('removal')});
