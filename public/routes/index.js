@@ -86,7 +86,7 @@ module.exports = function(app, passport){
                         req.flash('removal', 'Student has been removed from Betgrade!');
                         Market.find({"marketname" : 'Pass or Fail'}).limit(10)
                             .then(function(doc){
-                                res.redirect('index');
+                                res.redirect('/');
                                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('removal')});
                         });
                 });
