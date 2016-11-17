@@ -77,7 +77,8 @@ module.exports = function(app, passport){
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
         var removal_code = req.body.code;
-        Market.find({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(user){
+        console.log(student_name, removal_code);
+        Market.find({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(err, user){
             if(user){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(){
                         console.log("user removed");
