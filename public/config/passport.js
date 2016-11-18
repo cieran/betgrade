@@ -41,7 +41,7 @@ module.exports = function(passport){
                     newUser.save(function(err){
                         if(err)
                             throw err;
-                        StudentNumber.update({'number' : snumber}, {$set : {'used' : true}}, function(err){
+                        StudentNumber.update({'number' : snumber}, {$set : {'used' : true}}, {$upsert : true}, function(err){
                             if(err)
                                 console.log(err);
                             console.log("updated student number" + snumber);
