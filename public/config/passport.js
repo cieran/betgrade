@@ -20,10 +20,10 @@ module.exports = function(passport){
         passReqToCallback : true
     },
     function(req, username, password, done){
+        process.nextTick(function(){
         var snumber = req.body.snumber;
         var saved = false;
         var throw_error = false;
-        process.nextTick(function(){
         StudentNumber.findOne({'number' : snumber, 'used' : true}, function(err, user){
             console.log("we're searching for a student numebr");
             if(err)
