@@ -23,10 +23,10 @@ module.exports = function(passport){
         var snumber = req.body.snumber;
         var saved = false;
         process.nextTick(function(){
-        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
+        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(user, err){
             console.log("we're searching for a student numebr");
-            if(error)
-                return done(error);
+            if(err)
+                return done(err);
             if(user){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
