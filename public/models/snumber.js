@@ -8,7 +8,7 @@ var StudentNumberSchema = new Schema({
         required: true 
     },
     used: {
-        type: Boolean,
+        type: Boolean
     }
 }, {collection: 'snumbers'});
 
