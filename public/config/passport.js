@@ -33,7 +33,7 @@ module.exports = function(passport){
                 throw_error = true;
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
-        });
+        });               
         if(!throw_error){
         User.findOne({'username' : username}, function(err, user){
                 if(err)
@@ -56,11 +56,10 @@ module.exports = function(passport){
                     });
                 }
         }); 
-        if(saved == true){
+        if(saved == true)
             console.log("we in here");
-            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
-        }  
-        };
+            StudentNumber.update({'number' : snumber}, {$set : {'used': true}}); 
+        }
         });
             
     }));
