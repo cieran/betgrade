@@ -41,8 +41,11 @@ module.exports = function(passport){
                     newUser.save(function(err){
                         if(err)
                             throw err;
-                        var query = {'number' : snumber};
-                        StudentNumber.findOneAndUpdate(query, {'used' : true}, function(err){
+                        StudentNumber.update(
+                            {number : snumber}, 
+                            {$set : 
+                                {used : true}
+                            }, function(err){
                             if(err)
                                 console.log(err);
                             console.log("Updated Student Number: " + snumber);
