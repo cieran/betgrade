@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var StudentNumberSchema = new Schema({
     number: {
-        type: String,
+        type: Number,
         unique: true,
         required: true 
     },
