@@ -46,7 +46,7 @@ module.exports = function(passport){
                         }else{
                             saved = true;
                             console.log("Updating " + snumber);
-                            
+                            return;
                         }
                     });
                 }
