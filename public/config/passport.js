@@ -22,16 +22,21 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         var saved = false;
+        var throw_error = false;
         process.nextTick(function(){
-        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(user, err){
+        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(err, user){
             console.log("we're searching for a student numebr");
             if(err)
+                throw_error = true;
                 return done(err);
             if(user){
+                throw_error = true;
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
         });
         User.findOne({'username' : username}, function(err, user){
+                if(throw_error)
+                    return done(err);
                 if(err)
                     return done(err);
                 if(user){
