@@ -21,15 +21,16 @@ module.exports = function(passport){
     },
     function(req, username, password, done){
         var snumber = req.body.snumber;
+        var saved = false;
         process.nextTick(function(){
         StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
-            if(error){
+            if(error)
                 return done(error);
             if(user){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
-            }else{
-               User.findOne({'username':username}, function(err, user){
+        });
+        User.findOne({'username' : username}, function(err, user){
                 if(err)
                     return done(err);
                 if(user){
@@ -43,17 +44,18 @@ module.exports = function(passport){
                         if(err){
                             throw err;
                         }else{
-                            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+                            saved = true;
                             console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
                     });
                 }
-                }); 
-            }
+        }); 
+        if(saved == true){
+            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+        }     
         });
             
-        });
     }));
     
     passport.use('local-login', new LocalStrategy({
