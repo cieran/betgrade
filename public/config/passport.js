@@ -39,9 +39,13 @@ module.exports = function(passport){
                     newUser.password = newUser.generateHash(password);
                     newUser.funds = 1000;
                     newUser.save(function(err){
-                        if(err)
+                        if(err){
                             throw err;
-                        StudentNumber.update({number : snumber}, {$set : {used: true}}); 
+                        }else{
+                            StudentNumber.update({number : snumber}, {$set : {used: true}});
+                            console.log("Updating " + snumber);
+                            return done(null, newUser);
+                        }
                     });
                 }
                 }); 
