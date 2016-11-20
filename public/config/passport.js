@@ -24,7 +24,6 @@ module.exports = function(passport){
         var saved = false;
         process.nextTick(function(){
         StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
-            console.log("we're searching for a student number");
             if(error)
                 return done(error);
             if(user){
@@ -53,7 +52,6 @@ module.exports = function(passport){
                 }
         }); 
         if(saved == true){
-            console.log("we in here");
             StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
         }     
         });
