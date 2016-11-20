@@ -24,30 +24,26 @@ module.exports = function(passport){
         process.nextTick(function(){
         StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, taken){
             if(error)
-                console.log("Threw at Error");
                 return done(error);
             if(taken){
-                console.log(snumber + " already taken.");
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }else{
                User.findOne({'username':username}, function(err, user){
                 if(err)
-                    console.log("Threw at First Err");
                     return done(err);
                 if(user){
                     return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 } else {
-                    StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
-                    console.log("Updating " + snumber);
                     var newUser = new User();
                     newUser.username = username;
                     newUser.password = newUser.generateHash(password);
                     newUser.funds = 1000;
                     newUser.save(function(err){
                         if(err){
-                            console.log("Threw at Second Err");
                             throw err;
                         }else{
+                            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+                            console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
                     });
