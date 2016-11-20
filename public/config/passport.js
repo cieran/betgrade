@@ -24,7 +24,9 @@ module.exports = function(passport){
         process.nextTick(function(){
         StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, taken){
             if(error)
+                console.log(error);
                 return done(error);
+                
             if(taken){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }else{
