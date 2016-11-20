@@ -22,11 +22,12 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
-        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, taken){
-            if(error)
+        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
+            if(error){
                 return done(error);
-            if(taken){
+            if(user){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
+            }
             }else{
                User.findOne({'username':username}, function(err, user){
                 if(err)
