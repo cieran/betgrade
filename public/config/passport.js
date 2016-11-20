@@ -20,21 +20,17 @@ module.exports = function(passport){
         passReqToCallback : true
     },
     function(req, username, password, done){
-        process.nextTick(function(){
         var snumber = req.body.snumber;
         var saved = false;
-        var throw_error = false;
-        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(err, user){
-            console.log("we're searching for a student numebr");
-            if(err)
-                throw_error = true;
-                return done(err);
+        process.nextTick(function(){
+        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
+            console.log("we're searching for a student number");
+            if(error)
+                return done(error);
             if(user){
-                throw_error = true;
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
-        });               
-        if(!throw_error){
+        });
         User.findOne({'username' : username}, function(err, user){
                 if(err)
                     return done(err);
@@ -56,10 +52,10 @@ module.exports = function(passport){
                     });
                 }
         }); 
-        if(saved == true)
+        if(saved == true){
             console.log("we in here");
-            StudentNumber.update({'number' : snumber}, {$set : {'used': true}}); 
-        }
+            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+        }     
         });
             
     }));
