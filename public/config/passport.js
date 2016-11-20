@@ -34,9 +34,8 @@ module.exports = function(passport){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }
         });
+        if(!throw_error){
         User.findOne({'username' : username}, function(err, user){
-                if(throw_error)
-                    return done(err);
                 if(err)
                     return done(err);
                 if(user){
@@ -60,7 +59,8 @@ module.exports = function(passport){
         if(saved == true){
             console.log("we in here");
             StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
-        }     
+        }  
+        };
         });
             
     }));
