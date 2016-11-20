@@ -46,13 +46,14 @@ module.exports = function(passport){
                         }else{
                             saved = true;
                             console.log("Updating " + snumber);
-                            return done(null, newUser);
+                            
                         }
                     });
                 }
         }); 
         if(saved == true){
             StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+            return done(null, newUser);
         }     
         });
             
