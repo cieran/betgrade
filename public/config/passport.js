@@ -47,10 +47,8 @@ module.exports = function(passport){
                         }else{
                             User.findOneAndUpdate({'number' : snumber, 'used': false}, {$set : {'used': true}}, {new : true}, function(err, doc){
                                 if(err)
-                                    console.log("something went wrong: " + err);
-                                console.log(doc);
+                                    return done(null, false, req.flash('signupMessage', 'Error Thrown'));
                             });
-                            console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
                     });
