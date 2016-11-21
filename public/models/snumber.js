@@ -5,7 +5,6 @@ var StudentNumberSchema = new Schema({
     number: {
         type: String,
         unique: true,
-        required: true 
     },
     used: {
         type: Boolean
