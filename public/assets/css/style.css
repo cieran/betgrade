@@ -83,7 +83,9 @@ nav{
     border-bottom-right-radius: 10px;
     padding: 5px;
 }
-
+.btn-info{
+    font-size: 10px;
+}
 .bet-column-head .col-md-3{
     text-align: center;
 }
