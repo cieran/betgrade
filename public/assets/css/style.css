@@ -84,11 +84,12 @@ nav{
     padding: 5px;
 }
 .btn-info, .btn-danger{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.0;
 }
 .btn-info p, .btn-danger p{
     font-size: 10px;
+    padding-top: 1px;
     margin: 0;
 }
 .bet-column-head .col-md-3{
