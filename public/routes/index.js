@@ -5,8 +5,8 @@ var MarketSchema = new Schema({
     student: String,
     back: Number,
     lay: Number,
-    bio: String,
-    course: String,
+    btotal: Number,
+    ltotal: Number,
     filename: String,
     code: Number
 }, {collection: 'markets'});
