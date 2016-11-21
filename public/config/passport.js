@@ -25,6 +25,7 @@ module.exports = function(passport){
             if(error){
                 return done(null, false, req.flash('snumberMessage', 'Error Thrown'));
             }if(user){
+                console.log(user);
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }else{
                User.findOne({'username':username}, function(err, user){
