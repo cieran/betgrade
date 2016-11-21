@@ -9,8 +9,12 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".addmarket", function(){
-    var marketname = $(this).data('id');
+    var marketname = $(this).data('market');
+    var student = $(this).data('student');
+    var odds = $(this).data('odds');
     $(".modal-content #marketname").val(marketname);
+    $(".modal-content #student").val(student);
+    $(".modal-content #odds").val(odds);
 });
 
 var modal = document.getElementById('myModal');
