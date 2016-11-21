@@ -23,7 +23,7 @@ module.exports = function(passport){
         process.nextTick(function(){
         User.findOne({'number' : snumber, 'used' : true}, function(error, user){
             if(error)
-                return done(error);
+                return done(null, false, req.flash('snumberMessage', 'Error Thrown');
             if(user){
                 return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
             }else{
