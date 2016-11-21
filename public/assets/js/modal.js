@@ -7,10 +7,12 @@ $(document).ready(function () {
         });
     }
 });
+
 $(document).on("click", "#myModal", function(){
     var marketname = $(this).data('id');
     $(".modal-content #marketname").val(marketname);
 });
+
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close");
 span.onclick = function(event) {
