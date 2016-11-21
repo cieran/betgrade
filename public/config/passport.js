@@ -21,6 +21,12 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
+        if(username.length < 4){
+            return done(null, false, req.flash('signupMessage', 'Username must be at least 4 characters long.'));
+        }
+        if(password.length < 6){
+            return done(null, false, req.flash('signupMessage', 'Password must be at least 6 characters long.'));
+        }
         User.findOne({'number' : snumber}, function(err, num){
             if(!num)
                 return done(null, false, req.flash('signupMessage', 'Invalid Student Number'));
