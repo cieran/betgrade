@@ -85,6 +85,7 @@ nav{
 }
 .btn-info, .btn-danger{
     font-size: 12px;
+    line-height: 1.0;
 }
 .btn-info p, .btn-danger p{
     font-size: 10px;
