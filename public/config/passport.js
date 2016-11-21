@@ -29,7 +29,7 @@ module.exports = function(passport){
             }else{
                User.findOne({'username':username}, function(err, user){
                 if(err)
-                    return done(err);
+                    return done(null, false, req.flash('snumberMessage', 'Error Thrown'));
                 if(user){
                     return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 } else {
