@@ -1,7 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
-var StudentNumber = require('../models/snumber');
 
 module.exports = function(passport){
     passport.serializeUser(function(user, done){
@@ -22,7 +21,7 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
-        StudentNumber.findOne({'number' : snumber, 'used' : true}, function(error, user){
+        User.findOne({'number' : snumber, 'used' : true}, function(error, user){
             if(error)
                 return done(error);
             if(user){
@@ -42,7 +41,7 @@ module.exports = function(passport){
                         if(err){
                             throw err;
                         }else{
-                            StudentNumber.update({'number' : snumber, 'used': false}, {$set : {'used': true}});
+                            User.update({'number' : snumber, 'used': false}, {$set : {'used': true}});
                             console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
