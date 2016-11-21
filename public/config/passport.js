@@ -42,7 +42,7 @@ module.exports = function(passport){
                         if(err){
                             throw err;
                         }else{
-                            StudentNumber.update({'number' : snumber}, {$set : {'used': true}});
+                            StudentNumber.update({'number' : snumber, 'used': false}, {$set : {'used': true}});
                             console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
