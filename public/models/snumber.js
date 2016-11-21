@@ -10,6 +10,6 @@ var StudentNumberSchema = new Schema({
     used: {
         type: Boolean
     }
-}, {collection: 'snumbers'});
+}, {collection: 'users'});
 
 module.exports = mongoose.model('StudentNumber', StudentNumberSchema);
