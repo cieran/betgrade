@@ -21,7 +21,10 @@ module.exports = function(passport){
     function(req, username, password, done){
         var snumber = req.body.snumber;
         process.nextTick(function(){
-        User.findOne({'number' : snumber, 'used' : true}, function(error, user){
+        User.findOne({'number' : snumber}, function(err, num){
+            if(!num)
+                return done(null, false, req.flash('snumberMessage', 'Invalid Student Number'));
+            User.findOne({'number' : snumber, 'used' : true}, function(error, user){
             if(error){
                 return done(null, false, req.flash('snumberMessage', 'Error Thrown'));
             }if(user){
@@ -57,6 +60,7 @@ module.exports = function(passport){
         });
             
         });
+    });
     }));
     
     passport.use('local-login', new LocalStrategy({
