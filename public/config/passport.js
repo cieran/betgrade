@@ -23,17 +23,17 @@ module.exports = function(passport){
         process.nextTick(function(){
         User.findOne({'number' : snumber}, function(err, num){
             if(!num)
-                return done(null, false, req.flash('snumberMessage', 'Invalid Student Number'));
+                return done(null, false, req.flash('signupMessage', 'Invalid Student Number'));
             User.findOne({'number' : snumber, 'used' : true}, function(error, user){
             if(error){
-                return done(null, false, req.flash('snumberMessage', 'Error Thrown'));
+                return done(null, false, req.flash('signupMessage', 'Error Thrown'));
             }if(user){
                 console.log(user);
-                return done(null, false, req.flash('snumberMessage', 'Student Number already registered'));
+                return done(null, false, req.flash('signupMessage', 'Student Number already registered'));
             }else{
                User.findOne({'username':username}, function(err, user){
                 if(err)
-                    return done(null, false, req.flash('snumberMessage', 'Error Thrown'));
+                    return done(null, false, req.flash('signupMessage', 'Error Thrown'));
                 if(user){
                     return done(null, false, req.flash('signupMessage', 'Username already registered.'));
                 } else {
