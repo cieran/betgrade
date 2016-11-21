@@ -41,7 +41,9 @@ module.exports = function(passport){
                         if(err){
                             throw err;
                         }else{
-                            User.update({'number' : snumber, 'used': false}, {$set : {'used': true}});
+                            User.update({'number' : snumber, 'used': false}, {'used': true}, function(err, saved, resp){
+                                console.log(resp);
+                            });
                             console.log("Updating " + snumber);
                             return done(null, newUser);
                         }
