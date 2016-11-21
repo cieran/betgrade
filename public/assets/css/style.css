@@ -88,6 +88,7 @@ nav{
 }
 .btn-info p, .btn-danger p{
     font-size: 10px;
+    margin: 0;
 }
 .bet-column-head .col-md-3{
     text-align: center;
