@@ -17,6 +17,9 @@ var UserSchema = new Schema({
     },
     used: {
         type: Boolean
+    },
+    profit: {
+        type: Number
     }
 }, {collection: 'users'});
 
