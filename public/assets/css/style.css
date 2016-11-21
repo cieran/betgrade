@@ -83,7 +83,7 @@ nav{
     border-bottom-right-radius: 10px;
     padding: 5px;
 }
-.btn-info .btn-danger{
+.btn-info, .btn-danger{
     font-size: 10px;
 }
 .bet-column-head .col-md-3{
