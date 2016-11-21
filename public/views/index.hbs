@@ -8,8 +8,8 @@
         <div class="bet-column-market">
             {{# each items}}
             <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
             {{/each}}
         </div>  
 		
@@ -38,6 +38,7 @@
                                 <input type="text" name="student" id="student" value="" disabled readonly/>
                                 <input type="text" name="odds" id="odds" value="" disabled readonly/>
                                 <input type="text" name="marketname" id="marketname" value="" disabled readonly/>
+                                <input type="text" name="side" id="side" value="" disabled readonly/>
                                 <h4 name="marketname" id="marketname" value=""></h4>
                             </div>
                             <div class="col-xs-4 pull-right">

@@ -12,9 +12,11 @@ $(document).on("click", ".addmarket", function(){
     var marketname = $(this).data('market');
     var student = $(this).data('student');
     var odds = $(this).data('odds');
+    var side = $(this).data('side');
     $(".modal-content #marketname").val(marketname);
     $(".modal-content #student").val(student);
     $(".modal-content #odds").val(odds);
+    $(".modal-content #side").val(side);
 });
 
 var modal = document.getElementById('myModal');
