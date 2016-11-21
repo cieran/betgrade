@@ -13,7 +13,7 @@ var UserSchema = new Schema({
         type: Number
     },
     number: {
-        type: String
+        type: Number
     },
     used: {
         type: Boolean
