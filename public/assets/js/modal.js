@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 });
 
-$(document).on("click", "#myModal", function(){
+$(document).on("click", ".addmarket", function(){
     var marketname = $(this).data('id');
     $(".modal-content #marketname").val(marketname);
 });
