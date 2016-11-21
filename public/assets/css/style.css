@@ -84,6 +84,9 @@ nav{
     padding: 5px;
 }
 .btn-info, .btn-danger{
+    font-size: 12px;
+}
+.btn-info p, .btn-danger p{
     font-size: 10px;
 }
 .bet-column-head .col-md-3{
