@@ -110,11 +110,11 @@ module.exports = function(app, passport){
                                           {new : true}, function(err){
                         if(err)
                             throw err;
-                        req.flash('balance-update', 'Funds - Stake!');
-                        Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+                    });
+                    req.flash('balance-update', 'Funds - Stake!');
+                    Market.find({"marketname" : 'Pass or Fail'}).limit(10)
                             .then(function(doc){
                                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
-                        });
                     });
                 }
                     
