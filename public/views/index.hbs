@@ -33,13 +33,25 @@
                     <form action="/bet"
                           method="post">
                         <div class="row">
-                            <div class="col-xs-8">
+                            <div class="col-xs-4">
                                 <label>BET SINGLE</label>
                                 <input type="text" name="student" id="student" value="" disabled readonly/>
-                                <input type="text" name="odds" id="odds" value="" disabled readonly/>
                                 <input type="text" name="marketname" id="marketname" value="" disabled readonly/>
                                 <input type="text" name="side" id="side" value="" disabled readonly/>
                                 <h4 name="marketname" id="marketname" value=""></h4>
+                            </div>
+                            <div class="col-xs-4 pull-center">
+                                <div class="form-group">
+                                    <label>ODDS</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-bitcoin"></i></span><input autocomplete="off"
+                                               class="form-control"
+                                               id="odds" name=
+                                               "odds" placeholder=
+                                               "Odds (Decimal)" required=""
+                                               type="decimal" ng-model="stake"> 
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xs-4 pull-right">
                                 <div class="form-group">
@@ -50,7 +62,7 @@
                                                id="stake" min="10" max="2000" name=
                                                "stake" placeholder=
                                                "mBTC" required=""
-                                               type="number" ng-model="stake"> 
+                                               type="number"> 
                                     </div>
                                 </div>
                             </div>
