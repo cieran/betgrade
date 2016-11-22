@@ -12,6 +12,5 @@ var MarketSchema = new Schema({
     code: Number
 }, {collection: 'markets'});
 
-
-var Market = mongoose.model('Market', MarketSchema);
+module.exports = mongoose.model('Market', MarketSchema);
 
