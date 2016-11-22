@@ -111,7 +111,7 @@ module.exports = function(app, passport){
                         if(err)
                             throw err;
                         req.flash('balance-update', 'Funds - Stake!');
-                        res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
+                        res.render('index', {title: 'Betgrade | Home', user: req.user, message: req.flash('balance-update')});
                     });
                 }
                     
