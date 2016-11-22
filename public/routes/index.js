@@ -99,12 +99,12 @@ module.exports = function(app, passport){
     app.post('/bet', function(req, res){
         var stake = req.body.stake;
         var odds = req.body.odds;
-        var username = req.body.user;
+        var user = req.user;
         var student = req.body.student;
         var marketname = req.body.marketname;
         var side = req.body.side;
-        console.log(req.body, user);
-        if(req.body.user){
+        console.log(req.body, req.user);
+        if(!req.user){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
         }
