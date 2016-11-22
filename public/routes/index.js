@@ -99,7 +99,7 @@ module.exports = function(app, passport){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
         }else{
-            Users.findOne({"username" : user.username, "funds" : {$gte : user.stake}}, function(err, funds){
+            User.findOne({"username" : user.username, "funds" : {$gte : user.stake}}, function(err, funds){
                 if(err)
                     throw err;
                 console.log(funds);
