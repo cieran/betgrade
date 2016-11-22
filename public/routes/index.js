@@ -101,23 +101,23 @@ module.exports = function(app, passport){
         }else{
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
-                    throw err;
+                    req.flash('bet-update', 'An Error Occurred.');
                 if(!funds){
-                    console.log("You need mo' dolla bihhh");
+                    req.flash('bet-update', 'Insufficient Funds.');
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err){
                         if(err)
-                            throw err;
-                    });
-                    req.flash('balance-update', 'Funds - Stake!');
-                    Market.find({"marketname" : 'Pass or Fail'}).limit(10)
-                            .then(function(doc){
-                                res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
+                           req.flash('bet-update', 'An Error Occurred.');;
+                        req.flash('bet-update', 'Your funds have been updated.');
                     });
                 }
                     
+            });
+            Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+                .then(function(doc){
+                    res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
             });
         }
     });
