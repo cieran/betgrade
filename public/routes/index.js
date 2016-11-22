@@ -107,6 +107,12 @@ module.exports = function(app, passport){
         if(!req.user){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
+        }else{
+            Users.findOne({"username" : user.username, "funds" : {$gte : user.stake}}, function(err, funds){
+                if(err)
+                    throw err;
+                console.log(funds);
+            });
         }
     });
 
