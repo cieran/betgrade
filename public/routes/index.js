@@ -105,7 +105,9 @@ module.exports = function(app, passport){
                 if(!funds){
                     console.log("You need mo' dolla bihhh");
                 }else{
-                    User.findOneAndUpdate({"username" : user.username}, {$set :{"funds" : {$inc : -stake}}}, {new : true}, function(err){
+                    User.findOneAndUpdate({"username" : user.username}, 
+                                          {$inc : {"funds" : -stake}}, 
+                                          {new : true}, function(err){
                         if(err)
                             throw err;
                         req.flash('balance-update', 'Funds - Stake!');
