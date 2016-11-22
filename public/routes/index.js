@@ -111,7 +111,10 @@ module.exports = function(app, passport){
                         if(err)
                             throw err;
                         req.flash('balance-update', 'Funds - Stake!');
-                        res.render('index', {title: 'Betgrade | Home', user: req.user, message: req.flash('balance-update')});
+                        Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+                            .then(function(doc){
+                                res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
+                        });
                     });
                 }
                     
