@@ -110,7 +110,7 @@ module.exports = function(app, passport){
                             throw err;
                         req.flash('balance-update', 'Funds - Stake!');
                         res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
-                    }
+                    });
                     
             });
         }
