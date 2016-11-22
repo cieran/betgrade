@@ -104,7 +104,6 @@ module.exports = function(app, passport){
                     throw err;
                 if(!funds)
                     console.log("You need mo' dolla bihhh");
-                console.log(funds.funds, stake, funds.username);
             });
         }
     });
