@@ -102,9 +102,9 @@ module.exports = function(app, passport){
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     throw err;
-                if(funds)
+                if(!funds)
                     console.log("You need mo' dolla bihhh");
-                console.log(funds.funds, funds.stake, funds.username);
+                console.log(funds.funds, stake, funds.username);
             });
         }
     });
