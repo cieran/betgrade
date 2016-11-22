@@ -103,7 +103,7 @@ module.exports = function(app, passport){
         var student = req.body.student;
         var marketname = req.body.marketname;
         var side = req.body.side;
-        console.log(req.body);
+        console.log(req.body, req.user);
         if(req.body.user){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
