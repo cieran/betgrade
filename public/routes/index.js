@@ -75,7 +75,7 @@ module.exports = function(app, passport){
                 Market.remove({"student" : student_name, "code" : removal_code}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
-                        Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+                        Market.find({"marketname" : 'To Pass'}).limit(10)
                             .then(function(doc){
                                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('removal')});
                         });
@@ -115,7 +115,7 @@ module.exports = function(app, passport){
                 }
                     
             });
-            Market.find({"marketname" : 'Pass or Fail'}).limit(10)
+            Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
             });
