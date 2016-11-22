@@ -104,6 +104,14 @@ module.exports = function(app, passport){
                     throw err;
                 if(!funds)
                     console.log("You need mo' dolla bihhh");
+                else
+                    User.findOneAndUpdate({"username" : user.username}, {$set :{"funds" : {$inc : -stake}}}, {new : true}, function(err){
+                        if(err)
+                            throw err;
+                        req.flash('balance-update', 'Funds - Stake!');
+                        res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('balance-update')});
+                    }
+                    
             });
         }
     });
