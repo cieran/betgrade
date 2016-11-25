@@ -36,7 +36,7 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
-
+/**
 var https = require('https');
 var fs = require('fs');
 
@@ -49,9 +49,9 @@ var a = https.createServer(options, function (req, res) {
   res.writeHead(200);
   res.end("hello world\n");
 }).listen(port);
+**/
 
-
-//app.listen(port);
+app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
 
 // Boring error handling down here
