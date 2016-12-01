@@ -151,15 +151,18 @@ module.exports = function(app, passport){
                         req.flash('bet-update', err);
                     }
                 });
-               /** 
-               Bet.insert({"bet": side, "market": marketname, "student": student, "paired": false, "odds": odds, "stake" : stake, "potential": stake*odds+stake, "username": user.username, "settled": false}, function(err){
-                    if(err){
-                        req.flash('bet-update', 'An Error Occurred.');
-                    }else{
-                            req.flash('bet-update', 'Bet Placed.');
-                    }
-               });
-               **/
+                if(side == "Back"){
+                     Market.findOneAndUpdate({"marketname" : marketname, "student": student}, {$inc : {'btotal': stake}}, {new : true}, function(err, doc){
+                        if(err)
+                            req.flash('bet-update', err);
+                    });
+                }else{
+                     Market.findOneAndUpdate({"marketname" : marketname, "student": student}, {$inc : {'ltotal': stake}}, {new : true}, function(err, doc){
+                        if(err)
+                            req.flash('bet-update', err);
+                    });
+                }
+
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
