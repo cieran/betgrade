@@ -122,6 +122,7 @@ module.exports = function(app, passport){
             });
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
+                    req.flash('bet-update', 'Bet Placed.');
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
             });
         }
