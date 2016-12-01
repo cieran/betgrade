@@ -129,6 +129,24 @@ module.exports = function(app, passport){
             });
         
             if(errors == false){
+                var newBet = new Bet({
+                    bet: side, 
+                    market: marketname, 
+                    student: student, 
+                    paired: false, 
+                    odds: odds, 
+                    stake : stake, 
+                    potential: stake*odds+stake, 
+                    username: user.username, 
+                    settled: false
+                });
+                newBet.save(function(err){
+                    req.flash('bet-update', 'Bet Placed.');
+                    if(err){
+                        req.flash('bet-update', err);
+                    }
+                });
+               /** 
                Bet.insert({"bet": side, "market": marketname, "student": student, "paired": false, "odds": odds, "stake" : stake, "potential": stake*odds+stake, "username": user.username, "settled": false}, function(err){
                     if(err){
                         req.flash('bet-update', 'An Error Occurred.');
@@ -136,6 +154,7 @@ module.exports = function(app, passport){
                             req.flash('bet-update', 'Bet Placed.');
                     }
                });
+               **/
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
