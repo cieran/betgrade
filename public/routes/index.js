@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var Market = require('../models/market');
 var User = require('../models/user');
+var Bet = require('../models/bet');
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
@@ -99,7 +100,6 @@ module.exports = function(app, passport){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
         }else if(stake <= 0){
-            
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC.');
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
@@ -107,22 +107,36 @@ module.exports = function(app, passport){
             });        
         
         }else{
+            var errors = false;
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     req.flash('bet-update', 'An Error Occurred.');
+                    errors = true;
                 if(!funds){
-                    req.flash('bet-update', 'Insufficient Funds.');
+                    req.flash('bet-update', 'Insufficient Funds.');                    
+                    errors = true;
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err){
-                        if(err)
+                        if(err){
                            req.flash('bet-update', 'An Error Occurred.');
-                        req.flash('bet-update', 'Bet Placed.');
+                           errors = true;
+                        }
                     });
                 }
                     
             });
+        
+            if(errors == false){
+               Bet.save({bet: side, market: marketname, student: student, paired: false,odds: odds, stake : stake, potential: stake*odds+stake, username: user.username, settled: false}, function(err){
+                    if(err){
+                        req.flash('bet-update', 'An Error Occurred.');
+                    }else{
+                            req.flash('bet-update', 'Bet Placed.');
+                    }
+               });
+            }
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});

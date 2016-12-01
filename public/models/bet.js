@@ -2,13 +2,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BetSchema = new Schema({
-    market: String,
     bet: String,
-    amount: Number,
+    market: String,
+    student: String,
+    paired: Boolean,
     odds: Number,
-    user: String,
+    stake: Number,
+    potential: Number,
+    username: String,
     settled: Boolean
 }, {collection: 'bets'});
 
-var Bet = mongoose.model('Bet', BetSchema);
+module.exports = mongoose.model('Bet', BetSchema);
 
