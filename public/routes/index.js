@@ -127,7 +127,7 @@ module.exports = function(app, passport){
                 }
                     
             });
-        
+            var potential = (stake * odds) + stake;
             if(errors == false){
                 var newBet = new Bet({
                     bet: side, 
@@ -136,7 +136,7 @@ module.exports = function(app, passport){
                     paired: false, 
                     odds: odds, 
                     stake : stake, 
-                    potential: stake*odds+stake, 
+                    potential: potential, 
                     username: user.username, 
                     settled: false
                 });
