@@ -100,8 +100,10 @@ module.exports = function(app, passport){
             res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
         }else if(stake <= 0){
             req.flash('bet_error', 'Nice try! Stake must be at least 1mBTC.');
-            res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
-        }else{
+            Market.find({"marketname" : 'To Pass'}).limit(10)
+                .then(function(doc){
+                    res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
+            });        }else{
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     req.flash('bet-update', 'An Error Occurred.');
