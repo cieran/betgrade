@@ -129,7 +129,7 @@ module.exports = function(app, passport){
             });
         
             if(errors == false){
-               Bet.insert({bet: side, market: marketname, student: student, paired: false,odds: odds, stake : stake, potential: stake*odds+stake, username: user.username, settled: false}, function(err){
+               Bet.insert({"bet": side, "market": marketname, "student": student, "paired": false, "odds": odds, "stake" : stake, "potential": stake*odds+stake, "username": user.username, "settled": false}, function(err){
                     if(err){
                         req.flash('bet-update', 'An Error Occurred.');
                     }else{
