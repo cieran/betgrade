@@ -224,7 +224,7 @@
 }
 .c100 {
   position: relative;
-  font-size: 80px;
+  font-size: 120px;
   width: 1em;
   height: 1em;
   border-radius: 50%;
@@ -1058,8 +1058,8 @@
 }
 .c100.orange.dark .bar,
 .c100.orange.dark .fill {
-  border-color: #e08833 !important;
+  border-color: darkorange !important;
 }
 .c100.orange.dark:hover > span {
-  color: #e08833;
+  color: darkorange;
 }
