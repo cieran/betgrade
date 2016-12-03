@@ -1058,8 +1058,8 @@
 }
 .c100.orange.dark .bar,
 .c100.orange.dark .fill {
-  border-color: #ffb347 !important;
+  border-color: #ffae1b !important;
 }
 .c100.orange.dark:hover > span {
-  color: #ffb347;
+  color: #ffae1b;
 }
