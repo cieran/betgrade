@@ -1030,7 +1030,7 @@
   color: #777777;
 }
 .c100.dark:after {
-  background-color: transparent;
+  background-color: #666666;
 }
 .c100.dark:hover > span {
   color: #4893ff;
