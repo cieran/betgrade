@@ -6,7 +6,9 @@
     border-bottom-right-radius: 10px;
     padding: 5px;
 }
-
+.user-info{
+    display: table-caption;
+}
 .profile-username{
     margin-top: 0;
     color: white;
