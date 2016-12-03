@@ -15,6 +15,7 @@
     margin-bottom: 0;
     color: white;
     font-weight: 400;
+    text-transform: capitalize;
 }
 .profile-funds{
     color: white;
