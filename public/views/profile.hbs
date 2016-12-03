@@ -1,7 +1,8 @@
 <section class="student-body">
-        <h2 class="profile-username">{{user.username}}</h2>
-        <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
-    
+        <div class="user-info">
+            <h2 class="profile-username">{{user.username}}</h2>
+            <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
+        </div>
         <div class="stat-wrapper">
             <div class="c100 p{{user.winrate}} dark green">
                 <span>{{user.winrate}}%</span>
