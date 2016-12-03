@@ -5,6 +5,9 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 5px;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
 }
 .user-info{
     display: table-caption;
