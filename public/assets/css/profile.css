@@ -8,6 +8,7 @@
 }
 .user-info{
     display: table-caption;
+    width: 150px;
 }
 .profile-username{
     margin-top: 0;
