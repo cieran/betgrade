@@ -23,6 +23,7 @@
 .stat-wrapper{
     display: table-caption;
     margin-left: 5%;
+    width: 130px;
 }
 .stats-text{
     text-align: center;
