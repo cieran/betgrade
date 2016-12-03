@@ -1024,7 +1024,7 @@
 }
 .c100.dark .bar,
 .c100.dark .fill {
-  border-color: #c6ff00 !important;
+  border-color: #ff5747 !important;
 }
 .c100.dark > span {
   color: #777777;
@@ -1033,7 +1033,7 @@
   background-color: #666666;
 }
 .c100.dark:hover > span {
-  color: #c6ff00;
+  color: #ff5747;
 }
 .c100.green .bar,
 .c100.green .fill {
