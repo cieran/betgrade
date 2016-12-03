@@ -183,17 +183,6 @@ footer{
     font-size: 32px;
 }
 
-.profile-username{
-    color: white;
-    font-weight: 400;
-    text-align: center;
-}
-.profile-funds{
-    color: white;
-    font-weight: 300;
-    text-align: center;
-}
-
 .form-wrapper{
     position: relative;
     top: 10%;
