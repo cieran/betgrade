@@ -48,6 +48,8 @@ module.exports = function(passport){
                     newUser.password = newUser.generateHash(password);
                     newUser.funds = 1000;
                     newUser.profit = 0;
+                    newUser.winrate = 0;
+                    newUser.highest = 0;
                     newUser.save(function(err){
                         if(err){
                             throw err;
