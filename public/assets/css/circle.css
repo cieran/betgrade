@@ -1044,10 +1044,10 @@
 }
 .c100.green.dark .bar,
 .c100.green.dark .fill {
-  border-color: #5fd400 !important;
+  border-color: #98FB98 !important;
 }
 .c100.green.dark:hover > span {
-  color: #5fd400;
+  color: #98FB98;
 }
 .c100.orange .bar,
 .c100.orange .fill {
@@ -1058,8 +1058,8 @@
 }
 .c100.orange.dark .bar,
 .c100.orange.dark .fill {
-  border-color: darkorange !important;
+  border-color: #ffb347 !important;
 }
 .c100.orange.dark:hover > span {
-  color: darkorange;
+  color: #ffb347;
 }
