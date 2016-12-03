@@ -17,3 +17,20 @@
     font-weight: 300;
     text-align: center;
 }
+.stat-wrapper{
+    display: table-caption;
+    margin-left: 5%;
+}
+.stats-text{
+    text-align: center;
+    font-size: 16px;
+}
+.payout{
+    color: #4893ff;
+}
+.profit{
+    color: #ffae1b;
+}
+.win{
+    color: #98fb98;
+}
