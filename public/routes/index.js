@@ -129,9 +129,9 @@ module.exports = function(app, passport){
             });
             var potential = 0;
             if(side == "Back"){
-                potential = (stake + (odds * stake));
+                potential = (parseInt(stake) + (parseInt(odds) * parseInt(stake)));
             }else{
-                potential = (stake);
+                potential = (stake*2);
             }
             if(errors == false){
                 var newBet = new Bet({
