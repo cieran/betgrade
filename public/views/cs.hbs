@@ -6,7 +6,7 @@
             <div class="col-xs-3 col-md-3">Lay</div>
         </div>
         <div class="bet-column-market">
-            {{# each items}}
+            {{# each markets}}
             <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
             <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
             <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
