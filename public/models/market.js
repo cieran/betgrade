@@ -9,7 +9,8 @@ var MarketSchema = new Schema({
     btotal: Number,
     ltotal: Number,
     filename: String,
-    code: Number
+    code: Number,
+    course: String
 }, {collection: 'markets'});
 
 module.exports = mongoose.model('Market', MarketSchema);
