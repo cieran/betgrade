@@ -114,6 +114,7 @@ nav{
 }
 .bet-column-market{
     display: inline-block;
+    width: 100%:
 }
 .bet-column-market .col-md-6, .bet-column-market .col-md-3{
     height: 50px;
