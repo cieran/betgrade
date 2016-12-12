@@ -23,19 +23,19 @@ module.exports = function(app, passport){
         });
     });    
     app.get('/catagories/csse', function(req, res, next){
-        Market.find({"course" : 'csse', "marketname" : 'Pass or Fail'})
+        Market.find({"course" : 'csse', "marketname" : 'To Pass'})
             .then(function(doc){
                 res.render('csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/catagories/cs', function(req, res, next){
-        Market.find({"course" : 'cs', "marketname" : 'Pass or Fail'})
+        Market.find({"course" : 'cs', "marketname" : 'To Pass'})
             .then(function(doc){
                 res.render('cs', {title: 'CS | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/catagories/ct', function(req, res, next){
-        Market.find({"course" : 'ct', "marketname" : 'Pass or Fail'})
+        Market.find({"course" : 'ct', "marketname" : 'To Pass'})
             .then(function(doc){
                 res.render('ct', {title: 'CT | Markets', markets: doc, user: req.user});
         });
