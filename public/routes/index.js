@@ -35,7 +35,7 @@ module.exports = function(app, passport){
         });
     });    
     app.get('/catagories/ct', function(req, res, next){
-        Market.find({"marketname" : 'To Pass'})
+        Market.find({"marketname" : 'To Pass', "course" : 'ct'})
             .then(function(doc){
                 console.log(doc);
                 res.render('ct', {title: 'CT | Markets', markets: doc, user: req.user});
