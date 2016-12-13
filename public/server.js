@@ -15,7 +15,7 @@ require('./config/passport')(passport);
 mongoose.connect(db.database);
 
 // Creating View Engine which will render Handlebar files
-hbs.registerHelper("inc", function(value, options)
+hbs.create("inc", function(value, options)
 {
     return parseInt(value) + 1;
 });
