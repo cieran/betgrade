@@ -13,7 +13,7 @@ module.exports = function(app, passport){
         });
     });
     app.get('/profile', function(req, res){
-        res.render('profile', {user: req.user});
+        res.render('profile', {title: user.username + ' | Profile',user: req.user});
     });
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
@@ -43,7 +43,7 @@ module.exports = function(app, passport){
         });
     });
     app.get('/signup', function(req, res){
-        res.render('signup', { message: req.flash('signupMessage') });
+        res.render('signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
     });
     app.post('/signup', passport.authenticate('local-signup',{
         successRedirect : '/profile',
@@ -52,7 +52,7 @@ module.exports = function(app, passport){
     }));
 
     app.get('/login', function (req, res) {
-      res.render('login', {message: req.flash('loginMessage') });
+      res.render('login', {title: 'Login | Betgrade', message: req.flash('loginMessage') });
     });
 
     app.post('/login', passport.authenticate('local-login', {
