@@ -1,0 +1,33 @@
+    <section class="student-body">
+        <div class="content">
+            <div class="col-md-3 col-xs-3 col-lg-3 info">
+            <img class="student-image" src="/img/cieran.jpg">
+            <h3 id="student-name">Cieran Neeson</h3>
+            <p id="student-bio">Creator of Schedulr. 4th CSSE.</p>
+            </div>
+            <div class="col-md-9 col-xs-9 col-lg-9 markets">
+            
+            {{# each markets}}
+                <div class="market">
+                <div class="row">
+                    <h4 class="market-name first">{{this.marketname}}</h4>    
+                </div>
+                <div class="row">
+                <div class="col-xs-3 col-md-3 col-lg-3 odds">
+                    <button class="btn btn-block btn-info" ng-click="open()">{{this.back}}</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3">
+                    <button class="btn btn-block btn-info" ng-click="open()">{{this.lay}}</button>
+                </div>
+                <div class="col-xs-3 col-md-3 col-lg-3"></div>
+                <div class="col-xs-3 col-md-3 col-lg-3"></div>
+                </div> 
+            </div>
+            {{/each}}    
+
+            
+            
+            </div>
+        </div>
+    </section>
+
