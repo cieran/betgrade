@@ -20,9 +20,7 @@ mongoose.connect(db.database);
 
 
 var hbs = exphbs.create({
-    helpers: {
-        inc : function(value, options){return parseInt(value) + 1}
-    }
+    helpers: helpers
 });
 app.engine('hbs', exphbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
