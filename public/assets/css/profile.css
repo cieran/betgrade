@@ -45,7 +45,8 @@
     line-height: 2.0em;
     color: white;
 }
-th{
+td, th{
+    padding: 2px;
     text-align: left;
 }
 #tprofit{
