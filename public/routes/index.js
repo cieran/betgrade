@@ -20,7 +20,7 @@ module.exports = function(app, passport){
         var ext = "people/" + filename;
         Market.find({"filename" : filename})
             .then(function(doc){
-                res.render(filename, {title: 'Markets', markets: doc, user: req.user});
+                res.render(ext, {title: 'Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/catagories/csse', function(req, res, next){
