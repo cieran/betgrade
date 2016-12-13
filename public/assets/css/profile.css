@@ -52,18 +52,18 @@ td, th{
 #tprofit{
     text-align: right;
 }
-table.leaderboard tr:nth-last-child(1) {
-   background: #f00;
-}
-table.leaderboard tr:nth-last-child(2) {
-   background: dodgerblue;
-}
-table.leaderboard tr:nth-last-child(3) {
-   background: yellow;
-}
 table.leaderboard tr:nth-child(2) {
-   background: gold;
+   background: #D4AF37;
 }
 table.leaderboard tr:nth-child(3) {
-   background: green;
+   background: #179767;
+}
+table.leaderboard tr:nth-last-child(3) {
+   background: #FF8888;
+}
+table.leaderboard tr:nth-last-child(2) {
+   background: #FF6666;
+}
+table.leaderboard tr:nth-last-child(1) {
+   background: #FF5555;
 }
