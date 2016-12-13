@@ -13,10 +13,14 @@ module.exports = function(app, passport){
         });
     });
     app.get('/profile', function(req, res, next){
+        if(req.user){
         User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
             .then(function(doc){
                res.render('profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
+        }else{
+            res.redirect('/login');
+        }
     });
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
