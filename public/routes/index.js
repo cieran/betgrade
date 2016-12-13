@@ -17,7 +17,6 @@ module.exports = function(app, passport){
             .then(function(doc){
                res.render('profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
-        });
     });
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
