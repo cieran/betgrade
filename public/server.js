@@ -8,15 +8,16 @@ var morgan = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var hbs = require('express-handlebars');
+var exphbs = require('express-handlebars');
 var session = require('express-session');
 var db = require('./config/database.js');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 
 // Creating View Engine which will render Handlebar files
-hbs.create("inc", function(value, options)
-{
+
+
+var hbs = exphbs.create("inc", function(value, options){
     return parseInt(value) + 1;
 });
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
