@@ -40,3 +40,7 @@
 .win{
     color: #98fb98;
 }
+
+th, td{
+    text-align: left;
+}
