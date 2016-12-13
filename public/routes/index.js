@@ -13,7 +13,7 @@ module.exports = function(app, passport){
         });
     });
     app.get('/profile', function(req, res){
-        res.render('profile', {title: user.username + ' | Profile',user: req.user});
+        res.render('profile', {title: 'Your Profile | Betgrade', user: req.user});
     });
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
