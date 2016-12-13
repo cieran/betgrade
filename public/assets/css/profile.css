@@ -1,6 +1,6 @@
 .profile-body{
     height: 100%;
-    width: 70%;
+    width: 75%;
     margin: 0 auto;
     background-color: #1e1e1e;
     border-bottom-left-radius: 10px;
@@ -26,6 +26,7 @@
     display: table-caption;
     margin-left: 5%;
     width: 130px;
+    padding-top: 20px;
 }
 p{
     color: white;
