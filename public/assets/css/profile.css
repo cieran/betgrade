@@ -40,11 +40,17 @@
 .win{
     color: #98fb98;
 }
-
+.leaderboard{
+    width: 100%;
+    line-height: 2.0em;
+    color: white;
+}
 th{
     text-align: left;
 }
-
+#tprofit{
+    text-align: right;
+}
 table.leaderboard tr:nth-last-child(1) {
    background: #f00;
 }
