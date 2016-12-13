@@ -13,17 +13,21 @@
                     <h4 class="market-name first">{{this.marketname}}</h4>    
                 </div>
                 <div class="row">
-                <div class="col-xs-3 col-md-3 col-lg-3 odds">
-                    <button class="btn btn-block btn-info" ng-click="open()">{{this.back}}</button>
-                </div>
-                <div class="col-xs-3 col-md-3 col-lg-3">
-                    <button class="btn btn-block btn-info" ng-click="open()">{{this.lay}}</button>
-                </div>
+                <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
+                <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
                 <div class="col-xs-3 col-md-3 col-lg-3"></div>
                 <div class="col-xs-3 col-md-3 col-lg-3"></div>
                 </div> 
             </div>
-            {{/each}}    
+            {{/each}}
+                
+                <div class="bet-column-market">
+            {{# each items}}
+            <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
+            {{/each}}
+        </div> 
 
             
             
