@@ -8,7 +8,7 @@ var morgan = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
+var hbs = require('express-handlebars');
 var handlebars = require('handlebars');
 var helpers = require('handlebars-form-helpers').register(handlebars);
 var session = require('express-session');
@@ -19,10 +19,7 @@ mongoose.connect(db.database);
 // Creating View Engine which will render Handlebar files
 
 
-var hbs = exphbs.create({
-    helpers: helpers
-});
-app.engine('hbs', exphbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'assets')));
