@@ -53,6 +53,74 @@
     <footer>
         <p>&copy; Cieran Neeson, 2016</p>
     </footer>
+    
+    <div class="modal" id="myModal">
+    <div class="modal-content">
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+                <span class="close pull-right">×</span>
+
+            <!-- BETSLIP FORM STARTS HERE -->
+            <div class="panel panel-default betslip-box">
+                <div>
+                    <div class="row display-tr">
+                        <img class="betslip-logo" src="/img/betgrade_big.png"/>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form action="/bet" method="post">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label>BET SINGLE</label>
+                                <input type="text" name="student" id="student" value="" readonly/>
+                                <input type="text" name="marketname" id="marketname" value="" readonly/>
+                                <input type="text" name="side" id="side" value="" readonly/>
+                                <h4 name="marketname" id="marketname" value=""></h4>
+                            </div>
+                            <div class="col-xs-4 pull-center">
+                                <div class="form-group">
+                                    <label>ODDS</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-bitcoin"></i></span><input autocomplete="off"
+                                               class="form-control"
+                                               id="odds" name=
+                                               "odds" placeholder=
+                                               "Odds" required=""
+                                               type="number" readonly> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 pull-right">
+                                <div class="form-group">
+                                    <label>STAKE</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-bitcoin"></i></span><input autocomplete="off"
+                                               autofocus="" class="form-control"
+                                               id="stake" name= "stake" placeholder=
+                                               "mBTC" required=""
+                                               type="number"> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                            <div class="col-xs-4 pull-right">
+                                <p>Returns:  mBTC</p>
+                            </div>
+                            </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 bet-button">
+                                <input type="submit" class="user-routes place-bet" value="Place Bet">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 </body>
     	<script src="/js/modal.js"></script>
 </html>
