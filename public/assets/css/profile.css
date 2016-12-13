@@ -54,9 +54,9 @@ table.leaderboard tr:nth-last-child(2) {
 table.leaderboard tr:nth-last-child(3) {
    background: yellow;
 }
-table.leaderboard tr:nth-child(1) {
+table.leaderboard tr:nth-child(2) {
    background: gold;
 }
-table.leaderboard tr:nth-last-child(2) {
+table.leaderboard tr:nth-child(3) {
    background: green;
 }
