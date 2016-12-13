@@ -44,3 +44,13 @@
 th{
     text-align: left;
 }
+
+table.leaderboard tr:nth-last-child(1) {
+   background: #f00;
+}
+table.leaderboard tr:nth-last-child(2) {
+   background: dodgerblue;
+}
+table.leaderboard tr:nth-last-child(3) {
+   background: yellow;
+}
