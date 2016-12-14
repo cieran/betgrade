@@ -20,6 +20,11 @@
     position: absolute;
     left: 0;
     right: 0;
+    padding-top: 10px;
+}
+.button-wrap button{
+    line-height: 2em;
+    padding: 3px;
 }
 .profile-username{
     margin-top: 0;
