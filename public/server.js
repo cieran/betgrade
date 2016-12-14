@@ -26,7 +26,7 @@ var hbs = exphbs.create({
             if(a === b)
                 return a;
             else
-                return false;
+                return "invalid";
         }
     },
     extname: 'hbs', 
