@@ -23,7 +23,7 @@ var hbs = exphbs.create({
         inc : function(value) { return parseInt(value) + 1;},
         date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YYYY hh:mm');},
         ifeq: function(a, b){
-            if(a == b)
+            if(a === b)
                 return true;
             else
                 return false;
