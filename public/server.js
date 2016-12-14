@@ -20,7 +20,7 @@ mongoose.connect(db.database);
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
-        date: function(date){  return moment(date).format('YYYY-MM-DD hh:mm:ss');}
+        date: function(date){  return moment(date).format('YY-MM-DD hh:mm');}
     },
     extname: 'hbs', 
     defaultLayout: 'layout', 
