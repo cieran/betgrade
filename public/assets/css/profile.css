@@ -100,8 +100,6 @@ table.active-bets tr:nth-child(1) {
     width: 120px;
     line-height: 2em;
     min-width: 120px;
-    border: none;
-    color: transparent;
     padding: 3px;
     text-align: center;
     text-decoration: none;
@@ -110,4 +108,15 @@ table.active-bets tr:nth-child(1) {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: 1px solid darkorange;
+}
+.profile-nav:hover {
+    background-color: darkorange;
+    color: #1e1e1e;
+}
+
+.profile-nav:focus {
+    outline: 0;
 }
