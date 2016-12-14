@@ -78,6 +78,10 @@ table.leaderboard tr:nth-last-child(1) {
     color: white;
 }
 
-table.bet-table tr:nth-child(1) {
-   color: darkorange;
+table.settled-bets tr:nth-child(1) {
+   color: #FF5555;
+}
+
+table.active-bets tr:nth-child(1) {
+   color: #4893ff;
 }
