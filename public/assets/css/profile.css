@@ -116,7 +116,7 @@ table.active-bets tr:nth-child(1) {
     background-color: darkorange;
     color: #1e1e1e;
 }
-.profile-nav:active{
+.profile-nav .active{
     background-color: darkorange;
     color: #1e1e1e;
 }
