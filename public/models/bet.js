@@ -11,7 +11,7 @@ var BetSchema = new Schema({
     potential: Number,
     username: String,
     settled: Boolean
-}, {collection: 'bets'});
+}, {collection: 'bets', timestamps: true});
 
 module.exports = mongoose.model('Bet', BetSchema);
 

@@ -27,7 +27,7 @@ var UserSchema = new Schema({
     winrate: {
         type: Number
     }
-}, {collection: 'users'});
+}, {collection: 'users', timestamps: true});
 
 UserSchema.methods.generateHash = function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
