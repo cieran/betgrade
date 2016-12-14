@@ -13,7 +13,7 @@
             <th>Pot. Returns</th>
           </tr>
             {{#each bets}}
-                {{#ifeq this.settled "false"}}
+                {{#ifeq this.settled false}}
                     <tr>
                         <td id="tposition">{{date this.createdAt}}</td>
                         <td id="tposition">{{this.marketname}}({{this.bet}})</td>
@@ -42,7 +42,7 @@
             <th>Pot. Returns</th>
           </tr>
             {{#each bets}}
-            {{#ifeq this.settled "true"}}
+            {{#ifeq this.settled true}}
                 <tr>
                     <td id="tposition">{{date this.createdAt}}</td>
                     <td id="tposition">{{this.marketname}}({{this.bet}})</td>
