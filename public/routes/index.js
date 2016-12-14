@@ -129,7 +129,7 @@ module.exports = function(app, passport){
         console.log(req.body, req.user);
         if(!req.user){
             req.flash('bet_error', 'You need to log in before you can place a bet');
-            res.render('login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
+            res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
         }else if(stake <= 0){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC.');
             Market.find({"marketname" : 'To Pass'}).limit(10)
