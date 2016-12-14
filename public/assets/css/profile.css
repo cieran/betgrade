@@ -9,9 +9,16 @@
 }
 .user-info{
     display: table-caption;
+    float: left;
 }
 .user-head{
     display: flex;
+}
+.button-wrap{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 .profile-username{
     margin-top: 0;
