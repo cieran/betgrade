@@ -3,7 +3,7 @@
             <h2 class="profile-username">{{user.username}}</h2>
             <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
         </div>
-        <div class="col-xs-3 col-md-3">
+
         <div class="stat-wrapper">
             <div class="c100 p{{user.winrate}} dark green">
                 <span>{{user.winrate}}%</span>
@@ -32,83 +32,5 @@
             </div>
             <p class="stats-text payout">Highest Payout</p>
         </div>
-        </div>
     
-    
-        <div class="col-xs-5 col-md-5">
-        <p class="profile-titles">open bets | settled bets go here</p>
-        <div class="row">
-        <h4>Open Bets</h4>
-        <table class="bet-table active-bets">
-          <tr>
-            <th>Date Placed</th>
-            <th>Market</th>
-            <th>Student</th> 
-            <th>Stake</th>
-            <th id="right-align">Pot. Returns</th>
-          </tr>
-            {{#each bets}}
-                {{#ifeq this.settled false}}
-                    <tr>
-                        <td>{{date this.createdAt}}</td>
-                        <td>{{this.marketname}}({{this.bet}})</td>
-                        <td>{{this.student}}</td>
-                        <td>{{this.stake}}</td>
-                        <td id="right-align">{{this.potential}}</td>
-                    </tr>
-                {{/ifeq}}
-            {{/each}}
-        </table>
-        </div>
-        
-    
-    
-    
-        <div class="row">
-        <h4>Settled Bets</h4>
-        <table class="bet-table settled-bets">
-          <tr>
-            <th>Date Placed</th>
-            <th>Market</th>
-            <th>Student</th> 
-            <th>Stake</th>
-            <th id="right-align">Pot. Returns</th>
-          </tr>
-            {{#each bets}}
-            {{#ifeq this.settled true}}
-                <tr>
-                    <td>{{date this.createdAt}}</td>
-                    <td>{{this.marketname}}({{this.bet}})</td>
-                    <td>{{this.student}}</td>
-                    <td>{{this.stake}}</td>
-                    <td id="right-align">{{this.potential}}</td>
-                </tr>
-            {{/ifeq}}
-            {{/each}}
-        </table>
-        </div>    
-            
-            
-            
-            
-            
-            
-        </div>
-        <div class="col-xs-4 col-md-4">
-        <table class="leaderboard">
-          <tr>
-            <th>Rank</th>
-            <th>Username</th> 
-            <th id="tprofit">Profit(+/-)</th>
-          </tr>
-            {{#each users}}
-                <tr>
-                    <td id="tposition">{{inc @index}}</td>
-                    <td id="tusername">{{this.username}}</td>
-                    <td id="tprofit">{{this.profit}}</td>
-                </tr>
-            {{/each}}
-        </table>
-        </div>
-
 </section>
