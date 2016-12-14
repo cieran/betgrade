@@ -71,3 +71,13 @@ table.leaderboard tr:nth-last-child(2) {
 table.leaderboard tr:nth-last-child(1) {
    background: #FF5555;
 }
+
+.bet-table{
+    width: 95%;
+    line-height: 2.0em;
+    color: white;
+}
+
+table.bet-table tr:nth-child(1) {
+   background: darkorange;
+}
