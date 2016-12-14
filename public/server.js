@@ -24,7 +24,7 @@ var hbs = exphbs.create({
         date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YYYY hh:mm');},
         ifeq: function(a, b){
             if(a === b)
-                return true;
+                return a;
             else
                 return false;
         }
