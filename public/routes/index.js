@@ -138,7 +138,7 @@ module.exports = function(app, passport){
             });        
         
         }else{
-            var errors = true;
+            var errors = false;
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     req.flash('bet-update', 'An Error Occurred.');
@@ -153,8 +153,6 @@ module.exports = function(app, passport){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred.');
                            errors = true;
-                        }else{
-                            errors = false;
                         }
                     });
                 }
@@ -166,7 +164,7 @@ module.exports = function(app, passport){
             }else{
                 potential = (stake*2);
             }
-            if(errors == false){
+            if(errors === false){
                 var newBet = new Bet({
                     bet: side, 
                     market: marketname, 
