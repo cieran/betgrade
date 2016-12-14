@@ -26,8 +26,6 @@ var hbs = exphbs.create({
             console.log(a + "" + b);
             if(a === b)
                 return this;
-            else
-                return "no bets found..";
         }
     },
     extname: 'hbs', 
