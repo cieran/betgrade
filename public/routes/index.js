@@ -13,21 +13,21 @@ module.exports = function(app, passport){
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
-        var user = req.user;
         if(user){
             Bet.find({$query : {"username" : user.username}, $orderby : {_id : -1}})
                 .then(function(doc){
-                    res.render('bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
+                    res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
         }
     })
     app.get('/profile', function(req, res, next){
-        if(req.user){
-        User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
-            .then(function(doc){
-               res.render('profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
+        var user = req.user;
+        if(user){
+            User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
+                    .then(function(doc){
+                    res.render('profile/profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
@@ -44,24 +44,24 @@ module.exports = function(app, passport){
     app.get('/catagories/csse', function(req, res, next){
         Market.find({"course" : 'csse', "marketname" : 'To Pass'})
             .then(function(doc){
-                res.render('csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
+                res.render('catagories/csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/catagories/cs', function(req, res, next){
         Market.find({"course" : 'cs', "marketname" : 'To Pass'})
             .then(function(doc){
-                res.render('cs', {title: 'CS | Markets', markets: doc, user: req.user});
+                res.render('catagories/cs', {title: 'CS | Markets', markets: doc, user: req.user});
         });
     });    
     app.get('/catagories/ct', function(req, res, next){
         Market.find({"marketname" : 'To Pass', "course" : 'ct'})
             .then(function(doc){
                 console.log(doc);
-                res.render('ct', {title: 'CT | Markets', markets: doc, user: req.user});
+                res.render('catagories/ct', {title: 'CT | Markets', markets: doc, user: req.user});
         });
     });
     app.get('/signup', function(req, res){
-        res.render('signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
+        res.render('auth/signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
     });
     app.post('/signup', passport.authenticate('local-signup',{
         successRedirect : '/profile',
@@ -70,7 +70,7 @@ module.exports = function(app, passport){
     }));
 
     app.get('/login', function (req, res) {
-      res.render('login', {title: 'Login | Betgrade', message: req.flash('loginMessage') });
+      res.render('auth/login', {title: 'Login | Betgrade', message: req.flash('loginMessage') });
     });
 
     app.post('/login', passport.authenticate('local-login', {
@@ -84,7 +84,7 @@ module.exports = function(app, passport){
       res.redirect('/login');
     });
     app.get('/optout', function(req, res){
-        res.render('optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
+        res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
     });
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
@@ -103,7 +103,7 @@ module.exports = function(app, passport){
             } else {
                     console.log("error, wrong student or removal code");
                     req.flash('error_removal', 'Unknown Student or Removal Code!');
-                    res.render('optout', {'title' : 'Student Opt-Out | Betgrade', user: req.user, message: req.flash('error_removal')});
+                    res.render('auth/optout', {'title' : 'Student Opt-Out | Betgrade', user: req.user, message: req.flash('error_removal')});
             }
         });
     });
