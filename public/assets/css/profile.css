@@ -45,7 +45,8 @@
     color: #98fb98;
 }
 .leaderboard{
-    width: 100%;
+    margin: 0 auto;
+    width: 50%;
     line-height: 2.4em;
     color: white;
 }
