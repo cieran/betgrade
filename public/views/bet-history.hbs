@@ -3,16 +3,8 @@
             <h2 class="profile-username">{{user.username}}</h2>
             <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
         </div>
-        <div class="col-xs-4 col-md-4">
-        
-        </div>
-        
-        <div class="col-xs-4 col-md-4">
-        <p class="profile-titles">open bets | settled bets go here</p>
-        </div>
-        
-        <div class="col-xs-4 col-md-4">
-        <table class="leaderboard">
+        <div class="col-xs-5 col-md-5">
+        <table class="active-bets">
           <tr>
             <th>Date Placed</th>
             <th>Market</th>
@@ -21,6 +13,7 @@
             <th>Pot. Returns</th>
           </tr>
             {{#each bets}}
+            {{#ifeq this.settled false}}
                 <tr>
                     <td id="tposition">{{date this.createdAt}}</td>
                     <td id="tposition">{{this.marketname}}({{this.bet}})</td>
@@ -28,8 +21,40 @@
                     <td id="tprofit">{{this.stake}}</td>
                     <td id="tprofit">{{this.potential}}</td>
                 </tr>
+            {{/ifeq}}
             {{/each}}
         </table>
         </div>
+        
+    
+        <div class="col-xs-2 col-md-2">
+
+        </div>
+    
+    
+        <div class="col-xs-5 col-md-5">
+        <table class="settled-bets">
+          <tr>
+            <th>Date Placed</th>
+            <th>Market</th>
+            <th>Student</th> 
+            <th>Stake</th>
+            <th>Pot. Returns</th>
+          </tr>
+            {{#each bets}}
+            {{#ifeq this.settled true}}
+                <tr>
+                    <td id="tposition">{{date this.createdAt}}</td>
+                    <td id="tposition">{{this.marketname}}({{this.bet}})</td>
+                    <td id="tusername">{{this.student}}</td>
+                    <td id="tprofit">{{this.stake}}</td>
+                    <td id="tprofit">{{this.potential}}</td>
+                </tr>
+            {{/ifeq}}
+            {{/each}}
+        </table>
+        </div>
+        
+        
 
 </section>
