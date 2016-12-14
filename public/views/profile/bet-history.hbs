@@ -1,7 +1,14 @@
 <section class="profile-body">
-        <div class="user-info">
-            <h2 class="profile-username">{{user.username}}</h2>
-            <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
+        <div class="user-head">
+            <div class="user-info">
+                <h2 class="profile-username">{{user.username}}</h2>
+                <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
+            </div>
+            <div class="button-wrap">
+                <button active onClick="location.href='/profile'">User Stats</button>
+                <button onClick="location.href='/profile/bet-history'">Bet History</button>
+                <button onClick="location.href='/profile/leaderboard'">Leaderboard</button>
+            </div>
         </div>
         <div class="col-xs-6 col-md-6">
         <h4>Open Bets</h4>
