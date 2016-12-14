@@ -25,9 +25,9 @@ var hbs = exphbs.create({
         ifeq: function(a, b){
             console.log(a + "" + b);
             if(a === b)
-                return a;
+                return this;
             else
-                return "invalid";
+                return "no bets found..";
         }
     },
     extname: 'hbs', 
