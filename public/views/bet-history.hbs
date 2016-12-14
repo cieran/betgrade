@@ -14,6 +14,7 @@
         <div class="col-xs-4 col-md-4">
         <table class="leaderboard">
           <tr>
+            <th>Date Placed</th>
             <th>Market</th>
             <th>Student</th> 
             <th>Stake</th>
@@ -21,6 +22,7 @@
           </tr>
             {{#each bets}}
                 <tr>
+                    <td id="tposition">{{date this.createdAt}}</td>
                     <td id="tposition">{{this.marketname}}({{this.bet}})</td>
                     <td id="tusername">{{this.student}}</td>
                     <td id="tprofit">{{this.stake}}</td>
