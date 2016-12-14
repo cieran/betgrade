@@ -113,7 +113,7 @@ table.active-bets tr:nth-child(1) {
     border: 1px solid darkorange;
 }
 .profile-nav:hover {
-    background-color: darkorange;
+    background-color: orange;
     color: #1e1e1e;
 }
 .active{
