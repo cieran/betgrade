@@ -25,6 +25,7 @@
 .button-wrap button{
     line-height: 2em;
     padding: 3px;
+    width: 120px;
 }
 .profile-username{
     margin-top: 0;
