@@ -166,7 +166,7 @@ module.exports = function(app, passport){
             }else{
                 potential = (stake*2);
             }
-            if(errors === false){
+            if(errors == false){
                 var newBet = new Bet({
                     bet: side, 
                     market: marketname, 
