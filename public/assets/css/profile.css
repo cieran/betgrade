@@ -22,11 +22,7 @@
     right: 0;
     padding-top: 10px;
 }
-.button-wrap button{
-    line-height: 2em;
-    padding: 3px;
-    width: 120px;
-}
+
 .profile-username{
     margin-top: 0;
     margin-bottom: 0;
@@ -99,4 +95,19 @@ table.settled-bets tr:nth-child(1) {
 
 table.active-bets tr:nth-child(1) {
    color: #4893ff;
+}
+.profile-nav{
+    width: 120px;
+    line-height: 2em;
+    min-width: 120px;
+    border: none;
+    color: transparent;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
