@@ -7,9 +7,8 @@
     border-bottom-right-radius: 10px;
     padding: 5px;
 }
-.user-info{
+.user-head{
     display: table-caption;
-    width: 150px;
 }
 .profile-username{
     margin-top: 0;
@@ -22,18 +21,14 @@
     color: white;
     font-weight: 300;
 }
-.stat-wrapper{
-    display: table-caption;
-    margin-left: 5%;
-    width: 130px;
-    padding-top: 20px;
-}
+
 .profile-titles{
     color: white;
 }
 .stats-text{
     text-align: center;
     font-size: 16px;
+    clear: both;
 }
 .payout{
     color: #4893ff;
