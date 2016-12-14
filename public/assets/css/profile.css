@@ -53,7 +53,7 @@ td, th{
     padding: 2px;
     text-align: left;
 }
-#tprofit{
+#tprofit, #right-align{
     text-align: right;
 }
 table.leaderboard tr:nth-child(2) {

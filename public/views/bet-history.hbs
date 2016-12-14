@@ -11,16 +11,16 @@
             <th>Market</th>
             <th>Student</th> 
             <th>Stake</th>
-            <th>Pot. Returns</th>
+            <th id="right-align">Pot. Returns</th>
           </tr>
             {{#each bets}}
                 {{#ifeq this.settled false}}
                     <tr>
-                        <td id="tposition">{{date this.createdAt}}</td>
-                        <td id="tposition">{{this.marketname}}({{this.bet}})</td>
-                        <td id="tusername">{{this.student}}</td>
-                        <td id="tprofit">{{this.stake}}</td>
-                        <td id="tprofit">{{this.potential}}</td>
+                        <td>{{date this.createdAt}}</td>
+                        <td>{{this.marketname}}({{this.bet}})</td>
+                        <td>{{this.student}}</td>
+                        <td>{{this.stake}}</td>
+                        <td id="right-align">{{this.potential}}</td>
                     </tr>
                 {{/ifeq}}
             {{/each}}
@@ -38,16 +38,16 @@
             <th>Market</th>
             <th>Student</th> 
             <th>Stake</th>
-            <th>Pot. Returns</th>
+            <th id="right-align">Pot. Returns</th>
           </tr>
             {{#each bets}}
             {{#ifeq this.settled true}}
                 <tr>
-                    <td id="tposition">{{date this.createdAt}}</td>
-                    <td id="tposition">{{this.marketname}}({{this.bet}})</td>
-                    <td id="tusername">{{this.student}}</td>
-                    <td id="tprofit">{{this.stake}}</td>
-                    <td id="tprofit">{{this.potential}}</td>
+                    <td>{{date this.createdAt}}</td>
+                    <td>{{this.marketname}}({{this.bet}})</td>
+                    <td>{{this.student}}</td>
+                    <td>{{this.stake}}</td>
+                    <td id="right-align">{{this.potential}}</td>
                 </tr>
             {{/ifeq}}
             {{/each}}
