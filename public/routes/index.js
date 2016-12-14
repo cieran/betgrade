@@ -12,6 +12,16 @@ module.exports = function(app, passport){
                 res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user});
         });
     });
+    app.get('/profile/bet-history', function(req, res, next){
+        if(req.user){
+            Bet.find({$query : {"username" : user.username}, $orderby : {_id : -1}})
+                .then(function(doc){
+                    res.render('bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
+            });
+        }else{
+            res.redirect('/login');
+        }
+    })
     app.get('/profile', function(req, res, next){
         if(req.user){
         User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
