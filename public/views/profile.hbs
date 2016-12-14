@@ -33,8 +33,66 @@
             <p class="stats-text payout">Highest Payout</p>
         </div>
         </div>
+    
+    
         <div class="col-xs-4 col-md-4">
         <p class="profile-titles">open bets | settled bets go here</p>
+        <div class="row">
+        <h4>Open Bets</h4>
+        <table class="bet-table active-bets">
+          <tr>
+            <th>Date Placed</th>
+            <th>Market</th>
+            <th>Student</th> 
+            <th>Stake</th>
+            <th id="right-align">Pot. Returns</th>
+          </tr>
+            {{#each bets}}
+                {{#ifeq this.settled false}}
+                    <tr>
+                        <td>{{date this.createdAt}}</td>
+                        <td>{{this.marketname}}({{this.bet}})</td>
+                        <td>{{this.student}}</td>
+                        <td>{{this.stake}}</td>
+                        <td id="right-align">{{this.potential}}</td>
+                    </tr>
+                {{/ifeq}}
+            {{/each}}
+        </table>
+        </div>
+        
+    
+    
+    
+        <div class="row">
+        <h4>Settled Bets</h4>
+        <table class="bet-table settled-bets">
+          <tr>
+            <th>Date Placed</th>
+            <th>Market</th>
+            <th>Student</th> 
+            <th>Stake</th>
+            <th id="right-align">Pot. Returns</th>
+          </tr>
+            {{#each bets}}
+            {{#ifeq this.settled true}}
+                <tr>
+                    <td>{{date this.createdAt}}</td>
+                    <td>{{this.marketname}}({{this.bet}})</td>
+                    <td>{{this.student}}</td>
+                    <td>{{this.stake}}</td>
+                    <td id="right-align">{{this.potential}}</td>
+                </tr>
+            {{/ifeq}}
+            {{/each}}
+        </table>
+        </div>    
+            
+            
+            
+            
+            
+            
         </div>
         <div class="col-xs-4 col-md-4">
         <table class="leaderboard">
