@@ -71,7 +71,9 @@ table.leaderboard tr:nth-last-child(2) {
 table.leaderboard tr:nth-last-child(1) {
    background: #FF5555;
 }
-
+h4{
+    color: gainsboro;
+}
 .bet-table{
     width: 95%;
     line-height: 2.0em;
