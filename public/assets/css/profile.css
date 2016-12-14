@@ -79,5 +79,5 @@ table.leaderboard tr:nth-last-child(1) {
 }
 
 table.bet-table tr:nth-child(1) {
-   background: darkorange;
+   color: darkorange;
 }
