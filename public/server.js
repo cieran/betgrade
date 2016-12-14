@@ -12,6 +12,7 @@ var exphbs = require('express-handlebars');
 var session = require('express-session');
 var db = require('./config/database.js');
 var moment = require('moment');
+var tz = require('moment-timezone');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 
@@ -20,7 +21,7 @@ mongoose.connect(db.database);
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
-        date: function(date){  return moment(date).format('DD-MM-YY hh:mm');}
+        date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YYYY hh:mm');}
     },
     extname: 'hbs', 
     defaultLayout: 'layout', 
