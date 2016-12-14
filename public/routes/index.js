@@ -38,7 +38,7 @@ module.exports = function(app, passport){
         if(user){
             User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
                     .then(function(doc){
-                    res.render('profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
+                    res.render('profile/profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
