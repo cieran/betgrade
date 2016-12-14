@@ -22,12 +22,12 @@ module.exports = function(app, passport){
             res.redirect('/login');
         }
     })
-    app.get('/profile', function(req, res, next){
+    app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
         if(user){
             User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
                     .then(function(doc){
-                    res.render('profile/profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
+                    res.render('profile/leaderboard', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
