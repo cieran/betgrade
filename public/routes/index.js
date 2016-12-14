@@ -138,7 +138,7 @@ module.exports = function(app, passport){
             });        
         
         }else{
-            var errors = false;
+            var errors = true;
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     req.flash('bet-update', 'An Error Occurred.');
@@ -153,6 +153,8 @@ module.exports = function(app, passport){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred.');
                            errors = true;
+                        }else{
+                            errors = false;
                         }
                     });
                 }
