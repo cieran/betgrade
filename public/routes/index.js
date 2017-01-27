@@ -48,7 +48,7 @@ module.exports = function(app, passport){
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
         var ext = "people/" + filename;
-        Market.find({"filename" : filename}, $orderby : {marketname : -1})
+        Market.find({$query : {"filename" : filename}, $orderby : {marketname : -1}})
             .then(function(doc){
                 res.render(ext, {title: 'Markets', markets: doc, user: req.user});
         });
