@@ -15,7 +15,6 @@
 }
 .markets{
     width: 60%;
-    margin-left: 5%;
 }
 .first{
     margin-top: 0;
@@ -32,7 +31,7 @@
 .market{
     padding: 5px;
 }
-.market .col-xs-3{
+.col-xs-3{
     padding-left: 0;
 }
 
