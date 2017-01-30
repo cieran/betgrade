@@ -27,5 +27,5 @@ setInterval(function() {
 	var market = bets.market;
 	var student = bets.student;
 	var stake = bets.stake;
-	console.log(side + market + student + stake);
+	console.log(side);
 },2500);
