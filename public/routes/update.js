@@ -14,18 +14,17 @@ var Bet = require('../models/bet');
 		paired
 	else
 		unpaired
+
+var bookIds = db.likes.find({userId:100}).map(function(like) { 
+  return like.bookId; 
+});
+var books = db.books.find({_id:{$in:bookIds}});
+
 */
-
-
-
 setInterval(function() {
-	var bets = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+	var stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 		.then(function(doc){
-			return doc;
+			return doc.stake;
 	});
-	var side = bets.bet;
-	var market = bets.market;
-	var student = bets.student;
-	var stake = bets.stake;
-	console.log(side);
+	console.log(stake);
 },2500);
