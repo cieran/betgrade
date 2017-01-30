@@ -5,6 +5,11 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 
 /*
+	var side = bet.bet;
+	var market = bet.market;
+	var student = bet.student;
+	var stake = bet.stake;
+
 *	"Pairing Algorithm"
 *	Lookup all unpaired bets from Bets order from oldest to newest
 	stake = stake
@@ -18,10 +23,6 @@ var Bet = require('../models/bet');
 setInterval(function() {
 	var bet = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 		.then(function(doc){
-			console.log(doc.stake);
+			console.log(doc);
 	});
-	var side = bet.bet;
-	var market = bet.market;
-	var student = bet.student;
-	var stake = bet.stake;
 },2500);
