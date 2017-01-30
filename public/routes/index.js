@@ -73,7 +73,12 @@ module.exports = function(app, passport){
         });
     });
     app.get('/signup', function(req, res){
+        var user = req.user;
+        if(user){
+            res.redirect('/');
+        }else{
         res.render('auth/signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
+        }
     });
     app.post('/signup', passport.authenticate('local-signup',{
         successRedirect : '/profile',
@@ -82,7 +87,12 @@ module.exports = function(app, passport){
     }));
 
     app.get('/login', function (req, res) {
-      res.render('auth/login', {title: 'Login | Betgrade', message: req.flash('loginMessage') });
+        var user = req.user;
+        if(user){
+            res.redirect('/');
+        }else{
+            res.render('auth/login', {title: 'Login | Betgrade', message: req.flash('loginMessage') });
+        }
     });
 
     app.post('/login', passport.authenticate('local-login', {
