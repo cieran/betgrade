@@ -25,5 +25,5 @@ setInterval(function() {
 		.then(function(doc){
 			return doc[0].stake;
 	});
-	console.log("Stake : " + stake);
+	console.log("Stake : " + stake.val);
 },2500);
