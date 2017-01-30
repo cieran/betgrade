@@ -15,10 +15,7 @@ var Bet = require('../models/bet');
 	else
 		unpaired
 */
-var bookIds = db.likes.find({userId:100}).map(function(like) { 
-  return like.bookId; 
-});
-var books = db.books.find({_id:{$in:bookIds}});
+
 
 
 setInterval(function() {
