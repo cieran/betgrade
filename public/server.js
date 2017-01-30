@@ -50,6 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+require('./routes/update.js');
 require('./routes/index.js')(app, passport);
 
 /**
