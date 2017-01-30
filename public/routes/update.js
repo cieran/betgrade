@@ -24,4 +24,4 @@ setInterval(function() {
 	var market = bet.market;
 	var student = bet.student;
 	var stake = bet.stake;
-},250);
+},2500);
