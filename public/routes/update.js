@@ -16,7 +16,7 @@ var Bet = require('../models/bet');
 		unpaired
 */
 setInterval(function() {
-	var bet = Bet.find({"paired" : false}, {_id:1, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+	var bet = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 		.then(function(doc){
 			console.log(doc);
 	});
