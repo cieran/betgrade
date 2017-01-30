@@ -16,13 +16,14 @@ var Bet = require('../models/bet');
 		unpaired
 */
 setInterval(function() {
-	var bet = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+	Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 		.then(function(doc){
 			console.log("executing..");
+			var side = doc.bet;
+			var market = doc.market;
+			var student = doc.student;
+			var stake = doc.stake;
 	});
-	var side = doc.bet;
-	var market = doc.market;
-	var student = doc.student;
-	var stake = doc.stake;
+	
 	console.log(side + market + student + stake);
 },2500);
