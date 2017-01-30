@@ -20,9 +20,9 @@ setInterval(function() {
 		.then(function(doc){
 			console.log("executing..");
 	});
-	var side = bet.bet;
-	var market = bet.market;
-	var student = bet.student;
-	var stake = bet.stake;
+	var side = doc.bet;
+	var market = doc.market;
+	var student = doc.student;
+	var stake = doc.stake;
 	console.log(side + market + student + stake);
 },2500);
