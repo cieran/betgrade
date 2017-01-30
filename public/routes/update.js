@@ -20,7 +20,7 @@ setInterval(function() {
 		.then(function(doc){
 			return doc;
 	});
-	console.log(bet);
+	console.log(doc);
 	var side = bet.bet;
 	var market = bet.market;
 	var student = bet.student;
