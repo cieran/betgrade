@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
-
+require('./update.js');
 /*
 	var side = bet.bet;
 	var market = bet.market;

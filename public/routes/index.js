@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+require('./update.js');
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
