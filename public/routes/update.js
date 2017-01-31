@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
-require('./update.js');
 /*
 	var side = bet.bet;
 	var market = bet.market;
@@ -20,15 +19,17 @@ require('./update.js');
 	else
 		unpaired
 */
-function pairing(){
-	var stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
-		.then(function(doc){
-			var temp = doc[0].stake;
-			console.log("Temp: " + temp);
-			return temp;
-	});
-	console.log(stake);
-}
+module.exports = {
+	pairing: function(){
+		var stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+			.then(function(doc){
+				var temp = doc[0].stake;
+				console.log("Temp: " + temp);
+				return temp;
+		});
+		console.log(stake);
+	}
+};
 /*
 setInterval(function() {
 	var stake = 0;
