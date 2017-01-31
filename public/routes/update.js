@@ -4,11 +4,6 @@ var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
 /*
-	var side = bet.bet;
-	var market = bet.market;
-	var student = bet.student;
-	var stake = bet.stake;
-
 *	"Pairing Algorithm"
 *	Lookup all unpaired bets from Bets order from oldest to newest
 	stake = stake
@@ -20,21 +15,32 @@ var Bet = require('../models/bet');
 		unpaired
 */
 module.exports = {
-	pairing : function(){
+	match : function(){
 		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 			.then(function(doc){
 				var result = doc[0];
-				console.log("RESULTS: " + result);
 				var stake = result.stake;
 				var market = result.market;
 				var student = result.student;
 				var side = result.bet;
-				console.log("Stake: " + stake);
-				console.log("Side: " + side);
-				Market.find({"student" : student, "marketname":market}).then(function(results){
-					console.log("Here come the results...." + results);
+				Market.find({"student" : student, "marketname":market}, {_id:0, student:1, marketname:1, btotal:1, ltotal:1}).then(function(results){
+					var us, opp;
+					var can_pair = false;
+					if(side == 'Back'){
+						us = results[0].btotal;
+						os = results[0].ltotal;
+					}else{
+						us = results[0].ltotal;
+						os = results[0].btotal;
+					}
+					
 				});
+
 		});
+	}
+
+	settle : function(marketname, student, ){
+
 	}
 
 };

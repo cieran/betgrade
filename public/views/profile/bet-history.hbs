@@ -26,6 +26,7 @@
                         <td>{{date this.createdAt}}</td>
                         <td>{{this.marketname}}({{this.bet}})</td>
                         <td>{{this.student}}</td>
+                        <td>{{this.odds}}</td>
                         <td>{{this.stake}}</td>
                         <td id="right-align">{{this.potential}}</td>
                     </tr>
@@ -45,7 +46,7 @@
             <th>Market</th>
             <th>Student</th> 
             <th>Stake</th>
-            <th id="right-align">Pot. Returns</th>
+            <th id="right-align">P/L(+/-)</th>
           </tr>
             {{#each bets}}
             {{#ifeq this.settled true}}
