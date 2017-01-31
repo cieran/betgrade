@@ -31,10 +31,7 @@ module.exports = {
 				var side = result.bet;
 				console.log("Stake: " + stake);
 				console.log("Side: " + side);
-				Market.find({"student" : student, "marketname":market}).then(function(error, results){
-					if(error){
-						console.log(error);
-					}
+				Market.find({"student" : student, "marketname":market}).then(function(results){
 					console.log("Here come the results...." + results);
 				});
 		});
