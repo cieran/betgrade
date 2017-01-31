@@ -39,8 +39,8 @@ module.exports = {
 		});
 	}
 
-	settle : function(marketname, student, ){
-
+	settle : function(){
+			return null;
 	}
 
 };
