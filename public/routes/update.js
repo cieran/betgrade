@@ -25,8 +25,10 @@ module.exports = {
 			.then(function(err, doc){
 				var temp = doc[0];
 				return temp.stake;
+				console.log("Temp: " + temp);
+				console.log("temp.stake: " + temp.stake);
 		});
-		console.info(stake[0]);
+		console.info("stake[0] outside function: " + stake[0]);
 	}
 
 };
