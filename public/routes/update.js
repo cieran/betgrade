@@ -20,8 +20,9 @@ var Bet = require('../models/bet');
 	else
 		unpaired
 */
+var stake = 0;
 setInterval(function() {
-	var stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+	stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 		.then(function(doc){
 			var temp = doc[0].stake;
 			console.log("Temp: " + temp);
