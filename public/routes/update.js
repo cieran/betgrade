@@ -24,7 +24,7 @@ module.exports = {
 		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 			.then(function(err, doc){
 				if(err){
-					console.log(err);
+					console.log("oh you better not..." + err);
 				}
 				var result = doc[0];
 				console.log("RESULTS: " + result);
