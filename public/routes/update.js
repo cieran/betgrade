@@ -26,7 +26,7 @@ module.exports = {
 				var temp = doc[0];
 				return temp.stake + temp.student + temp.bet;
 		});
-		console.log(stake);
+		console.info(stake);
 	}
 
 };
