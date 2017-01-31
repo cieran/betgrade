@@ -28,7 +28,6 @@ module.exports = {
 				console.log("Temp: " + temp);
 				console.log("temp.stake: " + temp.stake);
 		});
-		console.info("doc[0] outside function: " + doc[0]);
 		console.info("temp.stake outside function: " + temp);
 		console.info("temp outside function: " + temp.stake);
 	}
