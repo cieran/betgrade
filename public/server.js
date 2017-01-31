@@ -16,7 +16,7 @@ var tz = require('moment-timezone');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 
-// Creating View Engine which will render Handlebar files
+// Just a function to switch the timezones to Irish time when storing in the database
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
@@ -31,6 +31,7 @@ var hbs = exphbs.create({
     layoutsDir: __dirname + '/views/layouts/'
 });
 
+// Creating View Engine which will render Handlebar files
 app.engine('hbs', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
