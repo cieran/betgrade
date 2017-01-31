@@ -21,14 +21,16 @@ var Bet = require('../models/bet');
 */
 module.exports = {
 	pairing : function(){
-		var stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
 			.then(function(err, doc){
 				var temp = doc[0];
 				return temp.stake;
 				console.log("Temp: " + temp);
 				console.log("temp.stake: " + temp.stake);
 		});
-		console.info("stake[0] outside function: " + stake[0]);
+		console.info("doc[0] outside function: " + doc[0]);
+		console.info("temp.stake outside function: " + temp);
+		console.info("temp outside function: " + temp.stake);
 	}
 
 };
