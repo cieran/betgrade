@@ -17,7 +17,6 @@ require('./config/passport')(passport);
 mongoose.connect(db.database);
 
 // Creating View Engine which will render Handlebar files
-
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
@@ -31,6 +30,7 @@ var hbs = exphbs.create({
     defaultLayout: 'layout', 
     layoutsDir: __dirname + '/views/layouts/'
 });
+
 app.engine('hbs', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -51,21 +51,6 @@ app.use(passport.session());
 app.use(flash());
 
 require('./routes/index.js')(app, passport);
-
-/**
-var https = require('https');
-var fs = require('fs');
-
-var options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
-
-var a = https.createServer(options, function (req, res) {
-  res.writeHead(200);
-  res.end("hello world\n");
-}).listen(port);
-**/
 
 app.listen(port);
 console.log('Node Server Running @ Port: ' + port);
