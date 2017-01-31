@@ -37,8 +37,7 @@ module.exports = {
 				});
 
 		});
-	}
-
+	},
 	settle : function(){
 			return null;
 	}
