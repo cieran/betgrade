@@ -188,6 +188,7 @@ module.exports = function(app, passport){
                 });
                 newBet.save(function(err){
                     req.flash('bet-update', 'Bet Placed.');
+                    pairing();
                     if(err){
                         req.flash('bet-update', err);
                     }
