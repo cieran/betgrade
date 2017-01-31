@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-require('./update.js');
+var updates = require('./update');
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
@@ -188,7 +188,7 @@ module.exports = function(app, passport){
                 });
                 newBet.save(function(err){
                     req.flash('bet-update', 'Bet Placed.');
-                    pairing();
+                    updates.pairing();
                     if(err){
                         req.flash('bet-update', err);
                     }
