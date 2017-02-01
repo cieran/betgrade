@@ -3,17 +3,7 @@ var Schema = mongoose.Schema;
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
-/*
-*	"Pairing Algorithm"
-*	Lookup all unpaired bets from Bets order from oldest to newest
-	stake = stake
-	sop = sum of paired stakes
-	soos = sum of opposite side
-	if (stake + sop < soos)
-		paired
-	else
-		unpaired
-*/
+
 module.exports = {
 	match : function(){
 		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
@@ -42,16 +32,31 @@ module.exports = {
 			return null;
 	}
 
+
 };
+
+/*	
+	Returns
+	Winning Back Bet - 		(Stake * (Odds - 1)) + Stake 
+	Losing Back Bet - 		Stake
+	Winning Lay Bet -		Stake + Stake
+	Losing Lay Bet -		Stake * (Odds - 1)
+
+	Cashout Rules	
+	Back bet placed at Odds X1 for stake Y1 with Profit Z1
+	Lay at new Odds X2 for stake Y1 with Profit Z2
+	Difference = Profit Z1 - Profit Z2
+	Difference / Odds X2 = Cashout Value
+	Stake Y2 = Y1 + Cashout Value
+	Lay at New Odds X2 for Stake Y2
+
+	Back/Lay Outcomes:
+	1) Back bet Wins, Returns Z1 - Liability from Lay Bet = Cashout
+	2) Lay bet Wins, Returns Stake Y2 Profit - Loss from Back Bet = Cashout
+*/
+
+
 /*
 setInterval(function() {
-	var stake = 0;
-	stake = Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
-		.then(function(doc){
-			var temp = doc[0].stake;
-			console.log("Temp: " + temp);
-			return temp;
-	});
-	console.log(stake);
 },2500);
 */
