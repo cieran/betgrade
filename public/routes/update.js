@@ -15,7 +15,9 @@ module.exports = {
 				var student = result.student;
 				var side = result.bet;
 				var to_match = result.to_match;
+				console.log("we up here");
 				Market.find({"student" : student, "marketname":market}, {_id:0, student:1, marketname:1, btotal:1, ltotal:1}).then(function(results){
+					console.log("we in here");
 					var us, opp;
 					var can_pair = false;
 					if(side == 'Back'){
