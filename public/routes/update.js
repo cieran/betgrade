@@ -35,8 +35,8 @@ module.exports = {
 							if(opp_to_match <= 0){
 								opp_paired = true;
 							}
-						Bet.findOneAndUpdate({"_id" : id}, {$set : {'to_match': to_match}, {'paired' : paired}}, {new : true});
-						Bet.findOneAndUpdate({"_id" : opp_id}, {$set : {'to_match': opp_to_match}, {'paired' : opp_paired}}, {new : true});
+						Bet.findOneAndUpdate({"_id" : id}, {$set : {'to_match': to_match,'paired' : paired}}, {new : true});
+						Bet.findOneAndUpdate({"_id" : opp_id}, {$set : {'to_match': opp_to_match, 'paired' : opp_paired}}, {new : true});
 						}
 					}
 
