@@ -17,7 +17,6 @@ module.exports = {
 				var student = result.student;
 				var side = result.bet;
 				var to_match = result.to_match;
-				console.log("Document " + j + " : " + doc[j]);
 				Bet.find({"student":student, "market":market, "paired":false, "settled":false, "bet": {$ne : side}}).then(function(results){
 					for(var i = 0; i < results.length; i++){
 						var array = results[i];
@@ -25,18 +24,19 @@ module.exports = {
 						var opp_paired = array.paired;
 						var opp_to_match = array.to_match;
 						var opp_settled = array.settled;
-						console.log("Document " + i + " : " + results[i]);
 						if(to_match <= opp_to_match){
+							console.log(to_match + " is less than " + opp_to_match)
 							to_match -= opp_to_match;
 							opp_to_match -= to_match;
 							if(to_match <= 0){
 								paired = true;
+
 							}
 							if(opp_to_match <= 0){
 								opp_paired = true;
 							}
-						Bet.findOneAndUpdate({"_id" : id}, {$set : {'to_match': to_match}}, {new : true});
-						Bet.findOneAndUpdate({"_id" : opp_id}, {$set : {'to_match': opp_to_match}}, {new : true});
+						Bet.findOneAndUpdate({"_id" : id}, {$set : {'to_match': to_match}, {'paired' : paired}}, {new : true});
+						Bet.findOneAndUpdate({"_id" : opp_id}, {$set : {'to_match': opp_to_match}, {'paired' : opp_paired}}, {new : true});
 						}
 					}
 
