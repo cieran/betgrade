@@ -11,6 +11,7 @@ module.exports = {
 				for(var j = 0; j < doc.length; j++){
 				var result = doc[j];
 				var id = result._id;
+				console.log("ID: " + id);
 				var stake = result.stake;
 				var odds = result.odds;
 				var market = result.market;
@@ -22,11 +23,11 @@ module.exports = {
 						var temp_to_match = to_match;
 						var array = results[i];
 						var opp_id = array._id;
+						console.log("ID to compare against: " + opp_id);
 						var opp_paired = array.paired;
 						var opp_to_match = array.to_match;
 						var opp_settled = array.settled;
 						if(temp_to_match <= opp_to_match){
-							console.log(to_match + " is less than " + opp_to_match)
 							temp_to_match -= opp_to_match;
 							opp_to_match -= temp_to_match;
 							if(temp_to_match <= 0){
