@@ -9,7 +9,7 @@ module.exports = {
 		Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1}).sort({createdAt : 1})
 			.then(function(doc){
 				for(var j = 0; j < doc.length; j++){
-				var result = doc[i];
+				var result = doc[j];
 				var id = result._id;
 				var stake = result.stake;
 				var odds = result.odds;
