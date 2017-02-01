@@ -22,13 +22,13 @@ module.exports = {
 					var can_pair = false;
 					if(side == 'Back'){
 						us = results[0].btotal;
-						os = results[0].ltotal;
-
-
+						opp = results[0].ltotal;
 					}else{
 						us = results[0].ltotal;
-						os = results[0].btotal;
+						opp = results[0].btotal;
 					}
+					console.log(us);
+					console.log(opp);
 					var docArray = results[0].toArray();
 					console.log("doc 0: " + docArray[0]);
 					console.log("doc 1: " + docArray[1]);
