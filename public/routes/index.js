@@ -180,6 +180,7 @@ module.exports = function(app, passport){
                     market: marketname, 
                     student: student, 
                     paired: false, 
+                    to_match: stake,
                     odds: odds, 
                     stake : stake, 
                     potential: potential, 

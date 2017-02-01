@@ -6,23 +6,30 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(){
-		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, student:1, stake:1}).sort({createdAt : 1}).limit(1)
+		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, odds:1, student:1, to_match:1, stake:1}).sort({createdAt : 1}).limit(1)
 			.then(function(doc){
 				var result = doc[0];
 				var stake = result.stake;
+				var odds = result.odds;
 				var market = result.market;
 				var student = result.student;
 				var side = result.bet;
+				var to_match = result.to_match;
 				Market.find({"student" : student, "marketname":market}, {_id:0, student:1, marketname:1, btotal:1, ltotal:1}).then(function(results){
 					var us, opp;
 					var can_pair = false;
 					if(side == 'Back'){
 						us = results[0].btotal;
 						os = results[0].ltotal;
+
+
 					}else{
 						us = results[0].ltotal;
 						os = results[0].btotal;
 					}
+					var docArray = results.toArray();
+					console.log("doc 0: " + docArray[0]);
+					console.log("doc 1: " + docArray[1]);
 					
 				});
 
