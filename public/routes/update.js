@@ -27,7 +27,7 @@ module.exports = {
 						us = results[0].ltotal;
 						os = results[0].btotal;
 					}
-					var docArray = results.toArray();
+					var docArray = results[0].toArray();
 					console.log("doc 0: " + docArray[0]);
 					console.log("doc 1: " + docArray[1]);
 					
