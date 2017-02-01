@@ -17,7 +17,7 @@ module.exports = {
 				var student = result.student;
 				var side = result.bet;
 				var to_match = result.to_match;
-				Bet.find({"student":student, "market":market, "paired":false, "settled":false, "bet": {$ne : side}}).then(function(results){
+				Bet.find({"student":student, "market":market, "paired":false, "settled":false, "bet": {$ne : side}, "_id" : {$ne : id}}).then(function(results){
 					for(var i = 0; i < 2; i++){
 						var temp_to_match = to_match;
 						var array = results[i];
