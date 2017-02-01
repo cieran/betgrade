@@ -25,7 +25,7 @@ module.exports = {
 						var opp_paired = array.paired;
 						var opp_to_match = array.to_match;
 						var opp_settled = array.settled;
-
+						console.log("Document " + i + " : " + results[i]);
 						if(to_match <= opp_to_match){
 							to_match -= opp_to_match;
 							opp_to_match -= to_match;
