@@ -6,6 +6,7 @@ var BetSchema = new Schema({
     market: String,
     student: String,
     paired: Boolean,
+    to_match: Number,
     odds: Number,
     stake: Number,
     potential: Number,
