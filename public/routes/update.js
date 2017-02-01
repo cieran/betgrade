@@ -20,6 +20,7 @@ module.exports = {
 					console.log("we in here");
 					var us, opp;
 					var can_pair = false;
+					console.log(side);
 					if(side == "Back"){
 						us = results[0].btotal;
 						opp = results[0].ltotal;
