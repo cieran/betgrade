@@ -17,7 +17,10 @@ module.exports = {
 				var to_match = result.to_match;
 				console.log("we up here");
 				Market.find({"student" : student, "marketname":market}, {_id:0, student:1, marketname:1, btotal:1, ltotal:1}).then(function(results){
-					console.log("we in here");
+					for(var i = 0; i < results.length; i++){
+						console.log("Result " + i + ": " + results[i]);
+					}
+					/*
 					var us, opp;
 					var can_pair = false;
 					console.log(side);
@@ -28,12 +31,10 @@ module.exports = {
 						us = results[0].ltotal;
 						opp = results[0].btotal;
 					}
-					console.log(us);
-					console.log(opp);
 					var docArray = results[0].toArray();
 					console.log("doc 0: " + docArray[0]);
 					console.log("doc 1: " + docArray[1]);
-					
+					*/
 				});
 
 		});
