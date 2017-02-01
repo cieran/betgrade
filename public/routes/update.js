@@ -6,9 +6,11 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(){
-		Bet.find({"paired" : false}, {_id:0, bet:1, market:1, odds:1, student:1, to_match:1, stake:1}).sort({createdAt : 1}).limit(1)
+		Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1}).sort({createdAt : 1})
 			.then(function(doc){
-				var result = doc[0];
+				for(var j = 0; j < doc.length; j++){
+				var result = doc[i];
+				var id = result._id;
 				var stake = result.stake;
 				var odds = result.odds;
 				var market = result.market;
@@ -18,26 +20,29 @@ module.exports = {
 				console.log("we up here");
 				Bet.find({"student":student, "market":market, "paired":false, "settled":false, "bet": {$ne : side}}).then(function(results){
 					for(var i = 0; i < results.length; i++){
-						console.log("Result " + i + ": " + results[i]);
+						var array = results[i];
+						var opp_id = array._id;
+						var opp_paired = array.paired;
+						var opp_to_match = array.to_match;
+						var opp_settled = array.settled;
+
+						if(to_match <= opp_to_match){
+							to_match -= opp_to_match;
+							opp_to_match -= to_match;
+							if(to_match <= 0){
+								paired = true;
+							}
+							if(opp_to_match <= 0){
+								opp_paired = true;
+							}
+						Bet.findOneAndUpdate({"_id" : id}, {$set : {'to_match': to_match}}, {new : true});
+						Bet.findOneAndUpdate({"_id" : opp_id}, {$set : {'to_match': opp_to_match}}, {new : true});
+						}
 					}
-					/*
-					var us, opp;
-					var can_pair = false;
-					console.log(side);
-					if(side == "Back"){
-						us = results[0].btotal;
-						opp = results[0].ltotal;
-					}else{
-						us = results[0].ltotal;
-						opp = results[0].btotal;
-					}
-					var docArray = results[0].toArray();
-					console.log("doc 0: " + docArray[0]);
-					console.log("doc 1: " + docArray[1]);
-					*/
+
 				});
 
-		});
+		}});
 	},
 	settle : function(){
 			return null;
