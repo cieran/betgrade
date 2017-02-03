@@ -129,6 +129,9 @@ module.exports = function(app, passport){
             }
         });
     });
+    app.get('/bet', function (req, res) {
+        res.redirect('/');
+    });
     app.post('/bet', function(req, res){
         var stake = req.body.stake;
         var odds = req.body.odds;
