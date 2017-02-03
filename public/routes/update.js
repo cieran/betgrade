@@ -27,26 +27,25 @@ module.exports = {
 				var opp_to_match = opp_doc.to_match;
 				var opp_settled = opp_doc.settled;
 				if(temp_to_match <= opp_to_match){
-					temp_to_match -= opp_to_match;
-					if(temp_to_match <= 0){
+					var update_to_match = temp_to_match - opp_to_match;
+					var update_opp_to_match = opp_to_match - temp_to_match
+					if(update_to_match <= 0){
 						paired = true;
-						opp_to_match += temp_to_match;
-						temp_to_match = 0;
+						update_to_match = 0;
 
 					}
-					if(opp_to_match <= 0){
+					if(update_opp_to_match <= 0){
 						opp_paired = true;
-						opp_to_match -= temp_to_match;
-						opp_to_match = 0;
+						update_opp_to_match = 0;
 					}
 					Bet.update({"_id" : id}, 
-						{$set : {'to_match': temp_to_match,'paired' : paired}}
+						{$set : {'to_match': update_to_match,'paired' : paired}}
 						, {new : true, multi: true}).exec(function(err){
 							if(err)
 								throw err;
 						});
 					Bet.update({"_id" : opp_id}, 
-						{$set : {'to_match': opp_to_match, 'paired' : opp_paired}}
+						{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
 						, {new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
