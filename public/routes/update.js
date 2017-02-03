@@ -30,21 +30,23 @@ module.exports = {
 					temp_to_match -= opp_to_match;
 					opp_to_match -= temp_to_match;
 					if(temp_to_match <= 0){
+						temp_to_match = 0;
 						paired = true;
 
 					}
 					if(opp_to_match <= 0){
+						opp_to_match = 0;
 						opp_paired = true;
 					}
-					Bet.findOneAndUpdate({"_id" : id}, 
+					Bet.update({"_id" : id}, 
 						{$set : {'to_match': temp_to_match,'paired' : paired}}
-						, {new : true}).exec(function(err){
+						, {new : true, multi: true}).exec(function(err){
 							if(err)
 								throw err;
 						});
-					Bet.findOneAndUpdate({"_id" : opp_id}, 
+					Bet.update({"_id" : opp_id}, 
 						{$set : {'to_match': opp_to_match, 'paired' : opp_paired}}
-						, {new : true}).exec(function(err){
+						, {new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
 						});
