@@ -17,8 +17,9 @@ module.exports = {
 			var student = doc.student;
 			var side = doc.bet;
 			var to_match = doc.to_match;
-			async.forEach(Bet.find({"student":student, "market":market, "paired":false, "settled":false, 
-				"bet": {$ne : side}, "_id" : {$ne : id}}), function(opp_doc, callback2){
+			Bet.find({"student":student, "market":market, "paired":false, "settled":false, 
+			"bet": {$ne : side}, "_id" : {$ne : id}}).exec(function(errs, res){
+			async.forEach(res, function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
 				console.log("Comparing " + id + " with " + opp_id);
@@ -41,7 +42,7 @@ module.exports = {
 					throw err;
 				}
 				callback();
-			});
+			})});
 		}, function(err){
 			console.log("done");
 		})});
