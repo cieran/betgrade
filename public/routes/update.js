@@ -22,7 +22,8 @@ module.exports = {
 			async.forEach(res, function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
-				console.log("Comparing " + id + " with " + opp_id);
+				var opp_student = opp_doc.student;
+				console.log("Comparing " + student + " with " + opp_student);
 				var opp_paired = opp_doc.paired;
 				var opp_to_match = opp_doc.to_match;
 				var opp_settled = opp_doc.settled;
