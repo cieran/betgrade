@@ -7,21 +7,22 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(){
-		var results = Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
-		.sort({createdAt : 1});
-		async.forEach(results, function(doc, callback){
+		async.forEach(Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
+		.sort({createdAt : 1}), function(doc, callback){
 			var result = doc;
+			var id = result._id;
 			var stake = result.stake;
 			var odds = result.odds;
 			var market = result.market;
 			var student = result.student;
 			var side = result.bet;
 			var to_match = result.to_match;
-			var opp_results = Bet.find({"student":student, "market":market, "paired":false, "settled":false, 
-				"bet": {$ne : side}, "_id" : {$ne : id}});
-			async.forEach(opp_results, function(opp_doc, callback2){
+			async.forEach(Bet.find({"student":student, "market":market, "paired":false, "settled":false, 
+				"bet": {$ne : side}, "_id" : {$ne : id}}), function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var array = opp_doc;
+				var opp_id = array._id;
+				console.log("Comparing " + id + " with " + opp_id);
 				var opp_paired = array.paired;
 				var opp_to_match = array.to_match;
 				var opp_settled = array.settled;
