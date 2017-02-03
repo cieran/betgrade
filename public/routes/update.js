@@ -23,7 +23,6 @@ module.exports = {
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
 				var opp_student = opp_doc.student;
-				console.log("Comparing " + student + " with " + opp_student);
 				var opp_paired = opp_doc.paired;
 				var opp_to_match = opp_doc.to_match;
 				var opp_settled = opp_doc.settled;
@@ -37,6 +36,18 @@ module.exports = {
 					if(opp_to_match <= 0){
 						opp_paired = true;
 					}
+					Bet.findOneAndUpdate({"_id" : id}, 
+						{$set : {'to_match': temp_to_match,'paired' : paired}}
+						, {new : true}).exec(function(err){
+							if(err)
+								throw err;
+						});
+					Bet.findOneAndUpdate({"_id" : opp_id}, 
+						{$set : {'to_match': opp_to_match, 'paired' : opp_paired}}
+						, {new : true}).exec(function(err){
+							if(err)
+								throw err;
+						});
 				}
 			}, function(err){
 				if(err){
