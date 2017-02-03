@@ -10,14 +10,7 @@ module.exports = {
 		var results = Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1});
 		async.forEach(results, function(doc, callback){
-			var result = doc[0];
-			var id = result._id;
-			var stake = result.stake;
-			var odds = result.odds;
-			var market = result.market;
-			var student = result.student;
-			var side = result.bet;
-			var to_match = result.to_match;
+			console.log(doc);
 			var opp_results = Bet.find({"student":student, "market":market, "paired":false, "settled":false, 
 				"bet": {$ne : side}, "_id" : {$ne : id}});
 			async.forEach(opp_results, function(opp_doc, callback2){
