@@ -7,6 +7,7 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(){
+
 		async.forEach(Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1}), function(doc, callback){
 			var id = doc._id;
@@ -35,7 +36,12 @@ module.exports = {
 						opp_paired = true;
 					}
 				}
-			}, callback);
+			}, function(err){
+				if(err){
+					throw err;
+				}
+				callback();
+			});
 		}, function(err){
 			console.log("done");
 		});
