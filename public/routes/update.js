@@ -11,7 +11,7 @@ module.exports = {
 			Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 			.sort({createdAt : 1}), 
 		function(doc, callback){
-			console.log(doc[]);
+			console.log(doc[1]);
 			var opp_results = doc.length;
 			async.forEach(opp_results, function(opp_doc, callback2){
 				console.log("we in here");
