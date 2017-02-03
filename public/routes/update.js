@@ -40,13 +40,13 @@ module.exports = {
 					}
 					Bet.update({"_id" : id}, 
 						{$set : {'to_match': update_to_match,'paired' : paired}}
-						, {new : true, multi: true}).exec(function(err){
+						,{new : true, multi: true}).exec(function(err){
 							if(err)
 								throw err;
 						});
 					Bet.update({"_id" : opp_id}, 
 						{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
-						, {new : true, multi:true}).exec(function(err){
+						,{new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
 						});

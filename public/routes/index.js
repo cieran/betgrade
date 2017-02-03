@@ -198,12 +198,12 @@ module.exports = function(app, passport){
                     }
                 });
                 if(side == "Back"){
-                     Market.findOneAndUpdate({"marketname" : marketname, "student": student}, {$inc : {'btotal': stake}}, {new : true}, function(err, doc){
+                     Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
                         if(err)
                             req.flash('bet-update', err);
                     });
                 }else{
-                     Market.findOneAndUpdate({"marketname" : marketname, "student": student}, {$inc : {'ltotal': stake}}, {new : true}, function(err, doc){
+                     Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'ltotal': stake}}, {upsert : true}, function(err, doc){
                         if(err)
                             req.flash('bet-update', err);
                     });
