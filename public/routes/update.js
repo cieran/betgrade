@@ -22,7 +22,7 @@ module.exports = {
 				"bet": {$ne : side}, "_id" : {$ne : id}});
 			async.forEach(opp_results, function(opp_doc, callback2){
 				var temp_to_match = to_match;
-				var array = opp_doc[0];
+				var array = opp_doc;
 				var opp_id = array._id;
 				console.log("Comparing " + id + " with " + opp_id);
 				var opp_paired = array.paired;
