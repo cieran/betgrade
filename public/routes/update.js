@@ -11,7 +11,6 @@ module.exports = {
 		.sort({createdAt : 1});
 		async.forEach(results, function(doc, callback){
 			var result = doc;
-			var id = result._id;
 			var stake = result.stake;
 			var odds = result.odds;
 			var market = result.market;
@@ -23,8 +22,6 @@ module.exports = {
 			async.forEach(opp_results, function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var array = opp_doc;
-				var opp_id = array._id;
-				console.log("Comparing " + id + " with " + opp_id);
 				var opp_paired = array.paired;
 				var opp_to_match = array.to_match;
 				var opp_settled = array.settled;
