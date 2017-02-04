@@ -179,37 +179,50 @@ module.exports = function(app, passport){
                 potential = (stake*2);
             }
             if(errors === false){
-                var newBet = new Bet({
-                    bet: side, 
-                    market: marketname, 
-                    student: student, 
-                    paired: false, 
-                    to_match: stake,
-                    odds: odds, 
-                    stake : stake, 
-                    potential: potential, 
-                    username: user.username, 
-                    settled: false
-                });
-                newBet.save(function(err){
-                    req.flash('bet-update', 'Bet Placed.');
-                    updates.match();
+                Participant.findOne({"student" : student}, function(err, data){
                     if(err){
                         req.flash('bet-update', err);
                     }
-                });
+                    var code = data[0].code;
+                    var filename = data[0].filename;
+                    var course = data[0].course;
 
-                if(side == "Back"){
-                     Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
-                        if(err)
-                            req.flash('bet-update', err);
+                    var newBet = new Bet({
+                        bet: side, 
+                        market: marketname, 
+                        student: student, 
+                        paired: false, 
+                        to_match: stake,
+                        odds: odds, 
+                        stake : stake, 
+                        potential: potential, 
+                        username: user.username, 
+                        settled: false,
+                        code: code,
+                        filename: filename,
+                        course: course
                     });
-                }else{
-                     Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'ltotal': stake}}, {upsert : true}, function(err, doc){
-                        if(err)
+                    newBet.save(function(err){
+                        req.flash('bet-update', 'Bet Placed.');
+                        updates.match();
+                        if(err){
                             req.flash('bet-update', err);
+                        }
                     });
-                }
+
+                    if(side == "Back"){
+                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
+                            if(err)
+                                req.flash('bet-update', err);
+                        });
+                    }else{
+                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'ltotal': stake}}, {upsert : true}, function(err, doc){
+                            if(err)
+                                req.flash('bet-update', err);
+                        });
+                    }
+                    });
+                
 
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
