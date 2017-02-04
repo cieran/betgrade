@@ -182,7 +182,7 @@ module.exports = function(app, passport){
             if(errors === false){
                 console.log(student);
                 Participant.findOne({"student" : student}).exec(function(err, data){
-                    async.each(data, function(doc, callback){
+                    async.forEach(data, function(doc, callback){
                     if(err){
                         req.flash('bet-update', err);
                     }
