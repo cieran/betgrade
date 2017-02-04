@@ -6,8 +6,8 @@ var MarketSchema = new Schema({
     student: String,
     back: Number,
     lay: Number,
-    btotal: Number,
-    ltotal: Number,
+    btotal: {type: Number, default: 0},
+    ltotal: {type: Number, default: 0},
     filename: String,
     code: Number,
     course: String
