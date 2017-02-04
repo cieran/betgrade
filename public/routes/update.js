@@ -17,7 +17,7 @@ module.exports = {
 			var student = doc.student;
 			var side = doc.bet;
 			var to_match = doc.to_match;
-			Bet.findOne({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
+			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
 			"bet": {$ne : side}, "_id" : {$ne : id}}).sort({createdAt: 1}).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
 				var temp_to_match = to_match;
@@ -28,11 +28,10 @@ module.exports = {
 				var opp_settled = opp_doc.settled;
 				if(temp_to_match <= opp_to_match){
 					var update_to_match = temp_to_match - opp_to_match;
-					var update_opp_to_match = opp_to_match - temp_to_match
+					var update_opp_to_match = opp_to_match - temp_to_match;
 					if(update_to_match <= 0){
 						paired = true;
 						update_to_match = 0;
-
 					}
 					if(update_opp_to_match <= 0){
 						opp_paired = true;
