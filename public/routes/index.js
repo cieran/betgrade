@@ -180,12 +180,13 @@ module.exports = function(app, passport){
             }
             if(errors === false){
                 Participant.findOne({"student" : student}, function(err, data){
+                    async.map(data, function(doc, callback){
                     if(err){
                         req.flash('bet-update', err);
                     }
-                    var code = data.code;
-                    var filename = data.filename;
-                    var course = data.course;
+                    var code = doc.code;
+                    var filename = doc.filename;
+                    var course = doc.course;
 
                     var newBet = new Bet({
                         bet: side, 
@@ -221,7 +222,13 @@ module.exports = function(app, passport){
                                 req.flash('bet-update', err);
                         });
                     }
-                    });
+                    }, function(err){
+                        if(err){
+                            throw err;
+                        }
+                        callback();
+                    })});
+                }
                 
 
             }
