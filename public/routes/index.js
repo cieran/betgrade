@@ -202,21 +202,23 @@ module.exports = function(app, passport){
                     });
                     newBet.save(function(err){
                         req.flash('bet-update', 'Bet Placed.');
-                        updates.match();
                         if(err){
                             req.flash('bet-update', err);
                         }
                     });
 
                     if(side == "Back"){
-                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
+                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
                             if(err)
                                 req.flash('bet-update', err);
+                        updates.match();
+
                         });
                     }else{
                          Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
                             if(err)
                                 req.flash('bet-update', err);
+                         updates.match();
                         });
                     }
                     }, function(err){
