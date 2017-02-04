@@ -180,7 +180,7 @@ module.exports = function(app, passport){
                 potential = (stake*2);
             }
             if(errors === false){
-                Participant.findOne({"student" : student}).exec().exec(function(err, data){
+                Participant.findOne({"student" : student}).exec(function(err, data){
                     async.map(data, function(doc, callback){
                     if(err){
                         req.flash('bet-update', err);
