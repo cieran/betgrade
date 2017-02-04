@@ -228,9 +228,6 @@ module.exports = function(app, passport){
                         }
                         callback();
                     })});
-                }
-                
-
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
