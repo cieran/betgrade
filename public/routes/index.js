@@ -181,11 +181,9 @@ module.exports = function(app, passport){
             }
             if(errors === false){
                 console.log(student);
-                Participant.findOne({"student" : student}).exec(function(err, data){
+                Participant.find({"student" : student}).exec(function(err, data){
                     async.forEach(data, function(doc, callback){
-                    if(err){
-                        req.flash('bet-update', err);
-                    }
+
                     var code = doc.code;
                     var filename = doc.filename;
                     var course = doc.course;
