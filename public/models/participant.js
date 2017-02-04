@@ -8,4 +8,4 @@ var ParticipantSchema = new Schema({
     code: Number
 }, {collection: 'participants'});
 
-var Participant = mongoose.model('Participant', ParticipantSchema);
+module.exports = mongoose.model('Participant', ParticipantSchema);
