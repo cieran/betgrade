@@ -183,9 +183,9 @@ module.exports = function(app, passport){
                     if(err){
                         req.flash('bet-update', err);
                     }
-                    var code = data[0].code;
-                    var filename = data[0].filename;
-                    var course = data[0].course;
+                    var code = data.code;
+                    var filename = data.filename;
+                    var course = data.course;
 
                     var newBet = new Bet({
                         bet: side, 
