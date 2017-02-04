@@ -198,10 +198,7 @@ module.exports = function(app, passport){
                         stake : stake, 
                         potential: potential, 
                         username: user.username, 
-                        settled: false,
-                        code: code,
-                        filename: filename,
-                        course: course
+                        settled: false
                     });
                     newBet.save(function(err){
                         req.flash('bet-update', 'Bet Placed.');
@@ -212,12 +209,12 @@ module.exports = function(app, passport){
                     });
 
                     if(side == "Back"){
-                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
+                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
                             if(err)
                                 req.flash('bet-update', err);
                         });
                     }else{
-                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'ltotal': stake}}, {upsert : true}, function(err, doc){
+                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake}}, {upsert : true}, function(err, doc){
                             if(err)
                                 req.flash('bet-update', err);
                         });
