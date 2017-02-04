@@ -48,7 +48,6 @@ module.exports = {
 						,{new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
-							match();
 						});
 				}
 			}, function(err){
