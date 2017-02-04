@@ -4,6 +4,7 @@ var updates = require('./update');
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
+var Participant = require('../models/participant');
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
@@ -112,9 +113,9 @@ module.exports = function(app, passport){
         var student_name = req.body.student;
         var removal_code = req.body.code;
         console.log(student_name, removal_code);
-        Market.count({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(err, count){
+        Participant.count({"student" : {$exists : true, $eq : student_name}, "code" : {$exists : true, $eq : removal_code}}, function(err, count){
             if(count > 0){
-                Market.remove({"student" : student_name, "code" : removal_code}, function(){
+                Market.remove({"student" : student_name}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
                         Market.find({"marketname" : 'To Pass'}).limit(10)
@@ -197,6 +198,7 @@ module.exports = function(app, passport){
                         req.flash('bet-update', err);
                     }
                 });
+
                 if(side == "Back"){
                      Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds}, {$inc : {'btotal': stake}}, {upsert : true}, function(err, doc){
                         if(err)
