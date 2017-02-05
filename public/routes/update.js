@@ -48,13 +48,14 @@ module.exports = {
 						,{new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
+
+							callback();
 						});
 				}
 			}, function(err){
 				if(err){
 					throw err;
 				}
-				callback();
 			})});
 		}, function(err){
 			console.log("done");
