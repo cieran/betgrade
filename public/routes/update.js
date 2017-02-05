@@ -8,7 +8,7 @@ var Bet = require('../models/bet');
 module.exports = {
 	match : function(){
 		Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
-		.sort({createdAt : 1}).limit(1).exec(function(err, results){
+		.sort({createdAt : 1}).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
 			var id = doc._id;
 			var stake = doc.stake;
@@ -18,7 +18,7 @@ module.exports = {
 			var side = doc.bet;
 			var to_match = doc.to_match;
 			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
-			"bet": {$ne : side}, "_id" : {$ne : id}}).sort({createdAt: 1}).exec(function(errs, res){
+			"bet": {$ne : side}, "_id" : {$ne : id}}).sort({createdAt: 1}).limit(1).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
