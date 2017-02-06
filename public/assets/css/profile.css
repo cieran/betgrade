@@ -85,7 +85,8 @@ h4{
 }
 .btn-cash-out{
     cursor: pointer;
-    width: 120px;
+    line-height: 2em;
+    width: auto;
     height: 40px;
     font-size: 14px;
     color: white;
