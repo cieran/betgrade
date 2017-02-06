@@ -58,7 +58,7 @@
     line-height: 2.4em;
     color: white;
 }
-td, th{
+.leaderboard td, .leaderboard th{
     padding: 2px;
     text-align: left;
 }
