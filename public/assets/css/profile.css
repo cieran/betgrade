@@ -127,7 +127,7 @@ h4{
 }
 
 .open-bets-head{
-    font-size: 12px;
+    font-size: 16px;
     color: #D6D7D7;
     font-weight: 400;
     border-top-right-radius: 10px;
@@ -138,7 +138,7 @@ h4{
 .open-bets-body{
     color: white;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 18px;
     background-color: #FFAE4C;
     padding: 0px;
 }
