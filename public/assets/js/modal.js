@@ -7,7 +7,10 @@ $(document).ready(function () {
         });
     }
 });
-
+$('.clickable').nextUntil('tr.clickable').slideToggle(0);
+$('.clickable').click(function(){
+    $(this).nextUntil('tr.clickable').slideToggle(0);
+});
 $(document).on("click", ".addmarket", function(){
     var marketname = $(this).data('market');
     var student = $(this).data('student');

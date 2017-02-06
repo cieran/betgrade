@@ -12,55 +12,39 @@
         </div>
         <div class="col-xs-6 col-md-6">
         <h4>Open Bets</h4>
-        <table class="bet-table active-bets">
-          <tr>
-            <th>Date Placed</th>
-            <th>Market</th>
-            <th>Student</th>
-            <th>Stake</th>
-            <th id="right-align">Pot. Returns</th>
-          </tr>
+        <table class="open-bets">
+            <thead class="open-bets-head">
+                <td>Date Placed</td>
+                <td>Market</td>
+                <td>Student</td>
+                <td>Stake</td>
+                <td>Odds</td>
+                <td>Potential Returns</td>
+            </thead>
+            <tbody class="open-bets-body">
             {{#each bets}}
                 {{#ifeq this.settled false}}
-                    <tr>
-                        <td>{{date this.createdAt}}</td>
-                        <td>{{this.marketname}}({{this.bet}})</td>
-                        <td>{{this.student}}</td>
-                        <td>{{this.stake}}</td>
-                        <td id="right-align">{{this.potential}}</td>
-                    </tr>
-                {{/ifeq}}
-            {{/each}}
-        </table>
-        </div>
-        
-    
-    
-    
-        <div class="col-xs-6 col-md-6">
-        <h4>Settled Bets</h4>
-        <table class="bet-table settled-bets">
-          <tr>
-            <th>Date Placed</th>
-            <th>Market</th>
-            <th>Student</th> 
-            <th>Stake</th>
-            <th id="right-align">P/L(+/-)</th>
-          </tr>
-            {{#each bets}}
-            {{#ifeq this.settled true}}
-                <tr>
+                <tr class="clickable">
                     <td>{{date this.createdAt}}</td>
                     <td>{{this.marketname}}({{this.bet}})</td>
                     <td>{{this.student}}</td>
                     <td>{{this.stake}}</td>
-                    <td id="right-align">{{this.potential}}</td>
+                    <td>{{this.odds}}</td>
+                    <td>{{this.potential}}</td>
                 </tr>
-            {{/ifeq}}
-            {{/each}}
+                <tr class="extra">
+                    <td colspan="1">
+                        <p>Cashout Available:</p>
+                    </td>
+                    <td colspan="2">
+                        <button class="btn-cash-out">XXXmBTC</button>
+                    </td>
+                    <td colspan="3">
+                        <p>Returns: XXXmBTC</p>
+                    </td>
+                </tr>
+                {{/ifeq}}
+            {{/each}}    
+            </tbody>
         </table>
-        </div>
-        
-        
-
 </section>

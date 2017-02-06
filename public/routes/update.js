@@ -18,7 +18,7 @@ module.exports = {
 			var side = doc.bet;
 			var to_match = doc.to_match;
 			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
-			"bet": {$ne : side}, "_id" : {$ne : id}}).sort({createdAt: 1}).limit(1).exec(function(errs, res){
+			"bet": {$ne : side}, "_id" : {$ne : id}, "stake" : {$gte : stake}}).sort({createdAt: 1}).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
@@ -48,14 +48,13 @@ module.exports = {
 						,{new : true, multi:true}).exec(function(err){
 							if(err)
 								throw err;
-
-							callback();
 						});
 				}
 			}, function(err){
 				if(err){
 					throw err;
 				}
+				callback();
 			})});
 		}, function(err){
 			console.log("done");
