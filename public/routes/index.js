@@ -224,7 +224,6 @@ module.exports = function(app, passport){
                         if(err){
                             throw err;
                         }
-                        callback();
                     })});
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
