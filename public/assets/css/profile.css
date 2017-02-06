@@ -184,3 +184,6 @@ tr.clickable
 .profile-nav:focus {
     outline: 0;
 }
+.extra td{
+    text-align: center;
+}
