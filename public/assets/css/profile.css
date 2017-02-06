@@ -80,8 +80,10 @@ table.leaderboard tr:nth-last-child(2) {
 table.leaderboard tr:nth-last-child(1) {
    background: #FF5555;
 }
-h4{
-    color: gainsboro;
+.pairing-notice{
+    text-align: center;
+    color: white;
+    font-style: italic;
 }
 .btn-cash-out{
     outline: none;
