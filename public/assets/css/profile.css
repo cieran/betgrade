@@ -86,6 +86,12 @@ table.leaderboard tr:nth-last-child(1) {
     color: white;
     font-style: italic;
 }
+.cashout-title{
+    font-size: 10px;
+}
+.returns-value{
+    font-size: 11px;
+}
 .btn-cash-out{
     outline: none;
     line-height: 2em;
