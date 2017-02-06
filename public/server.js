@@ -20,7 +20,7 @@ mongoose.connect(db.database);
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
-        date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YY hh:mm');},
+        date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YY HH:mm');},
         ifeq: function(a, b, options){
             if(a === b)
                 return options.fn(this);
