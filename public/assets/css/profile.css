@@ -91,6 +91,7 @@ table.leaderboard tr:nth-last-child(1) {
 }
 .returns-value{
     font-size: 13px;
+    text-transform: none;
 }
 .btn-cash-out{
     outline: none;
