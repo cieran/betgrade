@@ -87,10 +87,10 @@ table.leaderboard tr:nth-last-child(1) {
     font-style: italic;
 }
 .cashout-title{
-    font-size: 10px;
+    font-size: 11px;
 }
 .returns-value{
-    font-size: 11px;
+    font-size: 13px;
 }
 .btn-cash-out{
     outline: none;
