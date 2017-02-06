@@ -81,6 +81,7 @@ table.leaderboard tr:nth-last-child(1) {
    background: #FF5555;
 }
 .pairing-notice{
+    margin-top: 1%;
     text-align: center;
     color: white;
     font-style: italic;
