@@ -126,7 +126,9 @@ h4{
     border-collapse: collapse;
     padding-bottom: 20px;
 }
-
+.open-bets p{
+    margin: 0;
+}
 .open-bets-head{
     font-size: 14px;
     color: #D6D7D7;
