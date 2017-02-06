@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var BetSchema = new Schema({
     bet: String,
-    marketname: String,
+    market: String,
     student: String,
     paired: Boolean,
     to_match: Number,
