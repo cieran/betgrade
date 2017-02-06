@@ -161,6 +161,9 @@ tr.clickable
     line-height: 3em;
     border-bottom: solid 1.5px #343938;
 }
+.no-bets{
+    font-size: 16px;
+}
 .extra{
     background-color: #343938;
     line-height: 2em;
