@@ -21,25 +21,31 @@
                 <td>Potential Returns</td>
             </thead>
             <tbody class="open-bets-body">
-            {{#each bets}}
-                {{#ifeq this.settled false}}
-                <tr class="clickable">
-                    <td>{{date this.createdAt}}</td>
-                    <td>{{this.market}}({{this.bet}})</td>
-                    <td>{{this.student}}</td>
-                    <td>{{this.stake}}</td>
-                    <td>{{this.odds}}</td>
-                    <td>{{this.potential}}</td>
-                </tr>
-                <tr class="extra">
-                    <td colspan="6">
-                        <p class="cashout-title">Cashout Available:</p>
-                        <button class="btn-cash-out">XXXmBTC</button>
-                        <p class="returns-value">Returns: XXXmBTC</p>
-                    </td>
-                </tr>
-                {{/ifeq}}
-            {{/each}}    
+            {{#if bets}}
+                {{#each bets}}
+                    {{#ifeq this.settled false}}
+                    <tr class="clickable">
+                        <td>{{date this.createdAt}}</td>
+                        <td>{{this.market}}({{this.bet}})</td>
+                        <td>{{this.student}}</td>
+                        <td>{{this.stake}}</td>
+                        <td>{{this.odds}}</td>
+                        <td>{{this.potential}}</td>
+                    </tr>
+                    <tr class="extra">
+                        <td colspan="6">
+                            <p class="cashout-title">Cashout Available:</p>
+                            <button class="btn-cash-out">XXXmBTC</button>
+                            <p class="returns-value">Returns: XXXmBTC</p>
+                        </td>
+                    </tr>
+                    {{/ifeq}}
+                {{/each}}
+            {{else}}
+                <td colspan="6" class="no-bets-found">
+                    <p class="no-bets">You have no matched bets. Please come back later.</p>
+                </td>
+            {{/if}}        
             </tbody>
         </table>
 </section>
