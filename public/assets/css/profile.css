@@ -84,7 +84,8 @@ h4{
     color: gainsboro;
 }
 .btn-cash-out{
-        line-height: 2em;
+    outline: none;
+    line-height: 2em;
     cursor: pointer;
     width: 120px;
     height: 40px;
