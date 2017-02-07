@@ -13,6 +13,7 @@ var session = require('express-session');
 var db = require('./config/database.js');
 var moment = require('moment');
 var tz = require('moment-timezone');
+var swal = require('sweetalert');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 
