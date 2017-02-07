@@ -5,7 +5,6 @@ var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
 var async = require('async');
-var swal = require('sweetalert');
 var Participant = require('../models/participant');
 
 module.exports = function(app, passport){
