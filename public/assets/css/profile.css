@@ -126,7 +126,7 @@ table.leaderboard tr:nth-last-child(1) {
     border-radius: 3px;
 }
 .open-bets{
-    font-family: "Lato";
+    font-family: Lato;
     margin: 0 auto;
     width: 80%;
     text-align: center;
