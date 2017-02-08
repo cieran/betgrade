@@ -21,8 +21,11 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     doc.forEach(function(x) {
                         // Calculate the potential returns
-                        x.potential_returns = x.bet * x.odds
+                        console.log(x.bet + " * " + x.odds);
+                        x.potential_returns = x.bet * x.odds;
+                        console.log(x.potential_returns);
                     })
+
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
             });
         }else{
