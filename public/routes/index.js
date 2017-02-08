@@ -179,7 +179,7 @@ module.exports = function(app, passport){
             });
             var potential = 0;
             if(side == "Back"){
-                potential = (parseInt(stake) + (parseInt(odds) * parseInt(stake)));
+                potential = ((parseInt(odds) * parseInt(stake)));
             }else{
                 potential = (stake*2);
             }

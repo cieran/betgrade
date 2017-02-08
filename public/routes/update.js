@@ -84,15 +84,9 @@ module.exports = {
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
-				if(doc[0].back < 1){
-					var liability = Math.round(((doc[0].back * x.stake) * 10)/10);
-					console.log("Lay Liability: " + liability);
-				}else{
-					var liability = Math.round((((doc[0].back * x.stake)-x.stake) * 10)/10);
-					console.log("Lay Liability: " + liability);
-				}
-
-		        var returns = x.stake * x.odds + x.stake;
+				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
+				console.log("Lay Liability: " + liability);
+		        var returns = x.stake * x.odds;
 				var profit = returns - x.stake;
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
