@@ -94,7 +94,7 @@ module.exports = {
 				var cashout = Math.round(cashout_long * 10 ) / 10;
 				console.log("Cashout: " + cashout);
 				x.cashout = cashout;
-
+				x.returns = cashout - x.stake;
 			});
 		}else{
 			x.cashout = "N/A";
