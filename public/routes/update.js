@@ -80,10 +80,9 @@ module.exports = {
 	},
 
 	cashout_value: function(x){
-
-		if(x.bet == "Back"){
-			var returns = static_calcReturns(x.bet, x.stake, x.odds);
-			console.log("Returns " + returns);
+		var returns = static_calcReturns(x.bet, x.stake, x.odds);
+		console.log("Returns " + returns);
+		if(x.bet == "12"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
