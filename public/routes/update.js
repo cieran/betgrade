@@ -80,7 +80,7 @@ module.exports = {
 	},
 
 	cashout_value: function(x){
-		if(x.bet == "12"){
+		if(x.bet == "Back"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
@@ -93,7 +93,7 @@ module.exports = {
 
 			});
 		}else{
-			x.cashout = "not available";
+			x.cashout = "N/A";
 		}
 	}
 };
