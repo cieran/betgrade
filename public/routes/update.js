@@ -91,10 +91,9 @@ module.exports = {
 				console.log("Cashout: " + x.cashout);
 				x.cashout = diff / doc[0].back;
 
-				return x.cashout;
 			});
 		}else{
-			return 0;
+			x.cashout = "not available";
 		}
 	}
 };
