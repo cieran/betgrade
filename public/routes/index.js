@@ -22,7 +22,7 @@ module.exports = function(app, passport){
                     doc.forEach(function(x) {
                         // Calculate the potential returns
                         console.log(x.bet + " * " + x.odds);
-                        x.potential_returns = x.bet * x.odds;
+                        x.potential_returns = x.stake * x.odds;
                         console.log(x.potential_returns);
                     })
 
