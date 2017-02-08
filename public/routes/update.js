@@ -61,8 +61,14 @@ module.exports = {
 		})});
 	},
 
-	cashout_value : function(){
-		return 200;
+	cashout_value : function(x){
+        if(x.bet == "Back"){
+            x.potential_returns = x.stake * x.odds + x.stake;
+            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
+        }else{
+            x.potential_returns = x.stake * 2;
+            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
+        }
 	}
 };
 
