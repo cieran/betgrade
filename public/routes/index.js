@@ -19,6 +19,10 @@ module.exports = function(app, passport){
         if(user){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
+                    doc.forEach(function(x) {
+                        // Calculate the potential returns
+                        x.potential_returns = x.bet * x.odds
+                    })
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
             });
         }else{
