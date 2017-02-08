@@ -90,7 +90,8 @@ module.exports = {
 				var profit = returns - x.stake;
 				var diff = profit - liability;
 				var cashout_long = stake + (diff / doc[0].back);
-				var cashout = Math.round( cashout_long * 10 ) / 10;
+				console.log(cashout_long);
+				var cashout = Math.round(cashout_long * 10 ) / 10;
 				console.log("Cashout: " + cashout);
 				x.cashout = cashout;
 
