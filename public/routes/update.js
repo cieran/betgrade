@@ -61,7 +61,7 @@ module.exports = {
 		})});
 	},
 
-	cashout_value : function(x){
+	calcReturns: function(x){
         if(x.bet == "Back"){
             x.potential_returns = x.stake * x.odds + x.stake;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
@@ -69,6 +69,17 @@ module.exports = {
             x.potential_returns = x.stake * 2;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
         }
+	},
+
+	cashout_value: function(x){
+		if(x.bet == "Back"){
+		Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
+		.then(function(doc){
+			var calc_lay_profit = doc.odds * x.stake - x.stake;
+			var pot_returns = calcReturns(x) - x.stake;
+			var diff = pot_returns - calc_lay_profit;
+			x.cashout = diff / doc.odds;
+		});
 	}
 };
 
