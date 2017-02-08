@@ -20,12 +20,12 @@ module.exports = function(app, passport){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
                     doc.forEach(function(x) {
-                        // Calculate the potential returns
                         if(x.bet = "Back"){
                             x.potential_returns = x.stake * x.odds + x.stake;
-                        console.log(x.potential_returns);
+                            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
                         }else{
                             x.potential_returns = x.stake * 2;
+                            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
                         }
                     })
 
