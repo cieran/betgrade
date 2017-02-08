@@ -84,10 +84,11 @@ module.exports = {
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
-				var calc_lay_profit = (doc[0].back * x.stake) - x.stake;
-				console.log("Lay Profit: " + calc_lay_profit);
-				var pot_returns =  - x.stake;
-				var diff = pot_returns - calc_lay_profit;
+				var liability = (doc[0].back * x.stake) - x.stake;
+				console.log("Lay Liability: " + liability);
+		        var returns = x.stake * x.odds + x.stake;
+				var profit = returns - x.stake;
+				var diff = profit - liability;
 				console.log("Cashout: " + x.cashout);
 				x.cashout = diff / doc[0].back;
 
@@ -108,7 +109,7 @@ module.exports = {
 	Cashout Rules	
 	Back bet placed at Odds X1 for stake Y1 with Profit Z1
 	Lay at new Odds X2 for stake Y1 with Profit Z2
-	Difference = Profit Z1 - Profit Z2
+	Difference = Profit Z1 - Liability Z2
 	Difference / Odds X2 = Cashout Value
 	Stake Y2 = Y1 + Cashout Value
 	Lay at New Odds X2 for Stake Y2
