@@ -20,7 +20,8 @@ module.exports = function(app, passport){
             Bet.find({$query : {"username" : user.username, "paired" : true}, $orderby : {_id : -1}})
                 .then(function(doc){
                     var cashout = cashout_value();
-                    res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, co: cashout, user: req.user}); 
+                    console.log(cashout);
+                    res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
