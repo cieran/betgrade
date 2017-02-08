@@ -21,9 +21,12 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     doc.forEach(function(x) {
                         // Calculate the potential returns
-                        console.log(x.bet + " * " + x.odds);
-                        x.potential_returns = x.stake * x.odds;
+                        if(x.bet = "Back"){
+                            x.potential_returns = x.stake * x.odds + x.stake;
                         console.log(x.potential_returns);
+                        }else{
+                            x.potential_returns = x.stake * 2;
+                        }
                     })
 
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
