@@ -65,7 +65,7 @@ module.exports = {
         if(x.bet == "Back"){
             x.potential_returns = x.stake * x.odds + x.stake;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
-            returns x.potential_returns;
+            return x.potential_returns;
         }else{
             x.potential_returns = x.stake * 2;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
