@@ -74,12 +74,14 @@ module.exports = {
 	cashout_value: function(x){
 
 		if(x.bet == "Back"){
+			var returns = calcReturns(x);
+			console.log("Returns " + returns);
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
 				var calc_lay_profit = (doc[0].back * x.stake) - x.stake;
 				console.log("Lay Profit: " + calc_lay_profit);
-				var pot_returns = calcReturns(x) - x.stake;
+				var pot_returns =  - x.stake;
 				var diff = pot_returns - calc_lay_profit;
 				console.log("Cashout: " + x.cashout);
 				x.cashout = diff / doc[0].back;
