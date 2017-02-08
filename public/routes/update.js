@@ -80,6 +80,7 @@ module.exports = {
 			var diff = pot_returns - calc_lay_profit;
 			x.cashout = diff / doc.odds;
 		});
+		}
 	}
 };
 
