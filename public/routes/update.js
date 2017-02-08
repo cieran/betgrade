@@ -89,7 +89,8 @@ module.exports = {
 		        var returns = x.stake * x.odds + x.stake;
 				var profit = returns - x.stake;
 				var diff = profit - liability;
-				var cashout = diff / doc[0].back;
+				var cashout_long = stake + (diff / doc[0].back);
+				var cashout = Math.round( cashout_long * 10 ) / 10;
 				console.log("Cashout: " + cashout);
 				x.cashout = cashout;
 
