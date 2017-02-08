@@ -84,7 +84,7 @@ module.exports = {
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
-				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
+				var liability = Math.round((((doc[0].back * x.stake) * 10)/10);
 				console.log("Lay Liability: " + liability);
 		        var returns = x.stake * x.odds + x.stake;
 				var profit = returns - x.stake;
@@ -111,7 +111,7 @@ module.exports = {
 
 	Cashout Rules	
 	Back bet placed at Odds X1 for stake Y1 with Profit Z1
-	Lay at new Odds X2 for stake Y1 with Profit Z2
+	Lay at new Odds X2 for stake Y1 with Liability Z2
 	Difference = Profit Z1 - Liability Z2
 	Difference / Odds X2 = Cashout Value
 	Stake Y2 = Y1 + Cashout Value
