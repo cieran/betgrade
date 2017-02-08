@@ -59,6 +59,10 @@ module.exports = {
 		}, function(err){
 			console.log("done");
 		})});
+	},
+
+	cashout_value : function(){
+		return 200;
 	}
 };
 
