@@ -84,7 +84,7 @@ module.exports = {
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				console.log("Highest Backed " + doc[0].back);
-				var liability = Math.round((((doc[0].back * x.stake) * 10)/10);
+				var liability = Math.round(((doc[0].back * x.stake) * 10)/10);
 				console.log("Lay Liability: " + liability);
 		        var returns = x.stake * x.odds + x.stake;
 				var profit = returns - x.stake;
