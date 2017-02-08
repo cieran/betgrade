@@ -65,17 +65,24 @@ module.exports = {
         if(x.bet == "Back"){
             x.potential_returns = x.stake * x.odds + x.stake;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
-            return x.potential_returns;
         }else{
             x.potential_returns = x.stake * 2;
             console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
+        }
+	},	
+
+	static_calcReturns: function(bet, stake, odds){
+        if(bet == "Back"){
+            return stake * odds + stake;
+        }else{
+            return stake * 2;
         }
 	},
 
 	cashout_value: function(x){
 
 		if(x.bet == "Back"){
-			var returns = calcReturns(x);
+			var returns = static_calcReturns(x.bet, x.stake, x.odds);
 			console.log("Returns " + returns);
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
