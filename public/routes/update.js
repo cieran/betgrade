@@ -80,8 +80,6 @@ module.exports = {
 	},
 
 	cashout_value: function(x){
-		var returns = static_calcReturns(x.bet, x.stake, x.odds);
-		console.log("Returns " + returns);
 		if(x.bet == "12"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
@@ -95,6 +93,8 @@ module.exports = {
 
 				return x.cashout;
 			});
+		}else{
+			return 0;
 		}
 	}
 };
