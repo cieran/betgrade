@@ -23,7 +23,6 @@
             <tbody class="open-bets-body">
             {{#if bets}}
                 {{#each bets}}
-                    {{#ifeq this.settled false}}
                     <tr class="clickable">
                         <td>{{date this.createdAt}}</td>
                         <td>{{this.market}}({{this.bet}})</td>
@@ -39,7 +38,6 @@
                             <p class="returns-value">Returns: XXXmBTC</p>
                         </td>
                     </tr>
-                    {{/ifeq}}
                 {{/each}}
             {{else}}
                 <td colspan="6" class="no-bets-found">
