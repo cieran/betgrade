@@ -81,8 +81,8 @@ module.exports = {
 				console.log("Lay Profit: " + calc_lay_profit);
 				var pot_returns = calcReturns(x) - x.stake;
 				var diff = pot_returns - calc_lay_profit;
-				x.cashout = diff / doc[0].back;
 				console.log("Cashout: " + x.cashout);
+				x.cashout = diff / doc[0].back;
 
 				return x.cashout;
 			});
