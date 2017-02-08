@@ -79,6 +79,8 @@ module.exports = {
 			var pot_returns = calcReturns(x) - x.stake;
 			var diff = pot_returns - calc_lay_profit;
 			x.cashout = diff / doc.odds;
+
+			return x.cashout;
 		});
 		}
 	}
