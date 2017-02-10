@@ -7,6 +7,7 @@ var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
 var ExpressBrute = require('express-brute');
+var MemcachedStore = require('express-brute-memcached');
 var moment = require('moment');
 var store = new MemcachedStore(['127.0.0.1'], {
         prefix: 'NoConflicts'
