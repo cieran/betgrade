@@ -6,8 +6,7 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var async = require('async');
 var ExpressBrute = require('express-brute');
-var store = new ExpressBrute.MemoryStore();
-var bruteforce = new ExpressBrute(store);
+var bruteforce = new ExpressBrute();
 var Participant = require('../models/participant');
 
 module.exports = function(app, passport){
