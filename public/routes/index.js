@@ -8,7 +8,7 @@ var Participant = require('../models/participant');
 var async = require('async');
 var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore();
-var failCallback : function (req, res, next, nextValidRequestDate) {
+var failCallback = function (req, res, next, nextValidRequestDate) {
     req.flash('error', "Wow, no bruteforcing please. Try again: "+moment(nextValidRequestDate).fromNow());
     res.redirect('/');
 };
