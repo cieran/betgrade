@@ -29,7 +29,7 @@ var stopThem = new ExpressBrute(store, {
     minWait: 1000 * 60 * 5,
     maxWait: 1000 * 60 * 15,
     failCallback: failCallback,
-    handleStoreError : handleStoreError
+    handleStoreError: handleStoreError
 });
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
