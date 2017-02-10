@@ -153,6 +153,7 @@ td input{
     background: transparent;
     color: white;
     text-align: center;
+    text-transform: uppercase;
 }
 .open-bets-body{
     color: white;
