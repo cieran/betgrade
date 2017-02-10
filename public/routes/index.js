@@ -7,8 +7,10 @@ var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
 var ExpressBrute = require('express-brute');
-var store = new ExpressBrute.MemoryStore();
 var moment = require('moment');
+var store = new MemcachedStore(['127.0.0.1'], {
+        prefix: 'NoConflicts'
+    });
 var failCallback = function (req, res, next, nextValidRequestDate) {
     req.flash('error', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
