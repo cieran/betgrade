@@ -7,7 +7,7 @@ module.exports = {
     failCallback : function (req, res, next, nextValidRequestDate) {
         req.flash('error', "You've made too many failed attempts in a short period of time, please try again "+moment(nextValidRequestDate).fromNow());
         res.redirect('/'); // brute force protection triggered, send them back to the login page 
-    },
+    };
     var stopThem = new ExpressBrute(store, {
         freeRetries:2, 
         refreshTimeoutOnRequest: false,
