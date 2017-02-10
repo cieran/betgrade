@@ -16,7 +16,7 @@ var failCallback = function (req, res, next, nextValidRequestDate) {
     req.flash('error', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
-var handleStoreError = handleStoreError: function (error) {
+var handleStoreError = function (error) {
     log.error(error);
     throw {
         message: error.message,
