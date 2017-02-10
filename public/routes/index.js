@@ -46,10 +46,6 @@ module.exports = function(app, passport){
         }
     });
     app.post('/cashout', function(req, res){
-        var username = req.user.username;
-        var id = req.
-        var value = req.cashout;
-        
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
