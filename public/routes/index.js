@@ -17,7 +17,7 @@ var failCallback = function (req, res, next, nextValidRequestDate) {
     res.redirect('/');
 };
 var handleStoreError = function (error) {
-    log.error(error);
+    console.log(error);
     throw {
         message: error.message,
         parent: error.parent
