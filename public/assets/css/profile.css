@@ -149,12 +149,6 @@ table.leaderboard tr:nth-last-child(1) {
     background-color: #343938;
     border-bottom: solid 2px darkorange;
 }
-td input{
-    background: transparent;
-    color: white;
-    text-align: center;
-    text-transform: uppercase;
-}
 .open-bets-body{
     color: white;
     font-weight: 300;
