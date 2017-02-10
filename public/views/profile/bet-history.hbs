@@ -24,8 +24,8 @@
             {{#if bets}}
                 {{#each bets}}
                     <tr class="clickable">
-                        <form action="/cashout" method="post">
-                        <td><input type="text" name="student" id="student" value="{{date this.createdAt}}" readonly/></td>
+                        <form id="cashout-form" action="/cashout" method="post">
+                        <td><input form="cashout-form" type="text" name="student" id="student" value="{{date this.createdAt}}" readonly/></td>
                         <td>{{this.market}}({{this.bet}})</td>
                         <td>{{this.student}}</td>
                         <td>{{this.stake}}</td>
@@ -35,7 +35,7 @@
                     <tr class="extra">
                         <td colspan="6">
                             <p class="cashout-title">Cashout Available:</p>
-                            <input type="submit" class="btn-cash-out" value="{{this.cashout}}mBTC">
+                            <input form="cashout-form" type="submit" class="btn-cash-out" value="{{this.cashout}}mBTC">
                             <p class="returns-value">Profit: {{this.returns}}mBTC</p>
                         </td>
                     </tr>
