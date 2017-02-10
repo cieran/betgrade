@@ -10,7 +10,7 @@ var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore();
 var moment = require('moment');
 var failCallback = function (req, res, next, nextValidRequestDate) {
-    req.flash('error', "No bruteforcing please. Please try again "+moment(nextValidRequestDate).fromNow()+ ".");
+    req.flash('error', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
 var stopThem = new ExpressBrute(store, {
