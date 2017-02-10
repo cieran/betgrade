@@ -161,7 +161,6 @@ module.exports = function(app, passport){
         var student = req.body.student;
         var marketname = req.body.marketname;
         var side = req.body.side;
-        console.log(req.body, req.user);
         if(!req.user){
             req.flash('bet_error', 'You need to log in before you can place a bet');
             res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
@@ -200,7 +199,6 @@ module.exports = function(app, passport){
                 potential = (stake*2);
             }
             if(errors === false){
-                console.log(student);
                 Participant.find({"student" : student}).exec(function(err, data){
                     async.forEach(data, function(doc, callback){
 

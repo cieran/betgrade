@@ -63,7 +63,7 @@ module.exports = {
 
 	calcReturns: function(x){
         if(x.bet == "Back"){
-            x.potential_returns = x.stake * x.odds + x.stake;
+            x.potential_returns = x.stake * x.odds;
         }else{
             x.potential_returns = x.stake * 2;
         }
