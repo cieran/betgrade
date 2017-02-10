@@ -9,7 +9,7 @@ var async = require('async');
 var ExpressBrute = require('express-brute');
 var MemcachedStore = require('express-brute-memcached');
 var moment = require('moment');
-var store = new MemcachedStore(['127.0.0.1:11211'], {
+var store = new MemcachedStore(['betgrade.co:11211'], {
         prefix: 'NoConflicts'
     });
 var failCallback = function (req, res, next, nextValidRequestDate) {
