@@ -9,27 +9,17 @@ var async = require('async');
 var ExpressBrute = require('express-brute');
 var MemcachedStore = require('express-brute-memcached');
 var moment = require('moment');
-var store = new MemcachedStore(['138.68.138.40:11211'], {
-        prefix: 'NoConflicts'
-    });
+var store = new MemcachedStore('138.68.138.40:11211');
 var failCallback = function (req, res, next, nextValidRequestDate) {
     req.flash('error', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
-var handleStoreError = function (error) {
-    console.log(error);
-    throw {
-        message: error.message,
-        parent: error.parent
-    };
-}
 var stopThem = new ExpressBrute(store, {
     freeRetries:2, 
     refreshTimeoutOnRequest: false,
     minWait: 1000 * 60 * 5,
     maxWait: 1000 * 60 * 15,
     failCallback: failCallback,
-    handleStoreError: handleStoreError
 });
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
