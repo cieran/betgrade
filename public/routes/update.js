@@ -64,10 +64,8 @@ module.exports = {
 	calcReturns: function(x){
         if(x.bet == "Back"){
             x.potential_returns = x.stake * x.odds + x.stake;
-            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
         }else{
             x.potential_returns = x.stake * 2;
-            console.log(x.student + ", " + x.bet + ", " + x.potential_returns);
         }
 	},	
 
@@ -83,16 +81,12 @@ module.exports = {
 		if(x.bet == "Back"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
-				console.log("Highest Backed " + doc[0].back);
 				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
-				console.log("Lay Liability: " + liability);
 		        var returns = x.stake * x.odds;
 				var profit = returns - x.stake;
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
-				console.log(cashout_long);
 				var cashout = Math.round(cashout_long * 10 ) / 10;
-				console.log("Cashout: " + cashout);
 				x.cashout = cashout;
 				x.returns = cashout - x.stake;
 			});
