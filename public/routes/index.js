@@ -6,6 +6,7 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
+/**
 var ExpressBrute = require('express-brute');
 var MemcachedStore = require('express-brute-memcached');
 var moment = require('moment');
@@ -21,6 +22,7 @@ var stopThem = new ExpressBrute(store, {
     maxWait: 1000 * 60 * 15,
     failCallback: failCallback,
 });
+**/
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).limit(10)
@@ -100,7 +102,7 @@ module.exports = function(app, passport){
         res.render('auth/signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
         }
     });
-    app.post('/signup', stopThem.prevent, passport.authenticate('local-signup',{
+    app.post('/signup', passport.authenticate('local-signup',{
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash: true
@@ -115,7 +117,7 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', stopThem.prevent, passport.authenticate('local-login', {
+    app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/profile',
         failureRedirect : '/login',
         failureFlash : true
@@ -128,7 +130,7 @@ module.exports = function(app, passport){
     app.get('/optout', function(req, res){
         res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
     });
-    app.post('/optout', stopThem.prevent, function(req, res){
+    app.post('/optout', function(req, res){
         var student_name = req.body.student;
         var removal_code = req.body.code;
         console.log(student_name, removal_code);
