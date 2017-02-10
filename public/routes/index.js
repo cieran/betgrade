@@ -6,14 +6,7 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
-var ExpressBrute = require('express-brute');
-var store = new ExpressBrute.MemoryStore();
-var bruteforce = new ExpressBrute(store, {
-    freeRetries:2, 
-    refreshTimeoutOnRequest: false,
-    minWait: 1000 * 60,
-    maxWait: 1000 * 60 * 10
-});
+var bruteforce = require('../config/bruteforce');
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
@@ -94,7 +87,7 @@ module.exports = function(app, passport){
         res.render('auth/signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
         }
     });
-    app.post('/signup', bruteforce.prevent, passport.authenticate('local-signup',{
+    app.post('/signup', bruteforce.stopThem.prevent, passport.authenticate('local-signup',{
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash: true
@@ -109,7 +102,7 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', bruteforce.prevent, passport.authenticate('local-login', {
+    app.post('/login', bruteforce.stopThem.prevent, passport.authenticate('local-login', {
         successRedirect : '/profile',
         failureRedirect : '/login',
         failureFlash : true
@@ -122,7 +115,7 @@ module.exports = function(app, passport){
     app.get('/optout', function(req, res){
         res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
     });
-    app.post('/optout', bruteforce.prevent, function(req, res){
+    app.post('/optout', bruteforce.stopThem.prevent, function(req, res){
         var student_name = req.body.student;
         var removal_code = req.body.code;
         console.log(student_name, removal_code);
