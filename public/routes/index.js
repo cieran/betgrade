@@ -8,12 +8,12 @@ var Participant = require('../models/participant');
 var async = require('async');
 var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore();
-var bruteforce = new ExpressBrute(store, 
+var bruteforce = new ExpressBrute(store, {
     freeRetries:2, 
     refreshTimeoutOnRequest: false,
     minWait: 1000 * 60,
     maxWait: 1000 * 60 * 10
-);
+});
 
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
