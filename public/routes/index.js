@@ -16,12 +16,20 @@ var failCallback = function (req, res, next, nextValidRequestDate) {
     req.flash('error', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
+var handleStoreError = handleStoreError: function (error) {
+    log.error(error);
+    throw {
+        message: error.message,
+        parent: error.parent
+    };
+}
 var stopThem = new ExpressBrute(store, {
     freeRetries:2, 
     refreshTimeoutOnRequest: false,
     minWait: 1000 * 60 * 5,
     maxWait: 1000 * 60 * 15,
-    failCallback: failCallback
+    failCallback: failCallback,
+    handleStoreError : handleStoreError
 });
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
