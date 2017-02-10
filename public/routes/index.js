@@ -6,8 +6,19 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
-var bruteforce = require('../config/bruteforce');
-
+var ExpressBrute = require('express-brute');
+var store = new ExpressBrute.MemoryStore();
+var failCallback : function (req, res, next, nextValidRequestDate) {
+    req.flash('error', "Wow, no bruteforcing please. Try again: "+moment(nextValidRequestDate).fromNow());
+    res.redirect('/');
+};
+var stopThem = new ExpressBrute(store, {
+    freeRetries:2, 
+    refreshTimeoutOnRequest: false,
+    minWait: 1000 * 60,
+    maxWait: 1000 * 60 * 10,
+    failCallback: failCallback
+});
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).limit(10)
@@ -87,7 +98,7 @@ module.exports = function(app, passport){
         res.render('auth/signup', {title: 'Register | Betgrade', message: req.flash('signupMessage') });
         }
     });
-    app.post('/signup', bruteforce.stopThem.prevent, passport.authenticate('local-signup',{
+    app.post('/signup', stopThem.prevent, passport.authenticate('local-signup',{
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash: true
@@ -102,7 +113,7 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', bruteforce.stopThem.prevent, passport.authenticate('local-login', {
+    app.post('/login', stopThem.prevent, passport.authenticate('local-login', {
         successRedirect : '/profile',
         failureRedirect : '/login',
         failureFlash : true
@@ -115,7 +126,7 @@ module.exports = function(app, passport){
     app.get('/optout', function(req, res){
         res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
     });
-    app.post('/optout', bruteforce.stopThem.prevent, function(req, res){
+    app.post('/optout', stopThem.prevent, function(req, res){
         var student_name = req.body.student;
         var removal_code = req.body.code;
         console.log(student_name, removal_code);
