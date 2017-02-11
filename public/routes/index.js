@@ -4,6 +4,7 @@ var updates = require('./update');
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
+var Test = require('../models/test');
 var Participant = require('../models/participant');
 var async = require('async');
 /**
@@ -26,6 +27,12 @@ var stopThem = new ExpressBrute(store, {
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).limit(10)
+            .then(function(doc){
+                res.render('index', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
+        });
+    });
+    app.get('/test-env', function(req, res, next){
+        Test.find({"marketname" : 'To Pass'}).limit(10)
             .then(function(doc){
                 res.render('index', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
         });
@@ -176,9 +183,10 @@ module.exports = function(app, passport){
         }else{
             var errors = false;
             User.find({"username" : user.username}).then(function(funds){
-                if(err)
+                if(err){
                     req.flash('bet-update', 'An Error Occurred.');
                     errors = true;
+                }
                 if(funds[0].funds < stake){
                     req.flash('bet-update', 'Insufficient Funds.');                    
                     errors = true;
