@@ -8,8 +8,8 @@
         <div class="bet-column-market">
             {{# each items}}
             <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.odds}}<br><p>{{this.total}}mBTC</p> </button></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.odds}}<br><p>{{this.total}}mBTC</p> </button></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.odds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.odds}}<br><p>{{this.total}}mBTC</p> </button></div>
+            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.odds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.odds}}<br><p>{{this.total}}mBTC</p> </button></div>
             {{/each}}
         </div>  		
 </section>
