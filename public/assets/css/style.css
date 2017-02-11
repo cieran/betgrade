@@ -95,13 +95,26 @@ nav{
 .bet-column-head .col-md-3{
     text-align: center;
 }
+.bet-column-head .col-md-2{
+    text-align: center;
+}
 .bet-column-head .col-md-6, .bet-column-head .col-md-3{
     color: slategrey;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 14px;
 }
+.bet-column-head .col-md-4, .bet-column-head .col-md-2{
+    color: slategrey;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
 .bet-column-market .col-md-6{
+    font-size: 16px;
+    color: white;
+}
+.bet-column-market .col-md-4{
     font-size: 16px;
     color: white;
 }
@@ -117,6 +130,10 @@ nav{
     width: 100%;
 }
 .bet-column-market .col-md-6, .bet-column-market .col-md-3{
+    height: 50px;
+    line-height: 50px;
+}
+.bet-column-market .col-md-4, .bet-column-market .col-md-2{
     height: 50px;
     line-height: 50px;
 }
