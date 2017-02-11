@@ -175,10 +175,12 @@ module.exports = function(app, passport){
         
         }else{
             var errors = false;
-            User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
+            User.find({"username" : user.username}).then(function(funds){
                 if(err)
+                    req.flash('bet-update', 'An Error Occurred.');
                     errors = true;
                 if(funds[0].funds < stake){
+                    req.flash('bet-update', 'Insufficient Funds.');                    
                     errors = true;
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
