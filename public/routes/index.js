@@ -178,17 +178,17 @@ module.exports = function(app, passport){
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     req.flash('bet-update', 'An Error Occurred.');
-                    errors = true;
+                    res.redirect('/');
                 if(!funds){
                     req.flash('bet-update', 'Insufficient Funds.');                    
-                    errors = true;
+                    res.redirect('/');
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred.');
-                           errors = true;
+                    res.redirect('/');
                         }
                     });
                 }
