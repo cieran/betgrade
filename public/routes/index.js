@@ -34,7 +34,7 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res, next){
         Test.find({"marketname" : 'To Pass'}).limit(10)
             .then(function(doc){
-                res.render('index', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
+                res.render('test-env', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
