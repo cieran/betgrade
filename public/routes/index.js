@@ -177,18 +177,16 @@ module.exports = function(app, passport){
             var errors = false;
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
-                    req.flash('bet-update', 'An Error Occurred.');
-                    res.redirect('/');
-                if(!funds){
-                    req.flash('bet-update', 'Insufficient Funds.');                    
-                    res.redirect('/');
+                    errors = true;
+                if(funds.funds < stake){
+                    errors = true;
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred.');
-                    res.redirect('/');
+                           errors = true;
                         }
                     });
                 }
@@ -246,6 +244,8 @@ module.exports = function(app, passport){
                         }
                         callback();
                     })});
+            }else{
+                res.redirect('/');
             }
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
