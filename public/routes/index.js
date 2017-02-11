@@ -178,7 +178,7 @@ module.exports = function(app, passport){
             User.findOne({"username" : user.username, "funds" : {$gte : stake}}, function(err, funds){
                 if(err)
                     errors = true;
-                if(funds.funds < stake){
+                if(funds[0].funds < stake){
                     errors = true;
                 }else{
                     User.findOneAndUpdate({"username" : user.username}, 
