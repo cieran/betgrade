@@ -32,7 +32,9 @@ module.exports = function(app, passport){
         });
     });
     app.get('/test-env', function(req, res, next){
-        Test.find({"marketname" : 'To Pass'}).limit(10)
+        Test.aggregate({$group: {"_id" : "$student", "bside" : {$min : "$side"},
+            "lside" : {$max : "$side"},"odds" : {$max : "$odds"},
+            "total" : {$max : "$total"}}})
             .then(function(doc){
                 res.render('test-env', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
         });
