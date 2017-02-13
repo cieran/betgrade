@@ -74,6 +74,8 @@ module.exports = function(app, passport){
                     var cashout_long = bet.stake + (diff / doc[0].back);
                     var cashout = Math.round(cashout_long * 100) / 100;
                     console.log(cashout);
+                            res.redirect('back');
+
                 });
             }else{
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
@@ -85,6 +87,7 @@ module.exports = function(app, passport){
                     var cashout_long = bet.stake + (diff / doc[0].back);
                     var cashout = Math.round(cashout_long * 10 ) / 10;
                     console.log(cashout);
+                            res.redirect('back');
                 });
             }
         });
@@ -104,7 +107,7 @@ module.exports = function(app, passport){
                 });
             }
         }); */
-        res.redirect('back');
+
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
