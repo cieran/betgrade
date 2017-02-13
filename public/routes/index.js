@@ -62,27 +62,19 @@ module.exports = function(app, passport){
         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
             if(err){
                 req.flash('cashout-update', "Uh oh, something went wrong.");
+                res.redirect('back');
             }else{
                 User.findOneAndUpdate({"username":req.body.username}, {$inc : {"funds" : cashout}}, {new:true}, function(err){
                     if(err){
                         req.flash('cashout-update', "Nope... Something Went Wrong.");
+                        res.redirect('back');
                     }else{
                         req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
+                        res.redirect('back');
                     }
                 });
             }
         });
-
-        User.findOneAndUpdate({"username" : user.username}, 
-                                          {$inc : {"funds" : -stake}}, 
-                                          {new : true}, function(err){
-                        if(err){
-                           req.flash('bet-update', 'An Error Occurred.');
-                           errors = true;
-                        }
-                    });
-        
-        res.redirect('back');
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
