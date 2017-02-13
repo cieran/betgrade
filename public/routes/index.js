@@ -78,6 +78,7 @@ module.exports = function(app, passport){
                 });
             }
         }); */
+        res.redirect('back');
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
