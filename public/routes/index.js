@@ -34,7 +34,7 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res, next){
         Test.aggregate([{$group: {"_id" : "$student", "bside" : {$min : "$side"},
             "lside" : {$max : "$side"},"odds" : {$max : "$odds"},
-            "total" : {$max : "$total"}}}]).exec(function (doc){
+            "total" : {$max : "$total"}}}]).exec(function(doc){
                 res.render('test-env', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
             });
     });
