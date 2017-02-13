@@ -35,7 +35,7 @@
                         <td colspan="6">
                             <p class="cashout-title">Cashout Available:</p>
                             <form action="/cashout" method="post">
-                            <button value="{{this._id}}" class="btn-cash-out">{{this.cashout}}mBTC</button>
+                            <button name="betid" value="{{this._id}}" class="btn-cash-out">{{this.cashout}}mBTC</button>
                             </form>
                             <p class="returns-value">Profit: {{this.returns}}mBTC</p>
                         </td>
