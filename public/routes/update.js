@@ -105,7 +105,9 @@ module.exports = {
 		}
 	},
 	return_cashout_value: function(bet_id){
+		console.log("we in here ..." + bet_id);
 		Bet.find({"_id" : bet_id}).then(function(bet){
+			console.log("we here " + bet[0]);
 			if(bet.bet == "Back"){
 				console.log(bet);
 				Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
