@@ -36,6 +36,7 @@
                             <p class="cashout-title">Cashout Available:</p>
                             <form action="/cashout" method="post">
                             <input type="hidden" name="betid" value="{{this._id}}">
+                            <input type="hidden" name="profit" value="{{this.returns}}">
                             <button name="cashout" value="{{this.cashout}}" class="btn-cash-out">{{this.cashout}}mBTC</button>
                             </form>
                             <p class="returns-value">Profit: {{this.returns}}mBTC</p>
