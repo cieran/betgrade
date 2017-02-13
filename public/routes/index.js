@@ -60,7 +60,7 @@ module.exports = function(app, passport){
         console.log("Bet ID: " + bet_id);
         console.log("Cashout Value: " + cashout);
         Bet.findOne({"_id" : bet_id}).exec(function(doc){
-            console.log("You must be user... " + doc[0].username);
+            console.log("You must be user... " + doc.username);
         });
         res.redirect('back');
     });
