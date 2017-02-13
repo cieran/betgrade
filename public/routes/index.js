@@ -31,6 +31,7 @@ module.exports = function(app, passport){
                 res.render('index', {title: 'Betgrade | Home', message: req.flash('error'), items: doc, user: req.user});
         });
     });
+
     app.get('/test-env', function(req, res, next){
         Test.aggregate([{$group: {"_id" : "$student", "bside" : {$min : "$side"},
             "lside" : {$max : "$side"},"odds" : {$max : "$odds"},
@@ -100,7 +101,6 @@ module.exports = function(app, passport){
     app.get('/catagories/ct', function(req, res, next){
         Market.find({"marketname" : 'To Pass', "course" : 'ct'})
             .then(function(doc){
-                console.log(doc);
                 res.render('catagories/ct', {title: 'CT | Markets', markets: doc, user: req.user});
         });
     });
@@ -205,7 +205,7 @@ module.exports = function(app, passport){
             });
             var potential = 0;
             if(side == "Back"){
-                potential = ((parseInt(odds) * parseInt(stake)));
+                potential = ((parseFloat(odds) * parseFloat(stake)));
             }else{
                 potential = (stake*2);
             }
@@ -262,7 +262,13 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
             });
+
         }
+    });
+    app.get('/:404', function(req, res, next){
+            var err = "The page you are looking for may not exist.";
+            res.status(404);      
+            res.render('error', {title: 'Betgrade | Error', message: err, user: req.user});
     });
 
 };

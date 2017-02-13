@@ -58,7 +58,7 @@ console.log('Node Server Running @ Port: ' + port);
 
 // Boring error handling down here
 app.use(function(req, res, next) {
-  var err = new Error("where do you think you're going?");
+  var err = new Error("The page you are looking for may not exist.");
   err.status = 404;
   next(err);
 });
@@ -66,7 +66,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
-    message: err.message,
+    message: "That page will exist. Someday.",
     error: {}
   });
 });

@@ -91,7 +91,17 @@ module.exports = {
 				x.returns = cashout - x.stake;
 			});
 		}else{
-			x.cashout = "N/A";
+			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
+			.then(function(doc){
+				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
+		        var returns = x.stake * x.odds;
+				var profit = returns - x.stake;
+				var diff = profit - liability;
+				var cashout_long = x.stake + (diff / doc[0].back);
+				var cashout = Math.round(cashout_long * 10 ) / 10;
+				x.cashout = cashout;
+				x.returns = cashout - x.stake;
+			});
 		}
 	}
 };

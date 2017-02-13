@@ -276,3 +276,61 @@ footer{
     color: white;
     background-color: darkorange;
 }
+.err-head{
+    text-align: center;
+    font-family: Lato;
+    text-transform: capitalize;
+    font-size: 20px;
+    color: white;
+    padding-bottom: 5px;
+}
+.err-msg{
+    text-align: center;
+    font-family: Lato;
+    font-weight: 200;
+    font-size: 18px;
+    color: white;
+    padding-bottom: 10px;
+
+}
+.err-btn{
+    text-align: center;
+    color: dodgerblue;
+    background-color: transparent;
+    line-height: 3em;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 100;
+    border: solid 1px dodgerblue;
+    outline: 0;
+}
+.err-btn:hover{
+    text-align: center;
+    color: orange;
+    background-color: transparent;
+    line-height: 3em;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 100;
+    border: solid 1px orange;
+}
+.err-btn:active{
+    text-align: center;
+    color: red;
+    background-color: transparent;
+    line-height: 3em;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 100;
+    border: solid 1px red;
+}
+.err-container{
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 40%;
+    padding: 20px;
+    padding-top: 5px;
+    background: #1e1e1e;
+    text-align: center;
+    border-radius: 10px;
+}
