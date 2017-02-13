@@ -62,6 +62,7 @@ module.exports = function(app, passport){
         Bet.findOne(_id : bet_id).exec(function(doc){
             console.log("You must be user... " + doc[0].username);
         });
+        res.redirect('back');
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
