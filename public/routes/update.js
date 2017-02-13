@@ -107,6 +107,7 @@ module.exports = {
 	return_cashout_value: function(bet_id){
 		Bet.find({"_id" : bet_id}).then(function(bet){
 			if(bet.bet == "Back"){
+				console.log(bet);
 				Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
 				.then(function(doc){
 					var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
