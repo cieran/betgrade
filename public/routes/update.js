@@ -42,13 +42,14 @@ module.exports = {
 						,{new : true, multi: true}).exec(function(err){
 							if(err)
 								throw err;
+							Bet.update({"_id" : opp_id}, 
+								{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
+								,{new : true, multi:true}).exec(function(err){
+									if(err)
+										throw err;
+								});
 						});
-					Bet.update({"_id" : opp_id}, 
-						{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
-						,{new : true, multi:true}).exec(function(err){
-							if(err)
-								throw err;
-						});
+					
 				}
 			}, function(err){
 				if(err){
@@ -103,35 +104,6 @@ module.exports = {
 				x.returns = cashout - x.stake;
 			});
 		}
-	},
-	return_cashout_value: function(bet_id){
-		Bet.find({"_id" : bet_id}).then(function(bet){
-			var bet = bet[0];
-			if(bet.bet == "Back"){
-				console.log(bet);
-				Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
-				.then(function(doc){
-					var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
-			        var returns = bet.stake * bet.odds;
-					var profit = returns - bet.stake;
-					var diff = profit - liability;
-					var cashout_long = bet.stake + (diff / doc[0].back);
-					var cashout = Math.round(cashout_long * 100) / 100;
-					return cashout;
-				});
-			}else{
-				Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
-				.then(function(doc){
-					var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
-			        var returns = bet.stake + bet.stake;
-					var profit = returns - bet.stake;
-					var diff = profit - liability;
-					var cashout_long = bet.stake + (diff / doc[0].back);
-					var cashout = Math.round(cashout_long * 10 ) / 10;
-					return cashout;
-				});
-			}
-		});
 	}
 };
 
