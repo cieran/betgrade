@@ -57,6 +57,8 @@ module.exports = function(app, passport){
     app.post('/cashout', function(req, res){
         var bet_id = req.body.betid;
         var cashout = req.body.cashout;
+        var user = req.body.username;
+        console.log("Logged in as: " + user);
         console.log("Bet ID: " + bet_id);
         console.log("Cashout Value: " + cashout);
         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
@@ -64,7 +66,7 @@ module.exports = function(app, passport){
                 req.flash('cashout-update', "Uh oh, something went wrong.");
                 res.redirect('back');
             }else{
-                User.findOneAndUpdate({"username":req.body.username}, {$inc : {"funds" : cashout}}, {new:true}, function(err){
+                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout}}, function(err){
                     if(err){
                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                         res.redirect('back');
