@@ -58,7 +58,7 @@ module.exports = function(app, passport){
         var bet_id = req.body.betid;
         var cashout = req.body.cashout;
         var user = req.user.username;
-        var profit = req.body.profit;
+        var set_profit = req.body.profit;
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
             if(bet.bet == "Back"){
@@ -76,7 +76,7 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
@@ -108,7 +108,7 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
