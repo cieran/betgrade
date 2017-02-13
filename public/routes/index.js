@@ -59,8 +59,6 @@ module.exports = function(app, passport){
         var cashout = req.body.cashout;
         var user = req.user.username;
         var profit = req.body.profit;
-        console.log("Value returned from function: " + returns_func);
-        console.log("Cashout Value: " + cashout);
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
             if(bet.bet == "Back"){
@@ -72,8 +70,8 @@ module.exports = function(app, passport){
                     var profit = returns - bet.stake;
                     var diff = profit - liability;
                     var cashout_long = bet.stake + (diff / doc[0].back);
-                    var cashout = Math.round(cashout_long * 100) / 100;
-                    console.log(cashout);
+                    var calc_cashout = Math.round(cashout_long * 100) / 100;
+                    console.log(calc_cashout);
                             res.redirect('back');
 
                 });
@@ -85,8 +83,8 @@ module.exports = function(app, passport){
                     var profit = returns - bet.stake;
                     var diff = profit - liability;
                     var cashout_long = bet.stake + (diff / doc[0].back);
-                    var cashout = Math.round(cashout_long * 10 ) / 10;
-                    console.log(cashout);
+                    var calc_cashout = Math.round(cashout_long * 10 ) / 10;
+                    console.log(calc_cashout);
                             res.redirect('back');
                 });
             }
