@@ -62,7 +62,6 @@ module.exports = function(app, passport){
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
             if(bet.bet == "Back"){
-                console.log(bet);
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
                 .then(function(doc){
                     var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
@@ -71,8 +70,26 @@ module.exports = function(app, passport){
                     var diff = profit - liability;
                     var cashout_long = bet.stake + (diff / doc[0].back);
                     var calc_cashout = Math.round(cashout_long * 100) / 100;
-                    console.log(calc_cashout);
-                            res.redirect('back');
+                    if(calc_cashout == cashout){
+                        Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
+                            if(err){
+                                req.flash('cashout-update', "Uh oh, something went wrong.");
+                                res.redirect('back');
+                            }else{
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : profit}}, function(err){
+                                    if(err){
+                                        req.flash('cashout-update', "Nope... Something Went Wrong.");
+                                        res.redirect('back');
+                                    }else{
+                                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
+                                        res.redirect('back');
+                                    }
+                                });
+                            }
+                        });
+                    }else{
+
+                    }
 
                 });
             }else{
@@ -84,28 +101,29 @@ module.exports = function(app, passport){
                     var diff = profit - liability;
                     var cashout_long = bet.stake + (diff / doc[0].back);
                     var calc_cashout = Math.round(cashout_long * 10 ) / 10;
-                    console.log(calc_cashout);
-                            res.redirect('back');
-                });
-            }
-        });
-        /*Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
-            if(err){
-                req.flash('cashout-update', "Uh oh, something went wrong.");
-                res.redirect('back');
-            }else{
-                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : profit}}, function(err){
-                    if(err){
-                        req.flash('cashout-update', "Nope... Something Went Wrong.");
-                        res.redirect('back');
+                    if(calc_cashout == cashout){
+                        Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
+                            if(err){
+                                req.flash('cashout-update', "Uh oh, something went wrong.");
+                                res.redirect('back');
+                            }else{
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : profit}}, function(err){
+                                    if(err){
+                                        req.flash('cashout-update', "Nope... Something Went Wrong.");
+                                        res.redirect('back');
+                                    }else{
+                                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
+                                        res.redirect('back');
+                                    }
+                                });
+                            }
+                        });
                     }else{
-                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
-                        res.redirect('back');
+                        
                     }
                 });
             }
-        }); */
-
+        });
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
