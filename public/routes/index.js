@@ -48,7 +48,7 @@ module.exports = function(app, passport){
                        updates.calcReturns(x);
                        updates.cashout_value(x);
                     })
-                    res.render('profile/bet-history', {title: "Bet History | Betgrade", bets: doc, user: req.user}); 
+                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
@@ -59,9 +59,29 @@ module.exports = function(app, passport){
         var cashout = req.body.cashout;
         console.log("Bet ID: " + bet_id);
         console.log("Cashout Value: " + cashout);
-        Bet.find({"_id" : bet_id}).then(function(doc){
-            console.log("You must be user... " + doc[0].username);
+        Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
+            if(err){
+                req.flash('cashout-update', "Uh oh, something went wrong.");
+            }else{
+                User.findOneAndUpdate({"username":req.body.username}, {$inc : {"funds" : cashout}}, {new:true}, function(err){
+                    if(err){
+                        req.flash('cashout-update', "Nope... Something Went Wrong.");
+                    }else{
+                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
+                    }
+                });
+            }
         });
+
+        User.findOneAndUpdate({"username" : user.username}, 
+                                          {$inc : {"funds" : -stake}}, 
+                                          {new : true}, function(err){
+                        if(err){
+                           req.flash('bet-update', 'An Error Occurred.');
+                           errors = true;
+                        }
+                    });
+        
         res.redirect('back');
     });
     app.get('/profile/leaderboard', function(req, res, next){
