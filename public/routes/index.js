@@ -88,7 +88,8 @@ module.exports = function(app, passport){
                             }
                         });
                     }else{
-
+                        req.flash('cashout-update', "Cashout value has changed! Please check again!");
+                        res.redirect('back');
                     }
 
                 });
@@ -119,7 +120,8 @@ module.exports = function(app, passport){
                             }
                         });
                     }else{
-                        
+                        req.flash('cashout-update', "Cashout value has changed! Please check again!");
+                        res.redirect('back');
                     }
                 });
             }
