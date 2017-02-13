@@ -59,6 +59,9 @@ module.exports = function(app, passport){
         var cashout = req.body.cashout;
         console.log("Bet ID: " + bet_id);
         console.log("Cashout Value: " + cashout);
+        Bet.findOne(_id : bet_id).exec(function(doc){
+            console.log("You must be user... " + doc[0].username);
+        });
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
