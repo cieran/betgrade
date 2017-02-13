@@ -81,20 +81,20 @@ module.exports = {
 		if(x.bet == "Back"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
-				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
+				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
 		        var returns = x.stake * x.odds;
 				var profit = returns - x.stake;
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
-				var cashout = Math.round(cashout_long * 10 ) / 10;
+				var cashout = Math.round(cashout_long * 100) / 100;
 				x.cashout = cashout;
 				x.returns = cashout - x.stake;
 			});
 		}else{
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
 			.then(function(doc){
-				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 10)/10);
-		        var returns = x.stake * x.odds;
+				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+		        var returns = x.stake + x.stake;
 				var profit = returns - x.stake;
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
