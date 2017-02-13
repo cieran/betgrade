@@ -187,23 +187,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
-      }
-    },
-    protractor: {
-      options: {
-        configFile: 'protractor.conf.js',
-        noColor: false,
-        webdriverManagerUpdate: true
-      },
-      e2e: {
-        options: {
-          args: {} // Target-specific arguments
-        }
-      }
-    },
     copy: {
       localConfig: {
         src: 'config/env/local.example.js',
