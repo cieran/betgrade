@@ -57,7 +57,7 @@ module.exports = function(app, passport){
     app.post('/cashout', function(req, res){
         var bet_id = req.body.betid;
         var cashout = req.body.cashout;
-        var user = req.body.username;
+        var user = req.user.username;
         console.log("Logged in as: " + user);
         console.log("Bet ID: " + bet_id);
         console.log("Cashout Value: " + cashout);
