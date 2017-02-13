@@ -103,6 +103,33 @@ module.exports = {
 				x.returns = cashout - x.stake;
 			});
 		}
+	},
+	return_cashout_value: function(bet_id){
+		Bet.find({"_id" : bet_id}).then(function(doc){
+			if(doc[0].bet == "Back"){
+				Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
+				.then(function(doc){
+					var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+			        var returns = x.stake * x.odds;
+					var profit = returns - x.stake;
+					var diff = profit - liability;
+					var cashout_long = x.stake + (diff / doc[0].back);
+					var cashout = Math.round(cashout_long * 100) / 100;
+					return cashout;
+				});
+			}else{
+				Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
+				.then(function(doc){
+					var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+			        var returns = x.stake + x.stake;
+					var profit = returns - x.stake;
+					var diff = profit - liability;
+					var cashout_long = x.stake + (diff / doc[0].back);
+					var cashout = Math.round(cashout_long * 10 ) / 10;
+					return cashout;
+				});
+			}
+		});
 	}
 };
 

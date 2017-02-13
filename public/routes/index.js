@@ -59,10 +59,10 @@ module.exports = function(app, passport){
         var cashout = req.body.cashout;
         var user = req.user.username;
         var profit = req.body.profit;
-        console.log("Logged in as: " + user);
-        console.log("Bet ID: " + bet_id);
+        var returns_func = updates.return_cashout_value(bet_id);
+        console.log("Value returned from function: " + returns_func);
         console.log("Cashout Value: " + cashout);
-        Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
+        /*Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
             if(err){
                 req.flash('cashout-update', "Uh oh, something went wrong.");
                 res.redirect('back');
@@ -77,7 +77,7 @@ module.exports = function(app, passport){
                     }
                 });
             }
-        });
+        }); */
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
