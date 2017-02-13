@@ -59,9 +59,35 @@ module.exports = function(app, passport){
         var cashout = req.body.cashout;
         var user = req.user.username;
         var profit = req.body.profit;
-        var returns_func = updates.return_cashout_value(bet_id);
         console.log("Value returned from function: " + returns_func);
         console.log("Cashout Value: " + cashout);
+        Bet.find({"_id" : bet_id}).then(function(bet){
+            var bet = bet[0];
+            if(bet.bet == "Back"){
+                console.log(bet);
+                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
+                .then(function(doc){
+                    var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
+                    var returns = bet.stake * bet.odds;
+                    var profit = returns - bet.stake;
+                    var diff = profit - liability;
+                    var cashout_long = bet.stake + (diff / doc[0].back);
+                    var cashout = Math.round(cashout_long * 100) / 100;
+                    console.log(cashout);
+                });
+            }else{
+                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
+                .then(function(doc){
+                    var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
+                    var returns = bet.stake + bet.stake;
+                    var profit = returns - bet.stake;
+                    var diff = profit - liability;
+                    var cashout_long = bet.stake + (diff / doc[0].back);
+                    var cashout = Math.round(cashout_long * 10 ) / 10;
+                    console.log(cashout);
+                });
+            }
+        });
         /*Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
             if(err){
                 req.flash('cashout-update', "Uh oh, something went wrong.");
