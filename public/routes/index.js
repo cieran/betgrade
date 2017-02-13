@@ -56,7 +56,9 @@ module.exports = function(app, passport){
     });
     app.post('/cashout', function(req, res){
         var bet_id = req.body.betid;
-        console.log(bet_id);
+        var cashout = req.body.cashout;
+        console.log("Bet ID: " + bet_id);
+        console.log("Cashout Value: " + cashout);
     });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
