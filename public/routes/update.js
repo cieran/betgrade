@@ -119,33 +119,32 @@ var object = {
 				var res = doc[0];
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				console.log("for student: " + res.student);
-				console.log("odds: " + res.back);
-				console.log("most backed" + res.btotal);
-				object.findValueBelow(doc, x.mostPopularOdds);
-				object.findValueAbove(doc, x.mostPopularOdds);
-				object.findValueAboveAbove(doc, x.mostPopularOdds);
+				object.findValueBelow(x.student, x.marketname, x.mostPopularBtotal);
+				object.findValueAbove(x.student, x.marketname, x.mostPopularBtotal);
+				object.findValueAboveAbove(x.student, x.marketname, x.mostPopularBtotal);
+				console.log("Student: " + res.student);
+				console.log("   Best Odds: " + res.back + ", Best Backed: " + res.btotal);
 			});
 
 	},
-	findValueBelow: function(x, y){
-     	Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$lte : y}}).sort({odds: -1}).limit(1)
+	findValueBelow: function(student, market, mostBacked){
+     	Market.find({"student" : student, "marketname": market, "back" : {$lte : mostBacked}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         		var res = doc[0];
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
 	         });
 	},
-	findValueAbove: function(x, y){
-	    Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$gte : y}}).sort({odds: 1}).limit(1)
+	findValueAbove: function(student, market, mostBacked){
+	    Market.find({"student" : student, "marketname": market, "back" : {$gte : mostBacked}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	         });
 	},
-	findValueAboveAbove : function(x, y){
-	    Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$gte : y}}).sort({odds: 1}).skip(1).limit(1)
+	findValueAboveAbove : function(student, market, mostBacked){
+	    Market.find({"student" : student, "marketname": market, "back" : {$gte : mostBacked}}).sort({odds: 1}).skip(1).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
 	         	 x.valueAboveAboveOdds = res.lay;
