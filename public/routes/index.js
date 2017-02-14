@@ -269,6 +269,8 @@ module.exports = function(app, passport){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred.');
                            errors = true;
+                        }else{
+                            console.log("stake deducted");
                         }
                     });
                 }
