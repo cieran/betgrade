@@ -43,6 +43,7 @@ module.exports = {
 						if(update_to_match <= 0){
 							paired = true;
 							update_to_match = 0;
+							ids_at_zero.push(id);
 
 						}
 						if(update_opp_to_match <= 0){
