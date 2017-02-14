@@ -7,10 +7,11 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(){
-		Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
+		Bet.find({"paired" : false, "settled":false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1}).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
 			console.log("out");
+			var ids_at_zero = {id};
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
@@ -31,34 +32,39 @@ module.exports = {
 				console.log("to_match: " + to_match);
 				console.log("Is " + id + " less than " + opp_id + " ???");
 				console.log("Is " + temp_to_match + " less than " + opp_to_match + " ???");
+				if(opp_id in ids_at_zero){
+					console.log("opp_id: " + opp_id + " is in:");
+					console.log(ids_at_zero);
+				}else{
 
+					if(temp_to_match <= opp_to_match){
+						var update_to_match = temp_to_match - opp_to_match;
+						var update_opp_to_match = opp_to_match - temp_to_match;
+						if(update_to_match <= 0){
+							paired = true;
+							update_to_match = 0;
 
-				if(temp_to_match <= opp_to_match){
-					var update_to_match = temp_to_match - opp_to_match;
-					var update_opp_to_match = opp_to_match - temp_to_match;
-					if(update_to_match <= 0){
-						paired = true;
-						update_to_match = 0;
+						}
+						if(update_opp_to_match <= 0){
+							opp_paired = true;
+							update_opp_to_match = 0;
+							ids_at_zero.push(opp_id);
+						}
+						Bet.findOneAndUpdate({"_id" : id}, 
+							{$set : {'to_match': update_to_match,'paired' : paired}}
+							,{new : true}).exec(function(err){
+								if(err)
+									throw err;
+								
+							});
+						Bet.findOneAndUpdate({"_id" : opp_id}, 
+							{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
+							,{new : true}).exec(function(err){
+								if(err)
+									throw err;
+							});
+						
 					}
-					if(update_opp_to_match <= 0){
-						opp_paired = true;
-						update_opp_to_match = 0;
-					}
-					Bet.findOneAndUpdate({"_id" : id}, 
-						{$set : {'to_match': update_to_match,'paired' : paired}}
-						,{new : true}).exec(function(err){
-							if(err)
-								throw err;
-							
-						});
-
-					Bet.findOneAndUpdate({"_id" : opp_id}, 
-								{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
-								,{new : true}).exec(function(err){
-									if(err)
-										throw err;
-								});
-					
 				}
 			}, function(err){
 				if(err){
