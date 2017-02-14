@@ -12,7 +12,6 @@ module.exports = {
 		async.forEach(results, function(doc, callback){
 			console.log("out");
 			var ids_at_zero = [id];
-			console.log("IDs at Zero: " + ids_at_zero);
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
@@ -33,11 +32,6 @@ module.exports = {
 				console.log("to_match: " + to_match);
 				console.log("Is " + id + " less than " + opp_id + " ???");
 				console.log("Is " + temp_to_match + " less than " + opp_to_match + " ???");
-				if(opp_id in ids_at_zero){
-					console.log("opp_id: " + opp_id + " is in:");
-					console.log(ids_at_zero);
-				}else{
-
 					if(temp_to_match <= opp_to_match){
 						var update_to_match = temp_to_match - opp_to_match;
 						var update_opp_to_match = opp_to_match - temp_to_match;
@@ -67,15 +61,7 @@ module.exports = {
 							});
 						
 					}
-				}
-			}, function(err){
-				if(err){
-					throw err;
-				}
-				console.log("down");
-
-				callback();
-			})});
+			}, callback);
 		}, function(err){
 			console.log("done matching bets");
 		})});
