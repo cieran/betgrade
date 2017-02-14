@@ -121,9 +121,9 @@ var object = {
 				x.mostPopularBtotal = res.btotal;
 				console.log("Student: " + res.student);
 				console.log("   Best Odds: " + res.back + ", Best Backed: " + res.btotal);
-				object.findValueBelow(x.student, x.marketname, x.mostPopularBtotal);
-				object.findValueAbove(x.student, x.marketname, x.mostPopularBtotal);
-				object.findValueAboveAbove(x.student, x.marketname, x.mostPopularBtotal);
+				object.findValueBelow(res.student, res.marketname, x.mostPopularBtotal);
+				object.findValueAbove(res.student, res.marketname, x.mostPopularBtotal);
+				object.findValueAboveAbove(res.student, res.marketname, x.mostPopularBtotal);
 
 				})
 			});
@@ -135,7 +135,7 @@ var object = {
         		var res = doc[0];
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
-					console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
+				 console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
 	         });
 	},
 	findValueAbove: function(student, market, mostBacked){
@@ -144,7 +144,7 @@ var object = {
 	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
-					console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
+				 console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
 
 	         });
 	},
@@ -154,7 +154,7 @@ var object = {
 	         	var res = doc[0];
 	         	 x.valueAboveAboveOdds = res.lay;
 	             x.valueAboveAboveLtotal = res.ltotal;
-	             	console.log("   Second Above Odds: " + res.lay + ", Second Above Lay: " + res.ltotal);
+	             console.log("   Second Above Odds: " + res.lay + ", Second Above Lay: " + res.ltotal);
 	         });
 	             
 	}
