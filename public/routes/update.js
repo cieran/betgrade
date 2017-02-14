@@ -42,13 +42,15 @@ module.exports = {
 						,{new : true, multi: true}).exec(function(err){
 							if(err)
 								throw err;
-							Bet.update({"_id" : opp_id}, 
+							
+						});
+
+					Bet.update({"_id" : opp_id}, 
 								{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
 								,{new : true, multi:true}).exec(function(err){
 									if(err)
 										throw err;
 								});
-						});
 					
 				}
 			}, function(err){
@@ -58,7 +60,7 @@ module.exports = {
 				callback();
 			})});
 		}, function(err){
-			console.log("done");
+			console.log("done matching bets");
 		})});
 	},
 	update_odds_availability : function(){
