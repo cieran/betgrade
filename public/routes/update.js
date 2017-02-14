@@ -7,7 +7,7 @@ var Bet = require('../models/bet');
 
 module.exports = {
 	match : function(pside, pmarketname, pstudent, podds){
-		Bet.find({"paired" : false, "settled":false, "market":pmarketname, "bet":pside, "student":pstudent, "odds", podds}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
+		Bet.find({"paired" : false, "settled":false, "market":pmarketname, "bet":pside, "student":pstudent, "odds": podds}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1}).limit(1).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
 			console.log("out");
