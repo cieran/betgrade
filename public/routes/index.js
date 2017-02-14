@@ -37,9 +37,6 @@ module.exports = function(app, passport){
             .then(function(doc){
                 doc.forEach(function(x){
                     updates.findValue(x);
-                    updates.findValueBelow(x);
-                    updates.findValueAbove(x);
-                    updates.findValueAboveAbove(x);
                 })
                 res.render('test-env', {title: 'Test..', items: doc, user: req.user});
         });

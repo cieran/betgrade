@@ -114,35 +114,35 @@ var object = {
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				var res = doc[0];
-				console.log("Most Popular Odds: " + res.odds);
-				console.log("Most Popular Btotal: " + res.btotal);
-				x.mostPopularOdds = res.odds;
+				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
+				object.findValueBelow(doc, x.mostPopularOdds);
+				object.findValueAbove(doc, x.mostPopularOdds);
+				object.findValueAboveAbove(doc, x.mostPopularOdds);
 			});
 
 	},
-	findValueBelow: function(x){
-     	Market.find({"student" : x.student, "marketname":x.marketname, "odds" : {$lte : x.odds}}).sort({odds: -1}).limit(1)
+	findValueBelow: function(x, y){
+     	Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$lte : y}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         		var res = doc[0];
-
-	             x.valueBelowOdds = res.odds;
+	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
 	         });
 	},
-	findValueAbove: function(x){
-	    Market.find({"student" : x.student, "marketname":x.marketname, "odds" : {$gte : x.odds}}).sort({odds: 1}).limit(1)
+	findValueAbove: function(x, y){
+	    Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$gte : y}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
-	             x.valueAboveOdds = res.odds;
+	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	         });
 	},
-	findValueAboveAbove : function(x){
-	    Market.find({"student" : x.student, "marketname":x.marketname, "odds" : {$gte : x.odds}}).sort({odds: 1}).skip(1).limit(1)
+	findValueAboveAbove : function(x, y){
+	    Market.find({"student" : x.student, "marketname":x.marketname, "back" : {$gte : y}}).sort({odds: 1}).skip(1).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
-	         	 x.valueAboveAboveOdds = res.odds;
+	         	 x.valueAboveAboveOdds = res.lay;
 	             x.valueAboveAboveLtotal = res.ltotal;
 	         });
 	             
