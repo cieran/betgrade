@@ -113,15 +113,13 @@ var object = {
 	find : function(x){
 
 	},
-	findValue: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
+	findValue: function(student, market){
+		Market.find({"student" : student, "marketname": market}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				doc.forEach(function(res){
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				console.log("Student: " + res.student);
-				console.log("   Best Odds: " + res.back + ", Best Backed: " + res.btotal);
-				object.findValueBelow(res.student, res.marketname, x.mostPopularBtotal);
+				object.findValueBelow(student, market, x.mostPopularBtotal);
 
 				})
 			});
@@ -130,31 +128,33 @@ var object = {
 	findValueBelow: function(student, market, mostBacked){
      	Market.find({"student" : student, "marketname": market, "back" : {$lte : mostBacked}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
-        		var res = doc[0];
+        		doc.forEach(function(res){
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
 	             object.findValueAbove(student, market, mostBacked);
 				 console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
+	         	})
 	         });
 	},
 	findValueAbove: function(student, market, mostBacked){
 	    Market.find({"student" : student, "marketname": market, "back" : {$gte : mostBacked}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
-	         	var res = doc[0];
+	         	doc.forEach(function(res){
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	             object.findValueAboveAbove(student, market, mostBacked);
 				 console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
-
+				})
 	         });
 	},
 	findValueAboveAbove : function(student, market, mostBacked){
 	    Market.find({"student" : student, "marketname": market, "back" : {$gte : mostBacked}}).sort({odds: 1}).skip(1).limit(1)
 	         .then(function(doc){
-	         	var res = doc[0];
+	         	doc.forEach(function(res){
 	         	 x.valueAboveAboveOdds = res.lay;
 	             x.valueAboveAboveLtotal = res.ltotal;
 	             console.log("   Second Above Odds: " + res.lay + ", Second Above Lay: " + res.ltotal);
+	         	})
 	         });
 	             
 	}
