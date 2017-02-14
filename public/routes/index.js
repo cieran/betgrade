@@ -267,13 +267,13 @@ module.exports = function(app, passport){
                     console.log("stake: " + stake);
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
-                                          {new : true}, function(err, user){
+                                          {new : true}, function(err, result){
                         if(err){
                            req.flash('bet-update', err);
                            errors = true;
                         }else{
                             console.log("stake deducted");
-                            console.log("new balance: " + user[0].funds);
+                            console.log("new balance: " + result.funds);
                         }
                     });
                 }
