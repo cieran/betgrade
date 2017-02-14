@@ -116,7 +116,7 @@ var object = {
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
-				var res = doc[0];
+				doc.forEach(function(res){
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
 				object.findValueBelow(x.student, x.marketname, x.mostPopularBtotal);
@@ -124,6 +124,7 @@ var object = {
 				object.findValueAboveAbove(x.student, x.marketname, x.mostPopularBtotal);
 				console.log("Student: " + res.student);
 				console.log("   Best Odds: " + res.back + ", Best Backed: " + res.btotal);
+				}
 			});
 
 	},
