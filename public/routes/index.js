@@ -243,16 +243,16 @@ module.exports = function(app, passport){
         var marketname = req.body.marketname;
         var side = req.body.side;
         if(!req.user){
-            req.flash('bet_error', 'You need to log in before you can place a bet');
-            res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('bet_error')});
+            req.flash('loginMessage', 'You need to log in before you can place a bet');
+            res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('loginMessage')});
         }else if(stake <= 0){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC.');
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
             });        
-        
         }else{
+            console.log("we have staked enough money");
             var errors = false;
             User.find({"username" : user.username}).then(function(funds){
                 if(err){
@@ -263,10 +263,12 @@ module.exports = function(app, passport){
                     req.flash('bet-update', 'Insufficient Funds.');                    
                     errors = true;
                 }else{
+                    console.log("we have enough funds");
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err){
                         if(err){
+
                            req.flash('bet-update', 'An Error Occurred.');
                            errors = true;
                         }else{
@@ -283,6 +285,7 @@ module.exports = function(app, passport){
                 potential = (stake*2);
             }
             if(errors === false){
+                console.log("no errors so far");
                 Participant.find({"student" : student}).exec(function(err, data){
                     async.forEach(data, function(doc, callback){
 
@@ -307,6 +310,7 @@ module.exports = function(app, passport){
                             req.flash('bet-update', err);
                         }else{
                         req.flash('bet-update', 'Bet Placed.');
+                        console.log("the bet has been placed");
                         updates.match();
                             if(side == "Back"){
                                 Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
