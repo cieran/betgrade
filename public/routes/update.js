@@ -109,6 +109,24 @@ var object = {
 				x.returns = cashout - x.stake;
 			});
 		}
+	},
+	findValueBelow: function(x){
+     Market.find({"odds" : {$lte : x.odds}}).sort({odds: -1}).limit(1)
+         .then(res)
+             x.valueBelowOdds = res.odds;
+             x.valueBelowBtotal = res.btotal;
+	},
+	findValueAbove: function(x){
+	     Market.find({"odds" : {$gte : x.odds}}).sort({odds: 1}).limit(1)
+	         .then(res)
+	             x.valueAboveOdds = res.odds;
+	             x.valueAboveBtotal = res.btotal;
+	},
+	findValueAboveAbove : function(x){
+	     Market.find({"odds" : {$gte : x.odds}}).sort({odds: 1}).skip(1).limit(1)
+	         .then(res)
+	             x.valueAboveAboveOdds = res.odds;
+	             x.valueAboveAboveBtotal = res.btotal;
 	}
 };
 
