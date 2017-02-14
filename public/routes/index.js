@@ -258,7 +258,7 @@ module.exports = function(app, passport){
                 if(err){
                     req.flash('bet-update', err);
                     errors = true;
-                }
+                }else{
                 if(funds[0].funds < stake){
                     req.flash('bet-update', 'Insufficient Funds.');                    
                     errors = true;
@@ -275,6 +275,7 @@ module.exports = function(app, passport){
                         }
                     });
                 }
+            }
                     
             });
             var potential = 0;
