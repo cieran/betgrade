@@ -254,7 +254,7 @@ module.exports = function(app, passport){
         }else{
             console.log("we have staked enough money");
             var errors = false;
-            User.find({"username" : user.username}).then(function(funds){
+            User.find({"username" : user.username}).then(function(err, funds){
                 if(err){
                     req.flash('bet-update', 'An Error Occurred.');
                     errors = true;
@@ -266,9 +266,8 @@ module.exports = function(app, passport){
                     console.log("we have enough funds");
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
-                                          {new : true}, function(err){
+                                          {new : true}, function(err, done){
                         if(err){
-
                            req.flash('bet-update', 'An Error Occurred.');
                            errors = true;
                         }else{
@@ -316,12 +315,15 @@ module.exports = function(app, passport){
                                 Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
                                     if(err)
                                         req.flash('bet-update', err);
-
+                                        
+                                    console.log("ltotal updated");
                                 });
                             }else{
                                 Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
                                     if(err)
                                         req.flash('bet-update', err);
+                                    
+                                    console.log("btotal updated");
                                 });
                             }
                         }
