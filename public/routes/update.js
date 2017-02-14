@@ -114,7 +114,8 @@ var object = {
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				var res = doc[0];
-				console.log(res);
+				console.log("Most Popular Odds: " + res.odds);
+				console.log("Most Popular Btotal: " + res.btotal);
 				x.mostPopularOdds = res.odds;
 				x.mostPopularBtotal = res.btotal;
 			});
