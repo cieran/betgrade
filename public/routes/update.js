@@ -124,7 +124,7 @@ var object = {
 				object.findValueAboveAbove(x.student, x.marketname, x.mostPopularBtotal);
 				console.log("Student: " + res.student);
 				console.log("   Best Odds: " + res.back + ", Best Backed: " + res.btotal);
-				}
+				})
 			});
 
 	},
