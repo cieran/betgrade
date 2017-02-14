@@ -11,7 +11,7 @@ module.exports = {
 		.sort({createdAt : 1}).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
 			console.log("out");
-			var ids_at_zero = {id};
+			var ids_at_zero = [id];
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
