@@ -274,74 +274,71 @@ module.exports = function(app, passport){
                         }else{
                             console.log("stake deducted");
                             console.log("new balance: " + result.funds);
-                        }
-                    });
-                }
-            }
-                    
+                            var potential = 0;
+                    if(side == "Back"){
+                        potential = ((parseFloat(odds) * parseFloat(stake)));
+                    }else{
+                        potential = (stake*2);
+                    }
+                    if(errors === false){
+                        console.log("no errors so far");
+                        Participant.find({"student" : student}).exec(function(err, data){
+                            async.forEach(data, function(doc, callback){
+
+                            var code = doc.code;
+                            var filename = doc.filename;
+                            var course = doc.course;
+
+                            var newBet = new Bet({
+                                bet: side, 
+                                market: marketname, 
+                                student: student, 
+                                paired: false, 
+                                to_match: stake,
+                                odds: odds, 
+                                stake : stake, 
+                                potential: potential, 
+                                username: user.username, 
+                                settled: false
+                            });
+                            newBet.save(function(err){
+                                if(err){
+                                    req.flash('bet-update', err);
+                                }else{
+                                req.flash('bet-update', 'Bet Placed.');
+                                console.log("the bet has been placed");
+                                updates.match();
+                                    if(side == "Back"){
+                                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
+                                            if(err)
+                                                req.flash('bet-update', err);
+                                            console.log("ltotal updated");
+                                        });
+                                    }else{
+                                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
+                                            if(err)
+                                                req.flash('bet-update', err);
+                                            
+                                            console.log("btotal updated");
+                                        });
+                                    }
+                                }
+                            });
+
+                            }, function(err){
+                                if(err){
+                                    throw err;
+                                }
+                                callback();
+                            })});
+                    }
+                                }
+                            });
+                    }
+                    }
+                            
             });
-            var potential = 0;
-            if(side == "Back"){
-                potential = ((parseFloat(odds) * parseFloat(stake)));
-            }else{
-                potential = (stake*2);
-            }
-            if(errors === false){
-                console.log("no errors so far");
-                Participant.find({"student" : student}).exec(function(err, data){
-                    async.forEach(data, function(doc, callback){
-
-                    var code = doc.code;
-                    var filename = doc.filename;
-                    var course = doc.course;
-
-                    var newBet = new Bet({
-                        bet: side, 
-                        market: marketname, 
-                        student: student, 
-                        paired: false, 
-                        to_match: stake,
-                        odds: odds, 
-                        stake : stake, 
-                        potential: potential, 
-                        username: user.username, 
-                        settled: false
-                    });
-                    newBet.save(function(err){
-                        if(err){
-                            req.flash('bet-update', err);
-                        }else{
-                        req.flash('bet-update', 'Bet Placed.');
-                        res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
-                        console.log("the bet has been placed");
-                        updates.match();
-                            if(side == "Back"){
-                                Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
-                                    if(err)
-                                        req.flash('bet-update', err);
-                                        
-                                    console.log("ltotal updated");
-                                });
-                            }else{
-                                Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
-                                    if(err)
-                                        req.flash('bet-update', err);
-                                    
-                                    console.log("btotal updated");
-                                });
-                            }
-                        }
-                    });
-
-                    }, function(err){
-                        if(err){
-                            throw err;
-                        }
-                        callback();
-                    })});
-            }else{
-                res.redirect('/');
-            }
+            
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
