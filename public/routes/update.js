@@ -64,7 +64,7 @@ module.exports = {
 			}, callback);
 		}, function(err){
 			console.log("done matching bets");
-		})});
+		})})});
 	},
 	update_odds_availability : function(){
 		console.log("we in the funct");
