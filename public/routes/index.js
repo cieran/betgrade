@@ -233,6 +233,7 @@ module.exports = function(app, passport){
         });
     });
     app.get('/bet', function (req, res) {
+        req.flash('bet-update');
         res.redirect('/');
     });
     app.post('/bet', function(req, res){
