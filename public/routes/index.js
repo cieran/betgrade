@@ -306,7 +306,6 @@ module.exports = function(app, passport){
                         }else{
                         req.flash('bet-update', 'Bet Placed.');
                         updates.match();
-                        console.log("we here part i");
                             if(side == "Back"){
                                 Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
                                     if(err)
