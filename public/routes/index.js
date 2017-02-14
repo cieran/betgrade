@@ -256,7 +256,7 @@ module.exports = function(app, passport){
             var errors = false;
             User.find({"username" : user.username}).then(function(err, funds){
                 if(err){
-                    req.flash('bet-update', 'An Error Occurred.');
+                    req.flash('bet-update', 'An Error Occurred Up Here');
                     errors = true;
                 }
                 if(funds[0].funds < stake){
@@ -268,7 +268,7 @@ module.exports = function(app, passport){
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err, done){
                         if(err){
-                           req.flash('bet-update', 'An Error Occurred.');
+                           req.flash('bet-update', 'An Error Occurred Here');
                            errors = true;
                         }else{
                             console.log("stake deducted");
