@@ -30,9 +30,8 @@ module.exports = {
 				var opp_to_match = opp_doc.to_match;
 				var opp_settled = opp_doc.settled;
 				console.log("to_match: " + to_match);
-				console.log("Is " + id + " less than " + opp_id + " ???");
-				console.log("Is " + temp_to_match + " less than " + opp_to_match + " ???");
-					if(temp_to_match <= opp_to_match){
+				console.log("Is " + id + " lteq " + opp_id + " ???");
+				console.log("Is " + temp_to_match + " lteq " + opp_to_match + " ???");
 						var update_to_match = temp_to_match - opp_to_match;
 						var update_opp_to_match = opp_to_match - temp_to_match;
 						if(update_to_match <= 0){
@@ -60,7 +59,6 @@ module.exports = {
 									throw err;
 							});
 						
-					}
 			}, callback);
 		}, function(err){
 			console.log("done matching bets");
