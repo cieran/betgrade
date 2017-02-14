@@ -254,7 +254,7 @@ module.exports = function(app, passport){
         }else{
             console.log("we have staked enough money");
             var errors = false;
-            User.find({"username" : user.username}).then(function(err, funds){
+            User.find({"username" : user.username}).then(function(funds, err){
                 if(err){
                     req.flash('bet-update', err);
                     errors = true;
@@ -264,9 +264,10 @@ module.exports = function(app, passport){
                     errors = true;
                 }else{
                     console.log("we have enough funds");
+                    console.log("stake: " + stake);
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
-                                          {new : true}, function(err, done){
+                                          {new : true}, function(done, err){
                         if(err){
                            req.flash('bet-update', 'An Error Occurred Here');
                            errors = true;
