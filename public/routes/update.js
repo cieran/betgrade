@@ -5,7 +5,7 @@ var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
 
-module.exports = {
+var object = {
 	match : function(pside, pmarketname, pstudent, podds){
 		Bet.find({"paired" : false, "settled":false, "market":pmarketname, "bet":pside, "student":pstudent, "odds": podds}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1}).limit(1).exec(function(err, results){
@@ -44,9 +44,12 @@ module.exports = {
 						}
 						Bet.findOneAndUpdate({"_id" : id}, 
 							{$set : {'to_match': update_to_match,'paired' : paired}}
-							,{new : true}).exec(function(err){
+							,{new : true}).exec(function(err, res){
 								if(err)
 									throw err;
+								if(res.to_match != 0){
+									object.match(side, market, student, odds);
+								}
 								
 							});
 						Bet.findOneAndUpdate({"_id" : opp_id}, 
@@ -55,6 +58,8 @@ module.exports = {
 								if(err)
 									throw err;
 							});
+
+						
 						
 			}, callback);
 		}, function(err){
@@ -106,6 +111,8 @@ module.exports = {
 		}
 	}
 };
+
+module.exports = object;
 
 /*	
 	Returns
