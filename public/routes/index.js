@@ -36,7 +36,7 @@ module.exports = function(app, passport){
         Market.find({"marketname" : "To Pass"})
             .then(function(doc){
                 doc.forEach(function(x){
-                    updates.findValue(x.student, x.marketname);
+                    updates.findValue(x);
                 })
                 res.render('test-env', {title: 'Test..', items: doc, user: req.user});
         });
