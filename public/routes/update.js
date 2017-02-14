@@ -37,17 +37,17 @@ module.exports = {
 						opp_paired = true;
 						update_opp_to_match = 0;
 					}
-					Bet.update({"_id" : id}, 
+					Bet.findOneAndUpdate({"_id" : id}, 
 						{$set : {'to_match': update_to_match,'paired' : paired}}
-						,{new : true, multi: true}).exec(function(err){
+						,{new : true}).exec(function(err){
 							if(err)
 								throw err;
 							
 						});
 
-					Bet.update({"_id" : opp_id}, 
+					Bet.findOneAndUpdate({"_id" : opp_id}, 
 								{$set : {'to_match': update_opp_to_match, 'paired' : opp_paired}}
-								,{new : true, multi:true}).exec(function(err){
+								,{new : true}).exec(function(err){
 									if(err)
 										throw err;
 								});
