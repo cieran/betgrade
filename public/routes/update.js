@@ -117,6 +117,7 @@ var object = {
 		Market.find({"student" : student, "marketname": market}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				doc.forEach(function(res){
+				console.log(student + ", " + market + ", " + res.btotal);
 				object.findValueBelow(student, market, res.btotal);
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
