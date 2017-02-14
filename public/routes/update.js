@@ -12,6 +12,7 @@ module.exports = {
 		async.forEach(results, function(doc, callback){
 			console.log("out");
 			var ids_at_zero = [id];
+			console.log("IDs at Zero: " + ids_at_zero);
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
