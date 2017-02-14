@@ -33,11 +33,11 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res, next){
-        Market.find({"marketname" : "To Pass"}).sort({btotal:-1}).limit(1)
+        Market.find({"marketname" : "To Pass"})
             .then(function(doc){
                 doc.forEach(function(x){
+                    updates.findValue(x);
                     updates.findValueBelow(x);
-                    console.log(updates.findValueBelow(x));
                     updates.findValueAbove(x);
                     updates.findValueAboveAbove(x);
                 })
