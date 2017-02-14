@@ -312,7 +312,7 @@ module.exports = function(app, passport){
                             req.flash('bet-update', err);
                         }else{
                         req.flash('bet-update', 'Bet Placed.');
-                        res.redirect('/');
+                        res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
                         console.log("the bet has been placed");
                         updates.match();
                             if(side == "Back"){
