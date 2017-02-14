@@ -301,25 +301,42 @@ module.exports = function(app, passport){
                         settled: false
                     });
                     newBet.save(function(err){
-                        req.flash('bet-update', 'Bet Placed.');
-                        updates.match();
                         if(err){
                             req.flash('bet-update', err);
+                        }else{
+                        req.flash('bet-update', 'Bet Placed.');
+                        console.log("we here part i");
+                        async.series([
+                            function(callback) {
+                               updates.match(function(someResult){
+                                   console.log("we in here part ii");
+                                   callback(null, someResult);
+                               });
+                            },
+                            function(callback) {
+                                var someOtherResult = updates.update_odds_availability();
+                                console.log("we in here part iii");
+                                callback(null, someOtherResult);
+                            }
+                        ],
+                        function(err, results) {
+                            console.log('executed');
+                        });
+                        if(side == "Back"){
+                            Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
+                                if(err)
+                                    req.flash('bet-update', err);
+
+                            });
+                        }else{
+                            Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
+                                if(err)
+                                    req.flash('bet-update', err);
+                            });
+                        }
                         }
                     });
 
-                    if(side == "Back"){
-                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
-                            if(err)
-                                req.flash('bet-update', err);
-
-                        });
-                    }else{
-                         Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
-                            if(err)
-                                req.flash('bet-update', err);
-                        });
-                    }
                     }, function(err){
                         if(err){
                             throw err;

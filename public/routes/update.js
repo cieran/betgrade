@@ -61,7 +61,9 @@ module.exports = {
 			console.log("done");
 		})});
 	},
-
+	update_odds_availability : function(){
+		console.log("we in the funct");
+	},
 	calcReturns: function(x){
         if(x.bet == "Back"){
             x.potential_returns = x.stake * x.odds;
@@ -69,7 +71,6 @@ module.exports = {
             x.potential_returns = x.stake * 2;
         }
 	},	
-
 	static_calcReturns: function(bet, stake, odds){
         if(bet == "Back"){
             return stake * odds + stake;
@@ -77,10 +78,9 @@ module.exports = {
             return stake * 2;
         }
 	},
-
 	cashout_value: function(x){
 		if(x.bet == "Back"){
-			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
+			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
 			.then(function(doc){
 				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
 		        var returns = x.stake * x.odds;
@@ -92,7 +92,7 @@ module.exports = {
 				x.returns = cashout - x.stake;
 			});
 		}else{
-			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
+			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
 			.then(function(doc){
 				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
 		        var returns = x.stake + x.stake;
