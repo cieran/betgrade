@@ -19,8 +19,8 @@ module.exports = {
 			var student = doc.student;
 			var side = doc.bet;
 			var to_match = doc.to_match;
-			Bet.findOne({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
-			"bet": {$ne : side}, "_id" : {$ne : id}, "stake" : {$gte : stake}}).sort({createdAt: 1}).exec(function(errs, res){
+			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
+			"bet": {$ne : side}, "_id" : {$ne : id}, "stake" : {$gte : stake}}).sort({createdAt: 1}).limit(1).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
 			console.log("in");
 				var temp_to_match = to_match;
