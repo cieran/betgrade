@@ -269,7 +269,7 @@ module.exports = function(app, passport){
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(done, err){
                         if(err){
-                           req.flash('bet-update', 'An Error Occurred Here');
+                           req.flash('bet-update', err);
                            errors = true;
                         }else{
                             console.log("stake deducted");
