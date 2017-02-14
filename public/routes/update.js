@@ -10,6 +10,7 @@ module.exports = {
 		Bet.find({"paired" : false}, {_id:1, bet:1, market:1, odds:1, student:1, to_match:1, stake:1})
 		.sort({createdAt : 1}).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
+			console.log("out");
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
@@ -20,6 +21,7 @@ module.exports = {
 			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
 			"bet": {$ne : side}, "_id" : {$ne : id}, "stake" : {$gte : stake}}).sort({createdAt: 1}).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
+			console.log("out");
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
 				var opp_student = opp_doc.student;
@@ -57,6 +59,8 @@ module.exports = {
 				if(err){
 					throw err;
 				}
+				console.log("down");
+
 				callback();
 			})});
 		}, function(err){
