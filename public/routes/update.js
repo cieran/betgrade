@@ -21,7 +21,7 @@ module.exports = {
 			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
 			"bet": {$ne : side}, "_id" : {$ne : id}, "stake" : {$gte : stake}}).sort({createdAt: 1}).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
-			console.log("out");
+			console.log("in");
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
 				var opp_student = opp_doc.student;
