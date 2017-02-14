@@ -11,7 +11,6 @@ module.exports = {
 		.sort({createdAt : 1}).limit(2).exec(function(err, results){
 		async.forEach(results, function(doc, callback){
 			console.log("out");
-			var ids_at_zero = [id];
 			var id = doc._id;
 			var stake = doc.stake;
 			var odds = doc.odds;
@@ -37,13 +36,10 @@ module.exports = {
 						if(update_to_match <= 0){
 							paired = true;
 							update_to_match = 0;
-							ids_at_zero.push(id);
-
 						}
 						if(update_opp_to_match <= 0){
 							opp_paired = true;
 							update_opp_to_match = 0;
-							ids_at_zero.push(opp_id);
 						}
 						Bet.findOneAndUpdate({"_id" : id}, 
 							{$set : {'to_match': update_to_match,'paired' : paired}}
