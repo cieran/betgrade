@@ -45,10 +45,11 @@ module.exports = function(app, passport){
                     resolve();
                 });
             });
-    });
-    Promise.all(promises).then(function(){
+        Promise.all(promises).then(function(){
         res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-    }).catch(console.error);
+        }).catch(console.error);
+    });
+    
     app.get('/profile/bet-history', function(req, res, next){
         var user = req.user;
         if(user){
