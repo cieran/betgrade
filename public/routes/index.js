@@ -109,7 +109,7 @@ module.exports = function(app, passport){
                     var profit = returns - bet.stake;
                     var diff = profit - liability;
                     var cashout_long = bet.stake + (diff / doc[0].back);
-                    var calc_cashout = Math.round(cashout_long * 10 ) / 10;
+                    var calc_cashout = Math.round(cashout_long * 100 ) / 100;
                     if(calc_cashout == cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
                             if(err){
