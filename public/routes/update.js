@@ -189,8 +189,8 @@ var object = {
 			.then(function(ret){
 				var mostPopularBtotal = ret[0].btotal;
 				var mostPopularOdds = ret[0].back;
-	    Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({odds: 1}).limit(1)
-	         .then(function(doc){
+	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({odds: 1}).limit(1)
+	         	.then(function(doc){
 	         	var res = doc[0];
 	         	if(res == null){
 	         		x.valueAboveOdds = 0;

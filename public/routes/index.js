@@ -36,10 +36,7 @@ module.exports = function(app, passport){
         Market.find({"marketname" : 'To Pass'})
             .then(function(doc){
                 aync.forEach(doc, function(x, callback){
-                    updates.newfindValueBelow(x);
                     updates.newfindValue(x);
-                    updates.newfindValueAbove(x);
-                    updates.newfindValueAboveAbove(x);
                     callback();
                 }, function(err){
                     if(err)
