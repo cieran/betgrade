@@ -112,7 +112,7 @@ var object = {
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
 				var cashout = Math.round(cashout_long * 100 ) / 100;
-				var return_val = Math.round(cashout - x.stake * 100)/100;
+				var return_val = Math.round((cashout - x.stake) * 100)/100;
 				x.cashout = cashout;
 				x.returns = return_val;
 			});
