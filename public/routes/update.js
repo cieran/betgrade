@@ -125,17 +125,16 @@ var object = {
 
 	},
 	findValueBelow: function(x){
-		console.log("in here now, mostPopularBtotal is " + x.mostPopularBtotal);
-     	Market.find({"student" : x.student, "marketname": x.market, "back" : {$lte : x.mostPopularBtotal}}).sort({odds: -1}).limit(1)
+     	Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lte : x.mostPopularBtotal}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
-        			var res = doc[0];
+        		var res = doc[0];
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
-	             console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
+				console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
 	         });
 	},
 	findValueAbove: function(x){
-	    Market.find({"student" : student, "marketname": market, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).limit(1)
+	    Market.find({"student" : student, "marketname": x.marketname, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
