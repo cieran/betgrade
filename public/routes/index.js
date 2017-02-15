@@ -40,8 +40,9 @@ module.exports = function(app, passport){
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
+                }, function(err){
+                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 })
-                res.render('test-env', {title: 'Test..', items: doc, user: req.user});
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
