@@ -125,7 +125,6 @@ var object = {
 
 	},
 	findValueBelow: function(x){
-		console.log("student: " + x.student + ", marketname: "+x.marketname+", mostPopOdds:  "+x.mostPopularOdds);
      	Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         		var res = doc[0];
