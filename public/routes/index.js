@@ -53,7 +53,7 @@ module.exports = function(app, passport){
                     async.forEach(docs, function(x, callback){
                        updates.calcReturns(x);
                        updates.cashout_value(x);
-                    }, function{
+                    }, function(err){
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
                     });
                     
