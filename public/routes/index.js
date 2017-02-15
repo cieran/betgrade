@@ -43,6 +43,7 @@ module.exports = function(app, passport){
                 }, function(err){
                     if(err)
                         return console.log(err)
+                    console.log("completed async forEach");
                     res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 })
         });
