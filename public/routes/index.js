@@ -36,8 +36,8 @@ module.exports = function(app, passport){
         Market.find({"marketname" : 'To Pass'})
             .then(function(doc){
                 doc.forEach(function(x){
-                    updates.newfindValue(x);
                     updates.newfindValueBelow(x);
+                    updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
                 })
@@ -50,9 +50,8 @@ module.exports = function(app, passport){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
                     doc.forEach(function(x) {
-                       console.log("CO " + updates.calcReturns(x));
-                       console.log("RET " + updates.cashout_value(x));
-
+                       updates.calcReturns(x);
+                       updates.cashout_value(x);
                     })
                     
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
