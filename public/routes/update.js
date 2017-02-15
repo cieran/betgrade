@@ -120,7 +120,7 @@ var object = {
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
 				console.log(x.student + "'s most popular odds are " + x.mostPopularOdds);
-				object.findValueBelow(x);
+				object.findValueAboveAbove(x);
 			});
 
 	},
