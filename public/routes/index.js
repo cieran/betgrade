@@ -33,18 +33,15 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res, next){
-        Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
+        Market.find({"marketname" : 'To Pass'})
             .then(function(doc){
-                async.forEach(doc, function(x, callback){
+                doc.forEach(function(x){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
-                }, function(err){
-                    if(err)
-                        return console.log(err);
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-                });
+                })
+                res.render('test-env', {title: 'Test..', items: doc, user: req.user});
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
