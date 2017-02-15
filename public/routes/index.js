@@ -35,15 +35,10 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).exec(function(err, doc){
                 async.forEach(doc, function(x, callback){
-                    async.waterfall([
-                    updates.newfindValue(x),
-                    updates.newfindValueBelow(x),
-                    updates.newfindValueAbove(x),
-                    updates.newfindValueAboveAbove(x)
-                    ], function(err, res){
-                        console.log("done");
-                    });
-                    
+                    updates.newfindValue(x);
+                    updates.newfindValueBelow(x);
+                    updates.newfindValueAbove(x);
+                    updates.newfindValueAboveAbove(x);
                     callback();
                 }, function(err){
                     if(err)
