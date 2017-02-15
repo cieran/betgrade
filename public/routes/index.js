@@ -39,8 +39,6 @@ module.exports = function(app, passport){
                     updates.newfindValue(x);
                     callback();
                 }, function(err){
-                    if(err)
-                        return console.log(err)
                     res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 })
         });
