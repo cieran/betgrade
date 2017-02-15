@@ -34,18 +34,14 @@ module.exports = function(app, passport){
 
     app.get('/test-env', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}, function(doc){
-                async.forEach(doc, function(x, callback){
+                doc.forEach(function(x){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
-                    callback();
-                }, function(err){
-                    if(err)
-                        return console.log(err)
-                    console.log("completed async forEach");
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 })
+                    console.log("completed forEach");
+                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
