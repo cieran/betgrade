@@ -53,6 +53,9 @@ module.exports = function(app, passport){
                        updates.calcReturns(x);
                        updates.cashout_value(x);
                     })
+                    doc.forEach(function(y){
+                        console.log(y);
+                    })
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
             });
         }else{
