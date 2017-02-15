@@ -131,7 +131,6 @@ var object = {
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
 				console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
-				object.findValueAbove(x);
 	         });
 	},
 	findValueAbove: function(x){
