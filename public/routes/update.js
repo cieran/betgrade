@@ -120,7 +120,6 @@ var object = {
 				console.log(x.student + ", " + x.market + ", " + res.btotal);
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				object.findValueBelow(x);
 			});
 
 	},
