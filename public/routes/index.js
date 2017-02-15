@@ -44,7 +44,7 @@ module.exports = function(app, passport){
                         return console.log(err)
                     console.log("completed async");
                     res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-                })
+                });
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
