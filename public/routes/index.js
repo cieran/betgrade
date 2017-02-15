@@ -36,15 +36,13 @@ module.exports = function(app, passport){
         Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
             .then(function(doc){
                 async.forEach(docs, function(x, callback){
-                    if(err)
-                        callback(err);
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
                 }, function(err){
                     res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-                })
+                });
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
@@ -52,12 +50,13 @@ module.exports = function(app, passport){
         if(user){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
-                    doc.forEach(function(x) {
+                    async.forEach(docs, function(x, callback){
                        updates.calcReturns(x);
                        updates.cashout_value(x);
-                    })
-                    
+                    }, function{
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
+                    });
+                    
             });
         }else{
             res.redirect('/login');
