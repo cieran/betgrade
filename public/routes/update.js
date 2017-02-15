@@ -121,6 +121,51 @@ var object = {
 			});
 
 	},
+	crazy: function(x){
+		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
+			.then(function(doc){
+				var res = doc[0];
+				x.mostPopularOdds = res.back;
+				x.mostPopularBtotal = res.btotal;
+				console.log(x.student + "newFindValue");
+				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
+			    .then(function(doc){
+			        		var res = doc[0];
+			        		if(res == null){
+			        			x.valueBelowOdds = 0;
+			        			x.valueBelowBtotal = 0;
+			        		}else{
+					            x.valueBelowOdds = res.back;
+					            x.valueBelowBtotal = res.btotal;
+					        }
+					        Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
+				         	.then(function(doc){
+				         	var res = doc[0];
+				         	if(res == null){
+				         		x.valueAboveOdds = 0;
+				             	x.valueAboveLtotal = 0;
+				         	}else{
+				         		x.valueAboveOdds = res.lay;
+				             	x.valueAboveLtotal = res.ltotal;
+				         	}
+							console.log(x.student + "newFindValueAbove");
+							Market.find({"student" : x.student, "marketname": x.market, "back" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).skip(1).limit(1)
+					         .then(function(doc){
+					         	var res = doc[0];
+					         	if(res == null){
+					         		x.valueAboveAboveOdds = 0;
+					             	x.valueAboveAboveLtotal = 0;
+					         	}else{
+					         		x.valueAboveAboveOdds = res.lay;
+					             	x.valueAboveAboveLtotal = res.ltotal;
+					         	}
+							console.log(x.student + "newfindValueAboveAbove");
+					         });
+				         });
+				console.log(x.student + "newFindValueBelow");
+				});
+		});
+	},
 	newfindValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){

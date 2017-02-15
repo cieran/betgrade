@@ -36,7 +36,7 @@ module.exports = function(app, passport){
         Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
             .then(function(doc){
                 async.forEach(doc, function(x, callback){
-                    updates.newfindValue(x);
+                    updates.crazy(x);
                     callback();
                 }, function(err){
                     if(err)
