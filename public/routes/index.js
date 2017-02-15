@@ -40,6 +40,7 @@ module.exports = function(app, passport){
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
+                    callback();
                 }, function(err){
                     res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 });
