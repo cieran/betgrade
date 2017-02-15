@@ -33,23 +33,20 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res, next){
-        var promises = Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
+        Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
             .then(function(doc){
-                return new Promise(function(resolve, reject){
-                    doc.forEach(function(x){
+                async.forEach(doc, function(x, callback){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
-                    })
-                    resolve();
+                }, function(err){
+                    if(err)
+                        return console.log(err);
+                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
                 });
-            });
-        Promise.all(promises).then(function(){
-        res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-        }).catch(console.error);
+        });
     });
-    
     app.get('/profile/bet-history', function(req, res, next){
         var user = req.user;
         if(user){
