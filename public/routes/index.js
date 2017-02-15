@@ -253,8 +253,8 @@ module.exports = function(app, passport){
         if(!req.user){
             req.flash('loginMessage', 'You need to log in before you can place a bet');
             res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('loginMessage')});
-        }else if(stake <= 0){
-            req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC.');
+        }else if(stake <= 0 && odds > 1.0){
+            req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
             Market.find({"marketname" : 'To Pass'}).limit(10)
                 .then(function(doc){
                     res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
