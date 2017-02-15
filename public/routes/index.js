@@ -50,12 +50,11 @@ module.exports = function(app, passport){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
                     doc.forEach(function(x) {
-                       updates.calcReturns(x);
-                       updates.cashout_value(x);
+                       console.log("CO " + updates.calcReturns(x));
+                       console.log("RET " + updates.cashout_value(x););
 
                     })
-                    console.log("CO " + doc[0].cashout);
-                    console.log("RET " + doc[0].returns);
+                    
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
             });
         }else{
