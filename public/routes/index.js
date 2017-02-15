@@ -52,10 +52,10 @@ module.exports = function(app, passport){
                     doc.forEach(function(x) {
                        updates.calcReturns(x);
                        updates.cashout_value(x);
-                    })
-                    doc.forEach(function(y){
-                        console.log(y);
-                    })
+
+                    }).then(function(newdocs){
+                        console.log(newdocs);
+                    });
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
             });
         }else{
