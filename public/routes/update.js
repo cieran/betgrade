@@ -135,7 +135,7 @@ var object = {
 	         });
 	},
 	findValueAbove: function(x){
-	    Market.find({"student" : student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
+	    Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
