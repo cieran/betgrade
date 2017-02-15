@@ -111,6 +111,7 @@ var object = {
 		}
 	},
 	find : function(x){
+
 	},
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.market}).sort({btotal: -1}).limit(1)
@@ -119,29 +120,7 @@ var object = {
 				console.log(x.student + ", " + x.market + ", " + res.btotal);
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				Market.find({"student" : x.student, "marketname": x.market, "back" : {$lte : x.mostPopularBtotal}}).sort({odds: -1}).limit(1)
-		        	.then(function(doc1){
-		        		var res1 = doc1[0];
-			            x.valueBelowOdds = res1.back;
-			            x.valueBelowBtotal = res1.btotal;
-			            console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
-						Market.find({"student" : student, "marketname": market, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).limit(1)
-							         .then(function(doc2){
-							         	var res2 = doc2[0];
-							            x.valueAboveOdds = res2.lay;
-							            x.valueAboveLtotal = res2.ltotal;
-										console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
-										Market.find({"student" : x.student, "marketname": x.market, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).skip(1).limit(1)
-											         .then(function(doc3){
-											         		var res3 = doc3[0];
-											         	 x.valueAboveAboveOdds = res3.lay;
-											             x.valueAboveAboveLtotal = res3.ltotal;
-											             console.log("   Second Above Odds: " + res.lay + ", Second Above Lay: " + res.ltotal);
-											         });
-
-							         });
-
-			         });
+				object.findValueBelow(x);
 			});
 
 	},
@@ -151,14 +130,13 @@ var object = {
         			var res = doc[0];
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
-	             object.findValueAbove(x);
 	             console.log("   Below Odds: " + res.back + ", Below Backed: " + res.btotal);
 	         });
 	},
 	findValueAbove: function(x){
 	    Market.find({"student" : student, "marketname": market, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
-	         		var res = doc[0];
+	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	             object.findValueAboveAbove(x);
@@ -168,7 +146,7 @@ var object = {
 	findValueAboveAbove : function(x){
 	    Market.find({"student" : x.student, "marketname": x.market, "back" : {$gte : x.mostPopularBtotal}}).sort({odds: 1}).skip(1).limit(1)
 	         .then(function(doc){
-	         		var res = doc[0];
+	         	var res = doc[0];
 	         	 x.valueAboveAboveOdds = res.lay;
 	             x.valueAboveAboveLtotal = res.ltotal;
 	             console.log("   Second Above Odds: " + res.lay + ", Second Above Lay: " + res.ltotal);
