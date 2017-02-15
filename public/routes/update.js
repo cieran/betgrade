@@ -93,8 +93,9 @@ var object = {
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
 				var cashout = Math.round(cashout_long * 100) / 100;
+				var returns = Math.round(cashout - x.stake * 100)/100;
 				x.cashout = cashout;
-				x.returns = cashout - x.stake;
+				x.returns = returns;
 			});
 		}else{
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({btotal:-1}).limit(1)
@@ -105,8 +106,9 @@ var object = {
 				var diff = profit - liability;
 				var cashout_long = x.stake + (diff / doc[0].back);
 				var cashout = Math.round(cashout_long * 100 ) / 100;
+				var returns = Math.round(cashout - x.stake * 100)/100;
 				x.cashout = cashout;
-				x.returns = cashout - x.stake;
+				x.returns = returns;
 			});
 		}
 	},
