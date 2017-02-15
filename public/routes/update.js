@@ -125,8 +125,10 @@ var object = {
 
 	},
 	findValueBelow: function(x){
+		console.log("landed at func1");
      	Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
+        		console.log("we're in func1");
         		var res = doc[0];
         		if(res == null){
         			x.valueBelowOdds = 0;
@@ -139,8 +141,10 @@ var object = {
 	         });
 	},
 	findValueAbove: function(x){
+		console.log("landed at func2");
 	    Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
+	         	        		console.log("we're in func2");
 	         	if(res==null){
 	         		x.valueAboveOdds = 0;
 	             	x.valueAboveLtotal = 0;
