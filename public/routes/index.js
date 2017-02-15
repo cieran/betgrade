@@ -39,7 +39,7 @@ module.exports = function(app, passport){
                     updates.newfindValue(x),
                     updates.newfindValueBelow(x),
                     updates.newfindValueAbove(x),
-                    updates.newfindValueAboveAbove(x),
+                    updates.newfindValueAboveAbove(x)
                     ], function(err, res){
                         console.log("done");
                     });
