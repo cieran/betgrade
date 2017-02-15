@@ -147,7 +147,7 @@ var object = {
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	             //object.findValueAboveAbove(x);
-				 console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
+				 console.log("   Above Odds: " + x.valueAboveAboveOdds + ", Above Lay: " + x.valueAboveAboveLtotal);
 	         });
 	},
 	findValueAboveAbove : function(x){
