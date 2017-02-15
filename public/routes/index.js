@@ -33,7 +33,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res, next){
-        Market.find({"marketname" : "To Pass"})
+        Market.find({"marketname" : 'To Pass'})
             .then(function(doc){
                 doc.forEach(function(x){
                     console.log("we're here " + x.student);
