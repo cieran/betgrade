@@ -145,7 +145,7 @@ var object = {
 	         .then(function(doc){
 	         	var res = doc[0];
 	         	console.log("we're in func2 looking at " + x.student);
-	         	if(res==null){
+	         	if(res == null){
 	         		x.valueAboveOdds = 0;
 	             	x.valueAboveLtotal = 0;
 	         	}else{
@@ -153,7 +153,7 @@ var object = {
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
 	             //object.findValueAboveAbove(x);
-				 console.log("   Above Odds: " + x.valueAboveAboveOdds + ", Above Lay: " + x.valueAboveAboveLtotal);
+				 console.log("   Above Odds: " + x.valueAboveOdds + ", Above Lay: " + x.valueAboveLtotal);
 	         });
 	},
 	findValueAboveAbove : function(x){
