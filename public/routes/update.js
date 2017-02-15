@@ -120,10 +120,12 @@ var object = {
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
 				console.log(x.student + "'s most popular odds are " + x.mostPopularOdds);
+				object.findValueBelow(x);
 			});
 
 	},
 	findValueBelow: function(x){
+		console.log("in here now, mostPopularBtotal is " + x.mostPopularBtotal);
      	Market.find({"student" : x.student, "marketname": x.market, "back" : {$lte : x.mostPopularBtotal}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         			var res = doc[0];
