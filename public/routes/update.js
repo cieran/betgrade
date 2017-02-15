@@ -131,10 +131,11 @@ var object = {
 	             x.valueBelowOdds = res.back;
 	             x.valueBelowBtotal = res.btotal;
 				console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
+				object.findValueAbove(x);
 	         });
 	},
 	findValueAbove: function(x){
-	    Market.find({"student" : student, "marketname": x.marketname, "back" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
+	    Market.find({"student" : student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
 	             x.valueAboveOdds = res.lay;
