@@ -120,7 +120,7 @@ var object = {
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
 				console.log(x.student + "'s most popular odds are " + x.mostPopularOdds);
-				object.findValueAboveAbove(x);
+				object.findValueBelow(x);
 			});
 
 	},
@@ -134,6 +134,7 @@ var object = {
         		}
 	            x.valueBelowOdds = res.back;
 	            x.valueBelowBtotal = res.btotal;
+	            object.findValueAbove(x);
 				console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
 	         });
 	},
@@ -146,7 +147,7 @@ var object = {
 	         	}
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
-	             //object.findValueAboveAbove(x);
+	             object.findValueAboveAbove(x);
 				 console.log("   Above Odds: " + x.valueAboveAboveOdds + ", Above Lay: " + x.valueAboveAboveLtotal);
 	         });
 	},
