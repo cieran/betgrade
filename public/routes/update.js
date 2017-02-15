@@ -159,7 +159,7 @@ var object = {
 		        		if(res == null){
 		        			x.valueBelowOdds = 0;
 		        			x.valueBelowBtotal = 0;
-		        			object.findValueAbove(x);
+		        			object.newfindValueAbove(x);
 		        		}else{
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
@@ -197,7 +197,7 @@ var object = {
 	         	if(res == null){
 	         		x.valueAboveOdds = 0;
 	             	x.valueAboveLtotal = 0;
-	             	object.findValueAboveAbove(x);
+	             	object.newfindValueAboveAbove(x);
 	         	}else{
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
