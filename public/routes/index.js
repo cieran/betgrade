@@ -35,29 +35,31 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res, next){
         Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
             .then(function(doc){
-                async.forEach(docs, function(x, callback){
+                return new Promise(function(resolve, reject){
+                    doc.forEach(function(x){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
-                    callback();
-                }, function(err){
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
+                    })
+                    resolve();
                 });
-        });
+            });
     });
+    Promise.all(promises).then(function(){
+        res.render('test-env', {title: 'Test..', items: doc, user: req.user});
+    }).catch(console.error);
     app.get('/profile/bet-history', function(req, res, next){
         var user = req.user;
         if(user){
             Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
                 .then(function(doc){
-                    async.forEach(docs, function(x, callback){
+                    doc.forEach(function(x) {
                        updates.calcReturns(x);
                        updates.cashout_value(x);
-                    }, function(err){
-                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
-                    });
+                    })
                     
+                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
             });
         }else{
             res.redirect('/login');
