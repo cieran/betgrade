@@ -51,7 +51,7 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     doc.forEach(function(x) {
                        console.log("CO " + updates.calcReturns(x));
-                       console.log("RET " + updates.cashout_value(x););
+                       console.log("RET " + updates.cashout_value(x));
 
                     })
                     
