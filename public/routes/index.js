@@ -44,7 +44,7 @@ module.exports = function(app, passport){
                     if(err)
                         return console.log(err)
                     console.log("completed async");
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
+                    res.render('test-env', {title: 'Test..', items: x, user: req.user});
                 })
         });
     });
