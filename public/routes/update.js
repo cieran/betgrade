@@ -129,24 +129,25 @@ var object = {
      	Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         		var res = doc[0];
-        		console.log(doc[0]);
-        		if(res.back == null){
-        			var back = 0;
+        		if(res == null){
+        			x.valueBelowOdds = 0;
+        			x.valueBelowBtotal = 0;
         		}
-        		console.log("--> " + back);
-	             x.valueBelowOdds = res.back;
-	             x.valueBelowBtotal = res.btotal;
+	            x.valueBelowOdds = res.back;
+	            x.valueBelowBtotal = res.btotal;
 				console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
 	         });
 	},
 	findValueAbove: function(x){
 	    Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
-	         	var res = doc[0];
-	         	console.log(res);
+	         	if(res==null){
+	         		x.valueAboveOdds = 0;
+	             	x.valueAboveLtotal = 0;
+	         	}
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
-	             object.findValueAboveAbove(x);
+	             //object.findValueAboveAbove(x);
 				 console.log("   Above Odds: " + res.lay + ", Above Lay: " + res.ltotal);
 	         });
 	},
