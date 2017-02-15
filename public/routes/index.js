@@ -35,7 +35,7 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res, next){
         Market.find({"marketname" : 'To Pass'})
             .exec(function(doc){
-                aync.forEach(doc, function(x, callback){
+                async.forEach(doc, function(x, callback){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
