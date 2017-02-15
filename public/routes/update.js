@@ -127,7 +127,7 @@ var object = {
 				var res = doc[0];
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				console.log(x.student + "'s most popular odds are " + x.mostPopularOdds);
+				console.log(x.student);
 			});
 
 	},
@@ -162,7 +162,7 @@ var object = {
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
 				        }
-				        console.log(x.student + "'s second most popular back odds are " + x.valueBelowOdds);
+				        console.log(x.student);
 			            //object.findValueAbove(x);
 			         });
 			});
@@ -199,7 +199,7 @@ var object = {
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
-				 console.log(x.student + "'s most popular lay odds are " + x.valueAboveOdds);
+				 console.log(x.student);
 	             //object.findValueAboveAbove(x);
 	         });
 	        });
@@ -229,7 +229,7 @@ var object = {
 		         		x.valueAboveAboveOdds = res.lay;
 		             	x.valueAboveAboveLtotal = res.ltotal;
 		         	}
-		         	console.log(x.student + "'s second most popular lay odds are " + x.valueAboveAboveOdds);
+		         	console.log(x.student);
 		         });
 	    });
 	             
