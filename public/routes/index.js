@@ -40,6 +40,7 @@ module.exports = function(app, passport){
                     updates.newfindValueBelow(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
+                    console.log("in here");
                     callback();
                 }, function(err){
                     if(err)
