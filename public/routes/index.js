@@ -33,14 +33,13 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res, next){
-        Market.find({"marketname" : 'To Pass'})
+        Market.find({"marketname" : 'To Pass', "student":"Ade Akingbade"})
             .then(function(doc){
                 async.forEach(doc, function(x, callback){
                     updates.newfindValue(x);
                     updates.newfindValueBelow(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
-                    console.log("in here");
                     callback();
                 }, function(err){
                     if(err)
