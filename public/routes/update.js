@@ -128,7 +128,8 @@ var object = {
      	Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
         	.then(function(doc){
         		var res = doc[0];
-        		if(res.back == null){
+        		console.log(res);
+        		if(!res.back){
         			res.back = 0;
         		}
         		console.log("--> " +res.back);
