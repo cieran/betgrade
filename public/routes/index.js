@@ -34,11 +34,12 @@ module.exports = function(app, passport){
 
     app.get('/test-env', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).then(function(doc){
-                doc.forEach(function(x){
+                async.forEach(doc, function(x, callback){
                     updates.newfindValueBelow(x);
                     updates.newfindValue(x);
                     updates.newfindValueAbove(x);
                     updates.newfindValueAboveAbove(x);
+                    callback();
                 }, function(err){
                     if(err)
                         return console.log(err)
