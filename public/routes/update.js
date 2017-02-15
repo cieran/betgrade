@@ -138,8 +138,7 @@ var object = {
 	    Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
 	         .then(function(doc){
 	         	var res = doc[0];
-	         	console.log("res.lay" + res.lay);
-	         	console.log("res.ltotal" + res.ltotal);
+	         	console.log(res);
 	             x.valueAboveOdds = res.lay;
 	             x.valueAboveLtotal = res.ltotal;
 	             object.findValueAboveAbove(x);
