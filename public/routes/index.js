@@ -69,7 +69,7 @@ module.exports = function(app, passport){
         var set_profit = req.body.profit;
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
-                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
+                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
                 .then(function(doc){
                     var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
                     var returns = bet.stake * bet.odds;
