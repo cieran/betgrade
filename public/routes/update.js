@@ -113,7 +113,6 @@ var object = {
 				x.returns = x.stake - 0.1;
 			}
 			});
-		}
 	},
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
