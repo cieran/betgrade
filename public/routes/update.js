@@ -85,8 +85,10 @@ var object = {
 	},
 	cashout_value: function(x){
 		var ret = object.static_calcReturns(x.bet, x.stake, x.odds);
+		console.log("ret from static func: " +ret);
 			Market.find({"marketname" : x.market, "student" : x.student, ltotal: {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
 			.then(function(doc){
+				console.log("we in here")
 				if(x.bet == "Back"){
 					var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
 			        var returns = x.stake * x.odds;
