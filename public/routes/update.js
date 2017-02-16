@@ -78,9 +78,9 @@ var object = {
 	},	
 	static_calcReturns: function(bet, stake, odds){
         if(bet == "Back"){
-            return stake * odds + stake;
+            return stake * odds;
         }else{
-            return stake * 2;
+            return stake + stake;
         }
 	},
 	cashout_value: function(x){
