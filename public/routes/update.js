@@ -84,7 +84,7 @@ var object = {
         }
 	},
 	cashout_value: function(x){
-		var ret = object.static_calcReturns(x.bet, x.stake, x.odds);
+		var ret = parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " +ret);
 			Market.find({"marketname" : x.market, "student" : x.student, ltotal: {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
 			.exec(function(doc){
