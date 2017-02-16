@@ -89,7 +89,7 @@ var object = {
 			Market.find({"marketname" : x.market, "student" : x.student, ltotal: {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
 			.exec(function(doc){
 				console.log("we in here");
-				if(!doc.length){
+				if(!doc[0].length){
 					x.cashout = x.stake - 0.1;
 					x.returns = -0.1;
 				}else{
