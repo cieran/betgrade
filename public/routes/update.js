@@ -93,8 +93,13 @@ var object = {
 				var cashout_long = x.stake + (diff / doc[0].back);
 				var cashout = Math.round(cashout_long * 100) / 100;
 				var return_val = Math.round((cashout - x.stake) * 100)/100;
-				x.cashout = cashout;
-				x.returns = return_val;
+				if(x.bet == "Back"){
+					x.cashout = cashout;
+					x.returns = return_val;
+				}else{
+					x.cashout = -cashout;
+					x.returns = -return_val;
+				}
 			});
 	},
 	findValue: function(x){
