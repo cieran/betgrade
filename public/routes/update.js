@@ -84,31 +84,34 @@ var object = {
         }
 	},
 	cashout_value: function(x){
-		if(x.bet == "Back"){
 			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
 			.then(function(doc){
-				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
-		        var returns = x.stake * x.odds;
-				var profit = returns - x.stake;
-				var diff = profit - liability;
-				var cashout_long = x.stake + (diff / doc[0].back);
-				var cashout = Math.round(cashout_long * 100) / 100;
-				var return_val = Math.round((cashout - x.stake) * 100)/100;
-				x.cashout = cashout;
-				x.returns = return_val;
-			});
-		}else{
-			Market.find({"marketname" : x.market, "student" : x.student}).sort({ltotal:-1}).limit(1)
-			.then(function(doc){
-				var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
-		        var returns = x.stake + x.stake;
-				var profit = returns - x.stake;
-				var diff = profit - liability;
-				var cashout_long = x.stake + (diff / doc[0].back);
-				var cashout = Math.round(cashout_long * 100 ) / 100;
-				var return_val = Math.round((cashout - x.stake) * 100)/100;
-				x.cashout = cashout;
-				x.returns = return_val;
+				if(doc){
+				if(x.bet == "Back"){
+					var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+			        var returns = x.stake + x.stake;
+					var profit = returns - x.stake;
+					var diff = profit - liability;
+					var cashout_long = x.stake + (diff / doc[0].back);
+					var cashout = Math.round(cashout_long * 100 ) / 100;
+					var return_val = Math.round((cashout - x.stake) * 100)/100;
+					x.cashout = cashout;
+					x.returns = return_val;
+				}else{
+					var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+			        var returns = x.stake * x.odds;
+					var profit = returns - x.stake;
+					var diff = profit - liability;
+					var cashout_long = x.stake + (diff / doc[0].back);
+					var cashout = Math.round(cashout_long * 100) / 100;
+					var return_val = Math.round((cashout - x.stake) * 100)/100;
+					x.cashout = cashout;
+					x.returns = return_val;
+				}
+			}else{
+				x.cashout = x.stake - 0.1;
+				x.returns = x.stake - 0.1;
+			}
 			});
 		}
 	},
