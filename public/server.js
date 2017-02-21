@@ -13,9 +13,9 @@ var session = require('express-session');
 var db = require('./config/database.js');
 var moment = require('moment');
 var tz = require('moment-timezone');
+var http = require('http');
 require('./config/passport')(passport);
 mongoose.connect(db.database);
-
 // Just a function to switch the timezones to Irish time when storing in the database
 var hbs = exphbs.create({
     helpers: {
@@ -53,8 +53,9 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
-app.listen(port);
-console.log('Node Server Running @ Port: ' + port);
+http.createServer(app).listen(port, function(){
+  console.log('Node Server Running @ Port: ' + port);
+});
 
 // Boring error handling down here
 app.use(function(req, res, next) {
