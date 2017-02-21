@@ -59,14 +59,14 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
+/*
 https.createServer(options, app).listen(port, function(){
   console.log('Node HTTPS Server on Port ' + port);
 });
-/*
+*/
 http.createServer(app).listen(port, function(){
   console.log('Node HTTP Server on Port ' + port);
 });
-*/
 
 // Boring error handling down here
 app.use(function(req, res, next) {
