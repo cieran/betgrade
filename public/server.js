@@ -16,8 +16,8 @@ var tz = require('moment-timezone');
 var https = require('https');
 var fs = require('fs');
 var options = {
-  key: fs.readFileSync('server.key');
-  cert: fs.readFileSync('server.crt');
+  key: fs.readFileSync('server.key'),
+  cert: fs.readFileSync('server.crt')
 };
 require('./config/passport')(passport);
 mongoose.connect(db.database);
