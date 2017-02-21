@@ -13,7 +13,12 @@ var session = require('express-session');
 var db = require('./config/database.js');
 var moment = require('moment');
 var tz = require('moment-timezone');
-var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var options = {
+  key: fs.readFileSync('server.key');
+  cert: fs.readFileSync('server.crt');
+};
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 // Just a function to switch the timezones to Irish time when storing in the database
@@ -53,7 +58,7 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
-http.createServer(app).listen(port, function(){
+https.createServer(options, app).listen(port, function(){
   console.log('Node Server Running @ Port: ' + port);
 });
 
