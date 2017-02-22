@@ -177,7 +177,7 @@ var object = {
 				var res = doc[0];
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				console.log(x.student + "newFindValue");
+				console.log(x.student + " newFindValue");
 			});
 
 	},
@@ -192,13 +192,11 @@ var object = {
 		        		if(res == null){
 		        			x.valueBelowOdds = 0;
 		        			x.valueBelowBtotal = 0;
-		        			object.newfindValueAbove(x);
 		        		}else{
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
-				            object.newfindValueAbove(x);
 				        }
-					console.log(x.student + "newFindValueBelow");
+					console.log(x.student + " newFindValueBelow");
 			        });
 			});
      	
@@ -218,7 +216,7 @@ var object = {
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
-				console.log(x.student + "newFindValueAbove");
+				console.log(x.student + " newFindValueAbove");
 	         });
 	        });
 	},
