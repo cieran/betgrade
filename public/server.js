@@ -16,10 +16,12 @@ var tz = require('moment-timezone');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+/*
 var options = {
   key: fs.readFileSync('server.key'),
   cert: fs.readFileSync('server.crt')
 };
+*/
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 // Just a function to switch the timezones to Irish time when storing in the database
