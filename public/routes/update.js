@@ -183,6 +183,7 @@ var object = {
 						console.log(err);
 					console.log("newFindValue finished");
 				}
+				});
 			});
 
 	},
