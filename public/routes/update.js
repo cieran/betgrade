@@ -201,7 +201,7 @@ var object = {
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
 				        }
-					console.log(x.student + " newFindValueBelow");
+				        callback();
 			        });
 				}, function(err){
 					if(err)
