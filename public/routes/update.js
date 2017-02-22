@@ -235,7 +235,7 @@ var object = {
 		         		x.valueAboveAboveOdds = res.lay;
 		             	x.valueAboveAboveLtotal = res.ltotal;
 		         	}
-				console.log(x.student + "newfindValueAboveAbove");
+				console.log(x.student + " newfindValueAboveAbove");
 		         });
 	    });
 	             
