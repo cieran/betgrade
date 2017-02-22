@@ -187,7 +187,7 @@ var object = {
 	},
 	findValueBelow: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
-			.exec(function(errs, ret){
+			.exec(function(err, ret){
 				async.foreach(ret, function(result, callback){
 					var mostPopularBtotal = result.btotal;
 					var mostPopularOdds = result.back;
