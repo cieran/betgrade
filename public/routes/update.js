@@ -131,7 +131,8 @@ var object = {
 	crazy: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
-				var res = doc[0];
+				async.forEach(doc, function(x, callback){
+var res = doc[0];
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
 				console.log(x.student + " 1 popular back:  " + x.mostPopularOdds);
@@ -170,7 +171,13 @@ var object = {
 								console.log(x.student + " 2 popular lay:  " + x.valueAboveAboveOdds);
 					         });
 				         });
-				});
+				});                    callback();
+                }, function(err){
+                    if(err)
+                        return console.log(err)
+                    console.log("completed it m8");
+                });
+				
 		});
 	},
 	newfindValue: function(x){
