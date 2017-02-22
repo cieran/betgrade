@@ -186,7 +186,7 @@ var object = {
 			});
 	},
 	findValueBelow: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1).exec()
 			.then(function(ret){
 				var mostPopularBtotal = ret[0].btotal;
 				var mostPopularOdds = ret[0].back;
