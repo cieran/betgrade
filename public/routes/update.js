@@ -182,10 +182,8 @@ var object = {
 					if(err)
 						console.log(err);
 					console.log("newFindValue finished");
-				}
 				});
 			});
-
 	},
 	findValueBelow: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
