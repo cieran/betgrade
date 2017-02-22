@@ -187,12 +187,12 @@ var object = {
 	},
 	findValueBelow: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
-			.then(function(ret){
+			.exec(function(errs, ret){
 				async.foreach(ret, function(result, callback){
 					var mostPopularBtotal = result.btotal;
 					var mostPopularOdds = result.back;
 					Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}}).sort({odds: -1}).limit(1)
-		        	.then(function(doc){
+		        	.exec(function(errs, doc){
 		        		async.foreach(doc, function(res, callback2){
 			        		if(res == null){
 			        			x.valueBelowOdds = 0;
