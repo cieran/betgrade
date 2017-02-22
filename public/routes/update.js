@@ -22,7 +22,7 @@ var object = {
 			Bet.find({"student":student, "odds":odds, "market":market, "paired":false, "settled":false, 
 			"bet": {$ne : side}, "_id" : {$ne : id}}).sort({createdAt: 1}).limit(1).exec(function(errs, res){
 			async.forEach(res, function(opp_doc, callback2){
-			console.log("in");
+				console.log("in");
 				var temp_to_match = to_match;
 				var opp_id = opp_doc._id;
 				var opp_student = opp_doc.student;
@@ -193,15 +193,15 @@ var object = {
 					var mostPopularOdds = result.back;
 					Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}}).sort({odds: -1}).limit(1)
 		        	.then(function(doc){
-		        		var res = doc[0];
-		        		if(res == null){
-		        			x.valueBelowOdds = 0;
-		        			x.valueBelowBtotal = 0;
-		        		}else{
-				            x.valueBelowOdds = res.back;
-				            x.valueBelowBtotal = res.btotal;
-				        }
-				        callback();
+		        		async.foreach(doc, function(res, callback2){
+			        		if(res == null){
+			        			x.valueBelowOdds = 0;
+			        			x.valueBelowBtotal = 0;
+			        		}else{
+					            x.valueBelowOdds = res.back;
+					            x.valueBelowBtotal = res.btotal;
+					        }
+		        		}, callback);
 			        });
 				}, function(err){
 					if(err)
