@@ -181,7 +181,7 @@ var object = {
 				}, function(err){
 					if(err)
 						console.log(err);
-					console.log("newFindValue finished");
+					console.log("findValue finished");
 				});
 			});
 	},
