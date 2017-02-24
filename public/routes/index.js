@@ -198,7 +198,7 @@ module.exports = function(app, passport){
                     })
                     // end of supplied code
                     setTimeout(function() {
-                        res.render('catagories/csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
+                        res.render('catagories/csse', {title: 'CSSE | Markets', markets: results, user: req.user});
                     }, 100);
                 }, 500);
 
@@ -228,7 +228,7 @@ module.exports = function(app, passport){
                     })
                     // end of supplied code
                     setTimeout(function() {
-                        res.render('catagories/cs', {title: 'CS | Markets', markets: doc, user: req.user});
+                        res.render('catagories/cs', {title: 'CS | Markets', markets: results, user: req.user});
                     }, 100);
                 }, 500);
 
@@ -258,7 +258,7 @@ module.exports = function(app, passport){
                     })
                     // end of supplied code
                     setTimeout(function() {
-                        res.render('catagories/ct', {title: 'CT | Markets', markets: doc, user: req.user});
+                        res.render('catagories/ct', {title: 'CT | Markets', markets: results, user: req.user});
                     }, 100);
                 }, 500);
 
