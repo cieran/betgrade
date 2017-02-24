@@ -35,17 +35,16 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res){
         Market.find({"marketname" : 'To Pass'}).limit(10).exec()
             .then(function(doc){
-                async.forEach(doc, function(x, callback){
+                doc.forEach(function(x){
                         updates.findValue(x);
                         updates.findValueBelow(x);
                         updates.findValueAbove(x);
                         updates.findValueAboveAbove(x);
-                    callback();
                 })
 
                 setTimeout(function(){
                     res.render('test-env', {title: "Bet History | Betgrade", items: doc, user: req.user});
-                }, 0);
+                }, 2000);
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
