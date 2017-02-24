@@ -298,7 +298,7 @@ module.exports = function(app, passport){
       res.redirect('/login');
     });
     app.get('/optout', function(req, res){
-        res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', user: req.user});
+        res.render('auth/optout', {title: 'Student Opt-Out | Betgrade', message:req.flash('error_removal'), user: req.user});
     });
     app.post('/optout', function(req, res){
         var student_name = req.body.student;
