@@ -174,15 +174,9 @@ var object = {
 	findValue: function(x, callback2){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
-				async.forEach(doc, function(res, callback){
-				x.mostPopularOdds = res.back;
-				x.mostPopularBtotal = res.btotal;
-				callback();
-				}, function(err){
-					if(err)
-						console.log(err);
-					callback2();
-				});
+				x.mostPopularOdds = doc.back;
+				x.mostPopularBtotal = doc.btotal;
+				callback2();
 			});
 	},
 	findValueBelow: function(x){

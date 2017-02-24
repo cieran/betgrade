@@ -39,9 +39,9 @@ module.exports = function(app, passport){
                         updates.findValue(x, function(){
                             console.log("Find Value Finished");
                         });
-                        updates.findValueBelow(x);
-                        updates.findValueAbove(x);
-                        updates.findValueAboveAbove(x);
+                        //updates.findValueBelow(x);
+                        //updates.findValueAbove(x);
+                        //updates.findValueAboveAbove(x);
                     callback();
                 }, function(err){
                     if(err)
