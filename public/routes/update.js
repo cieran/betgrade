@@ -176,6 +176,7 @@ var object = {
 			.then(function(doc){
 				x.mostPopularOdds = doc.back;
 				x.mostPopularBtotal = doc.btotal;
+				console.log(student + " taken care of.");
 				callback2();
 			});
 	},
