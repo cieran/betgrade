@@ -28,13 +28,6 @@ module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).sort({btotal : -1}).limit(10)
             .then(function(doc){
-                res.render('index', {title: 'Betgrade | Home', message: req.flash('bet-update'), items: doc, user: req.user});
-        });
-    });
-
-    app.get('/test-env', function(req, res){
-        Market.find({"marketname" : 'To Pass'})
-            .then(function(doc){
                 doc.forEach(function(x){
                         updates.findValue(x);
                         updates.findValueBelow(x);
@@ -42,7 +35,8 @@ module.exports = function(app, passport){
                         updates.findValueAboveAbove(x);
                 })
                 setTimeout(function() {
-                    //remove duplicates before next Timeout
+                    // credit to user 'codebox' on StackOverflow for below hash code
+                    // https://tinyurl.com/betgrade-stackoverflow-helper
                     function hash(o){
                         return o.student;
                     }
@@ -53,8 +47,9 @@ module.exports = function(app, passport){
                     var results = Object.keys(hashesFound).map(function(k){
                         return hashesFound[k];
                     })
+                    // end of supplied code
                     setTimeout(function() {
-                        res.render('test-env', {title: "Bet History | Betgrade", items: results, user: req.user});
+                        res.render('test-env', {title: "Bet History | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
                     }, 100);
                 }, 500);
 
