@@ -309,10 +309,7 @@ module.exports = function(app, passport){
                 Market.remove({"student" : student_name}, function(){
                         console.log("user removed");
                         req.flash('removal', 'Student has been removed from Betgrade!');
-                        Market.find({"marketname" : 'To Pass'}).limit(10)
-                            .then(function(doc){
-                                res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('removal')});
-                        });
+                        res.redirect('/');
                 });
             } else {
                     console.log("error, wrong student or removal code");
