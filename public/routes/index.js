@@ -335,6 +335,7 @@ module.exports = function(app, passport){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
             res.redirect('/');        
         }else{
+            // YOU HAVE AN ERROR HERE FAM FIX THAT SHIT
             console.log("we have staked enough money");
             var errors = false;
             User.find({"username" : user.username}).then(function(funds, err){
