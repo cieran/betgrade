@@ -177,19 +177,91 @@ module.exports = function(app, passport){
     app.get('/catagories/csse', function(req, res, next){
         Market.find({"course" : 'csse', "marketname" : 'To Pass'})
             .then(function(doc){
-                res.render('catagories/csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
+                doc.forEach(function(x){
+                        updates.findValue(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
+                })
+                setTimeout(function() {
+                    // credit to user 'codebox' on StackOverflow for below hash code
+                    // https://tinyurl.com/betgrade-stackoverflow-helper
+                    function hash(o){
+                        return o.student;
+                    }
+                    var hashesFound = {};
+                    doc.forEach(function(o){
+                        hashesFound[hash(o)] = o;
+                    })
+                    var results = Object.keys(hashesFound).map(function(k){
+                        return hashesFound[k];
+                    })
+                    // end of supplied code
+                    setTimeout(function() {
+                        res.render('catagories/csse', {title: 'CSSE | Markets', markets: doc, user: req.user});
+                    }, 100);
+                }, 500);
+
         });
     });    
     app.get('/catagories/cs', function(req, res, next){
         Market.find({"course" : 'cs', "marketname" : 'To Pass'})
             .then(function(doc){
-                res.render('catagories/cs', {title: 'CS | Markets', markets: doc, user: req.user});
+                doc.forEach(function(x){
+                        updates.findValue(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
+                })
+                setTimeout(function() {
+                    // credit to user 'codebox' on StackOverflow for below hash code
+                    // https://tinyurl.com/betgrade-stackoverflow-helper
+                    function hash(o){
+                        return o.student;
+                    }
+                    var hashesFound = {};
+                    doc.forEach(function(o){
+                        hashesFound[hash(o)] = o;
+                    })
+                    var results = Object.keys(hashesFound).map(function(k){
+                        return hashesFound[k];
+                    })
+                    // end of supplied code
+                    setTimeout(function() {
+                        res.render('catagories/cs', {title: 'CS | Markets', markets: doc, user: req.user});
+                    }, 100);
+                }, 500);
+
         });
     });    
     app.get('/catagories/ct', function(req, res, next){
-        Market.find({"marketname" : 'To Pass', "course" : 'ct'})
+        Market.find({"course" : 'ct', "marketname" : 'To Pass'})
             .then(function(doc){
-                res.render('catagories/ct', {title: 'CT | Markets', markets: doc, user: req.user});
+                doc.forEach(function(x){
+                        updates.findValue(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
+                })
+                setTimeout(function() {
+                    // credit to user 'codebox' on StackOverflow for below hash code
+                    // https://tinyurl.com/betgrade-stackoverflow-helper
+                    function hash(o){
+                        return o.student;
+                    }
+                    var hashesFound = {};
+                    doc.forEach(function(o){
+                        hashesFound[hash(o)] = o;
+                    })
+                    var results = Object.keys(hashesFound).map(function(k){
+                        return hashesFound[k];
+                    })
+                    // end of supplied code
+                    setTimeout(function() {
+                        res.render('catagories/ct', {title: 'CT | Markets', markets: doc, user: req.user});
+                    }, 100);
+                }, 500);
+
         });
     });
     app.get('/signup', function(req, res){

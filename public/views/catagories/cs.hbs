@@ -1,17 +1,35 @@
 
-    <section class="main-body">
+<section class="main-body">
         <div class="bet-column-head">
-            <div class="col-xs-6 col-md-6">Student Name</div>
-            <div class="col-xs-3 col-md-3">Back</div>
-            <div class="col-xs-3 col-md-3">Lay</div>
+            <div class="col-xs-4 col-md-4">Student Name</div>
+            <div class="col-xs-2 col-md-2">Next Best</div>
+            <div class="col-xs-2 col-md-2">Back</div>            
+            <div class="col-xs-2 col-md-2">Lay</div>
+            <div class="col-xs-2 col-md-2">Next Best</div>
         </div>
         <div class="bet-column-market">
-            {{# each markets}}
-            <div class="col-xs-6 col-md-6"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.back}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.back}}<br><p>{{this.btotal}}mBTC</p> </button></div>
-            <div class="col-xs-3 col-md-3"><button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.lay}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> {{this.lay}}<br><p>{{this.ltotal}}mBTC</p> </button></div>
+            {{#each markets}}
+            <div class="col-xs-4 col-md-4"><a class="names" href="/markets/{{filename}}"> {{this.student}} </a></div>
+            <div class="col-xs-2 col-md-2">
+                <button class="addmarket btn btn-block btn-default" data-toggle="modal" data-side="Back" data-odds="{{this.valueBelowOdds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal">
+                {{this.valueBelowOdds}}<br><p>{{this.valueBelowBtotal}}mBTC</p>
+                </button>
+            </div>
+            <div class="col-xs-2 col-md-2">
+                <button class="addmarket btn btn-block btn-info" data-toggle="modal" data-side="Back" data-odds="{{this.mostPopularOdds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> 
+                {{this.mostPopularOdds}}<br><p>{{this.mostPopularBtotal}}mBTC</p> 
+                </button>
+            </div>            
+            <div class="col-xs-2 col-md-2">
+                <button class="addmarket btn btn-block btn-danger" data-toggle="modal" data-side="Lay" data-odds="{{this.valueAboveOdds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> 
+                {{this.valueAboveOdds}}<br><p>{{this.valueAboveLtotal}}mBTC</p> 
+                </button>
+            </div>
+            <div class="col-xs-2 col-md-2">
+                <button class="addmarket btn btn-block btn-default" data-toggle="modal" data-side="Lay" data-odds="{{this.valueAboveAboveOdds}}" data-student="{{this.student}}" data-market="{{this.marketname}}" data-target="#myModal"> 
+                {{this.valueAboveAboveOdds}}<br><p>{{this.valueAboveAboveLtotal}}mBTC</p> 
+                </button>
+            </div>
             {{/each}}
-        </div>  
-		
+        </div>          
 </section>
-
