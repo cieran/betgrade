@@ -33,7 +33,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/test-env', function(req, res){
-        Market.find({"marketname" : 'To Pass'}).limit(10)
+        Market.find({"marketname" : 'To Pass'}).limit(10).exec({})
             .then(function(doc){
                 async.forEach(doc, function(x, callback){
                         updates.findValue(x, function(){
@@ -44,10 +44,12 @@ module.exports = function(app, passport){
                         //updates.findValueAboveAbove(x);
                     callback();
                 }, function(err){
-                    if(err)
+                    if(err){
                         return console.log(err)
-                    console.log("completed async");
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
+                    }else{
+                        console.log("completed async");
+                        res.render('test-env', {title: 'Test..', items: doc, user: req.user});
+                    }
                 });
         });
     });
