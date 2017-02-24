@@ -344,7 +344,7 @@ module.exports = function(app, passport){
                 }else{
                 if(funds[0].funds < stake){
                     req.flash('bet-update', 'Insufficient Funds.');                    
-                    errors = true;
+                    res.redirect('/');
                 }else{
                     console.log("we have enough funds");
                     console.log("stake: " + stake);
