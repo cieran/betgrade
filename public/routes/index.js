@@ -35,11 +35,11 @@ module.exports = function(app, passport){
     app.get('/test-env', function(req, res){
         Market.find({"marketname" : 'To Pass'}).limit(10)
             .then(function(doc){
-                async.forEach(doc, function(x, key, callback){
-                        updates.findValue(x[key]);
-                        updates.findValueBelow(x[key]);
-                        updates.findValueAbove(x[key]);
-                        updates.findValueAboveAbove(x[key]);
+                async.forEach(doc, function(x, callback){
+                        updates.findValue(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
                     callback();
                 }, function(err){
                     if(err)
