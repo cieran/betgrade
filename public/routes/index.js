@@ -26,7 +26,7 @@ var stopThem = new ExpressBrute(store, {
 **/
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
-        Market.find({"marketname" : 'To Pass'}).sort({btotal : -1}).limit(10)
+        Market.find({"marketname" : 'To Pass'}).sort({btotal : -1})
             .then(function(doc){
                 doc.forEach(function(x){
                         updates.findValue(x);
@@ -49,7 +49,7 @@ module.exports = function(app, passport){
                     })
                     // end of supplied code
                     setTimeout(function() {
-                        res.render('test-env', {title: "Bet History | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
+                        res.render('test-env', {title: "Home | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
                     }, 100);
                 }, 500);
 
