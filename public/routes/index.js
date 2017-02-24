@@ -44,7 +44,7 @@ module.exports = function(app, passport){
 
                 setTimeout(function(){
                     res.render('test-env', {title: "Bet History | Betgrade", items: doc, user: req.user});
-                }, 1000);
+                }, 0);
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
