@@ -171,13 +171,12 @@ var object = {
 				});
 		});
 	},
-	findValue: function(x, callback2){
+	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				x.mostPopularOdds = doc.back;
 				x.mostPopularBtotal = doc.btotal;
 				console.log(student + " taken care of.");
-				callback2();
 			});
 	},
 	findValueBelow: function(x){

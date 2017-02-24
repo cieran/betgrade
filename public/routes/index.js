@@ -37,18 +37,15 @@ module.exports = function(app, passport){
             .then(function(doc){
                 async.forEach(doc, function(x, callback){
                         updates.findValue(x);
-                        //updates.findValueBelow(x);
-                        //updates.findValueAbove(x);
-                        //updates.findValueAboveAbove(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
                     callback();
-                }, function(err){
-                    if(err){
-                        return console.log(err)
-                    }else{
-                        console.log("completed async");
-                        res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-                    }
-                });
+                })
+
+                setTimeout(function(){
+                    res.render('test-env', {title: "Bet History | Betgrade", items: doc, user: req.user});
+                }, 0);
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
