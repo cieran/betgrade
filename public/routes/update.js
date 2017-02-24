@@ -171,7 +171,7 @@ var object = {
 				});
 		});
 	},
-	findValue: function(x){
+	findValue: function(x, callback2){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				async.forEach(doc, function(res, callback){
@@ -181,7 +181,7 @@ var object = {
 				}, function(err){
 					if(err)
 						console.log(err);
-					console.log("findValue finished");
+					callback2();
 				});
 			});
 	},
