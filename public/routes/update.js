@@ -174,9 +174,15 @@ var object = {
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
-				x.mostPopularOdds = doc.back;
-				x.mostPopularBtotal = doc.btotal;
-				console.log(student + " taken care of.");
+				async.forEach(doc, function(res, callback){
+				x.mostPopularOdds = res.back;
+				x.mostPopularBtotal = res.btotal;
+				callback();
+				}, function(err){
+					if(err)
+						console.log(err);
+					console.log("findValue finished");
+				});
 			});
 	},
 	findValueBelow: function(x){
