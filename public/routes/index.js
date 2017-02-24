@@ -340,13 +340,15 @@ module.exports = function(app, passport){
             User.find({"username" : user.username}).then(function(funds, err){
                 if(err){
                     req.flash('bet-update', err);
+                    res.redirect('/');
                     errors = true;
                 }else{
-                if(funds[0].funds < stake){
-                    req.flash('bet-update', 'Insufficient Funds.');                    
-                    res.redirect('/');
-                }else{
-                    console.log("we have enough funds");
+                    if(funds[0].funds < stake){
+                        req.flash('bet-update', 'Insufficient Funds.');                    
+                        res.redirect('/');
+                    }else{
+                    console.log(funds[0].funds + " is my funds");
+                    console.log(funds[0].funds + " is my funds");
                     console.log("stake: " + stake);
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
