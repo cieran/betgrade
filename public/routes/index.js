@@ -356,10 +356,7 @@ module.exports = function(app, passport){
                             
             });
             
-            Market.find({"marketname" : 'To Pass'}).limit(10)
-                .then(function(doc){
-                    res.render('index', {title: 'Betgrade | Home', items: doc, user: req.user, message: req.flash('bet-update')});
-            });
+            res.redirect('/');
 
         }
     });
