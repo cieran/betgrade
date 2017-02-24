@@ -206,11 +206,11 @@ var object = {
      	
 	},
 	findValueAbove: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname}).sort({ltotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(ret){
 				var mostPopularBtotal = ret[0].btotal;
 				var mostPopularOdds = ret[0].back;
-	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({odds: 1}).limit(1)
+	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({ltotal: -1}).limit(1)
 	         	.then(function(doc){
 	         	var res = doc[0];
 	         	if(res == null){
@@ -225,11 +225,11 @@ var object = {
 	        });
 	},
 	findValueAboveAbove : function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname}).sort({ltotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(ret){
 				var mostPopularBtotal = ret[0].btotal;
 				var mostPopularOdds = ret[0].back;
-	    		Market.find({"student" : x.student, "marketname": x.market, "back" : {$gt : mostPopularOdds}}).sort({odds: 1}).skip(1).limit(1)
+	    		Market.find({"student" : x.student, "marketname": x.market, "back" : {$gt : mostPopularOdds}}).sort({ltotal: -1}).skip(1).limit(1)
 		         .then(function(doc){
 		         	var res = doc[0];
 		         	if(res == null){
