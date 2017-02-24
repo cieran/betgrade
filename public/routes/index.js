@@ -330,7 +330,7 @@ module.exports = function(app, passport){
         var side = req.body.side;
         if(!req.user){
             req.flash('loginMessage', 'You need to log in before you can place a bet');
-            res.render('auth/login', {'title' : 'Login | Betgrade', user: req.user, message: req.flash('loginMessage')});
+            res.redirect('/login');
         }else if(stake <= 0 && odds > 1.0){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
             res.redirect('/');        
