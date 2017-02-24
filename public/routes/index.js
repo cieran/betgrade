@@ -49,7 +49,7 @@ module.exports = function(app, passport){
                     })
                     // end of supplied code
                     setTimeout(function() {
-                        res.render('test-env', {title: "Home | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
+                        res.render('index', {title: "Home | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
                     }, 100);
                 }, 500);
 
