@@ -41,10 +41,23 @@ module.exports = function(app, passport){
                         updates.findValueAbove(x);
                         updates.findValueAboveAbove(x);
                 })
-
-                setTimeout(function(){
-                    res.render('test-env', {title: "Bet History | Betgrade", items: doc, user: req.user});
+                setTimeout(function() {
+                    //remove duplicates before next Timeout
+                    function hash(o){
+                        return o.student;
+                    }
+                    var hashesFound = {};
+                    doc.forEach(function(o){
+                        hashesFound[hash(o)] = o;
+                    })
+                    var results = Object.keys(hashesFound).map(function(k){
+                        return hashesFound[k];
+                    })
+                    setTimeout(function() {
+                        res.render('test-env', {title: "Bet History | Betgrade", items: results, user: req.user});
+                    }, 100);
                 }, 500);
+
         });
     });
     app.get('/profile/bet-history', function(req, res, next){
