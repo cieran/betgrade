@@ -123,7 +123,7 @@ var object = {
 		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " + ret);
 			if(x.bet == "Back"){
-				Market.find({marketname : x.market, student: x.student}).sort({btotal:-1}).limit(1)
+				Market.find({marketname : x.market, student: x.student}).sort({ltotal:-1}).limit(1)
 				.exec(function(errs, doc){
 					if(errs)
 						return console.log(errs);
@@ -144,7 +144,7 @@ var object = {
 					}
 				});
 			}else{
-				Market.find({marketname : x.market, student: x.student}).sort({ltotal:-1}).limit(1)
+				Market.find({marketname : x.market, student: x.student}).sort({btotal:-1}).limit(1)
 				.exec(function(errs, doc){
 					if(errs)
 						return console.log(errs);
