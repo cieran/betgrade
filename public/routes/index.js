@@ -405,11 +405,7 @@ module.exports = function(app, passport){
                                             "filename":filename, "course":course}, 
                                             {$inc : {'ltotal': stake, 'btotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new:true}, function(err, res){
-                                                console.log(res.ltotal);
-                                                console.log(res.btotal);
                                                 var new_bavail = parseFloat(res.ltotal - res.btotal);
-
-                                                console.log("new_bavail " + new_bavail);
                                                 if(new_bavail < 0){
                                                     new_bavail = 0;
                                                 }
@@ -419,17 +415,15 @@ module.exports = function(app, passport){
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
-                                                console.log("btotal updated");
                                                 });
                                         });
                                     }else{
-                                        Market.update({"marketname" : marketname, 
+                                        Market.findOneAndUpdate({"marketname" : marketname, 
                                             "student": student, "back":odds, "lay":odds, "code":code, 
                                             "filename":filename, "course":course}, 
                                             {$inc : {'btotal': stake, 'ltotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new: true}, function(err, res){
                                                 var new_lavail = parseFloat(res.btotal - res.ltotal);
-                                                console.log("new_lavail " + new_lavail);
                                                 if(new_lavail < 0){
                                                     new_lavail = 0;
                                                 }
@@ -439,7 +433,6 @@ module.exports = function(app, passport){
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
-                                                console.log("btotal updated");
                                                 });
                                         });
                                     }
