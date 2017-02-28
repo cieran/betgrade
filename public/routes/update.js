@@ -136,8 +136,8 @@ var object = {
 						console.log("aL " + aL);
 						var aL_round = Math.round(aL * 100) / 100;
 						console.log("aL_round " + aL_round);
-						var cashout = aL_round - x.stake;
-						var returns = Math.round((cashout - x.stake) * 100)/100;
+						var returns = aL_round - x.stake;						
+						var cashout = Math.round((returns - x.stake) * 100)/100;
 						console.log("Cashout: " + cashout);
 						console.log("Returns: " + returns);
 						x.cashout = cashout;
@@ -160,9 +160,9 @@ var object = {
 						console.log("aB " + aB);
 						var aB_round = Math.round(aB * 100) / 100;
 						console.log("aB_round " + aB_round);
-						var cashout = x.stake - aB_round;
+						var returns = x.stake - aB_round;
+						var cashout = Math.round((returns - x.stake) * 100)/100;
 						console.log("Cashout: " + cashout);
-						var returns = Math.round((cashout - x.stake) * 100)/100;
 						console.log("Returns: " + returns);
 						x.cashout = cashout;
 						x.returns = returns;
