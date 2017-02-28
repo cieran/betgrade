@@ -141,7 +141,6 @@ var object = {
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
 				        }
-					console.log(x.student + " newFindValueBelow");
 			        });
 			});
      	
@@ -161,7 +160,6 @@ var object = {
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
-				console.log(x.student + " newFindValueAbove");
 	         });
 	        });
 	},
@@ -180,7 +178,6 @@ var object = {
 		         		x.valueAboveAboveOdds = res.lay;
 		             	x.valueAboveAboveLtotal = res.ltotal;
 		         	}
-				console.log(x.student + " newfindValueAboveAbove");
 		         });
 	    });
 	             
