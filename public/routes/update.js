@@ -157,7 +157,7 @@ var object = {
 						console.log("best odds for a lay bet " + doc[0].back);
 						var aB = (x.odds / doc[0].back) * x.stake;
 						var aB_round = Math.round(aB * 100) / 100;
-						var cashout = aB_round - x.stake;
+						var cashout = x.stake - aB_round;
 						console.log("Cashout: " + cashout);
 						var returns = Math.round((cashout - x.stake) * 100)/100;
 						console.log("Returns: " + returns);
