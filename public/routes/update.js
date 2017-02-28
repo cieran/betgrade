@@ -131,7 +131,7 @@ var object = {
 						x.cashout = x.stake - 0.1;
 						x.returns = -0.1;
 					}else{
-						var longcashout = (x.odds / doc.lay) * x.stake;
+						var longcashout = (x.odds / doc[0].lay) * x.stake;
 						var cashout = Math.round(longcashout * 100) / 100;
 						var returns = cashout - x.stake;
 						x.cashout = cashout;
@@ -147,7 +147,7 @@ var object = {
 						x.cashout = x.stake - 0.1;
 						x.returns = -0.1;
 					}else{
-						var longcashout = (x.odds / doc.back) * x.stake;
+						var longcashout = (x.odds / doc[0].back) * x.stake;
 						console.log(longcashout);
 						var cashout = Math.round(longcashout * 100) / 100;
 						console.log(cashout);
