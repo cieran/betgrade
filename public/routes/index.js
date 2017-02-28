@@ -404,8 +404,8 @@ module.exports = function(app, passport){
                                             "student": student, "back":odds, "lay":odds, "code":code, 
                                             "filename":filename, "course":course}, 
                                             {$inc : {'ltotal': stake, 'btotal' : 0, 'bavail':0, 'lavail':0}}, 
-                                            {upsert : true, new:true}, function(err, doc){
-                                            var new_lavail = parseFloat(doc[0].btotal - doc[0].ltotal);
+                                            {upsert : true, new:true}, function(err, res){
+                                            var new_lavail = parseFloat(res[0].btotal - res[0].ltotal);
                                                 if(new_lavail < 0){
                                                     new_lavail = 0;
                                                 }
@@ -423,8 +423,8 @@ module.exports = function(app, passport){
                                             "student": student, "back":odds, "lay":odds, "code":code, 
                                             "filename":filename, "course":course}, 
                                             {$inc : {'btotal': stake, 'ltotal' : 0, 'bavail':0, 'lavail':0}}, 
-                                            {upsert : true, new: true}, function(err, doc){
-                                                var new_bavail = parseFloat(doc[0].ltotal - doc[0].btotal);
+                                            {upsert : true, new: true}, function(err, res){
+                                                var new_bavail = parseFloat(res[0].ltotal - res[0].btotal);
                                                 if(new_bavail < 0){
                                                     new_bavail = 0;
                                                 }
