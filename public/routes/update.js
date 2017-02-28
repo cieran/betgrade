@@ -132,6 +132,7 @@ var object = {
 						x.returns = -0.1;
 					}else{
 						console.log("my back odds " + x.odds);
+						console.log("my back stake " + x.stake);
 						console.log("best odds for a back bet " + doc[0].lay);
 						var longcashout = (x.odds / doc[0].lay) * x.stake;
 						var cashout = Math.round(longcashout * 100) / 100;
@@ -150,6 +151,7 @@ var object = {
 						x.returns = -0.1;
 					}else{
 						console.log("my lay odds " + x.odds);
+						console.log("my lay stake " + x.stake);
 						console.log("best odds for a lay bet " + doc[0].back);
 						var longcashout = (x.odds / doc[0].back) * x.stake;
 						var cashout = Math.round(longcashout * 100) / 100;
