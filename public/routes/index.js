@@ -405,7 +405,7 @@ module.exports = function(app, passport){
                                             "filename":filename, "course":course}, 
                                             {$inc : {'ltotal': stake, 'btotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new:true}, function(res){
-                                                console.log(res[0].ltotal);
+                                                console.log(res.ltotal);
                                                 console.log(res.btotal);
                                                 var new_bavail = parseFloat(res.ltotal - res.btotal);
 
