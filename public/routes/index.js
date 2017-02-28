@@ -80,10 +80,7 @@ module.exports = function(app, passport){
             var bet = bet[0];
             if(bet.bet == "Back"){
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
-                .then(function(errs, doc){
-                    if(errs)
-                        return console.log(errs);
-                    
+                .then(function(doc){
                     var aL = (x.odds / doc[0].lay) * x.stake;
                     var aL_round = Math.round(aL * 100) / 100;
                     var returns = Math.round((aL_round - x.stake)*100)/100;                     
@@ -113,10 +110,7 @@ module.exports = function(app, passport){
                 });
             }else{
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
-                .then(function(errs, doc){
-                    if(errs)
-                        return console.log(errs);
-                    
+                .then(function(doc){
                     var aB = (x.odds / doc[0].back) * x.stake;
                     var aB_round = Math.round(aB * 100) / 100;
                     var returns = Math.round((x.stake - aB_round)*100)/100;
