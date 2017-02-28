@@ -412,7 +412,7 @@ module.exports = function(app, passport){
                                                 }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
-                                                "filename":filename, "course":course}, {$set : {lavail: new_lavail}}, 
+                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail}}, 
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
@@ -432,7 +432,7 @@ module.exports = function(app, passport){
                                                 }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
-                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail}}, 
+                                                "filename":filename, "course":course}, {$set : {lavail: new_lavail}}, 
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
