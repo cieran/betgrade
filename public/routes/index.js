@@ -405,9 +405,10 @@ module.exports = function(app, passport){
                                             "filename":filename, "course":course}, 
                                             {$inc : {'ltotal': stake, 'btotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new:true}, function(err, res){
-                                            var new_lavail = parseFloat(res.btotal - res.ltotal);
-                                                if(new_lavail < 0){
-                                                    new_lavail = 0;
+                                                var new_bavail = parseFloat(res.ltotal - res.btotal);
+                                                console.log("new_bavail " + new_bavail);
+                                                if(new_bavail < 0){
+                                                    new_bavail = 0;
                                                 }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
@@ -424,9 +425,10 @@ module.exports = function(app, passport){
                                             "filename":filename, "course":course}, 
                                             {$inc : {'btotal': stake, 'ltotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new: true}, function(err, res){
-                                                var new_bavail = parseFloat(res.ltotal - res.btotal);
-                                                if(new_bavail < 0){
-                                                    new_bavail = 0;
+                                                var new_lavail = parseFloat(res.btotal - res.ltotal);
+                                                console.log("new_lavail " + new_lavail);
+                                                if(new_lavail < 0){
+                                                    new_lavail = 0;
                                                 }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
