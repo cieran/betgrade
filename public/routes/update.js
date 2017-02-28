@@ -86,7 +86,7 @@ var object = {
 	cashout_value: function(x){
 		var ret = parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " +ret);
-			Market.find({"marketname" : x.market, "student" : x.student, ltotal: {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
+			Market.find({"marketname" : x.market, "student" : x.student, "ltotal": {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
 			.exec(function(doc){
 				console.log("doc " + doc);
 				if(!doc.length){
@@ -116,12 +116,14 @@ var object = {
 					}
 			}
 			});
-	},
+	}
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
+				var res = doc[0];
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
+
 			});
 	},
 	findValueBelow: function(x){
@@ -139,6 +141,7 @@ var object = {
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
 				        }
+					console.log(x.student + " newFindValueBelow");
 			        });
 			});
      	
@@ -158,6 +161,7 @@ var object = {
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
+				console.log(x.student + " newFindValueAbove");
 	         });
 	        });
 	},
@@ -176,6 +180,7 @@ var object = {
 		         		x.valueAboveAboveOdds = res.lay;
 		             	x.valueAboveAboveLtotal = res.ltotal;
 		         	}
+				console.log(x.student + " newfindValueAboveAbove");
 		         });
 	    });
 	             
