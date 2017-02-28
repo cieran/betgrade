@@ -135,12 +135,12 @@ var object = {
 	findValueBelow: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname, "btotal":{$gt : 0}}).sort({btotal: -1}).limit(1).exec()
 			.then(function(ret){
-				if(ret == null){
+				if(ret[0] == null){
 					var mostPopularOdds = 0;
 					var mostPopularBtotal = 0;
 				}else{
-					var mostPopularBtotal = ret[0].btotal;
 					var mostPopularOdds = ret[0].back;
+					var mostPopularBtotal = ret[0].btotal;
 				}
 				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}, "lavail":{$gt: 0}}).sort({back: -1}).limit(1)
 		        	.then(function(doc){
