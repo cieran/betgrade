@@ -62,7 +62,7 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     doc.forEach(function(x) {
                        updates.calcReturns(x);
-                       updates.test_cashout(x);
+                       updates.cashoutCalc(x);
                     })
                     
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
@@ -73,32 +73,33 @@ module.exports = function(app, passport){
     });
     app.post('/cashout', function(req, res){
         var bet_id = req.body.betid;
-        var cashout = req.body.cashout;
+        var check_cashout = req.body.cashout;
         var user = req.user.username;
         var set_profit = req.body.profit;
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
-            Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
-                .then(function(doc){
-                    var liability = Math.round((((doc[0].back * bet.stake) - bet.stake) * 100)/100);
-                    if(bet.bet == "Back"){ var returns = bet.stake * bet.odds; }
-                    else{ var returns = bet.stake + bet.stake; }
-                    var profit = returns - bet.stake;
-                    var diff = profit - liability;
-                    var cashout_long = bet.stake + (diff / doc[0].back);
-                    var calc_cashout = Math.round(cashout_long * 100) / 100;
-                    if(calc_cashout == cashout){
+            if(bet.bet == "Back"){
+                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
+                .then(function(errs, doc){
+                    if(errs)
+                        return console.log(errs);
+                    
+                    var aL = (x.odds / doc[0].lay) * x.stake;
+                    var aL_round = Math.round(aL * 100) / 100;
+                    var returns = Math.round((aL_round - x.stake)*100)/100;                     
+                    var cashout = Math.round((x.stake + returns) * 100)/100;
+                    if(cashout == check_cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
                             if(err){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : check_cashout, "profit" : set_profit}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
                                     }else{
-                                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
+                                        req.flash('cashout-update', "You just cashed out for "+check_cashout+"mBTC.");
                                         res.redirect('back');
                                     }
                                 });
@@ -110,6 +111,40 @@ module.exports = function(app, passport){
                     }
 
                 });
+            }else{
+                Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
+                .then(function(errs, doc){
+                    if(errs)
+                        return console.log(errs);
+                    
+                    var aB = (x.odds / doc[0].back) * x.stake;
+                    var aB_round = Math.round(aB * 100) / 100;
+                    var returns = Math.round((x.stake - aB_round)*100)/100;
+                    var cashout = Math.round((x.stake + returns) * 100)/100;
+                    if(cashout == check_cashout){
+                        Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
+                            if(err){
+                                req.flash('cashout-update', "Uh oh, something went wrong.");
+                                res.redirect('back');
+                            }else{
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : check_cashout, "profit" : set_profit}}, function(err){
+                                    if(err){
+                                        req.flash('cashout-update', "Nope... Something Went Wrong.");
+                                        res.redirect('back');
+                                    }else{
+                                        req.flash('cashout-update', "You just cashed out for "+check_cashout+"mBTC.");
+                                        res.redirect('back');
+                                    }
+                                });
+                            }
+                        });
+                    }else{
+                        req.flash('cashout-update', "Cashout value has changed! Please check again!");
+                        res.redirect('back');
+                    }
+
+                });
+            }
         });
     });
     app.get('/profile/leaderboard', function(req, res, next){

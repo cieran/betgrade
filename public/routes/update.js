@@ -83,7 +83,7 @@ var object = {
             return stake + stake;
         }
 	},
-	cashout_value: function(x){
+	old_cashout_value: function(x){
 		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " + ret);
 			Market.find({"marketname" : x.market, "student" : x.student, "ltotal" : {$gte : ret}}).sort({ltotal:-1}).limit(1)
@@ -119,9 +119,8 @@ var object = {
 			}
 			});
 	},
-	test_cashout: function(x){
+	cashoutCalc: function(x){
 		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
-		console.log("ret from static func: " + ret);
 			if(x.bet == "Back"){
 				Market.find({marketname : x.market, student: x.student}).sort({ltotal:-1}).limit(1)
 				.exec(function(errs, doc){
@@ -131,15 +130,10 @@ var object = {
 						x.cashout = x.stake - 0.1;
 						x.returns = -0.1;
 					}else{
-						console.log("back odds " + x.odds + ", back stake " + x.stake + ", best odds " + doc[0].lay);
 						var aL = (x.odds / doc[0].lay) * x.stake;
-						console.log("aL " + aL);
 						var aL_round = Math.round(aL * 100) / 100;
-						console.log("aL_round " + aL_round);
 						var returns = Math.round((aL_round - x.stake)*100)/100;						
 						var cashout = Math.round((x.stake + returns) * 100)/100;
-						console.log("Cashout: " + cashout);
-						console.log("Returns: " + returns);
 						x.cashout = cashout;
 						x.returns = returns;
 					}
@@ -153,17 +147,10 @@ var object = {
 						x.cashout = x.stake - 0.1;
 						x.returns = -0.1;
 					}else{
-						console.log("my lay odds " + x.odds);
-						console.log("my lay stake " + x.stake);
-						console.log("best odds for a lay bet " + doc[0].back);
 						var aB = (x.odds / doc[0].back) * x.stake;
-						console.log("aB " + aB);
 						var aB_round = Math.round(aB * 100) / 100;
-						console.log("aB_round " + aB_round);
 						var returns = Math.round((x.stake - aB_round)*100)/100;
 						var cashout = Math.round((x.stake + returns) * 100)/100;
-						console.log("Cashout: " + cashout);
-						console.log("Returns: " + returns);
 						x.cashout = cashout;
 						x.returns = returns;
 					}
