@@ -78,10 +78,13 @@ module.exports = function(app, passport){
         var set_profit = req.body.profit;
         console.log("we in here");
         Bet.find({"_id" : bet_id}).then(function(bet){
-            var bet = bet[0];
+            var bet = bet[0];        
+            console.log("we in bet.find");
             if(bet.bet == "Back"){
+                console.log("we in the if back");
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
                 .then(function(doc){
+                    console.log("we inside if's market.find");
                     var aL = (x.odds / doc[0].lay) * x.stake;
                     var aL_round = Math.round(aL * 100) / 100;
                     var returns = Math.round((aL_round - x.stake)*100)/100;                     
@@ -111,8 +114,10 @@ module.exports = function(app, passport){
 
                 });
             }else{
+                console.log("we in the else");
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
                 .then(function(doc){
+                    console.log("we inside else's market.find");
                     var aB = (x.odds / doc[0].back) * x.stake;
                     var aB_round = Math.round(aB * 100) / 100;
                     var returns = Math.round((x.stake - aB_round)*100)/100;
