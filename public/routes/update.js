@@ -92,7 +92,6 @@ var object = {
 					return console.log(errs);
 				if(!doc.length){
 					console.log("DOC: " + doc);
-					console.log("DOC[0]: " + doc[0]);
 					x.cashout = x.stake - 0.1;
 					x.returns = -0.1;
 				}else{
@@ -123,39 +122,39 @@ var object = {
 	test_cashout: function(x){
 		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " + ret);
-			Market.find({"marketname" : x.market, "student" : x.student, "ltotal" : {$gte : ret}}).sort({ltotal:-1}).limit(1)
-			.exec(function(errs, doc){
-				if(errs)
-					return console.log(errs);
-				if(!doc.length){
-					x.cashout = x.stake - 0.1;
-					x.returns = -0.1;
-				}else{
-					if(x.bet == "Back"){
-
-						var cashout = (x.odds / doc.lay) * x.stake; 
-						var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
-				        var returns = x.stake * x.odds;
-						var profit = returns - x.stake;
-						var diff = profit - liability;
-						var cashout_long = x.stake + (diff / doc[0].back);
-						var cashout = Math.round(cashout_long * 100) / 100;
-						var return_val = Math.round((cashout - x.stake) * 100)/100;
-						x.cashout = cashout;
-						x.returns = return_val;
+			if(x.bet == "Back"){
+				Market.find({marketname : x.market, student: x.student}).sort({btotal:-1}).limit(1)
+				.exec(function(errs, doc){
+					if(errs)
+						return console.log(errs);
+					if(!doc.length){
+						x.cashout = x.stake - 0.1;
+						x.returns = -0.1;
 					}else{
-						var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
-				        var returns = x.stake + x.stake;
-						var profit = returns - x.stake;
-						var diff = profit - liability;
-						var cashout_long = x.stake + (diff / doc[0].back);
-						var cashout = Math.round(cashout_long * 100) / 100;
-						var return_val = Math.round((cashout - x.stake) * 100)/100;
+						var longcashout = (x.odds / doc.lay) * x.stake;
+						var cashout = Math.round(longcashout * 100) / 100;
+						var returns = cashout - x.stake;
 						x.cashout = cashout;
-						x.returns = return_val;
+						x.returns = returns;
 					}
+				});
+			}else{
+				Market.find({marketname : x.market, student: x.student}).sort({ltotal:-1}).limit(1)
+				.exec(function(errs, doc){
+					if(errs)
+						return console.log(errs);
+					if(!doc.length){
+						x.cashout = x.stake - 0.1;
+						x.returns = -0.1;
+					}else{
+						var longcashout = (x.odds / doc.back) * x.stake;
+						var cashout = Math.round(longcashout * 100) / 100;
+						var returns = cashout - x.stake;
+						x.cashout = cashout;
+						x.returns = returns;
+					}
+				});
 			}
-			});
 	},
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)

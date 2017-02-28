@@ -62,7 +62,7 @@ module.exports = function(app, passport){
                 .then(function(doc){
                     doc.forEach(function(x) {
                        updates.calcReturns(x);
-                       updates.cashout_value(x);
+                       updates.test_cashout(x);
                     })
                     
                     res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
