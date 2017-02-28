@@ -76,6 +76,7 @@ module.exports = function(app, passport){
         var check_cashout = req.body.cashout;
         var user = req.user.username;
         var set_profit = req.body.profit;
+        console.log("we in here");
         Bet.find({"_id" : bet_id}).then(function(bet){
             var bet = bet[0];
             if(bet.bet == "Back"){
@@ -85,6 +86,7 @@ module.exports = function(app, passport){
                     var aL_round = Math.round(aL * 100) / 100;
                     var returns = Math.round((aL_round - x.stake)*100)/100;                     
                     var cashout = Math.round((x.stake + returns) * 100)/100;
+                    console.log("compare " + cashout + " with " + check_cashout);
                     if(cashout == check_cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
                             if(err){
@@ -115,6 +117,7 @@ module.exports = function(app, passport){
                     var aB_round = Math.round(aB * 100) / 100;
                     var returns = Math.round((x.stake - aB_round)*100)/100;
                     var cashout = Math.round((x.stake + returns) * 100)/100;
+                    console.log("compare " + cashout + " with " + check_cashout);
                     if(cashout == check_cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
                             if(err){
