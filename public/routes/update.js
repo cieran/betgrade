@@ -154,7 +154,7 @@ var object = {
 					}
 			}
 			});
-	}
+	},
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
