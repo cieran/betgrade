@@ -122,16 +122,26 @@ var object = {
 		Market.find({"student" : x.student, "marketname": x.marketname, "btotal":{$gt : 0}}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
 				var res = doc[0];
-				x.mostPopularOdds = res.back;
-				x.mostPopularBtotal = res.lavail;
+				if(res == null){
+					x.mostPopularOdds = 0;
+					x.mostPopularBtotal = 0;
+				}else{
+					x.mostPopularOdds = res.back;
+					x.mostPopularBtotal = res.lavail;
+				}
 
 			});
 	},
 	findValueBelow: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname, "btotal":{$gt : 0}}).sort({btotal: -1}).limit(1).exec()
 			.then(function(ret){
-				var mostPopularBtotal = ret[0].btotal;
-				var mostPopularOdds = ret[0].back;
+				if(ret == null){
+					var mostPopularOdds = 0;
+					var mostPopularBtotal = 0;
+				}else{
+					var mostPopularBtotal = ret[0].btotal;
+					var mostPopularOdds = ret[0].back;
+				}
 				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}}).sort({odds: -1}).limit(1)
 		        	.then(function(doc){
 		        		var res = doc[0];
@@ -149,8 +159,13 @@ var object = {
 	findValueAbove: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname, "btotal":{$gt : 0}}).sort({btotal: -1}).limit(1)
 			.then(function(ret){
-				var mostPopularBtotal = ret[0].btotal;
-				var mostPopularOdds = ret[0].back;
+				if(ret == null){
+					var mostPopularOdds = 0;
+					var mostPopularBtotal = 0;
+				}else{
+					var mostPopularBtotal = ret[0].btotal;
+					var mostPopularOdds = ret[0].back;
+				}
 	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({ltotal: -1}).limit(1)
 	         	.then(function(doc){
 	         	var res = doc[0];
@@ -167,8 +182,13 @@ var object = {
 	findValueAboveAbove : function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname, "btotal":{$gt : 0}}).sort({btotal: -1}).limit(1)
 			.then(function(ret){
-				var mostPopularBtotal = ret[0].btotal;
-				var mostPopularOdds = ret[0].back;
+				if(ret == null){
+					var mostPopularOdds = 0;
+					var mostPopularBtotal = 0;
+				}else{
+					var mostPopularBtotal = ret[0].btotal;
+					var mostPopularOdds = ret[0].back;
+				}
 	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}}).sort({ltotal: -1}).skip(1).limit(1)
 		         .then(function(doc){
 		         	var res = doc[0];
