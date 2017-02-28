@@ -85,10 +85,10 @@ module.exports = function(app, passport){
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({ltotal:-1}).limit(1)
                 .then(function(doc){
                     console.log("we inside if's market.find");
-                    var aL = (x.odds / doc[0].lay) * x.stake;
+                    var aL = (bet.odds / doc[0].lay) * bet.stake;
                     var aL_round = Math.round(aL * 100) / 100;
-                    var returns = Math.round((aL_round - x.stake)*100)/100;                     
-                    var cashout = Math.round((x.stake + returns) * 100)/100;
+                    var returns = Math.round((aL_round - bet.stake)*100)/100;                     
+                    var cashout = Math.round((bet.stake + returns) * 100)/100;
                     console.log("compare " + cashout + " with " + check_cashout);
                     if(cashout == check_cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
@@ -118,10 +118,10 @@ module.exports = function(app, passport){
                 Market.find({"marketname" : bet.market, "student" : bet.student}).sort({btotal:-1}).limit(1)
                 .then(function(doc){
                     console.log("we inside else's market.find");
-                    var aB = (x.odds / doc[0].back) * x.stake;
+                    var aB = (bet.odds / doc[0].back) * bet.stake;
                     var aB_round = Math.round(aB * 100) / 100;
-                    var returns = Math.round((x.stake - aB_round)*100)/100;
-                    var cashout = Math.round((x.stake + returns) * 100)/100;
+                    var returns = Math.round((bet.stake - aB_round)*100)/100;
+                    var cashout = Math.round((bet.stake + returns) * 100)/100;
                     console.log("compare " + cashout + " with " + check_cashout);
                     if(cashout == check_cashout){
                         Bet.findOneAndUpdate({"_id" : bet_id}, {$set : {"settled" : true}}, {new : true}, function(err){
