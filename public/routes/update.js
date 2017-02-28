@@ -91,6 +91,8 @@ var object = {
 				if(errs)
 					return console.log(errs);
 				if(!doc.length){
+					console.log("DOC: " + doc);
+					console.log("DOC[0]: " + doc[0]);
 					x.cashout = x.stake - 0.1;
 					x.returns = -0.1;
 				}else{
