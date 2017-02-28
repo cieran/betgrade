@@ -86,7 +86,7 @@ var object = {
 	cashout_value: function(x){
 		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
 		console.log("ret from static func: " + ret);
-			Market.find({"marketname" : x.market, "student" : x.student, "ltotal" : {$gte : {ret}}}).sort({ltotal:-1}).limit(1)
+			Market.find({"marketname" : x.market, "student" : x.student, "ltotal" : {$gte : ret}}).sort({ltotal:-1}).limit(1)
 			.exec(function(errs, doc){
 				if(errs)
 					return console.log(errs);
@@ -118,6 +118,43 @@ var object = {
 			}
 			});
 	},
+	test_cashout: function(x){
+		var ret = Number.parseFloat(object.static_calcReturns(x.bet, x.stake, x.odds));
+		console.log("ret from static func: " + ret);
+			Market.find({"marketname" : x.market, "student" : x.student, "ltotal" : {$gte : ret}}).sort({ltotal:-1}).limit(1)
+			.exec(function(errs, doc){
+				if(errs)
+					return console.log(errs);
+				if(!doc.length){
+					x.cashout = x.stake - 0.1;
+					x.returns = -0.1;
+				}else{
+					if(x.bet == "Back"){
+
+						var cashout = (x.odds / doc.lay) * x.stake; 
+						var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+				        var returns = x.stake * x.odds;
+						var profit = returns - x.stake;
+						var diff = profit - liability;
+						var cashout_long = x.stake + (diff / doc[0].back);
+						var cashout = Math.round(cashout_long * 100) / 100;
+						var return_val = Math.round((cashout - x.stake) * 100)/100;
+						x.cashout = cashout;
+						x.returns = return_val;
+					}else{
+						var liability = Math.round((((doc[0].back * x.stake) - x.stake) * 100)/100);
+				        var returns = x.stake + x.stake;
+						var profit = returns - x.stake;
+						var diff = profit - liability;
+						var cashout_long = x.stake + (diff / doc[0].back);
+						var cashout = Math.round(cashout_long * 100) / 100;
+						var return_val = Math.round((cashout - x.stake) * 100)/100;
+						x.cashout = cashout;
+						x.returns = return_val;
+					}
+			}
+			});
+	}
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
