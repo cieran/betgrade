@@ -51,7 +51,7 @@ module.exports = function(app, passport){
                     setTimeout(function() {
                         res.render('index', {title: "Home | Betgrade", message:req.flash('bet-update'), items: results, user: req.user});
                     }, 100);
-                }, 500);
+                }, 800);
 
         });
     });
@@ -205,7 +205,7 @@ module.exports = function(app, passport){
                     setTimeout(function() {
                         res.render('catagories/csse', {title: 'CSSE | Markets', markets: results, user: req.user});
                     }, 100);
-                }, 500);
+                }, 800);
 
         });
     });    
@@ -235,7 +235,7 @@ module.exports = function(app, passport){
                     setTimeout(function() {
                         res.render('catagories/cs', {title: 'CS | Markets', markets: results, user: req.user});
                     }, 100);
-                }, 500);
+                }, 800);
 
         });
     });    
@@ -265,7 +265,7 @@ module.exports = function(app, passport){
                     setTimeout(function() {
                         res.render('catagories/ct', {title: 'CT | Markets', markets: results, user: req.user});
                     }, 100);
-                }, 500);
+                }, 800);
 
         });
     });
