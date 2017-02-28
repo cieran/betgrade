@@ -131,13 +131,14 @@ var object = {
 						x.cashout = x.stake - 0.1;
 						x.returns = -0.1;
 					}else{
-						console.log("my back odds " + x.odds);
-						console.log("my back stake " + x.stake);
-						console.log("best odds for a back bet " + doc[0].lay);
+						console.log("back odds " + x.odds + ", back stake " + x.stake + ", best odds " + doc[0].lay);
 						var aL = (x.odds / doc[0].lay) * x.stake;
+						console.log("aL " + aL);
 						var aL_round = Math.round(aL * 100) / 100;
+						console.log("aL_round " + aL_round);
 						var cashout = aL_round - x.stake;
 						var returns = Math.round((cashout - x.stake) * 100)/100;
+						console.log("Cashout: " + cashout);
 						console.log("Returns: " + returns);
 						x.cashout = cashout;
 						x.returns = returns;
@@ -156,7 +157,9 @@ var object = {
 						console.log("my lay stake " + x.stake);
 						console.log("best odds for a lay bet " + doc[0].back);
 						var aB = (x.odds / doc[0].back) * x.stake;
+						console.log("aB " + aB);
 						var aB_round = Math.round(aB * 100) / 100;
+						console.log("aB_round " + aB_round);
 						var cashout = x.stake - aB_round;
 						console.log("Cashout: " + cashout);
 						var returns = Math.round((cashout - x.stake) * 100)/100;
