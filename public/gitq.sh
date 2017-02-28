@@ -1,4 +1,4 @@
-SET /p comment=Comment:
+comment=Comment
 git add --all
-git commit -a -m "%comment%"
+git commit -a -m $comment
 git push
