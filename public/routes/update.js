@@ -117,72 +117,11 @@ var object = {
 			}
 			});
 	},
-	crazy: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
-			.then(function(doc){
-				async.forEach(doc, function(x, callback){
-                    updates.crazy(x);
-                    callback();
-                }, function(err){
-                    if(err)
-                        return console.log(err)
-                    console.log("completed async");
-                    res.render('test-env', {title: 'Test..', items: doc, user: req.user});
-                });
-				var res = doc[0];
-				x.mostPopularOdds = res.back;
-				x.mostPopularBtotal = res.btotal;
-				console.log(x.student + " 1 popular back:  " + x.mostPopularOdds);
-				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : x.mostPopularOdds}}).sort({odds: -1}).limit(1)
-			    .then(function(doc1){
-			        		var res1 = doc1[0];
-			        		if(res1 == null){
-			        			x.valueBelowOdds = 0;
-			        			x.valueBelowBtotal = 0;
-			        		}else{
-					            x.valueBelowOdds = res1.back;
-					            x.valueBelowBtotal = res1.btotal;
-					        }
-					        console.log(x.student + " 2 popular back:  " + x.valueBelowOdds);
-					        Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).limit(1)
-				         	.then(function(doc2){
-				         	var res2 = doc2[0];
-				         	if(res2 == null){
-				         		x.valueAboveOdds = 0;
-				             	x.valueAboveLtotal = 0;
-				         	}else{
-				         		x.valueAboveOdds = res2.lay;
-				             	x.valueAboveLtotal = res2.ltotal;
-				         	}
-							console.log(x.student + " 1 popular lay:  " + x.valueAboveOdds);
-							Market.find({"student" : x.student, "marketname": x.market, "back" : {$gt : x.mostPopularOdds}}).sort({odds: 1}).skip(1).limit(1)
-					         .then(function(doc3){
-					         	var res3 = doc3[0];
-					         	if(res3 == null){
-					         		x.valueAboveAboveOdds = 0;
-					             	x.valueAboveAboveLtotal = 0;
-					         	}else{
-					         		x.valueAboveAboveOdds = res3.lay;
-					             	x.valueAboveAboveLtotal = res3.ltotal;
-					         	}
-								console.log(x.student + " 2 popular lay:  " + x.valueAboveAboveOdds);
-					         });
-				         });
-				});
-		});
-	},
 	findValue: function(x){
 		Market.find({"student" : x.student, "marketname": x.marketname}).sort({btotal: -1}).limit(1)
 			.then(function(doc){
-				async.forEach(doc, function(res, callback){
 				x.mostPopularOdds = res.back;
 				x.mostPopularBtotal = res.btotal;
-				callback();
-				}, function(err){
-					if(err)
-						console.log(err);
-					console.log("findValue finished");
-				});
 			});
 	},
 	findValueBelow: function(x){
@@ -200,7 +139,6 @@ var object = {
 				            x.valueBelowOdds = res.back;
 				            x.valueBelowBtotal = res.btotal;
 				        }
-					console.log(x.student + " newFindValueBelow");
 			        });
 			});
      	
@@ -220,7 +158,6 @@ var object = {
 	         		x.valueAboveOdds = res.lay;
 	             	x.valueAboveLtotal = res.ltotal;
 	         	}
-				console.log(x.student + " newFindValueAbove");
 	         });
 	        });
 	},
@@ -239,7 +176,6 @@ var object = {
 		         		x.valueAboveAboveOdds = res.lay;
 		             	x.valueAboveAboveLtotal = res.ltotal;
 		         	}
-				console.log(x.student + " newfindValueAboveAbove");
 		         });
 	    });
 	             
