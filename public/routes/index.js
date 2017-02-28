@@ -400,17 +400,42 @@ module.exports = function(app, passport){
                                 console.log("the bet has been placed");
                                 updates.match(side, marketname, student, odds);
                                     if(side == "Back"){
-                                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'ltotal': stake, 'btotal' : 0}}, {upsert : true}, function(err, doc){
-                                            if(err)
-                                                req.flash('bet-update', err);
-                                            console.log("ltotal updated");
+                                        Market.update({"marketname" : marketname, 
+                                            "student": student, "back":odds, "lay":odds, "code":code, 
+                                            "filename":filename, "course":course}, 
+                                            {$inc : {'ltotal': stake, 'btotal' : 0, 'bavail':0, 'lavail':0}}, 
+                                            {upsert : true, new:true}, function(err, doc){
+                                            var new_lavail = parseFloat(doc[0].btotal - doc[0].ltotal);
+                                                if(new_lavail < 0){
+                                                    new_lavail = 0;
+                                                }
+                                                Market.update({"marketname" : marketname, 
+                                                "student": student, "back":odds, "lay":odds, "code":code, 
+                                                "filename":filename, "course":course}, {$set : {lavail: new_lavail}}, 
+                                                {upsert : true}, function(errs, docs){
+                                                 if(errs)
+                                                    req.flash('bet-update', errs);
+                                                console.log("btotal updated");
+                                                });
                                         });
                                     }else{
-                                        Market.update({"marketname" : marketname, "student": student, "back":odds, "lay":odds, "code":code, "filename":filename, "course":course}, {$inc : {'btotal': stake, 'ltotal' : 0}}, {upsert : true}, function(err, doc){
-                                            if(err)
-                                                req.flash('bet-update', err);
-                                            
-                                            console.log("btotal updated");
+                                        Market.update({"marketname" : marketname, 
+                                            "student": student, "back":odds, "lay":odds, "code":code, 
+                                            "filename":filename, "course":course}, 
+                                            {$inc : {'btotal': stake, 'ltotal' : 0, 'bavail':0, 'lavail':0}}, 
+                                            {upsert : true, new: true}, function(err, doc){
+                                                var new_bavail = parseFloat(doc[0].ltotal - doc[0].btotal);
+                                                if(new_bavail < 0){
+                                                    new_bavail = 0;
+                                                }
+                                                Market.update({"marketname" : marketname, 
+                                                "student": student, "back":odds, "lay":odds, "code":code, 
+                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail}}, 
+                                                {upsert : true}, function(errs, docs){
+                                                 if(errs)
+                                                    req.flash('bet-update', errs);
+                                                console.log("btotal updated");
+                                                });
                                         });
                                     }
                                 }
