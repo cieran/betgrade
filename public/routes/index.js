@@ -373,12 +373,13 @@ module.exports = function(app, passport){
         }else{
             var errors = false;
             User.find({"username" : user.username}).then(function(funds, err){
+                var yafunds = funds[0].funds;
                 if(err){
                     req.flash('bet-update', err);
                     res.redirect('/');
                     errors = true;
                 }else{
-                    if(funds[0].funds < stake){
+                    if(yafunds < stake){
                         req.flash('bet-update', 'Insufficient Funds.'); 
                         res.redirect('/');                   
                     }else{
