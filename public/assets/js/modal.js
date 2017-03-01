@@ -6,6 +6,10 @@ $(document).ready(function () {
             alertElement.slideUp(800);
         });
     }
+
+    $('.close').click(function(){
+        $('#myModal').modal('hide');
+    });
 });
 $('.clickable').nextUntil('tr.clickable').slideToggle(0);
 $('.clickable').click(function(){
