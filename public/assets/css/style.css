@@ -18,7 +18,7 @@ nav{
     color: white;
     text-decoration: none;
     outline: none;
-    border-bottom: 1px solid darkorange;
+    border: 1px solid darkorange;
 
 }
 .nav-link:hover{
