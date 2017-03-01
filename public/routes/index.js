@@ -368,8 +368,7 @@ module.exports = function(app, passport){
             req.flash('bet-update', 'Nice try! Stake must be at least 0.1mBTC');
             res.redirect('/');        
         }else if(odds < 1.01){
-            req.flash('bet-update', 'Odds must be 1.01 or above');
-            res.redirect('/');
+            return res.redirect('/');
         }else{
             var errors = false;
             User.find({"username" : user.username}).then(function(funds, err){
