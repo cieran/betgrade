@@ -10,19 +10,7 @@
                 <button class="profile-nav" onClick="location.href='/profile/leaderboard'">Leaderboard</button>
             </div>
         </div>
-
-            <div class="col-xs-4 col-md-4">
-            <div class="c100 p{{user.winrate}} dark green">
-                <span>{{user.winrate}}%</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-            <p class="stats-text win">Win Rate (&#37;)</p>
-            </div>
-                
-            <div class="col-xs-4 col-md-4">
+            <div class="col-xs-6 col-md-6">
             <div class="c100 p100 dark orange">
                 <span>{{user.profit}}</span>
                 <div class="slice">
@@ -33,7 +21,7 @@
             <p class="stats-text profit">Profit/Loss</p>
             </div>
             
-            <div class="col-xs-4 col-md-4">
+            <div class="col-xs-6 col-md-6">
             <div class="c100 p100 dark">
                 <span>{{user.highest}}</span>
                 <div class="slice">
