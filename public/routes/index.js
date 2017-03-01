@@ -165,6 +165,9 @@ module.exports = function(app, passport){
         if(user){
             Bet.find({$query : {"username" : user.username, "paired" : false, "settled":false}, $orderby : {_id : -1}})
                     .then(function(doc){
+                    doc.forEach(function(x) {
+                       updates.calcReturns(x);
+                    })
                     res.render('profile/profile', {title: "Your Profile | Betgrade", bets: doc, user: req.user}); 
             });
         }else{
