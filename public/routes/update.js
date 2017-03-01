@@ -119,7 +119,7 @@ var object = {
 			}
 	},
 	findValue: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname, "bavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname, "lavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
 			.then(function(doc){
 				var res = doc[0];
 				if(res == null){
@@ -127,22 +127,22 @@ var object = {
 					x.mostPopularBtotal = 0;
 				}else{
 					x.mostPopularOdds = res.back;
-					x.mostPopularBtotal = res.bavail;
+					x.mostPopularBtotal = res.lavail;
 				}
 
 			});
 	},
 	findValueBelow: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname, "bavail":{$gt : 0}}).sort({ltotal: -1}).limit(1).exec()
+		Market.find({"student" : x.student, "marketname": x.marketname, "lavail":{$gt : 0}}).sort({ltotal: -1}).limit(1).exec()
 			.then(function(ret){
 				if(ret[0] == null){
 					var mostPopularOdds = 0;
 					var mostPopularBtotal = 0;
 				}else{
 					var mostPopularOdds = ret[0].back;
-					var mostPopularBtotal = ret[0].bavail;
+					var mostPopularBtotal = ret[0].lavail;
 				}
-				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}, "bavail":{$gt: 0}}).sort({back: -1}).limit(1)
+				Market.find({"student" : x.student, "marketname": x.marketname, "back" : {$lt : mostPopularOdds}, "lavail":{$gt: 0}}).sort({back: -1}).limit(1)
 		        	.then(function(doc){
 		        		var res = doc[0];
 		        		if(res == null){
@@ -150,14 +150,14 @@ var object = {
 		        			x.valueBelowBtotal = 0;
 		        		}else{
 				            x.valueBelowOdds = res.back;
-				            x.valueBelowBtotal = res.bavail;
+				            x.valueBelowBtotal = res.lavail;
 				        }
 			        });
 			});
      	
 	},
 	findValueAbove: function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname, "bavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname, "lavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
 			.then(function(ret){
 				if(ret[0] == null){
 					var mostPopularOdds = 0;
@@ -166,7 +166,7 @@ var object = {
 					var mostPopularBtotal = ret[0].btotal;
 					var mostPopularOdds = ret[0].back;
 				}
-	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}, "lavail":{$gt:0}}).sort({lay: -1}).limit(1)
+	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds}, "bavail":{$gt:0}}).sort({lay: -1}).limit(1)
 	         	.then(function(doc){
 	         	var res = doc[0];
 	         	if(res == null){
@@ -174,13 +174,13 @@ var object = {
 	             	x.valueAboveLtotal = 0;
 	         	}else{
 	         		x.valueAboveOdds = res.lay;
-	             	x.valueAboveLtotal = res.lavail;
+	             	x.valueAboveLtotal = res.bavail;
 	         	}
 	         });
 	        });
 	},
 	findValueAboveAbove : function(x){
-		Market.find({"student" : x.student, "marketname": x.marketname, "bavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
+		Market.find({"student" : x.student, "marketname": x.marketname, "lavail":{$gt : 0}}).sort({ltotal: -1}).limit(1)
 			.then(function(ret){
 				if(ret[0] == null){
 					var mostPopularOdds = 0;
@@ -189,7 +189,7 @@ var object = {
 					var mostPopularBtotal = ret[0].btotal;
 					var mostPopularOdds = ret[0].back;
 				}
-	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds},"lavail":{$gt:0}}).sort({lay: -1}).skip(1).limit(1)
+	    		Market.find({"student" : x.student, "marketname": x.marketname, "lay" : {$gt : mostPopularOdds},"bavail":{$gt:0}}).sort({lay: -1}).skip(1).limit(1)
 		         .then(function(doc){
 		         	var res = doc[0];
 		         	if(res == null){
@@ -197,7 +197,7 @@ var object = {
 		             	x.valueAboveAboveLtotal = 0;
 		         	}else{
 		         		x.valueAboveAboveOdds = res.lay;
-		             	x.valueAboveAboveLtotal = res.lavail;
+		             	x.valueAboveAboveLtotal = res.bavail;
 		         	}
 		         });
 	    });
