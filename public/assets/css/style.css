@@ -14,7 +14,27 @@ body{
 nav{
     background-color: #3c3c3c;
 }
+.nav-link{
+    color: white;
+    text-decoration: none;
+    outline: none;
 
+}
+.nav-link:hover{
+    color: darkorange;
+    text-decoration: none;
+    outline: none;
+    -moz-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
+.nav-link:active{
+    color: darkorange;
+    text-decoration: none;
+    outline: none;
+    
+}
 .main-head img{
     width: 180px;
 }
