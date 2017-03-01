@@ -220,7 +220,7 @@ tr.clickable
     border: 1px solid darkorange;
 }
 .item1:hover{
-    background-color: darkorange;
+    background-color: #FFA332;
     color: #1e1e1e;
 }
 .item2:hover{
