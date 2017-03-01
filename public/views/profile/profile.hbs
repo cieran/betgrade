@@ -9,27 +9,35 @@
                 <button class="profile-nav" onClick="location.href='/profile/bet-history'">My Bets</button>
                 <button class="profile-nav" onClick="location.href='/profile/leaderboard'">Leaderboard</button>
             </div>
+            <div class="profile-content">
+            <p class="pairing-notice">A list of your bets currently unmatched.</p>
+            <table class="open-bets">
+            <thead class="open-bets-head">
+                <td>Date Placed</td>
+                <td>Market</td>
+                <td>Student</td>
+                <td>Stake</td>
+                <td>Odds</td>
+                <td>Pot. Returns</td>
+            </thead>
+            <tbody class="open-bets-body">
+            {{#if bets}}
+                {{#each bets}}
+                    <tr class="clickable">
+                        <td>{{date this.createdAt}}</td>
+                        <td>{{this.market}}({{this.bet}})</td>
+                        <td>{{this.student}}</td>
+                        <td>{{this.stake}}</td>
+                        <td>{{this.odds}}</td>
+                        <td>{{this.potential_returns}}</td>
+                    </tr>
+                {{/each}}
+            {{else}}
+                <td colspan="6" class="no-bets-found">
+                    <p class="no-bets">You have no matched bets. Please come back later.</p>
+                </td>
+            {{/if}}        
+            </tbody>
+        </table>
         </div>
-            <div class="col-xs-6 col-md-6">
-            <div class="c100 p100 dark orange">
-                <span>{{user.profit}}</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>                 
-            <p class="stats-text profit">Profit/Loss</p>
-            </div>
-            
-            <div class="col-xs-6 col-md-6">
-            <div class="c100 p100 dark">
-                <span>{{user.highest}}</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
-                </div>
-            </div>
-            <p class="stats-text payout">Highest Payout</p>
-            </div>
-    
 </section>

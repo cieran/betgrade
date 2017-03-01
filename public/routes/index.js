@@ -55,22 +55,6 @@ module.exports = function(app, passport){
 
         });
     });
-    app.get('/profile/bet-history', function(req, res, next){
-        var user = req.user;
-        if(user){
-            Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
-                .then(function(doc){
-                    doc.forEach(function(x) {
-                       updates.calcReturns(x);
-                       updates.cashoutCalc(x);
-                    })
-                    
-                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
-            });
-        }else{
-            res.redirect('/login');
-        }
-    });
     app.post('/cashout', function(req, res){
         var bet_id = req.body.betid;
         var check_cashout = req.body.cashout;
@@ -149,6 +133,22 @@ module.exports = function(app, passport){
             }
         });
     });
+    app.get('/profile/bet-history', function(req, res, next){
+        var user = req.user;
+        if(user){
+            Bet.find({$query : {"username" : user.username, "paired" : true, "settled" : false}, $orderby : {_id : -1}})
+                .then(function(doc){
+                    doc.forEach(function(x) {
+                       updates.calcReturns(x);
+                       updates.cashoutCalc(x);
+                    })
+                    
+                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
+            });
+        }else{
+            res.redirect('/login');
+        }
+    });
     app.get('/profile/leaderboard', function(req, res, next){
         var user = req.user;
         if(user){
@@ -163,7 +163,7 @@ module.exports = function(app, passport){
     app.get('/profile', function(req, res, next){
         var user = req.user;
         if(user){
-            User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
+            Bet.find({$query : {"username" : user.username, "paired" : false, "settled":false}, $orderby : {_id : -1}})
                     .then(function(doc){
                     res.render('profile/profile', {title: "Your Profile | Betgrade", users: doc, user: req.user}); 
             });
