@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
 
     $('.close').click(function(){
-        $('#myModal, .modal-content').modal('hide');
+        $('.myModal, .modal-content').hide();
     });
     $('.modal-content').click(function(e){
         e.stopPropagation();
