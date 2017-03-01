@@ -219,18 +219,6 @@ tr.clickable
     color: white;
     border: 1px solid darkorange;
 }
-.item1:hover{
-    background-color: #FFA332;
-    color: #1e1e1e;
-}
-.item2:hover{
-    background-color: #F75252;
-    color: #1e1e1e;
-}
-.item3:hover{
-    background-color: #FFE67E;
-    color: #1e1e1e;
-}
 .active{
     background-color: darkorange;
     color: #1e1e1e;
