@@ -28,7 +28,7 @@ $(document).on("click", ".addmarket", function(){
     $(".modal-content #odds").val(odds);
     $(".modal-content #side").val(side);
 });
-
+/*
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close");
 span.onclick = function(event) {
@@ -46,3 +46,4 @@ window.onkeydown = function(e){
         modal.style.display = "none";
     }
 }
+*/
