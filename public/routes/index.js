@@ -364,7 +364,7 @@ module.exports = function(app, passport){
         if(!req.user){
             req.flash('loginMessage', 'You need to log in before you can place a bet');
             res.redirect('/login');
-        }else if(stake <= 0 && odds > 1.0){
+        }else if(stake <= 0 || odds > 1.0){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
             res.redirect('/');        
         }else{
@@ -376,7 +376,8 @@ module.exports = function(app, passport){
                     errors = true;
                 }else{
                     if(funds[0].funds < stake){
-                        req.flash('bet-update', 'Insufficient Funds.');                    
+                        req.flash('bet-update', 'Insufficient Funds.'); 
+                        res.redirect('/');                   
                     }else{
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
