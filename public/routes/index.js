@@ -364,8 +364,8 @@ module.exports = function(app, passport){
         if(!req.user){
             req.flash('loginMessage', 'You need to log in before you can place a bet');
             res.redirect('/login');
-        }else if(stake <= 0 || odds > 1.0){
-            req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
+        }else if(stake <= 0 || odds < 1.01){
+            req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be 1.01 or above');
             res.redirect('/');        
         }else{
             var errors = false;
