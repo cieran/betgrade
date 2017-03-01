@@ -2,8 +2,8 @@ $(document).ready(function () {
     autoRemoveAlert($('.alert'));
     function autoRemoveAlert(alertElement)
     {
-        alertElement.fadeTo(2000, 800).slideUp(800, function () {
-            alertElement.slideUp(800);
+        alertElement.fadeTo(2000, 1000).slideUp(1000, function () {
+            alertElement.slideUp(1000);
         });
     }
 
