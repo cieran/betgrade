@@ -174,9 +174,34 @@ module.exports = function(app, passport){
     app.get('/markets/:filename', function(req, res, next){
         var filename = req.params.filename;
         var ext = "people/" + filename;
+        var title = filename + " | Markets";
         Market.find({$query : {"filename" : filename}, $orderby : {marketname : -1}})
             .then(function(doc){
-                res.render(ext, {title: 'Markets', markets: doc, user: req.user});
+                doc.forEach(function(x){
+                        updates.findValue(x);
+                        updates.findValueBelow(x);
+                        updates.findValueAbove(x);
+                        updates.findValueAboveAbove(x);
+                })
+                setTimeout(function() {
+                    // credit to user 'codebox' on StackOverflow for below hash code
+                    // https://tinyurl.com/betgrade-stackoverflow-helper
+                    function hash(o){
+                        return o.student;
+                    }
+                    var hashesFound = {};
+                    doc.forEach(function(o){
+                        hashesFound[hash(o)] = o;
+                    })
+                    var results = Object.keys(hashesFound).map(function(k){
+                        return hashesFound[k];
+                    })
+                    // end of supplied code
+                    setTimeout(function() {
+                        res.render(ext, {title: title, markets: results, user: req.user});
+                    }, 100);
+                }, 800);
+
         });
     });    
     app.get('/catagories/csse', function(req, res, next){
