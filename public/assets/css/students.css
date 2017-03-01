@@ -11,11 +11,11 @@
     font-weight: 300;
 }
 .info{
-    width: 30%;
+    width: 25%;
 }
 .markets{
     width: 70%;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 }
 
 .first{
