@@ -10,9 +10,15 @@ $(document).ready(function () {
     $('.close').click(function(){
         $('#myModal, .modal-content').modal('hide');
     });
+
     $('.modal-content').click(function(e){
         e.stopPropagation();
     });
+});
+$(document).keypress(function(e) { 
+    if (e.keyCode == 27) { 
+        $('#myModal, .modal-content').modal('hide');
+    } 
 });
 $('.clickable').nextUntil('tr.clickable').slideToggle(0);
 $('.clickable').click(function(){
