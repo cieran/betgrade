@@ -204,9 +204,9 @@ tr.clickable
     border-bottom: solid 2px #343938;
 }
 .profile-nav{
-    width: 120px;
+    width: 150px;
     line-height: 2em;
-    min-width: 120px;
+    min-width: 150px;
     padding: 3px;
     text-align: center;
     text-decoration: none;
