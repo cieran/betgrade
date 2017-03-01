@@ -5,12 +5,13 @@
                 <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
             </div>
             <div class="button-wrap">
-                <button class="profile-nav active" onClick="location.href='/profile'">User Stats</button>
-                <button class="profile-nav" onClick="location.href='/profile/bet-history'">My Bets</button>
+                <button class="profile-nav" onClick="location.href='/profile'">User Stats</button>
+                <button class="profile-nav active"  onClick="location.href='/profile/bet-history'">My Bets</button>
                 <button class="profile-nav" onClick="location.href='/profile/leaderboard'">Leaderboard</button>
             </div>
-            <p class="pairing-notice">A list of your bets currently unmatched.</p>
-            <table class="open-bets">
+        </div>
+        <p class="pairing-notice">Here is a list of all your unmatched bets. Someday you'll find your match.</p>
+        <table class="open-bets">
             <thead class="open-bets-head">
                 <td>Date Placed</td>
                 <td>Market</td>
