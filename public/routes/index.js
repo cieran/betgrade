@@ -187,7 +187,7 @@ module.exports = function(app, passport){
                     // credit to user 'codebox' on StackOverflow for below hash code
                     // https://tinyurl.com/betgrade-stackoverflow-helper
                     function hash(o){
-                        return o.student;
+                        return o.marketname;
                     }
                     var hashesFound = {};
                     doc.forEach(function(o){
