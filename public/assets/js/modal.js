@@ -29,7 +29,7 @@ $(document).on("click", ".addmarket", function(){
     $(".modal-content #side").val(side);
 });
 
-var modal = document.getElementById('myModal');
+var modal = document.getElementByClassName('myModal');
 var span = document.getElementsByClassName("close");
 span.onclick = function(event) {
     if(event.target == modal){
