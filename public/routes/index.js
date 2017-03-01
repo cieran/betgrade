@@ -340,8 +340,6 @@ module.exports = function(app, passport){
             req.flash('bet-update', 'Nice try! Stake must be at least 1mBTC and odds must be above 1.0.');
             res.redirect('/');        
         }else{
-            // YOU HAVE AN ERROR HERE FAM FIX THAT SHIT
-            console.log("we have staked enough money");
             var errors = false;
             User.find({"username" : user.username}).then(function(funds, err){
                 if(err){
@@ -351,11 +349,7 @@ module.exports = function(app, passport){
                 }else{
                     if(funds[0].funds < stake){
                         req.flash('bet-update', 'Insufficient Funds.');                    
-                        res.redirect('/');
                     }else{
-                    console.log(funds[0].funds + " is my funds");
-                    console.log(funds[0].funds + " is my funds");
-                    console.log("stake: " + stake);
                     User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err, result){
@@ -363,8 +357,6 @@ module.exports = function(app, passport){
                            req.flash('bet-update', err);
                            errors = true;
                         }else{
-                            console.log("stake deducted");
-                            console.log("new balance: " + result.funds);
                             var potential = 0;
                     if(side == "Back"){
                         potential = ((parseFloat(odds) * parseFloat(stake)));
@@ -372,7 +364,6 @@ module.exports = function(app, passport){
                         potential = (stake*2);
                     }
                     if(errors === false){
-                        console.log("no errors so far");
                         Participant.find({"student" : student}).exec(function(err, data){
                             async.forEach(data, function(doc, callback){
 
@@ -397,7 +388,6 @@ module.exports = function(app, passport){
                                     req.flash('bet-update', err);
                                 }else{
                                 req.flash('bet-update', 'Bet Placed.');
-                                console.log("the bet has been placed");
                                 updates.match(side, marketname, student, odds);
                                     if(side == "Back"){
                                         Market.findOneAndUpdate({"marketname" : marketname, 
