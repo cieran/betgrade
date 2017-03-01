@@ -204,9 +204,9 @@ tr.clickable
     border-bottom: solid 2px #343938;
 }
 .profile-nav{
-    width: 150px;
+    width: 120px;
     line-height: 2em;
-    min-width: 150px;
+    min-width: 120px;
     padding: 3px;
     text-align: center;
     text-decoration: none;
@@ -218,6 +218,10 @@ tr.clickable
     background-color: transparent;
     color: white;
     border: 1px solid darkorange;
+}
+.profile-nav:hover {
+    background-color: orange;
+    color: #1e1e1e;
 }
 .active{
     background-color: darkorange;
