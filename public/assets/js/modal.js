@@ -8,7 +8,10 @@ $(document).ready(function () {
     }
 
     $('.close').click(function(){
-        $('#myModal').modal('hide');
+        $('#myModal, .modal-content').modal('hide');
+    });
+    $('.modal-content').click(function(e){
+        e.stopPropagation();
     });
 });
 $('.clickable').nextUntil('tr.clickable').slideToggle(0);
