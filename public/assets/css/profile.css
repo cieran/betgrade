@@ -219,9 +219,17 @@ tr.clickable
     color: white;
     border: 1px solid darkorange;
 }
-.profile-nav:hover {
-    background-color: orange;
+.item1:hover{
+    background-color: #1e1e1e;
     color: #1e1e1e;
+}
+.item2:hover{
+    background-color: #F75252;
+    color: #F75252;
+}
+.item3:hover{
+    background-color: #FFE67E;
+    color: #FFE67E;
 }
 .active{
     background-color: darkorange;
