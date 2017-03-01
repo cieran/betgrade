@@ -5,14 +5,14 @@
                 <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
             </div>
             <div class="button-wrap">
-                <button class="profile-nav" onClick="location.href='/profile'">User Stats</button>
-                <button class="profile-nav active"  onClick="location.href='/profile/bet-history'">My Bets</button>
+                <button class="profile-nav active" onClick="location.href='/profile'">User Stats</button>
+                <button class="profile-nav"  onClick="location.href='/profile/bet-history'">My Bets</button>
                 <button class="profile-nav" onClick="location.href='/profile/leaderboard'">Leaderboard</button>
             </div>
         </div>
         <p class="pairing-notice">Here is a list of all your unmatched bets. Someday you'll find your match.</p>
-        <table class="open-bets">
-            <thead class="open-bets-head">
+        <table class="pending-bets">
+            <thead class="pending-bets-head">
                 <td>Date Placed</td>
                 <td>Market</td>
                 <td>Student</td>
@@ -20,7 +20,7 @@
                 <td>Odds</td>
                 <td>Pot. Returns</td>
             </thead>
-            <tbody class="open-bets-body">
+            <tbody class="pending-bets-body">
             {{#if bets}}
                 {{#each bets}}
                     <tr class="clickable">
@@ -34,7 +34,7 @@
                 {{/each}}
             {{else}}
                 <td colspan="6" class="no-bets-found">
-                    <p class="no-bets">You have no matched bets. Please come back later.</p>
+                    <p class="no-bets">You have no unmatched bets. Contratulations.</p>
                 </td>
             {{/if}}        
             </tbody>

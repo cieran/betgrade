@@ -138,7 +138,22 @@ table.leaderboard tr:nth-last-child(1) {
     border-collapse: collapse;
     margin-bottom: 5%;
 }
+.pending-bets{
+    font-family: 'Lato', sans-serif;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px black;
+    line-height: 1.9em;
+    border-spacing:0; 
+    border-collapse: collapse;
+    margin-bottom: 5%;
+}
 .open-bets p{
+    margin: 0;
+}
+.pending-bets p{
     margin: 0;
 }
 .open-bets-head{
@@ -150,11 +165,27 @@ table.leaderboard tr:nth-last-child(1) {
     background-color: #343938;
     border-bottom: solid 2px darkorange;
 }
+.pending-bets-head{
+    font-size: 14px;
+    color: #D6D7D7;
+    font-weight: 400;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: #343938;
+    border-bottom: solid 2px red;
+}
 .open-bets-body{
     color: white;
     font-weight: 300;
     font-size: 13px;
     background-color: #FFAE4C;
+    padding: 0px;
+}
+.pending-bets-body{
+    color: white;
+    font-weight: 300;
+    font-size: 13px;
+    background-color: #F75252;
     padding: 0px;
 }
 tr.clickable
