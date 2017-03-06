@@ -16,6 +16,7 @@ var tz = require('moment-timezone');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
+var favicon = require('serve-favicon');
 /*
 var options = {
   key: fs.readFileSync('server.key'),
@@ -45,6 +46,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'assets')));
 
+app.use(favicon(__dirname + '/assets/img/favicon.ico'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
