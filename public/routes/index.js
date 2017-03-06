@@ -4,7 +4,6 @@ var updates = require('./update');
 var Market = require('../models/market');
 var User = require('../models/user');
 var Bet = require('../models/bet');
-var Test = require('../models/test');
 var Participant = require('../models/participant');
 var async = require('async');
 /**
