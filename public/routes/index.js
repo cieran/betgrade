@@ -370,10 +370,20 @@ module.exports = function(app, passport){
         }else if(odds < 1.01){
             req.flash('bet-update', 'Odds must be at least 1.01 or higher')
             return res.redirect('/');
+        }else if(odds >= 10000){
+            req.flash('bet-update', "I'm sure you didn't mean those odds. Try something less than 10000");
+            return res.redirect('/');
         }else{
             var errors = false;
             User.find({"username" : user.username}).then(function(funds, err){
                 var yafunds = funds[0].funds;
+                if(side == "Lay"){
+                    var liability = stake * (odds-1);
+                    if(yafunds < liability){
+                        req.flash('bet-update', "If you lose, you can't cover the liability.");
+                        return res.redirect('/');
+                    }
+                }
                 if(err){
                     req.flash('bet-update', err);
                     res.redirect('/');
@@ -382,8 +392,8 @@ module.exports = function(app, passport){
                     if(yafunds < stake){
                         req.flash('bet-update', 'Insufficient Funds.'); 
                         res.redirect('/');                   
-                    }else{
-                    User.findOneAndUpdate({"username" : user.username}, 
+                    }else{                    
+                        User.findOneAndUpdate({"username" : user.username}, 
                                           {$inc : {"funds" : -stake}}, 
                                           {new : true}, function(err, result){
                         if(err){

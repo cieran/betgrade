@@ -20,7 +20,9 @@ $(document).keypress(function(e) {
         $('#myModal, .modal-content').modal('hide');
     } 
 });
+
 $('.clickable').nextUntil('tr.clickable').slideToggle(0);
+
 $('.clickable').click(function(){
     $(this).nextUntil('tr.clickable').slideToggle(0);
 });
@@ -34,22 +36,3 @@ $(document).on("click", ".addmarket", function(){
     $(".modal-content #odds").val(odds);
     $(".modal-content #side").val(side);
 });
-/*
-var modal = document.getElementById('myModal');
-var span = document.getElementsByClassName("close");
-span.onclick = function(event) {
-    if(event.target == modal){
-        modal.style.display = "none";
-    }
-}
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-window.onkeydown = function(e){
-    if(e.keyCode == 27){
-        modal.style.display = "none";
-    }
-}
-*/
