@@ -323,15 +323,11 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', stopThem.prevent, passport.authenticate('local-login'),
+    app.post('/login', stopThem.prevent, passport.authenticate('local-login', {failureRedirect:'/login', failureFlash:true}),
         function(req, res){
-            if(req.user){
                 req.brute.reset(function(){
-                    res.redirect('/profile');
+                res.redirect('/profile');
                 });
-            }else{
-                res.redirect('/login');
-            }
     });
 
     app.get('/logout', function (req, res) {
