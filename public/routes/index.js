@@ -343,8 +343,11 @@ module.exports = function(app, passport){
             if(count > 0){
                 Market.remove({"student" : student_name}, function(){
                         console.log("user removed");
-                        req.flash('bet-update', 'Student has been removed from Betgrade!');
-                        res.redirect('/');
+                        req.brute.reset(function(){
+                            req.flash('bet-update', 'Student has been removed from Betgrade!');
+                            res.redirect('/');
+                        });
+                        
                 });
             } else {
                     console.log("error, wrong student or removal code");
