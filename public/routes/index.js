@@ -6,7 +6,7 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
-var bouncer = require ("express-bouncer")(20000, 900000);
+var bouncer = require ("express-bouncer")(20000, 900000, 4);
 
 // Add white-listed addresses (optional)
 bouncer.whitelist.push ("127.0.0.1");

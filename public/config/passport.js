@@ -77,13 +77,16 @@ module.exports = function(passport){
     },
     function(req, username, password, done) {
         User.findOne({ 'username' :  username }, function(err, user) {
-            if (err)
+            if (err){
                 return done(err);
-            if (!user)
+            }else if(!user){
                 return done(null, false, req.flash('loginMessage', 'No user found.'));
-            if (!user.validPassword(password))
+            }else if (!user.validPassword(password)){
                 return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+            }else{
+            bouncer.reset(req);
             return done(null, user);
+            }
         });
 
     }));
