@@ -6,7 +6,7 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
-var bouncer = require ("express-bouncer")(20000, 900000, 4);
+var bouncer = require ("express-bouncer")(5000, 20000, 4);
 
 // Add white-listed addresses (optional)
 bouncer.whitelist.push ("127.0.0.1");
@@ -14,7 +14,7 @@ bouncer.whitelist.push ("127.0.0.1");
 // In case we want to supply our own error (optional)
 bouncer.blocked = function (req, res, next, remaining)
 {
-    req.flash('bet-update', "No bruteforcing please. You can come off the naughty step in " + remaining + ".");
+    req.flash('bet-update', "No bruteforcing please. You can come off the naughty step in " + remaining/1000 + " seconds.");
     res.redirect('/');
 };
 /**
