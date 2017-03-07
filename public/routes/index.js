@@ -14,6 +14,7 @@ var MemcachedStore = require('express-brute-memcached');
 var store = new MemcachedStore('138.68.138.40:11211');
 */
 var failCallback = function (req, res, next, nextValidRequestDate) {
+    console.log(nextValidRequestDate);
     req.flash('bet-update', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
