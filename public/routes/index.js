@@ -332,8 +332,6 @@ module.exports = function(app, passport){
             }else{
                 res.redirect('/login');
             }
-        }
-        //bf protect 
     });
 
     app.get('/logout', function (req, res) {
