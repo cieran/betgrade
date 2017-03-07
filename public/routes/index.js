@@ -6,7 +6,6 @@ var User = require('../models/user');
 var Bet = require('../models/bet');
 var Participant = require('../models/participant');
 var async = require('async');
-/**
 var ExpressBrute = require('express-brute');
 var MemcachedStore = require('express-brute-memcached');
 var moment = require('moment');
@@ -22,7 +21,8 @@ var stopThem = new ExpressBrute(store, {
     maxWait: 1000 * 60 * 15,
     failCallback: failCallback,
 });
-**/
+
+
 module.exports = function(app, passport){
     app.get('/', function(req, res, next){
         Market.find({"marketname" : 'To Pass'}).sort({btotal : -1})
@@ -319,7 +319,7 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', passport.authenticate('local-login', {
+    app.post('/login', stopThem.prevent, passport.authenticate('local-login', {
         successRedirect : '/profile',
         failureRedirect : '/login',
         failureFlash : true
