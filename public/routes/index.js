@@ -21,8 +21,8 @@ var failCallback = function (req, res, next, nextValidRequestDate) {
 var stopThem = new ExpressBrute(store, {
     freeRetries:2, 
     refreshTimeoutOnRequest: false,
-    minWait: 1000 * 60 * 5,
-    maxWait: 1000 * 60 * 15,
+    minWait: 1000 * 60 * 1,
+    maxWait: 1000 * 60 * 5,
     failCallback: failCallback,
 });
 
