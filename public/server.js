@@ -54,7 +54,7 @@ app.use(cookieParser());
 app.use(session({
     secret: 'lionelrichie',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }));
 app.use(passport.initialize());
 app.use(passport.session());

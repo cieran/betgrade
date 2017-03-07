@@ -311,6 +311,7 @@ module.exports = function(app, passport){
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash: true
+        //bf protect
     }));
 
     app.get('/login', function (req, res) {
@@ -322,11 +323,18 @@ module.exports = function(app, passport){
         }
     });
 
-    app.post('/login', stopThem.prevent, passport.authenticate('local-login', {
-        successRedirect : '/profile',
-        failureRedirect : '/login',
-        failureFlash : true
-    }));
+    app.post('/login', stopThem.prevent, passport.authenticate('local-login'),
+        function(req, res){
+            if(req.user){
+                req.brute.reset(function(){
+                    res.redirect('/profile');
+                });
+            }else{
+                res.redirect('/login');
+            }
+        }
+        //bf protect 
+    });
 
     app.get('/logout', function (req, res) {
       req.logout();
