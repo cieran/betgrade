@@ -17,12 +17,11 @@ var https = require('https');
 var http = require('http');
 var fs = require('fs');
 var favicon = require('serve-favicon');
-/*
 var options = {
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.crt')
+  key: fs.readFileSync('../certs/server.key'),
+  cert: fs.readFileSync('../certs/server.crt')
 };
-*/
+
 require('./config/passport')(passport);
 mongoose.connect(db.database);
 // Just a function to switch the timezones to Irish time when storing in the database
@@ -63,15 +62,16 @@ app.use(flash());
 
 require('./routes/index.js')(app, passport);
 
-/*
+
 https.createServer(options, app).listen(port, function(){
   console.log('Node HTTPS Server on Port ' + port);
 });
-*/
+
+/*
 http.createServer(app).listen(port, function(){
   console.log('Node HTTP Server on Port ' + port);
 });
-
+*/
 // Boring error handling down here
 app.use(function(req, res, next) {
   var err = new Error("The page you are looking for may not exist.");
