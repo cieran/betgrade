@@ -82,12 +82,12 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : check_cashout, "profit" : set_profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
                                     }else{
-                                        req.flash('cashout-update', "You just cashed out for "+check_cashout+"mBTC.");
+                                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
                                         res.redirect('back');
                                     }
                                 });
@@ -115,12 +115,12 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : check_cashout, "profit" : set_profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
                                     }else{
-                                        req.flash('cashout-update', "You just cashed out for "+check_cashout+"mBTC.");
+                                        req.flash('cashout-update', "You just cashed out for "+cashout+"mBTC.");
                                         res.redirect('back');
                                     }
                                 });
