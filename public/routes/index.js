@@ -15,11 +15,11 @@ var store = new MemcachedStore('138.68.138.40:11211');
 */
 var failCallback = function (req, res, next, nextValidRequestDate) {
     console.log(nextValidRequestDate);
-    req.flash('bet-update', "No bruteforcing please. You can come off the naughty step "+moment(nextValidRequestDate).fromNow()+ ".");
+    req.flash('bet-update', "Either you, or some user, is attempting to bruteforce. Please try again in "+moment(nextValidRequestDate).fromNow()+ ".");
     res.redirect('/');
 };
 var stopThem = new ExpressBrute(store, {
-    freeRetries:2, 
+    freeRetries:9, 
     refreshTimeoutOnRequest: false,
     minWait: 1000 * 60 * 1,
     maxWait: 1000 * 60 * 5,
