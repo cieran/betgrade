@@ -449,9 +449,13 @@ module.exports = function(app, passport){
                                                 if(new_bavail < 0){
                                                     new_bavail = 0;
                                                 }
+                                                var new_lavail = parseFloat(res.btotal - res.ltotal);
+                                                if(new_lavail < 0){
+                                                    new_lavail = 0;
+                                                }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
-                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail}}, 
+                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail, lavail: new_lavail}}, 
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
@@ -463,13 +467,17 @@ module.exports = function(app, passport){
                                             "filename":filename, "course":course}, 
                                             {$inc : {'btotal': stake, 'ltotal' : 0, 'bavail':0, 'lavail':0}}, 
                                             {upsert : true, new: true}, function(err, res){
+                                                var new_bavail = parseFloat(res.ltotal - res.btotal);
+                                                if(new_bavail < 0){
+                                                    new_bavail = 0;
+                                                }
                                                 var new_lavail = parseFloat(res.btotal - res.ltotal);
                                                 if(new_lavail < 0){
                                                     new_lavail = 0;
                                                 }
                                                 Market.update({"marketname" : marketname, 
                                                 "student": student, "back":odds, "lay":odds, "code":code, 
-                                                "filename":filename, "course":course}, {$set : {lavail: new_lavail}}, 
+                                                "filename":filename, "course":course}, {$set : {bavail: new_bavail, lavail: new_lavail}}, 
                                                 {upsert : true}, function(errs, docs){
                                                  if(errs)
                                                     req.flash('bet-update', errs);
