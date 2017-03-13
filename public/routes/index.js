@@ -82,7 +82,7 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : returns}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
@@ -115,7 +115,7 @@ module.exports = function(app, passport){
                                 req.flash('cashout-update', "Uh oh, something went wrong.");
                                 res.redirect('back');
                             }else{
-                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : set_profit}}, function(err){
+                                User.findOneAndUpdate({"username":user}, {$inc : {"funds" : cashout, "profit" : returns}}, function(err){
                                     if(err){
                                         req.flash('cashout-update', "Nope... Something Went Wrong.");
                                         res.redirect('back');
