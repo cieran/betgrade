@@ -156,6 +156,7 @@ module.exports = function(app, passport){
         if(user){
             User.find({$query : {"username" : {$exists : true}}, $orderby : {profit : -1}})
                     .then(function(doc){
+                        
                     res.render('profile/leaderboard', {title: "Leaderboard | Betgrade", users: doc, user: req.user}); 
             });
         }else{

@@ -28,6 +28,7 @@ mongoose.connect(db.database);
 var hbs = exphbs.create({
     helpers: {
         inc : function(value) { return parseInt(value) + 1;},
+        curr_round : function(value) {return Math.round(value * 100) / 100}
         date: function(date){  return moment(date).tz('Europe/Dublin').format('DD-MM-YY HH:mm');},
         ifeq: function(a, b, options){
             if(a === b)
