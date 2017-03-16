@@ -20,12 +20,6 @@ var UserSchema = new Schema({
     },
     profit: {
         type: Number
-    },
-    highest: {
-        type: Number
-    },
-    winrate: {
-        type: Number
     }
 }, {collection: 'users', timestamps: true});
 
