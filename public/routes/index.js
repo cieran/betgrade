@@ -363,8 +363,8 @@ module.exports = function(app, passport){
         res.redirect('/');
     });
     app.post('/bet', function(req, res){
-        var stake = req.body.stake;
-        var odds = req.body.odds;
+        var stake = Math.round(req.body.stake * 100)/100;
+        var odds = Math.round(req.body.odds * 100)/100;
         var user = req.user;
         var student = req.body.student;
         var marketname = req.body.marketname;
