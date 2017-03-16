@@ -2,7 +2,7 @@
         <div class="user-head">
             <div class="user-info">
                 <h2 class="profile-username">{{user.username}}</h2>
-                <p class="profile-funds">Balance&#58; {{user.funds}}mBTC</p>
+                <p class="profile-funds">Balance&#58; {{curr_round user.funds}}mBTC</p>
             </div>
             <div class="button-wrap">
                 <button class="profile-nav active"  onClick="location.href='/profile/bet-history'">Matched Bets</button>

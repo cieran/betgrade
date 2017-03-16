@@ -30,7 +30,7 @@
         <img id="logo-header" src="/img/betgrade.png" alt="logo"/>
         <a class="nav-link" href="/">Home</a>
     {{#if user.username.length}}
-        <a class="pull-right nav-link" href="/profile">{{user.username}}, {{user.funds}}mBTC</a>  
+        <a class="pull-right nav-link" href="/profile">{{user.username}}, {{curr_round user.funds}}mBTC</a>  
         <a class="nav-link" href="/logout">Logout</a>
     {{else}}
         <button class="user-routes pull-right" onClick="location.href='/login'">LOGIN</button>
