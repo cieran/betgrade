@@ -8,13 +8,6 @@ gitq.bat
 #beatmap/
 # Node and related ecosystem
 # ==========================
-.nodemonignore
-.sass-cache/
-node_modules/
-public/lib/
-app/tests/coverage/
-.bower-*/
-.idea/
 coverage/
 
 # MEAN.js app and assets
