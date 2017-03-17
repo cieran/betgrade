@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "async": "^1.5.2",
-    "bcrypt": "^0.8.5",
     "body-parser": "~1.15.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "~1.1.0",
@@ -45,7 +44,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "serve-favicon": "^2.4.1"
- },
+  },
   "devDependencies": {
     "node-inspector": "~0.12.7",
     "run-sequence": "~1.1.5"
