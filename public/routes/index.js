@@ -144,9 +144,10 @@ module.exports = function(app, passport){
                        updates.calcReturns(x);
                        updates.cashoutCalc(x);
                     })
-                    
-                    res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
-            });
+                    setTimeout(function() {
+                        res.render('profile/bet-history', {title: "Bet History | Betgrade", message:req.flash('cashout-update'), bets: doc, user: req.user}); 
+                    }, 800);
+                });
         }else{
             res.redirect('/login');
         }
