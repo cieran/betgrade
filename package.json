@@ -33,6 +33,7 @@
     "cookie-parser": "^1.4.3",
     "crypto": "0.0.3",
     "express": "~4.13.4",
+    "express-bouncer": "^0.2.0",
     "express-brute": "^1.0.1",
     "express-brute-memcached": "0.0.1",
     "express-session": "^1.13.0",
