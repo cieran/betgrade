@@ -36,6 +36,7 @@
     "express-bouncer": "^0.2.0",
     "express-brute": "^1.0.1",
     "express-brute-memcached": "0.0.1",
+    "express-handlebars": "^3.0.0",
     "express-session": "^1.13.0",
     "file-stream-rotator": "~0.0.6",
     "forever": "~0.15.1",
