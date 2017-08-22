@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(session({
-    secret: 'lionelrichie',
+    secret: 'REDACTED',
     resave: false,
     saveUninitialized: false,
 }));
