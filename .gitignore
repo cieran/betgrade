@@ -1,1 +1,10 @@
+.bluemix/
 certs/
+.bowercc
+.cfignore
+.csslintrc
+.editorconfig
+.eslintrc.js
+.slugignore
+.travis.yml
+Dockerfile
